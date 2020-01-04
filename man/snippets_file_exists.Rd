@@ -12,7 +12,7 @@ snippets_file_exists(type)
 Default is \code{"r"}.}
 }
 \value{
-
+Returns \code{TRUE} if file exists and \code{FALSE} otherwise.
 }
 \description{
 Does a file with certain types of snippets exist in RStudio snippets directory?
