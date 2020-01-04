@@ -52,10 +52,29 @@ get_default_snippet_types <- function() {
 #'
 #' match_snippet_type("m")
 match_snippet_type <- function(type = get_default_snippet_types(),
-    several.ok = FALSE) {
-    type <- tolower(type)
-    match.arg(type, several.ok = several.ok)
-  }
+  several.ok = FALSE) {
+  type <- tolower(type)
+  match.arg(type, several.ok = several.ok)
+}
+
+#' Make a filename for snippets
+#'
+#' Make a filename for certain type of snippets.
+#'
+#' @inheritParams match_snippet_type
+#'
+#' @return String with a filename.
+#' @export
+#'
+#' @examples
+#' make_snippet_filename()
+#'
+#' make_snippet_filename("markdown")
+#'
+make_snippet_filename <- function(type = get_default_snippet_types()) {
+  type <- match_snippet_type(type)
+  stringr::str_glue("{type}.snippets")
+}
 
 # Snippet directories and files ========================================= ====
 
@@ -83,6 +102,13 @@ create_rs_snippets_dir <- function() {
   fs::dir_create(get_rs_snippets_dir())
 }
 
+#' Open directory of RStudio snippets
+#' @export
+open_rs_snippets_dir <- function() {
+  create_rs_snippets_dir()
+  browseURL(get_rs_snippets_dir())
+}
+
 #' Construct path to file of certain type snippets
 #'
 #'  Construct path to file of certain type snippets:
@@ -100,8 +126,7 @@ create_rs_snippets_dir <- function() {
 #' @export
 get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(), create = FALSE) {
 
-  type <- match_snippet_type(type)
-  path <- fs::path(dir, stringr::str_glue("{type}.snippets"))
+  path <- fs::path(dir, make_snippet_filename(type = type))
 
   if (isTRUE(create) && !file.exists(path)) {
     fs::dir_create(fs::path_dir(path))
@@ -134,14 +159,15 @@ snippets_file_exists <- function(type) {
 }
 
 
-#' RStudio snippet file backups
+#' RStudio snippet file back-up
 #'
-#' - `backup_rs_snippets()` creates a backup of snippets file
+#' - `backup_rs_snippets()` creates a back-up of snippets file
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
-#'    and its backups.
+#'    and its back-ups.
+#' - `restore_snippets_backup()` restores a back-up file.
 #'
 #' @inheritParams match_snippet_type
-#'
+#' @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
 #' @export
 #'
 #' @examples
@@ -152,6 +178,11 @@ snippets_file_exists <- function(type) {
 #'
 #'
 #' list_snippet_file_backups("r")
+#'
+#'
+#' # USe name of an existing back-up file
+#' restore_snippets_backup("r.snippets--backup-2019-10-31-01430")
+#'
 #' }
 backup_rs_snippets <- function(type) {
   create_rs_snippets_dir()
@@ -160,7 +191,14 @@ backup_rs_snippets <- function(type) {
   backup_name <-
     paste0(base_name, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
 
-  file.copy(base_name, backup_name)
+  new_backup <- fs::file_copy(base_name, backup_name)
+
+  usethis::ui_done(stringr::str_c(
+    "Current file was backed up: ",
+    "\n{usethis::ui_path(tobe_replaced)} \u2192 {usethis::ui_path(new_backup)}"
+  ))
+
+  invisible(new_backup)
 }
 
 #' @rdname backup_rs_snippets
@@ -168,18 +206,69 @@ backup_rs_snippets <- function(type) {
 list_snippet_file_backups <- function(type) {
   create_rs_snippets_dir()
 
-  type <- match_snippet_type(type)
-  pattern <- stringr::str_glue("{type}.snippets")
+  pattern <- make_snippet_filename(type = type)
 
   my_dir <- get_rs_snippets_dir()
   fs::dir_ls(my_dir, regexp = paste0("/", pattern))
+}
+
+#' @rdname backup_rs_snippets
+#'
+#' @param filename (character) The name of snippets back-up file.
+#'         E.g., `"r.snippets--backup-2019-10-31-01430"`.
+#' @param backup (logical) If `TRUE`, current file with snippets will be
+#'        backed up.
+#'
+#' @export
+# filename <- "r.snippets--backup-2019-10-31-01430"
+restore_snippets_backup <- function(filename, backup = TRUE) {
+
+
+  withr::with_dir(
+    get_rs_snippets_dir(),
+    {
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      filename     <- fs::path_file(filename)
+      filename_str <- usethis::ui_path(filename)
+
+      if (file.exists(filename)) {
+        usethis::ui_done("Back-up file was found: {filename_str}")
+
+      } else {
+        usethis::ui_stop("Back-up file {filename_str} does not exist.")
+      }
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      type <- stringr::str_extract(filename, ".*?(?=.snippets)")
+      type <- match_snippet_type(type)
+
+      usethis::ui_info("Snippets' type: {usethis::ui_field(type)}")
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      tobe_replaced     <- make_snippet_filename(type = type)
+      tobe_replaced_str <- usethis::ui_path(tobe_replaced)
+
+      if (isTRUE(backup)) {
+        backup_rs_snippets(type = type)
+
+      } else {
+        usethis::ui_oops("Current file was not backed up: {tobe_replaced_str}")
+      }
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      if (file.copy(filename, tobe_replaced, overwrite = TRUE)) {
+        usethis::ui_done("Previous back-up was restored {filename_str} \u2192 {tobe_replaced_str}.")
+
+      } else {
+        usethis::ui_oops("Failed to restore back-up {filename_str}.")
+      }
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    })
 }
 
 #' Replace snippets file
 #'
 #' @param type The type of RStudio snippet.
 #' @param from_dir The directory with replacement file.
-#' @param backup (logical) Indication if a backup copy should be created.
+#' @param backup (logical) Indication if a back-up copy should be created.
 #'
 #' @export
 #'
@@ -190,7 +279,7 @@ list_snippet_file_backups <- function(type) {
 #' replace_snippets_file("r",        backup = TRUE)
 #' replace_snippets_file("markdown", backup = TRUE)
 #'
-#' # Check if backup copies exist:
+#' # Check if back-up copies exist:
 #' list_snippet_file_backups("r")
 #' list_snippet_file_backups("markdown")
 #' }
@@ -205,16 +294,16 @@ replace_snippets_file <- function(type = get_default_snippet_types(),
 
   original <- get_path_to_rs_snippet_file(type = type)
 
-  # Create a backup copy
+  # Create a back-up copy
   if (backup && file.exists(original)) {
     backup_name <-
       paste0(original, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
 
     if (file.copy(from = original, to = backup_name)) {
-      usethis::ui_done("Backup created: {usethis::ui_path(backup_name)}")
+      usethis::ui_done("Back-up created: {usethis::ui_path(backup_name)}")
 
     } else {
-      usethis::ui_todo("Backup not created: {usethis::ui_path(original)}")
+      usethis::ui_oops("Back-up not created: {usethis::ui_path(original)}")
     }
   }
 
@@ -223,9 +312,29 @@ replace_snippets_file <- function(type = get_default_snippet_types(),
     usethis::ui_done("Snippets updated: {usethis::ui_path(original)}")
 
   } else {
-    usethis::ui_todo("Snippets not changed: {usethis::ui_path(original)}")
+    usethis::ui_oops("Snippets not changed: {usethis::ui_path(original)}")
   }
 }
+
+#' Edit file with RStudio snippets
+#'
+#' Open and edit file with RStudio snippets.
+#' This function is imported from package \pkg{usethis}.
+#'
+#' @details
+#' Files created by `edit_rstudio_snippets()`` will mask, not supplement,
+#' the built-in default snippets. If you like the built-in snippets, copy
+#' them and include with your custom snippets.
+#'
+#' @inheritParams match_snippet_type
+#'
+#' @seealso
+#' [usethis::edit_rstudio_snippets()]
+#'
+#' @importFrom usethis edit_rstudio_snippets
+#' @export
+usethis::edit_rstudio_snippets
+
 
 
 # ~ ======================================================================= ====
@@ -437,7 +546,7 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
         "new"      = confict %>% dplyr::filter(file == "new"),
         "both"     = confict %>% dplyr::mutate(name = paste(name, "-", file)),
         stop("Unknown option in_conflict_keep = '", in_conflict_keep, "'")
-       )
+      )
   }
 
   # Merge all snippets
@@ -505,7 +614,7 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
         purrr::reduce(c) %>%
         # Remove comments:
         stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
-        readr::write_lines(path = stringr::str_glue("{type}.snippets"))
+        readr::write_lines(path = make_snippet_filename(type = type))
     }
   )
 }
