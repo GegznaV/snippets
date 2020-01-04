@@ -186,9 +186,13 @@ list_snippet_file_backups <- function(type) {
 #' @examples
 #' if (FALSE) {
 #'
+#' # Replace your R and Markdown snippets with those in package "snippets":
 #' replace_snippets_file("r",        backup = TRUE)
 #' replace_snippets_file("markdown", backup = TRUE)
 #'
+#' # Check if backup copies exist:
+#' list_snippet_file_backups("r")
+#' list_snippet_file_backups("markdown")
 #' }
 
 replace_snippets_file <- function(type = get_default_snippet_types(),
