@@ -7,9 +7,11 @@
 snippets_file_exists(type)
 }
 \arguments{
-\item{type}{One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
+\item{type}{A character vector of candidate values.
+One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
 \code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
-Default is \code{"r"}.}
+May be unambiguously truncated.
+The default is \code{"r"}.}
 }
 \value{
 Returns \code{TRUE} if file exists and \code{FALSE} otherwise.

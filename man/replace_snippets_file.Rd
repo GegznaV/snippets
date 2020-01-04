@@ -23,18 +23,8 @@ Replace snippets file
 \examples{
 if (FALSE) {
 
-# backup_rs_snippets("r")
-# backup_rs_snippets("markdown")
-
-# FIXME:
-# merge_snippets("r",        in_dir = "snippets/")
-# merge_snippets("markdown", in_dir = "snippets/")
-#
-# replace_snippets_file("r",        from_dir = "snippets/")
-# replace_snippets_file("markdown", from_dir = "snippets/")
-#
-# merge_snippets("r",        in_dir = "snippets/", rm = "-VG-snippets")
-# merge_snippets("markdown", in_dir = "snippets/", rm = "-VG-snippets")
+replace_snippets_file("r",        backup = TRUE")
+replace_snippets_file("markdown", backup = TRUE")
 
 }
 }

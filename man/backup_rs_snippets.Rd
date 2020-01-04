@@ -2,15 +2,34 @@
 % Please edit documentation in R/code.R
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
-\title{Create a backup of snippets file}
+\alias{list_snippet_file_backups}
+\title{RStudio snippet file backups}
 \usage{
 backup_rs_snippets(type)
+
+list_snippet_file_backups(type)
 }
 \arguments{
-\item{type}{One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
+\item{type}{A character vector of candidate values.
+One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
 \code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
-Default is \code{"r"}.}
+May be unambiguously truncated.
+The default is \code{"r"}.}
 }
 \description{
-Create a backup of snippets file
+\itemize{
+\item \code{backup_rs_snippets()} creates a backup of snippets file
+\item \code{list_snippet_file_backups()} lists the names of current file with snippets
+and its backups.
+}
+}
+\examples{
+if (FALSE) {
+
+backup_rs_snippets("r")
+backup_rs_snippets("markdown")
+
+
+list_snippet_file_backups("r")
+}
 }

@@ -16,9 +16,11 @@ get_path_to_rs_snippet_file(type = get_default_snippet_types(), create = FALSE)
 \arguments{
 \item{dir}{(string) Directory name.}
 
-\item{type}{One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
+\item{type}{A character vector of candidate values.
+One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
 \code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
-Default is \code{"r"}.}
+May be unambiguously truncated.
+The default is \code{"r"}.}
 
 \item{create}{(logical) If \code{TRUE}, as a side effect, the file is created
 (if it does not exist).}
