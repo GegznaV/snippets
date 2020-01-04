@@ -68,6 +68,7 @@ create_rs_snippets_dir <- function() {
 #'        (if it does not exist).
 #'
 #' @return (character) Path to file.
+#'
 get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(), create = FALSE) {
 
   type <- tolower(type)
@@ -96,7 +97,7 @@ get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(), crea
 #'            `"java"`, `"javascript"`, `"python"`, `"sql"`, `"stan`", `"tex"`.
 #'             Default is `"r"`.
 #'
-#' @return
+#' @return Returns `TRUE` if file exists and `FALSE` otherwise.
 #' @export
 #'
 #' @examples
@@ -136,7 +137,6 @@ backup_rs_snippets <- function(type) {
 #' @param from_dir The directory with replacement file.
 #' @param backup (logical) Indication if a backup copy should be created.
 #'
-#' @return
 #' @export
 #'
 #' @examples
