@@ -29,6 +29,34 @@ get_default_snippet_types <- function() {
 
 }
 
+#' Return correct snippet type
+#'
+#' @param type A character vector of candidate values.
+#'             One of `"r"`, `"markdown"`, `"c_cpp"`, `"css"`, `"html"`,
+#'            `"java"`, `"javascript"`, `"python"`, `"sql"`, `"stan`", `"tex"`.
+#'            May be unambiguously truncated.
+#'            The default is `"r"`.
+#' @param several.ok (logical) Specify if `type` should be allowed to have more
+#'        than one element. Default is `FALSE`.
+#'
+#' @seealso
+#' [base::match.arg()]
+#'
+#' @return (sting) Correct snippet type in lower case. By default returns `"r"`.
+#' @export
+#'
+#' @examples
+#' match_snippet_type()
+#'
+#' match_snippet_type("r")
+#'
+#' match_snippet_type("m")
+match_snippet_type <- function(type = get_default_snippet_types(),
+    several.ok = FALSE) {
+    type <- tolower(type)
+    match.arg(type, several.ok = several.ok)
+  }
+
 # Snippet directories and files ========================================= ====
 
 #' Get path to directory for RStudio snippets
@@ -62,7 +90,8 @@ create_rs_snippets_dir <- function() {
 #' - `get_path_to_snippet_file()`    in any folder
 #' - `get_path_to_rs_snippet_file()` in RS snippets folder
 #'
-#' @inheritParams snippets_file_exists
+#' @inheritParams match_snippet_type
+#'
 #' @param dir (string) Directory name.
 #' @param create (logical) If `TRUE`, as a side effect, the file is created
 #'        (if it does not exist).
@@ -71,8 +100,7 @@ create_rs_snippets_dir <- function() {
 #'
 get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(), create = FALSE) {
 
-  type <- tolower(type)
-  type <- match.arg(type)
+  type <- match_snippet_type(type)
   path <- fs::path(dir, stringr::str_glue("{type}.snippets"))
 
   if (isTRUE(create) && !file.exists(path)) {
@@ -93,9 +121,7 @@ get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(), crea
 #'
 #' Does a file with certain types of snippets exist in RStudio snippets directory?
 #'
-#' @param type One of `"r"`, `"markdown"`, `"c_cpp"`, `"css"`, `"html"`,
-#'            `"java"`, `"javascript"`, `"python"`, `"sql"`, `"stan`", `"tex"`.
-#'             Default is `"r"`.
+#' @inheritParams match_snippet_type
 #'
 #' @return Returns `TRUE` if file exists and `FALSE` otherwise.
 #' @export
@@ -108,27 +134,45 @@ snippets_file_exists <- function(type) {
 }
 
 
-#' Create a backup of snippets file
+#' RStudio snippet file backups
 #'
-#' @inheritParams snippets_file_exists
+#' - `backup_rs_snippets()` creates a backup of snippets file
+#' - `list_snippet_file_backups()` lists the names of current file with snippets
+#'    and its backups.
+#'
+#' @inheritParams match_snippet_type
 #'
 #' @export
 #'
-#'  @examples
+#' @examples
 #' if (FALSE) {
 #'
 #' backup_rs_snippets("r")
 #' backup_rs_snippets("markdown")
 #'
+#'
+#' list_snippet_file_backups("r")
 #' }
-# @return
 backup_rs_snippets <- function(type) {
+  create_rs_snippets_dir()
 
   base_name   <- get_path_to_rs_snippet_file(type = type)
   backup_name <-
     paste0(base_name, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
 
   file.copy(base_name, backup_name)
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+list_snippet_file_backups <- function(type) {
+  create_rs_snippets_dir()
+
+  type <- match_snippet_type(type)
+  pattern <- stringr::str_glue("{type}.snippets")
+
+  my_dir <- get_rs_snippets_dir()
+  fs::dir_ls(my_dir, regexp = paste0("/", pattern))
 }
 
 #' Replace snippets file
@@ -142,18 +186,8 @@ backup_rs_snippets <- function(type) {
 #' @examples
 #' if (FALSE) {
 #'
-#' # backup_rs_snippets("r")
-#' # backup_rs_snippets("markdown")
-#'
-#' # FIXME:
-#' # merge_snippets("r",        in_dir = "snippets/")
-#' # merge_snippets("markdown", in_dir = "snippets/")
-#' #
-#' # replace_snippets_file("r",        from_dir = "snippets/")
-#' # replace_snippets_file("markdown", from_dir = "snippets/")
-#' #
-#' # merge_snippets("r",        in_dir = "snippets/", rm = "-VG-snippets")
-#' # merge_snippets("markdown", in_dir = "snippets/", rm = "-VG-snippets")
+#' replace_snippets_file("r",        backup = TRUE")
+#' replace_snippets_file("markdown", backup = TRUE")
 #'
 #' }
 
@@ -171,21 +205,23 @@ replace_snippets_file <- function(type = get_default_snippet_types(),
   if (backup && file.exists(original)) {
     backup_name <-
       paste0(original, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
+
     if (file.copy(from = original, to = backup_name)) {
-      usethis::ui_done("Backup created:")
-      message(backup_name)
+      usethis::ui_done("Backup created: {usethis::ui_path(backup_name)}")
 
     } else {
-      usethis::ui_todo("Backup not created:")
-      message(original)
+      usethis::ui_todo("Backup not created: {usethis::ui_path(original)}")
     }
   }
 
   # Copy/Overwrite the file
-  file.copy(from = replacement, to = original, overwrite = TRUE)
+  if (file.copy(from = replacement, to = original, overwrite = TRUE)) {
+    usethis::ui_done("Snippets updated: {usethis::ui_path(original)}")
+
+  } else {
+    usethis::ui_todo("Snippets not changed: {usethis::ui_path(original)}")
+  }
 }
-
-
 
 
 # ~ ======================================================================= ====
@@ -370,7 +406,8 @@ construct_snippet <- function(.data) {
 # @param in_conflict_keep (character) "original", "new", "both".
 # @param instert_default_if_missing (logical) Insert file with the default
 #        snippets, if file with snippets is missing.
-# @param file () File name to write snippets to. If present, `type` is ignored.
+# @param file (character) File name to write snippets to. If present, `type`
+#        is ignored.
 #
 # @export
 #
@@ -432,13 +469,24 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 # @export
 #
 # @examples
-merge_snippets <- function(type = get_default_snippet_types(),
-  in_dir = get_pkg_snippets_dir(), rm = NULL) {
+#
+# snippets_dir <- "inst/snippets/custom/"
+#
+# merge_snippets("r",        in_dir = snippets_dir)
+# merge_snippets("markdown", in_dir = snippets_dir)
+#
+# replace_snippets_file("r",        from_dir = snippets_dir)
+# replace_snippets_file("markdown", from_dir = snippets_dir)
+#
+# merge_snippets("r",        in_dir = snippets_dir, rm = "-VG-snippets")
+# merge_snippets("markdown", in_dir = snippets_dir, rm = "-VG-snippets")
+
+merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
+  rm = NULL) {
   # in_dir <- "snippets/"
   # rm = "-VG-snippets"
 
-  type <- tolower(type)
-  type <- match.arg(type)
+  type <- match_snippet_type(type)
 
   withr::with_dir(
     in_dir,
