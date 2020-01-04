@@ -3,11 +3,14 @@
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
 \alias{list_snippet_file_backups}
-\title{RStudio snippet file backups}
+\alias{restore_snippets_backup}
+\title{RStudio snippet file back-up}
 \usage{
 backup_rs_snippets(type)
 
 list_snippet_file_backups(type)
+
+restore_snippets_backup(filename, backup = TRUE)
 }
 \arguments{
 \item{type}{A character vector of candidate values.
@@ -15,12 +18,22 @@ One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"
 \code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
 The default is \code{"r"}.}
+
+\item{filename}{(character) The name of snippets back-up file.
+E.g., \code{"r.snippets--backup-2019-10-31-01430"}.}
+
+\item{backup}{(logical) If \code{TRUE}, current file with snippets will be
+backed up.}
+}
+\value{
+Invisibly returns the name of back-up copy. See \code{\link[fs:file_copy]{fs::file_copy()}}.
 }
 \description{
 \itemize{
-\item \code{backup_rs_snippets()} creates a backup of snippets file
+\item \code{backup_rs_snippets()} creates a back-up of snippets file
 \item \code{list_snippet_file_backups()} lists the names of current file with snippets
-and its backups.
+and its back-ups.
+\item \code{restore_snippets_backup()} restores a back-up file.
 }
 }
 \examples{
@@ -31,5 +44,10 @@ backup_rs_snippets("markdown")
 
 
 list_snippet_file_backups("r")
+
+
+# USe name of an existing back-up file
+restore_snippets_backup("r.snippets--backup-2019-10-31-01430")
+
 }
 }

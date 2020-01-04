@@ -15,7 +15,7 @@ replace_snippets_file(
 
 \item{from_dir}{The directory with replacement file.}
 
-\item{backup}{(logical) Indication if a backup copy should be created.}
+\item{backup}{(logical) Indication if a back-up copy should be created.}
 }
 \description{
 Replace snippets file
@@ -27,7 +27,7 @@ if (FALSE) {
 replace_snippets_file("r",        backup = TRUE)
 replace_snippets_file("markdown", backup = TRUE)
 
-# Check if backup copies exist:
+# Check if back-up copies exist:
 list_snippet_file_backups("r")
 list_snippet_file_backups("markdown")
 }
