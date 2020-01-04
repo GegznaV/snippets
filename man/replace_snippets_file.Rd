@@ -23,8 +23,8 @@ Replace snippets file
 \examples{
 if (FALSE) {
 
-replace_snippets_file("r",        backup = TRUE")
-replace_snippets_file("markdown", backup = TRUE")
+replace_snippets_file("r",        backup = TRUE)
+replace_snippets_file("markdown", backup = TRUE)
 
 }
 }
