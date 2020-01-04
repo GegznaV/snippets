@@ -17,9 +17,6 @@ replace_snippets_file(
 
 \item{backup}{(logical) Indication if a backup copy should be created.}
 }
-\value{
-
-}
 \description{
 Replace snippets file
 }
