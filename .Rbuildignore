@@ -6,3 +6,4 @@
 ^pkgdown$
 ^\.travis\.yml$
 ^README\.Rmd$
+^codecov\.yml$
