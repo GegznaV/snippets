@@ -97,7 +97,7 @@ create_rs_snippets_dir <- function() {
 #'        (if it does not exist).
 #'
 #' @return (character) Path to file.
-#'
+#' @export
 get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(), create = FALSE) {
 
   type <- match_snippet_type(type)
@@ -186,8 +186,8 @@ list_snippet_file_backups <- function(type) {
 #' @examples
 #' if (FALSE) {
 #'
-#' replace_snippets_file("r",        backup = TRUE")
-#' replace_snippets_file("markdown", backup = TRUE")
+#' replace_snippets_file("r",        backup = TRUE)
+#' replace_snippets_file("markdown", backup = TRUE)
 #'
 #' }
 
