@@ -1,0 +1,34 @@
+
+snippet url-
+	[${0}]($$){target="_blank"}
+
+snippet lnk
+	[${1:label}](${2:location}){target="_blank"}
+
+snippet lnk1
+	[${1:label} `r "\u0060"`r icon::fa("external-link-alt")`r "\u0060"`](${2:location}){target="_blank"}
+
+snippet lnk2
+	[${1:label} `r "\u0060"`r icon::fa("download")`r "\u0060"`](${2:location}){target="_blank"}
+
+snippet lnk3
+	[${1:label} `r "\u0060"`r icon::fa("file-pdf-o")`r "\u0060"`](${2:location}){target="_blank"}
+
+snippet [
+	[${1:label}](${2:location})
+
+snippet ![
+	![${1:label}](${2:location})
+
+snippet fig
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	${6:# DELETE THIS: To quick-search for file/folder, put cursor between quotes ("|") and press TAB.}
+	${7:# DELETE THIS: If you chose a folder, press TAB again to continue the browsing.}
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+
+	# Caption/Description.
+	CAPTION = "${2:**Fig. ${3:1}.**} ${4:Description}  "
+	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
+	```
+

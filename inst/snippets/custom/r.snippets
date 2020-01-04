@@ -1,0 +1,441 @@
+
+snippet help
+	# START: keywords for help/documentation snippets ==========================~
+	# Help about functions, operators or other topics:
+	?
+	# Abbreviations of the most common R data types:
+	help-data-types
+	# Functions for quick summary/descriptive statistics:
+	help-desc
+	# Comparison of different R syntax to achieve the same goals:
+	compare-r-syntax
+	# END: keywords for help/documentation snippets   ==========================~
+
+snippet ?
+	${6:#DELETE THIS: If used at all, package name must be in quotes (e.g., "dplyr")}
+	help(${1:"${2:function name, operator, other topic}"${3:, package = ${4:NULL}}${5:, try.all.packages = ${6:FALSE}}})
+
+snippet ???
+	help(${1:"${2:function name, operator, other topic}"${3:, package = ${4:NULL}}${5:, try.all.packages = ${6:FALSE}}})
+snippet lib
+	library(${1:package})
+
+snippet req
+	require(${1:package})
+
+snippet src
+	source("${0:file.R}", encoding = "UTF-8")
+
+snippet ret
+	return(${0:code})
+
+snippet mat
+	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
+
+snippet sg
+	setGeneric("${1:generic}", function(${2:x, ...}) {
+		standardGeneric("${1:generic}")
+	})
+
+snippet sm
+	setMethod("${1:generic}", ${2:class}, function(${2:x, ...}) {
+		${0}
+	})
+
+snippet sc
+	setClass("${1:Class}", slots = c(${2:name = "type"}))
+
+snippet if
+	if (${1:condition}) {
+		${0}
+	}
+
+snippet el
+	else {
+		${0}
+	}
+
+snippet ei
+	else if (${1:condition}) {
+		${0}
+	}
+
+snippet fun
+	${1:name} <- function(${2:variables}) {
+		${0}
+	}
+
+snippet funn
+	function(${2:variables}) {
+		${0}
+	}
+
+snippet for
+	for (${1:variable} in ${2:vector}) {
+		${0}
+	}
+
+snippet while
+	while (${1:condition}) {
+		${0}
+	}
+
+snippet switch
+	switch(
+		${1:object},
+		${2:case} = ${3:action}
+	)
+
+snippet apply
+	apply(${1:array}, ${2:margin}, ${3:...})
+
+snippet lapply
+	lapply(${1:list}, ${2:function})
+
+snippet sapply
+	sapply(${1:list}, ${2:function})
+
+snippet mapply
+	mapply(${1:function}, ${2:...})
+
+snippet tapply
+	tapply(${1:vector}, ${2:index}, ${3:function})
+
+snippet vapply
+	vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})
+
+snippet rapply
+	rapply(${1:list}, ${2:function})
+
+snippet map
+	${1:purrr::}map(${2:data}, ${3:function})
+
+snippet map_
+	${1:purrr::}map_${2:chr}(${3:data}, ${4:function})
+
+snippet aa
+	${1:dataset} <- 
+		${1:dataset} %>% 
+		${0}
+
+snippet aa-
+	$$ <- 
+		$$ %>% 
+		${0}
+
+snippet FIX
+	# FIXME: ${0}
+
+snippet fix
+	# FIXME: ${0}
+
+snippet TODO
+	# TODO: ${0}
+
+snippet todo
+	# TODO: ${0}
+
+snippet date
+	`r paste("#", Sys.Date(), "------------------------------\n")`
+
+snippet time
+	`r paste("#", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "---------------------\n")`
+
+snippet ts
+	`r paste(format(Sys.time(), "%Y-%m-%d %H:%M:%S"))`
+
+snippet msg
+	# =========================================================================
+	# ${0:Comment / Message / etc.}
+	# =========================================================================
+
+snippet help-data-types
+	# The abbreviations (used in the Tidyverse) of the most common R data types:
+	#     <fct>  -- nominal (factor, categorical);
+	#     <ord>  -- ordinal;
+	#     <int>  -- numeric (integers); 
+	#     <dbl>  -- numeric (doubles, real numbers); 
+	#     <lgl>  -- logical; 
+	#     <chr>  -- text (character, strings); 
+	#     <date> -- dates;
+	#     <dttm> -- dates and times;
+	#     <list> -- list column (more complex data structures than usual vectors).
+
+snippet help-desc
+	${0}# Snippets for quick descriptive statistics
+	
+	# Load packages and set options for descriptive statistics
+	desc-opts
+
+	# Describe the structure of dataset
+	desc-str
+
+	# Describe all variables in a dataset
+	desc-df
+
+	# Describe missing values in a dataset
+	desc-na
+
+	# Describe the structure, variable values and missing values of a dataset
+	desc-all
+
+	# Describe a single numeric variable
+	desc-num
+
+	# Describe a single factor (categorical) variable
+	desc-fct
+
+	# Describe a pair of variables: numeric by numeric
+	desc-num-num
+
+	# Describe a pair of variables: numeric by categorical
+	desc-num-fct
+
+	# Describe a pair of variables: categorical by numeric
+	desc-fct-num
+
+	# Describe a pair of variables: categorical by categorical
+	desc-fct-fct
+
+snippet desc-opts
+	# Move this code to "setup" chunk
+	library(tidyverse)
+	library(summarytools)
+	library(DescTools)
+
+	options(scipen = 8)
+
+	# DescTools formatting options
+	Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
+	Fmt(num = Fmt("num", big.mark = "")) # Real numbers
+	Fmt(num = Fmt("num", digits = 3))    # Real numbers
+	Fmt(per = Fmt("per", digits = 1))    # Percentages
+
+snippet desc-na
+	${1:data} %>% PlotMiss(main = "Missing values plot")
+	${1:data} %>% CountCompCases()
+
+snippet desc-str
+	${1:data} %>% class()
+	${1:data} %>% object.size() %>% print(unit = "auto")
+	${1:data} %>% dim()
+	
+	${1:data} %>% View() # interactive function. Use chunk option: eval=FALSE
+
+	${1:data} %>% glimpse()
+
+snippet desc-df
+	${1:data} %>% Desc(ord = "level")
+
+	${1:data} %>% dfSummary() %>% summarytools::view() # use chunk option: eval=FALSE
+	${1:data} %>% dfSummary()
+	${1:data} %>% select_if(is.numeric) %>% descr(round.digits = ${2:2)
+	${1:data} %>% select_if(is.factor)  %>% freq(round.digits  = ${3:2})
+
+snippet desc-all
+	${1:data} %>% class()
+	${1:data} %>% object.size() %>% print(unit = "auto")
+	${1:data} %>% dim()
+	
+	${1:data} %>% View() # use chunk option: eval=FALSE
+	${1:data} %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10) 
+	${1:data} %>% glimpse()
+
+	${1:data} %>% PlotMiss(main = "Missing values plot")
+	${1:data} %>% CountCompCases()
+
+	${1:data} %>% Desc(ord = "level")
+
+	${1:data} %>% dfSummary() %>% summarytools::view() # use chunk option: eval=FALSE
+	${1:data} %>% dfSummary()
+	${1:data} %>% select_if(is.numeric) %>% descr(round.digits = ${2:2)
+	${1:data} %>% select_if(is.factor)  %>% freq(round.digits  = ${3:1})
+
+snippet ++desc-
+	$$ %>% class()
+	$$ %>% object.size() %>% print(unit = "auto")
+	$$ %>% dim()
+	
+	$$ %>% View() # interactive function. Use chunk option: eval=FALSE
+	$$ %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10)
+	$$ %>% glimpse()
+
+	$$ %>% PlotMiss(main = "Missing values plot")
+	$$ %>% CountCompCases()
+
+	$$ %>% Desc(ord = "level")
+
+	$$ %>% dfSummary() %>% summarytools::view() # use chunk option: eval=FALSE
+	$$ %>% dfSummary()
+	$$ %>% select_if(is.numeric) %>% descr(round.digits = ${2:2})
+	$$ %>% select_if(is.factor)  %>% freq(round.digits  = ${3:1})
+
+snippet desc-num
+	${1:data} %>% with(boxplot(${2:numeric_variable}))
+	${1:data} %>% with(Desc(${2:numeric_variable}, ord = "level"))
+	${1:data} %>% descr(${2:numeric_variable}, round.digits = ${3:2})
+	${1:data} %>% with(Freq(${2:numeric_variable}, useNA = "ifany", dig.lab = ${4:8}))
+
+snippet desc-fct
+	${1:data} %>% with(plot(${2:factor_variable}))
+	${1:data} %>% with(Desc(${2:factor_variable}, ord = "level"))
+	${1:data} %>% freq(${2:factor_variable}, round.digits = ${3:1})
+	${1:data} %>% with(Freq(${2:factor_variable}, useNA = "ifany", ord = "level"))
+
+snippet desc-num-num
+	${1:data} %>% with(plot(${2:numeric_variable_1} ~ ${3:numeric_variable_2}))
+	${1:data} %>% with(Desc(${2:numeric_variable_1} ~ ${3:numeric_variable_2}))
+
+snippet desc-num-fct
+	${1:data} %>% with(Desc(${2:numeric_variable} ~ ${3:factor_variable}, ord = "level"))
+	${1:data} %>% 
+		group_by(${3:factor_variable}) %>%
+		descr(${2:numeric_variable}, round.digits = ${4:2})
+
+snippet desc-fct-num
+	${1:data} %>% with(Desc(${3:factor_variable} ~ ${2:numeric_variable}, ord = "level"))
+
+snippet desc-fct-fct
+	${1:data} %>% with(  Desc(${2:factor_variable_1} ~ ${3:factor_variable_2}, ord = "level"))
+	${1:data} %>% with(ctable(${2:factor_variable_1},  ${3:factor_variable_2}, prop = "${4:t}"))
+	${5:# prop = "r" - row, "c" - column, "t" -- total, "n"- no percentage}
+snippet compare-r-syntax
+	compare-r-syntax-1
+	compare-r-syntax-2
+
+snippet compare-r-syntax-1
+	# === Ways to select columns from a data frame ===============================
+	
+	library(tibble) # Tibble is an enhanced data frame.
+	
+	data <- tibble(
+		column   =   1:2,
+		column_a =  20:21,
+		column_b = 300:301,
+		column_c = 400:401
+	)
+	
+	some_function  <- function(...) print(paste(...))
+	
+	something_else <- c("A", "B", "C", "D")
+	
+	
+	# Operators $ and [[ ]]. -----------------------------------------------------
+	
+	data\$column       # For analysis
+	data[["column"]]   # For programming
+	
+	# Function with() ------------------------------------------------------------
+	
+	# Function with() allows using column names without $ and [[ ]] operators.
+	with(data, some_function(column))
+	with(data, some_function(column_a, column_b, column_c))
+	
+	# Instead of:
+	some_function(data\$column_a, data\$column_b, data\$column_c)
+	
+	
+	# Operators %>% and %$% ------------------------------------------------------
+	
+	library(tidyverse) # Loads %>% (pipe) operator.
+	library(magrittr)  # Loads %>% and %$% operators.
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# By default, %>% inserts "data" as the first argument of "some_function".
+	some_function(data) 
+	
+	# is equivalent to
+	data %>% some_function() 
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# If a dot (.) is present, %>% inserts "data" instead of the dot.
+	some_function(something_else, arg_2 = data) 
+	
+	# is equivalent to
+	data %>% some_function(something_else, arg_2 = .) 
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# %$% inserts columns of "data" into "some_function".
+	some_function(data\$column) 
+	
+	# is equivalent to
+	data %$% some_function(column) 
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# %$% can insert any number of columns.
+	data %$% some_function(column_a, column_b, column_c) 
+	
+	# is equivalent to
+	some_function(data\$column_a, data\$column_b, data\$column_c) 
+	
+	# is equivalent to
+	with(data, some_function(column_a, column_b, column_c)) 
+	
+	# is equivalent to
+	data %>% with(some_function(column_a, column_b, column_c)) 
+	# ===========================================================================~
+
+snippet compare-r-syntax-2
+	# === Examples ===============================================================
+	
+	library(tidyverse) # Loads %>% (pipe) operator.
+	library(magrittr)  # Loads %>% and %$% operators.
+	
+	# Each section will present different syntax that does the same operation.
+	
+	
+	# Functions that accept a vector as an input ---------------------------------
+	# Dataset:     CO2
+	# Column (y):  uptake
+	
+	mean(CO2\$uptake)
+	mean(CO2[["uptake"]])
+	with(CO2, mean(uptake))
+	CO2 %>% with(mean(uptake)) # Required packages: tidyverse or magrittr
+	CO2 %$% mean(uptake)       # Required packages: magrittr
+	
+	
+	# Functions that accept one-sided model formulas -----------------------------
+	# Dataset:     CO2
+	# Column (y):  Treatment 
+	# Column (y2): Type
+	
+	# Read ~ as "by"
+	# function(~ y, data = data)
+	
+	# %>% puts input instead of dot (.)
+	
+	xtabs(~ Type, data = CO2)
+	CO2 %>% xtabs(~ Type, data = .) # Required packages: tidyverse or magrittr
+	CO2 %$% xtabs(~ Type)           # Required packages: magrittr
+	
+	# function(~ y + y2, data = data)
+	
+	xtabs(~ Type + Treatment, data = CO2)
+	CO2 %>% xtabs(~ Type + Treatment, data = .) # Required packages: tidyverse or magrittr
+	CO2 %$% xtabs(~ Type + Treatment)           # Required packages: magrittr
+	
+	
+	# Functions that accept two-sided model formulas -----------------------------
+	# Dataset:     CO2
+	# Column (x):  Treatment 
+	# Column (y):  uptake
+	
+	# Note: first comes y, then x
+	# function(y ~ x, data = data)
+	
+	oneway.test(extra ~ group, data = sleep)
+	sleep %>% oneway.test(extra ~ group, data = .) # Required packages: tidyverse or magrittr
+	sleep %$% oneway.test(extra ~ group)           # Required packages: magrittr
+	
+	# Tidyverse style functions -------------------------------------------------
+	
+	# Tidyverse style functions that are designed for datasets manipulation,
+	# usually accepts dataset as their first argument and unquoted column names
+	# as some other arguments. This allows pipe (%>%) syntax.
+	
+	count(CO2, Type)     # Required packages: tidyverse
+	CO2 %>% count(Type)  # Required packages: tidyverse
+	
+	# ===========================================================================~
+

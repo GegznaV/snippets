@@ -1,0 +1,140 @@
+snippet compare-r-syntax
+	compare-r-syntax-1
+	compare-r-syntax-2
+
+snippet compare-r-syntax-1
+	# === Ways to select columns from a data frame ===============================
+	
+	library(tibble) # Tibble is an enhanced data frame.
+	
+	data <- tibble(
+		column   =   1:2,
+		column_a =  20:21,
+		column_b = 300:301,
+		column_c = 400:401
+	)
+	
+	some_function  <- function(...) print(paste(...))
+	
+	something_else <- c("A", "B", "C", "D")
+	
+	
+	# Operators $ and [[ ]]. -----------------------------------------------------
+	
+	data\$column       # For analysis
+	data[["column"]]   # For programming
+	
+	# Function with() ------------------------------------------------------------
+	
+	# Function with() allows using column names without $ and [[ ]] operators.
+	with(data, some_function(column))
+	with(data, some_function(column_a, column_b, column_c))
+	
+	# Instead of:
+	some_function(data\$column_a, data\$column_b, data\$column_c)
+	
+	
+	# Operators %>% and %$% ------------------------------------------------------
+	
+	library(tidyverse) # Loads %>% (pipe) operator.
+	library(magrittr)  # Loads %>% and %$% operators.
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# By default, %>% inserts "data" as the first argument of "some_function".
+	some_function(data) 
+	
+	# is equivalent to
+	data %>% some_function() 
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# If a dot (.) is present, %>% inserts "data" instead of the dot.
+	some_function(something_else, arg_2 = data) 
+	
+	# is equivalent to
+	data %>% some_function(something_else, arg_2 = .) 
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# %$% inserts columns of "data" into "some_function".
+	some_function(data\$column) 
+	
+	# is equivalent to
+	data %$% some_function(column) 
+	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	# %$% can insert any number of columns.
+	data %$% some_function(column_a, column_b, column_c) 
+	
+	# is equivalent to
+	some_function(data\$column_a, data\$column_b, data\$column_c) 
+	
+	# is equivalent to
+	with(data, some_function(column_a, column_b, column_c)) 
+	
+	# is equivalent to
+	data %>% with(some_function(column_a, column_b, column_c)) 
+	# ===========================================================================~
+
+snippet compare-r-syntax-2
+	# === Examples ===============================================================
+	
+	library(tidyverse) # Loads %>% (pipe) operator.
+	library(magrittr)  # Loads %>% and %$% operators.
+	
+	# Each section will present different syntax that does the same operation.
+	
+	
+	# Functions that accept a vector as an input ---------------------------------
+	# Dataset:     CO2
+	# Column (y):  uptake
+	
+	mean(CO2\$uptake)
+	mean(CO2[["uptake"]])
+	with(CO2, mean(uptake))
+	CO2 %>% with(mean(uptake)) # Required packages: tidyverse or magrittr
+	CO2 %$% mean(uptake)       # Required packages: magrittr
+	
+	
+	# Functions that accept one-sided model formulas -----------------------------
+	# Dataset:     CO2
+	# Column (y):  Treatment 
+	# Column (y2): Type
+	
+	# Read ~ as "by"
+	# function(~ y, data = data)
+	
+	# %>% puts input instead of dot (.)
+	
+	xtabs(~ Type, data = CO2)
+	CO2 %>% xtabs(~ Type, data = .) # Required packages: tidyverse or magrittr
+	CO2 %$% xtabs(~ Type)           # Required packages: magrittr
+	
+	# function(~ y + y2, data = data)
+	
+	xtabs(~ Type + Treatment, data = CO2)
+	CO2 %>% xtabs(~ Type + Treatment, data = .) # Required packages: tidyverse or magrittr
+	CO2 %$% xtabs(~ Type + Treatment)           # Required packages: magrittr
+	
+	
+	# Functions that accept two-sided model formulas -----------------------------
+	# Dataset:     CO2
+	# Column (x):  Treatment 
+	# Column (y):  uptake
+	
+	# Note: first comes y, then x
+	# function(y ~ x, data = data)
+	
+	oneway.test(extra ~ group, data = sleep)
+	sleep %>% oneway.test(extra ~ group, data = .) # Required packages: tidyverse or magrittr
+	sleep %$% oneway.test(extra ~ group)           # Required packages: magrittr
+	
+	# Tidyverse style functions -------------------------------------------------
+	
+	# Tidyverse style functions that are designed for datasets manipulation,
+	# usually accepts dataset as their first argument and unquoted column names
+	# as some other arguments. This allows pipe (%>%) syntax.
+	
+	count(CO2, Type)     # Required packages: tidyverse
+	CO2 %>% count(Type)  # Required packages: tidyverse
+	
+	# ===========================================================================~
+

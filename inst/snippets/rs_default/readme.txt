@@ -1,0 +1,1 @@
+These snippets were default in Rstudio v 1.2.5001 (2019-09-29)

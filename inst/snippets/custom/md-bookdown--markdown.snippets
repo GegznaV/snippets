@@ -1,0 +1,77 @@
+snippet eq
+	<!-- Equation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+	\begin{equation}
+
+	  ${0:equation}
+	  (\#eq:${1:equation-ID})
+
+	\end{equation}
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+
+snippet exr
+	```{exercise, ${1:exercise-ID}, echo=TRUE}
+	${0}
+	```
+
+snippet exm
+	```{example, ${1:exercise-ID}, echo=TRUE}
+	${0}
+	```
+
+snippet youtube
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+	<br>
+	<center>
+	<!-- video -->
+	<iframe width="640" height="360"
+	src="https://www.youtube.com/embed/${1:youtube-code-of-vieo}?rel=0"
+	frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+	</iframe>
+	</center>
+	```{corollary, ${2:video-ID}}
+	${3:video-caption}
+	```
+	<br>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+
+snippet cap
+	(\#${1:label-ID}) ${2:caption/label}
+
+snippet cap-
+	(\#$$) ${1:caption/label}
+
+snippet capeq
+	(\#eq:${1:equation-ID})
+
+snippet capf
+	(\#fig:${1:fig-ID}) ${2:fig-caption}
+
+snippet capt
+	(\#tab:${1:table-ID}) ${2:table-caption}
+
+snippet capv
+	(\#cor:${1:video-ID}) ${2:video-caption}
+
+snippet ref
+	\@ref(${1:label-ID})
+
+snippet ref-
+	\@ref($$:${1:ID})
+
+snippet refeq
+	\@ref(eq:${1:equation-ID})
+
+snippet refexr
+	\@ref(exr:${1:exercise-ID})
+
+snippet refexm
+	\@ref(exr:${1:example-ID})
+
+snippet reff
+	\@ref(fig:${1:fig-ID})
+
+snippet reft
+	\@ref(tab:${1:table-ID})
+
+snippet refv
+	\@ref(cor:${1:video-ID})

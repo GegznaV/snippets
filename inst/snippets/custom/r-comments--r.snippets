@@ -1,0 +1,26 @@
+snippet FIX
+	# FIXME: ${0}
+
+snippet fix
+	# FIXME: ${0}
+
+snippet TODO
+	# TODO: ${0}
+
+snippet todo
+	# TODO: ${0}
+
+snippet date
+	`r paste("#", Sys.Date(), "------------------------------\n")`
+
+snippet time
+	`r paste("#", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "---------------------\n")`
+
+snippet ts
+	`r paste(format(Sys.time(), "%Y-%m-%d %H:%M:%S"))`
+
+snippet msg
+	# =========================================================================
+	# ${0:Comment / Message / etc.}
+	# =========================================================================
+

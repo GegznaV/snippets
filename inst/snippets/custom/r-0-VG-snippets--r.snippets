@@ -1,0 +1,33 @@
+
+# VG snippets ================================================================
+
+snippet test--
+	context("Tests: $$()")
+	
+	test_that("$$() works", {
+	  # Prepare data
+	
+	  # Unit tests
+	  expect_error($$())
+	  expect_error($$}())
+	  expect_error($$())
+	  
+	  expect_is($$(), class = "htest")
+	  expect_length($$(), n = 10)
+	  
+	  expect_identical(
+	    $$(),
+	    ...
+	  )
+	  
+	  expect_identical(
+	    $$(),
+	    ...
+	  )
+	  
+	  expect_identical(
+	    $$(),
+	    ...
+	  )
+	    
+	})

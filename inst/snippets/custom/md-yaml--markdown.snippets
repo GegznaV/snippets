@@ -1,0 +1,31 @@
+snippet ---1
+	---
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r Sys.Date()`}"
+	output:
+	  html_document:
+	    fig_caption:     ${5:yes}
+	    number_sections: ${6:yes}
+	    toc:       ${7:yes}
+	    toc_float: ${8:yes}
+	    toc_depth: ${9:3}
+	    df_print:  ${10:default} # paged  kable  tibble  default
+	---
+
+snippet ---2
+	---
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
+	output:
+	  html_document:
+	    fig_caption: ${5:yes}
+	    number_sections: ${6:yes}
+	    toc:       ${7:yes}
+	    toc_float: ${8:yes}
+	    toc_depth: ${9:3}
+	    df_print:  ${10:default} # paged  kable  tibble  default
+	---

@@ -1,0 +1,7 @@
+Folder with RStudio snippets: ~/.R/snippets/
+
+
+Usefull codes:
+
+fs::file_show("~/.R/snippets/")
+setwd("~/.R/snippets/")

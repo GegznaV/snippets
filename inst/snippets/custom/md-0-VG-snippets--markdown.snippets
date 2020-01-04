@@ -1,0 +1,173 @@
+
+# VG snippets ================================================================
+
+snippet setup-lt
+	```{r setup, include=FALSE}
+	# Paketai -------------------------------------------------------------------
+
+	library(conflicted)      # Sprendimas, jei yra kelios funkcijos vienodais pavadinimais.
+
+	library(tidyverse)       # Pagrindiniai „tidyverse“ paketai.
+	library(magrittr)        # Operatorius %>% ir papildomos funkcijos.
+
+	# library(fs)            # Darbui su bylomis ir aplankais.
+
+	# library(DescTools)     # Aprašomoji statistika.
+	# library(summarytools)  # Aprašomoji statistika.
+	# library(skimr)         # Aprašomoji statistika.
+
+	# library(ggpubr)        # Statistiniai ggplot2 grafikai ir papildomos funkcijos.
+	# library(ggstatsplot)   # Įvairūs statistiniai ggplot2 grafikai su papildomomis detalėmis.
+	# library(ggmosaic)      # Mozaikinės diagramos.
+	# library(qqplotr)       # Kvantilių palyginimo (qq) diagramos.
+	# library(ggrepel)       # Vienas ant kito „neužlipantys“ ggplot2 grafikų užrašai.
+	# library(latex2exp)     # Lygtys ir teksto formatavimas grafikuose.
+	# library(officer)       # PowerPoint, Word ir pan. dokumentų kūrimas ir grafikų išsaugojimas juose.
+	# library(rvg)           # Grafikų išsaugojimui redaguojamu formatu.
+
+	# library(data.table)    # Funkcija `fread()` tekstinių duomenų nuskaitymui.
+	# library(readxl)        # Excel duomenų nuskaitymui.
+	# library(openxlsx)      # Duomenų išsaugojimui į Excel.
+
+	# library(broom)         # Statistinių modelių rezultatų vertimui į duomenų lenteles.
+	# library(vcd)           # Darbui su kategoriniams duomenims (skirstiniai ir pan.).
+	# library(fitdistrplus)  # Skirstinių parinkimas duomenims.
+
+	# library(pander)        # Funkcija `pander()` rezultatų vertimui į ataskaitų lenteles.
+	# library(knitr)         # Funkcija `kable()` duomenų lentelių vertimui į ataskaitų lenteles.
+
+
+	# Nustatymai -----------------------------------------------------------------
+
+	knitr::opts_chunk\$set(
+	  echo       = TRUE,   # Ar rodyti programos kodą ataskaitoje?
+	  fig.height = 3,      # Numatytasis paveikslo aukštis
+	  fig.width  = 5,      # Numatytasis paveikslo plotis
+	  fig.align  = "center"
+	)
+
+	Sys.setlocale(locale = "${1:Lithuanian}")
+	options(scipen = 8)   # Rodomi bent 8 skaitmenys prieš verčiant skaičių į inžinerinį formatą (pvz., 1.2E9).
+	theme_set(theme_bw()) # Numatytoji ggplot2 tema
+
+	# # DescTools formatting options
+	# Fmt(abs = Fmt("abs", big.mark = "")) # Sveikieji skaičiai
+	# Fmt(num = Fmt("num", big.mark = "")) # Realieji skaičiai
+	# Fmt(num = Fmt("num", digits = 3))    # Realieji skaičiai
+	# Fmt(per = Fmt("per", digits = 1))    # Procentai
+
+	${0}
+
+	set.seed(`r format(Sys.Date(), "%Y%m%d")`)
+	```
+
+snippet setupp
+	```{r setup, include=FALSE}
+	library(conflicted)
+
+	library(tidyverse)
+	library(magrittr)
+	# library(data.table)
+	# library(DescTools)
+	# library(skimr)
+	# library(readxl)
+	# library(fs)
+
+
+	knitr::opts_chunk\$set(
+	  echo       = FALSE,
+	  # comment    = "##",
+	  # fig.keep   = "high",
+	  fig.height = 3,
+	  fig.width  = 5,
+	  fig.align  = "center")
+
+	Sys.setlocale(locale = "${1:Lithuanian}")
+	options(scipen = 8)
+	theme_set(theme_bw())
+	${0}
+
+	set.seed(`r format(Sys.Date(), "%Y%m%d")`)
+	```
+
+snippet figb
+	```{r ${1:fig-ID}, echo=FALSE, fig.cap=CAPTION}
+	knitr::include_graphics("fig/pic/${2}${1}.png")
+
+	CAPTION = "${3:caption}  "
+	```
+
+snippet fig
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+
+	# Caption/Description.
+	CAPTION = "${2:**Fig. ${3:1}.**} ${4:Caption/Description}  "
+	```
+
+snippet figi
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	${6:# DELETE THIS: To quick-search for file/folder, put cursor between quotes ("|") and press TAB.}
+	${7:# DELETE THIS: If you chose a folder, press TAB again to continue the browsing.}
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+
+	# Caption/Description.
+	CAPTION = "${2:**Fig. ${3:1}.**} ${4:Caption/Description}  "
+	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
+	```
+
+snippet note
+	```{block, type="${1:note}", echo=TRUE}
+	${0}
+	```
+
+snippet aim
+	```{block, type="${1:aim}", echo=TRUE}
+	${0}
+	```
+
+snippet ok
+	```{block, type="${1:ok}", echo=TRUE}
+	${0}
+	```
+
+snippet task
+	```{block, type="${1:task}", echo=TRUE}
+	${0}
+	```
+
+snippet red
+	```{block, type="${1:avoid}", echo=TRUE}
+	${0}
+	```
+
+snippet avoid
+	```{block, type="${1:avoid}", echo=TRUE}
+	${0}
+	```
+
+snippet kb
+	\`r kbd("${1:Ctrl}", "${2}")\`
+
+snippet kbd-
+	<kbd>$$</kbd>
+
+snippet fa-dl
+	<i class="fa fa-download" aria-hidden="true"></i>
+
+snippet fa1
+	<i class="fa fa-download" aria-hidden="true"></i>
+
+snippet fa-link
+	<i class="fa fa-external-link-alt" aria-hidden="true"></i>
+
+snippet fa2
+	<i class="fa fa-external-link-alt" aria-hidden="true"></i>
+
+snippet fa-pdf
+	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+snippet fa3
+	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
