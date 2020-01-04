@@ -43,11 +43,13 @@ browseURL(rs_snippets_dir)
 ```
 
 ``` r
+# Replace your R snippets with those in package "snippets"
 replace_snippets_file("r", backup = TRUE)
 list_snippet_file_backups("r")
 ```
 
 ``` r
+# Replace your Markdown snippets with those in package "snippets"
 replace_snippets_file("markdown", backup = TRUE)
 list_snippet_file_backups("markdown")
 ```
