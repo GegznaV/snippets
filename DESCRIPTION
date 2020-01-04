@@ -6,7 +6,7 @@ Authors@R:
            family  = "Gegzna",
            role    = c("aut", "cre"),
            email   = "GegznaV@gmail.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")
+           comment = c(ORCID = "0000-0002-9500-5167")
     )
 Description: Manage RStudio snippets.
 License: MIT + file LICENSE
@@ -24,3 +24,5 @@ Imports:
   usethis,
   withr
 RoxygenNote: 7.0.2.9000
+Suggests: 
+    testthat (>= 2.1.0)
