@@ -1,0 +1,63 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Package `snippets`
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+
+## Installation
+
+<!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: -->
+
+<!-- ``` r -->
+<!-- install.packages("snippets") -->
+<!-- ``` -->
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("GegznaV/snippets")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r eval=FALSE}
+library(snippets)
+```
+
+```{r eval=FALSE}
+rs_snippets_dir <- get_rs_snippets_dir()
+rs_snippets_dir
+```
+
+```{r eval=FALSE}
+browseURL(rs_snippets_dir)
+```
+
+```{r eval=FALSE}
+replace_snippets_file("r", backup = TRUE)
+list_snippet_file_backups("r")
+```
+
+```{r eval=FALSE}
+replace_snippets_file("markdown", backup = TRUE)
+list_snippet_file_backups("markdown")
+```
+
