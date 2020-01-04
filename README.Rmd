@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # Package `snippets`
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
+[![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 <!-- badges: end -->
 
 
@@ -43,23 +45,55 @@ library(snippets)
 ```
 
 ```{r eval=FALSE}
-rs_snippets_dir <- get_rs_snippets_dir()
-rs_snippets_dir
+get_rs_snippets_dir()
 ```
 
 ```{r eval=FALSE}
-browseURL(rs_snippets_dir)
+# Open directory with RStudio snippets
+open_rs_snippets_dir()
 ```
 
 ```{r eval=FALSE}
 # Replace your R snippets with those in package "snippets"
-replace_snippets_file("r", backup = TRUE)
-list_snippet_file_backups("r")
+replace_snippets_file(type = "r", backup = TRUE)
+list_snippet_file_backups(type = "r")
 ```
 
 ```{r eval=FALSE}
+# View and edit file with snippets of certain type
+edit_rstudio_snippets(type = "r")
+```
+
+
+```{r eval=FALSE}
 # Replace your Markdown snippets with those in package "snippets"
-replace_snippets_file("markdown", backup = TRUE)
-list_snippet_file_backups("markdown")
+replace_snippets_file(type = "markdown", backup = TRUE)
+list_snippet_file_backups(type = "markdown")
+```
+
+
+
+## Revert to certain version of back-up 
+
+1. List all back-up files and select the one of inerest.
+```{r eval=FALSE}
+list_snippet_file_backups(type = "r")
+```
+```
+c:/.R/snippets/r.snippets
+c:/.R/snippets/r.snippets--backup-2019-11-12-033948
+c:/.R/snippets/r.snippets--backup-2019-10-31-015042
+```
+
+2. Restore the back-up of interest, e.g.:
+```{r eval=FALSE}
+restore_snippets_backup("r.snippets--backup-2019-10-31-015042")
+```
+```
+v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
+i Snippets' type: r
+v Current file was backed up: 
+  'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'
+v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.
 ```
 
