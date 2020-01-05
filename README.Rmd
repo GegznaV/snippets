@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
 [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets)
 <!-- badges: end -->
 
 
@@ -79,21 +80,21 @@ list_snippet_file_backups(type = "markdown")
 ```{r eval=FALSE}
 list_snippet_file_backups(type = "r")
 ```
-```
-c:/.R/snippets/r.snippets
-c:/.R/snippets/r.snippets--backup-2019-11-12-033948
-c:/.R/snippets/r.snippets--backup-2019-10-31-015042
+```r
+#> c:/.R/snippets/r.snippets
+#> c:/.R/snippets/r.snippets--backup-2019-11-12-033948
+#> c:/.R/snippets/r.snippets--backup-2019-10-31-015042
 ```
 
 2. Restore the back-up of interest, e.g.:
 ```{r eval=FALSE}
 restore_snippets_backup("r.snippets--backup-2019-10-31-015042")
 ```
-```
-v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
-i Snippets' type: r
-v Current file was backed up: 
-  'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'
-v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.
+```r
+#> v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
+#> i Snippets' type: r
+#> v Current file was backed up: 
+#>   'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'
+#> v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.
 ```
 
