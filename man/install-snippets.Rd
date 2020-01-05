@@ -7,26 +7,26 @@
 \title{Install snippets.}
 \usage{
 install_snippets_from_package(
-  type = get_default_snippet_types(),
   package = "snippets",
+  type = get_default_snippet_types(),
   subdir = "",
   backup = TRUE
 )
 
 install_snippets_from_dir(
+  from_dir = ".",
   type = get_default_snippet_types(),
-  from_dir = get_pkg_snippets_dir("custom"),
   backup = TRUE
 )
 }
 \arguments{
+\item{package}{(character) The name of R package.}
+
 \item{type}{A character vector of candidate values.
 One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
 \code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
 The default is \code{"r"}.}
-
-\item{package}{(character) The name of R package.}
 
 \item{backup}{(logical) Indication if a back-up copy should be created.}
 
@@ -39,11 +39,11 @@ Replace current file with snippets with the other file.
 if (FALSE) {
 
 # Replace your R and Markdown snippets with those in package "snippets":
-install_snippets_from_dir("r",        backup = TRUE)
-install_snippets_from_dir("markdown", backup = TRUE)
+install_snippets_from_package("snippets", type = "r",        backup = TRUE)
+install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 
 # Check if back-up copies exist:
-list_snippet_file_backups("r")
-list_snippet_file_backups("markdown")
+list_snippet_file_backups(type = "r")
+list_snippet_file_backups(type = "markdown")
 }
 }
