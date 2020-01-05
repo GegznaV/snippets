@@ -195,7 +195,7 @@ backup_rs_snippets <- function(type) {
 
   usethis::ui_done(stringr::str_c(
     "Current file was backed up: ",
-    "\n{usethis::ui_path(tobe_replaced)} \u2192 {usethis::ui_path(new_backup)}"
+    "\n{usethis::ui_path(tobe_replaced)} -> {usethis::ui_path(new_backup)}"
   ))
 
   invisible(new_backup)
@@ -255,7 +255,7 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       if (file.copy(filename, tobe_replaced, overwrite = TRUE)) {
-        usethis::ui_done("Previous back-up was restored {filename_str} \u2192 {tobe_replaced_str}.")
+        usethis::ui_done("Previous back-up was restored {filename_str} -> {tobe_replaced_str}.")
 
       } else {
         usethis::ui_oops("Failed to restore back-up {filename_str}.")
