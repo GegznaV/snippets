@@ -28,6 +28,8 @@ One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"
 May be unambiguously truncated.
 The default is \code{"r"}.}
 
+\item{subdir}{(character) The sub-directory with replacement file(s).}
+
 \item{backup}{(logical) Indication if a back-up copy should be created.}
 
 \item{from_dir}{(character) The directory with replacement file.}
