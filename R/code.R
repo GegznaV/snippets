@@ -281,15 +281,15 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
 #' if (FALSE) {
 #'
 #' # Replace your R and Markdown snippets with those in package "snippets":
-#' install_snippets_from_dir("r",        backup = TRUE)
-#' install_snippets_from_dir("markdown", backup = TRUE)
+#' install_snippets_from_package("snippets", type = "r",        backup = TRUE)
+#' install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 #'
 #' # Check if back-up copies exist:
-#' list_snippet_file_backups("r")
-#' list_snippet_file_backups("markdown")
+#' list_snippet_file_backups(type = "r")
+#' list_snippet_file_backups(type = "markdown")
 #' }
-install_snippets_from_package <- function(type = get_default_snippet_types(),
-  package = "snippets", subdir = "", backup = TRUE) {
+install_snippets_from_package <- function(package = "snippets",
+  type = get_default_snippet_types(), subdir = "", backup = TRUE) {
 
   from_dir <- get_pkg_snippets_dir(subdir, package = package)
   install_snippets_from_dir(type = type, from_dir = from_dir, backup = backup)
@@ -297,8 +297,23 @@ install_snippets_from_package <- function(type = get_default_snippet_types(),
 
 #' @rdname install-snippets
 #' @export
-install_snippets_from_dir <- function(type = get_default_snippet_types(),
-  from_dir = get_pkg_snippets_dir("custom"), backup = TRUE) {
+install_snippets_from_dir <- function(from_dir = ".",
+  type = get_default_snippet_types(), backup = TRUE) {
+
+  if (fs::dir_exists(from_dir)) {
+    usethis::ui_done("Directory exists: {usethis::ui_path(from_dir)}")
+  } else {
+    usethis::ui_stop("Directory was not found: {usethis::ui_path(from_dir)}")
+  }
+
+  ext_snippet <- usethis::ui_path(".snippet")
+  n_snippet_files <- length(dir(from_dir, pattern = ".snippets$"))
+  if (n_snippet_files > 0) {
+    usethis::ui_done("Directory contains {n_snippet_files} file(s) with extension {ext_snippet}")
+  } else {
+    usethis::ui_stop("No files with extension {ext_snippet} were found in the directory.")
+  }
+
 
   replacement <- get_path_to_snippet_file(dir = from_dir, type = type)
   if (!file.exists(replacement)) {
@@ -313,7 +328,7 @@ install_snippets_from_dir <- function(type = get_default_snippet_types(),
       paste0(original, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
 
     if (file.copy(from = original, to = backup_name)) {
-      usethis::ui_done("Back-up created: {usethis::ui_path(backup_name)}")
+      usethis::ui_done("Back-up created:  {usethis::ui_path(backup_name)}")
 
     } else {
       usethis::ui_oops("Back-up not created: {usethis::ui_path(original)}")
@@ -397,9 +412,9 @@ get_pkg_snippets_dir <- function(..., package = "snippets") {
   system.file("snippets", ... , package = package)
 }
 
-# get_custom_snippets_path()
-get_custom_snippets_path <- function() {
-  dir(get_pkg_snippets_dir("custom"), pattern = ".snippets$")
+# get_path_to_snippets_files()
+get_path_to_snippets_files <- function(package = "snippets") {
+  fs::dir_ls(get_pkg_snippets_dir(package = package), regexp = ".snippets$")
 }
 
 
@@ -598,16 +613,16 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 #
 # @examples
 #
-# snippets_dir <- "inst/snippets/custom/"
+# snippets_dir <- "snippets/"
 #
-# merge_snippets("r",        in_dir = snippets_dir)
-# merge_snippets("markdown", in_dir = snippets_dir)
+# merge_snippets(type = "r",        in_dir = snippets_dir)
+# merge_snippets(type = "markdown", in_dir = snippets_dir)
 #
-# install_snippets_from_dir("r",        from_dir = snippets_dir)
-# install_snippets_from_dir("markdown", from_dir = snippets_dir)
+# install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
+# install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
 #
-# merge_snippets("r",        in_dir = snippets_dir, rm = "-VG-snippets")
-# merge_snippets("markdown", in_dir = snippets_dir, rm = "-VG-snippets")
+# merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
+# merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
 
 merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
   rm = NULL) {
