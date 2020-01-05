@@ -271,7 +271,8 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
 #'
 #' @inheritParams match_snippet_type
 #'
-#' @param package (character) The name of R package.
+#' @param package  (character) The name of R package.
+#' @param subdir   (character) The sub-directory with replacement file(s).
 #' @param from_dir (character) The directory with replacement file.
 #' @param backup (logical) Indication if a back-up copy should be created.
 #'
