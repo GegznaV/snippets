@@ -39,7 +39,7 @@ remotes::install_github("GegznaV/snippets")
 
 ## Quick Example
 
-```{r}
+```{r eval=FALSE}
 # Replace current R and Markdown snippets with those in package "snippets"
 snippets::install_snippets_from_package("snippets", type = "r",        backup = TRUE)
 snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)

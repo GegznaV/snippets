@@ -36,15 +36,7 @@ remotes::install_github("GegznaV/snippets")
 ``` r
 # Replace current R and Markdown snippets with those in package "snippets"
 snippets::install_snippets_from_package("snippets", type = "r",        backup = TRUE)
-#> ✔ Directory exists: 'D:/Dokumentai/R/win-library/3.6/snippets/snippets/'✔
-#> Directory contains 2 file(s) with extension '.snippet'✔ Back-up created: 'D:/
-#> Dokumentai/.R/snippets/r.snippets--backup-2020-01-05-032904'✔ Snippets updated:
-#> 'D:/Dokumentai/.R/snippets/r.snippets'
 snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
-#> ✔ Directory exists: 'D:/Dokumentai/R/win-library/3.6/snippets/snippets/'✔
-#> Directory contains 2 file(s) with extension '.snippet'✔ Back-up created: 'D:/
-#> Dokumentai/.R/snippets/markdown.snippets--backup-2020-01-05-032904'✔ Snippets
-#> updated: 'D:/Dokumentai/.R/snippets/markdown.snippets'
 ```
 
 ## Example
@@ -70,7 +62,7 @@ list_snippet_file_backups(type = "r")
 ```
 
 ``` r
-# View and edit file with snippets of certain type
+# View and edit file with snippets of certain type: r
 edit_rstudio_snippets(type = "r")
 ```
 
@@ -78,6 +70,11 @@ edit_rstudio_snippets(type = "r")
 # Replace your Markdown snippets with those in package "snippets"
 install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 list_snippet_file_backups(type = "markdown")
+```
+
+``` r
+# View and edit file with snippets of certain type: markdown
+edit_rstudio_snippets(type = "markdown")
 ```
 
 ## Revert to certain version of back-up
