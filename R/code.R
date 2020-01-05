@@ -621,7 +621,7 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 #
 # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
 # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
-#
+# #
 # merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
 # merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
 #
