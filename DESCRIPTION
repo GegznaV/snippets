@@ -23,6 +23,7 @@ Imports:
   readr,
   stringr,
   tibble,
+  tools,
   usethis,
   withr
 RoxygenNote: 7.0.2.9000
