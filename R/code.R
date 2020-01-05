@@ -165,6 +165,7 @@ snippets_file_exists <- function(type) {
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
 #'    and its back-ups.
 #' - `restore_snippets_backup()` restores a back-up file.
+#' - `remove_sippet_backup_duplicates()` removes duplicated backup files.
 #'
 #' @inheritParams match_snippet_type
 #' @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
@@ -223,7 +224,6 @@ list_snippet_file_backups <- function(type) {
 # filename <- "r.snippets--backup-2019-10-31-01430"
 restore_snippets_backup <- function(filename, backup = TRUE) {
 
-
   withr::with_dir(
     get_rs_snippets_dir(),
     {
@@ -264,6 +264,24 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
     })
 }
 
+#' @rdname backup_rs_snippets
+#' @export
+remove_sippet_backup_duplicates <- function() {
+  # files <- list_snippet_file_backups(type = type)
+  files <- fs::dir_ls(get_rs_snippets_dir(), type = "file")
+  dups  <- duplicated(tools::md5sum(files))
+  if (any(dups)) {
+    rem   <- files[dups]
+    usethis::ui_done("Removed as duplicate(s) {usethis::ui_path(rem)}.")
+    fs::file_delete(rem)
+  } else {
+    usethis::ui_done("No back-up duplicates found.")
+
+  }
+
+}
+
+
 #' @name install-snippets
 #' @title Install snippets.
 #' @description
@@ -302,21 +320,23 @@ install_snippets_from_dir <- function(from_dir = ".",
   type = get_default_snippet_types(), backup = TRUE) {
 
   if (fs::dir_exists(from_dir)) {
-    usethis::ui_done("Directory exists: {usethis::ui_path(from_dir)}")
+    usethis::ui_done("Directory exists: {usethis::ui_path(from_dir)}  ")
   } else {
-    usethis::ui_stop("Directory was not found: {usethis::ui_path(from_dir)}")
+    usethis::ui_stop("Directory was not found: {usethis::ui_path(from_dir)}  ")
   }
 
   ext_snippet <- usethis::ui_path(".snippet")
   n_snippet_files <- length(dir(from_dir, pattern = ".snippets$"))
+
   if (n_snippet_files > 0) {
-    usethis::ui_done("Directory contains {n_snippet_files} file(s) with extension {ext_snippet}")
+    usethis::ui_done("Directory contains {n_snippet_files} file(s) with extension {ext_snippet}. ")
   } else {
     usethis::ui_stop("No files with extension {ext_snippet} were found in the directory.")
   }
 
 
   replacement <- get_path_to_snippet_file(dir = from_dir, type = type)
+
   if (!file.exists(replacement)) {
     stop("The replacement file was not found: \n", fs::path_abs(replacement))
   }
@@ -337,7 +357,9 @@ install_snippets_from_dir <- function(from_dir = ".",
   }
 
   # Copy/Overwrite the file
-  if (file.copy(from = replacement, to = original, overwrite = TRUE)) {
+  create_rs_snippets_dir()
+  is_copied <- file.copy(from = replacement, to = original, overwrite = TRUE)
+  if (is_copied) {
     usethis::ui_done("Snippets updated: {usethis::ui_path(original)}")
 
   } else {
