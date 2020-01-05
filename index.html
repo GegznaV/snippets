@@ -81,15 +81,7 @@
 <a href="#quick-example" class="anchor"></a>Quick Example</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Replace current R and Markdown snippets with those in package "snippets"</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">snippets<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/snippets/man/install-snippets.html">install_snippets_from_package</a></span>(<span class="st">"snippets"</span>, <span class="dt">type =</span> <span class="st">"r"</span>,        <span class="dt">backup =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; ✔ Directory exists: 'D:/Dokumentai/R/win-library/3.6/snippets/snippets/'✔</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Directory contains 2 file(s) with extension '.snippet'✔ Back-up created: 'D:/</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Dokumentai/.R/snippets/r.snippets--backup-2020-01-05-032904'✔ Snippets updated:</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 'D:/Dokumentai/.R/snippets/r.snippets'</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">snippets<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/snippets/man/install-snippets.html">install_snippets_from_package</a></span>(<span class="st">"snippets"</span>, <span class="dt">type =</span> <span class="st">"markdown"</span>, <span class="dt">backup =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; ✔ Directory exists: 'D:/Dokumentai/R/win-library/3.6/snippets/snippets/'✔</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; Directory contains 2 file(s) with extension '.snippet'✔ Back-up created: 'D:/</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; Dokumentai/.R/snippets/markdown.snippets--backup-2020-01-05-032904'✔ Snippets</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; updated: 'D:/Dokumentai/.R/snippets/markdown.snippets'</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-3" data-line-number="3">snippets<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/snippets/man/install-snippets.html">install_snippets_from_package</a></span>(<span class="st">"snippets"</span>, <span class="dt">type =</span> <span class="st">"markdown"</span>, <span class="dt">backup =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -102,11 +94,13 @@
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Replace your R snippets with those in package "snippets"</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="reference/install-snippets.html">install_snippets_from_package</a></span>(<span class="st">"snippets"</span>, <span class="dt">type =</span> <span class="st">"r"</span>, <span class="dt">backup =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="reference/backup_rs_snippets.html">list_snippet_file_backups</a></span>(<span class="dt">type =</span> <span class="st">"r"</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># View and edit file with snippets of certain type</span></a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># View and edit file with snippets of certain type: r</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://usethis.r-lib.org/reference/edit.html">edit_rstudio_snippets</a></span>(<span class="dt">type =</span> <span class="st">"r"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Replace your Markdown snippets with those in package "snippets"</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="reference/install-snippets.html">install_snippets_from_package</a></span>(<span class="st">"snippets"</span>, <span class="dt">type =</span> <span class="st">"markdown"</span>, <span class="dt">backup =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="reference/backup_rs_snippets.html">list_snippet_file_backups</a></span>(<span class="dt">type =</span> <span class="st">"markdown"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># View and edit file with snippets of certain type: markdown</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://usethis.r-lib.org/reference/edit.html">edit_rstudio_snippets</a></span>(<span class="dt">type =</span> <span class="st">"markdown"</span>)</a></code></pre></div>
 </div>
 <div id="revert-to-certain-version-of-back-up" class="section level2">
 <h2 class="hasAnchor">
@@ -114,19 +108,19 @@
 <ol>
 <li>
 <p>List all back-up files and select the one of inerest.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="reference/backup_rs_snippets.html">list_snippet_file_backups</a></span>(<span class="dt">type =</span> <span class="st">"r"</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">#&gt; c:/.R/snippets/r.snippets</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; c:/.R/snippets/r.snippets--backup-2019-11-12-033948</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; c:/.R/snippets/r.snippets--backup-2019-10-31-015042</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="reference/backup_rs_snippets.html">list_snippet_file_backups</a></span>(<span class="dt">type =</span> <span class="st">"r"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">#&gt; c:/.R/snippets/r.snippets</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; c:/.R/snippets/r.snippets--backup-2019-11-12-033948</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; c:/.R/snippets/r.snippets--backup-2019-10-31-015042</span></a></code></pre></div>
 </li>
 <li>
 <p>Restore the back-up of interest, e.g.:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/backup_rs_snippets.html">restore_snippets_backup</a></span>(<span class="st">"r.snippets--backup-2019-10-31-015042"</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">#&gt; v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; i Snippets' type: r</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; v Current file was backed up: </span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt;   'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/backup_rs_snippets.html">restore_snippets_backup</a></span>(<span class="st">"r.snippets--backup-2019-10-31-015042"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">#&gt; v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; i Snippets' type: r</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; v Current file was backed up: </span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;   'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.</span></a></code></pre></div>
 </li>
 </ol>
 </div>
