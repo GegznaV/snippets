@@ -264,10 +264,15 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
     })
 }
 
-#' Replace snippets file
+#' @name install-snippets
+#' @title Install snippets.
+#' @description
+#' Replace current file with snippets with the other file.
 #'
-#' @param type The type of RStudio snippet.
-#' @param from_dir The directory with replacement file.
+#' @inheritParams match_snippet_type
+#'
+#' @param package (character) The name of R package.
+#' @param from_dir (character) The directory with replacement file.
 #' @param backup (logical) Indication if a back-up copy should be created.
 #'
 #' @export
@@ -276,15 +281,23 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
 #' if (FALSE) {
 #'
 #' # Replace your R and Markdown snippets with those in package "snippets":
-#' replace_snippets_file("r",        backup = TRUE)
-#' replace_snippets_file("markdown", backup = TRUE)
+#' install_snippets_from_dir("r",        backup = TRUE)
+#' install_snippets_from_dir("markdown", backup = TRUE)
 #'
 #' # Check if back-up copies exist:
 #' list_snippet_file_backups("r")
 #' list_snippet_file_backups("markdown")
 #' }
+install_snippets_from_package <- function(type = get_default_snippet_types(),
+  package = "snippets", subdir = "", backup = TRUE) {
 
-replace_snippets_file <- function(type = get_default_snippet_types(),
+  from_dir <- get_pkg_snippets_dir(subdir, package = package)
+  install_snippets_from_dir(type = type, from_dir = from_dir, backup = backup)
+}
+
+#' @rdname install-snippets
+#' @export
+install_snippets_from_dir <- function(type = get_default_snippet_types(),
   from_dir = get_pkg_snippets_dir("custom"), backup = TRUE) {
 
   replacement <- get_path_to_snippet_file(dir = from_dir, type = type)
@@ -380,8 +393,8 @@ fix_snippets_file <- function(file) {
 }
 
 
-get_pkg_snippets_dir <- function(...) {
-  system.file("snippets", ... , package = "snippets")
+get_pkg_snippets_dir <- function(..., package = "snippets") {
+  system.file("snippets", ... , package = package)
 }
 
 # get_custom_snippets_path()
@@ -590,8 +603,8 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 # merge_snippets("r",        in_dir = snippets_dir)
 # merge_snippets("markdown", in_dir = snippets_dir)
 #
-# replace_snippets_file("r",        from_dir = snippets_dir)
-# replace_snippets_file("markdown", from_dir = snippets_dir)
+# install_snippets_from_dir("r",        from_dir = snippets_dir)
+# install_snippets_from_dir("markdown", from_dir = snippets_dir)
 #
 # merge_snippets("r",        in_dir = snippets_dir, rm = "-VG-snippets")
 # merge_snippets("markdown", in_dir = snippets_dir, rm = "-VG-snippets")
