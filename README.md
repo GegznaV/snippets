@@ -50,7 +50,7 @@ open_rs_snippets_dir()
 
 ``` r
 # Replace your R snippets with those in package "snippets"
-replace_snippets_file(type = "r", backup = TRUE)
+install_snippets_from_package("snippets", type = "r", backup = TRUE)
 list_snippet_file_backups(type = "r")
 ```
 
@@ -61,7 +61,7 @@ edit_rstudio_snippets(type = "r")
 
 ``` r
 # Replace your Markdown snippets with those in package "snippets"
-replace_snippets_file(type = "markdown", backup = TRUE)
+install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 list_snippet_file_backups(type = "markdown")
 ```
 
