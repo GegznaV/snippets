@@ -31,15 +31,30 @@ You can install the development version from
 remotes::install_github("GegznaV/snippets")
 ```
 
-## Example
+## Quick Example
 
-This is a basic example which shows you how to solve a common problem:
+``` r
+# Replace current R and Markdown snippets with those in package "snippets"
+snippets::install_snippets_from_package("snippets", type = "r",        backup = TRUE)
+#> ✔ Directory exists: 'D:/Dokumentai/R/win-library/3.6/snippets/snippets/'✔
+#> Directory contains 2 file(s) with extension '.snippet'✔ Back-up created: 'D:/
+#> Dokumentai/.R/snippets/r.snippets--backup-2020-01-05-032904'✔ Snippets updated:
+#> 'D:/Dokumentai/.R/snippets/r.snippets'
+snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
+#> ✔ Directory exists: 'D:/Dokumentai/R/win-library/3.6/snippets/snippets/'✔
+#> Directory contains 2 file(s) with extension '.snippet'✔ Back-up created: 'D:/
+#> Dokumentai/.R/snippets/markdown.snippets--backup-2020-01-05-032904'✔ Snippets
+#> updated: 'D:/Dokumentai/.R/snippets/markdown.snippets'
+```
+
+## Example
 
 ``` r
 library(snippets)
 ```
 
 ``` r
+# Get the name of directory with RStudio snippets
 get_rs_snippets_dir()
 ```
 
@@ -68,31 +83,27 @@ list_snippet_file_backups(type = "markdown")
 ## Revert to certain version of back-up
 
 1.  List all back-up files and select the one of inerest.
-
-<!-- end list -->
-
-``` r
-list_snippet_file_backups(type = "r")
-```
-
-``` r
-#> c:/.R/snippets/r.snippets
-#> c:/.R/snippets/r.snippets--backup-2019-11-12-033948
-#> c:/.R/snippets/r.snippets--backup-2019-10-31-015042
-```
+    
+    ``` r
+    list_snippet_file_backups(type = "r")
+    ```
+    
+    ``` r
+    #> c:/.R/snippets/r.snippets
+    #> c:/.R/snippets/r.snippets--backup-2019-11-12-033948
+    #> c:/.R/snippets/r.snippets--backup-2019-10-31-015042
+    ```
 
 2.  Restore the back-up of interest, e.g.:
-
-<!-- end list -->
-
-``` r
-restore_snippets_backup("r.snippets--backup-2019-10-31-015042")
-```
-
-``` r
-#> v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
-#> i Snippets' type: r
-#> v Current file was backed up: 
-#>   'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'
-#> v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.
-```
+    
+    ``` r
+    restore_snippets_backup("r.snippets--backup-2019-10-31-015042")
+    ```
+    
+    ``` r
+    #> v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
+    #> i Snippets' type: r
+    #> v Current file was backed up: 
+    #>   'r.snippets' â†’ 'r.snippets--backup-2020-01-05-012602'
+    #> v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' â†’ 'r.snippets'.
+    ```
