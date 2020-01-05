@@ -35,7 +35,9 @@ You can install the development version from
 remotes::install_github("GegznaV/snippets")
 ```
 
-## Quick Example
+## Quickstart
+
+### Use snippets from “snippets”
 
 ``` r
 # Replace current R and Markdown snippets with those in package "snippets"
@@ -43,7 +45,7 @@ snippets::install_snippets_from_package("snippets", type = "r",        backup = 
 snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 ```
 
-## Example
+### Example
 
 ``` r
 library(snippets)
@@ -81,7 +83,27 @@ list_snippet_file_backups(type = "markdown")
 edit_rstudio_snippets(type = "markdown")
 ```
 
-## Revert to certain version of back-up
+### Create and clean-up back-ups
+
+``` r
+# Create several back up files
+backup_rs_snippets(type = "r")
+Sys.sleep(1)
+backup_rs_snippets(type = "r")
+Sys.sleep(1)
+backup_rs_snippets(type = "r")
+```
+
+``` r
+list_snippet_file_backups(type = "r")
+```
+
+``` r
+# Remove duplicated back-up files
+remove_sippet_backup_duplicates()
+```
+
+### Revert to a certain version of back-up
 
 1.  List all back-up files and select the one of inerest.
     
