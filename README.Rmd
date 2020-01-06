@@ -41,7 +41,7 @@ remotes::install_github("GegznaV/snippets")
 
 ## Quickstart
 
-### Use snippets from "snippets"
+### Install snippets from "snippets"
 
 ```{r eval=FALSE}
 # Replace current R and Markdown snippets with those in package "snippets"
