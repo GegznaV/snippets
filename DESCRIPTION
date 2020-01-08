@@ -29,4 +29,6 @@ Imports:
 RoxygenNote: 7.0.2.9000
 Suggests: 
     covr,
+    bookdown,
+    whoami,
     testthat (>= 2.1.0)
