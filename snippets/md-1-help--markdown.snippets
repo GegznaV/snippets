@@ -1,14 +1,16 @@
+# Main help -------------------------------------------------------------------
 snippet help
 	${0}<!-- Help/Documentation snippets -->
 	help
-	
+
 	<!-- R Markdown related snippets -->
 	help-rmd
 	help-bookdown
+	help-yaml
 
 	<!-- Descriptive statistics -->
 	help-desc
-	
+
 	<!-- Documentation about functions, operators or some other topic -->
 	?
 	compare-r-syntax
@@ -35,119 +37,18 @@ snippet help-desc
 	help-desc${0}
 	```
 
-snippet help-rmd
-	${0}<!-- START: Markdown and R Markdown snippets -->
-	<!-- You have just inserted a snippet that contains keywords for other snippets -->
-
-	<!-- Help/Documentation snippets: -->
-	help
-	help-bookdown
-	compare-r-syntax
-	?
-
-	<!-- YAML header snippets:  -->
-	<!-- When you insert these snippets, please, note if syntax highlighting   -->
-	<!-- is correct (YAML keywords should be highlighted in a different color).-->
-	<!-- If YAML syntax highlighting is incorrect, it means that the code is   -->
-	<!-- in a wrong position: YAML header must start at line 1 column 1 (no    -->
-	<!-- leading spaces or blank lines should be present before/above the      -->
-	<!-- header).                                                              -->
-	<!-- It's also recommended to install the package "whoami" (Who am I?)     -->
-	---1
-	---2
-
-	<!-- R code chunk snippets: -->
-	<!-- The same name for a chunk (e.g., "setup") can be used only once in the file. -->
-	setupo
-	setup
-	r
-	rr
-	fig
-
-	<!-- Other code chunk snippets: -->
-	py
-	rcpp
-
-	<!-- Markdown snippets: -->
-	<!-- For lnk1 and lnk2, install package remotes::install_github("ropenscilabs/icon") -->
-	[
-	![
-	lnk
-	lnk1
-	lnk2
-
-	<!-- Prefix snippets: -->
-	           <!-- Insted of ... use a use URL without spaces. -->
-	           <!-- For external URLs use http:// https:// ftps:// ftp:// etc. -->
-	url-
-	     url-google.com/
-	     url-https://www.google.com/
-	     url-https://mokymai.github.io
-
-	<!-- HTML snippets: -->
-	kbd
-
-	<!-- Other snippets: -->
-	date
-	time
-	ts
-	msg
-	fix
-	FIX
-	todo
-	TODO
-
-	<!-- END: Markdown and R Markdown snippets -->
-
-snippet help-bookdown
-	${0}<!-- START: Snippets for Bookdown project -->
-	
-	<!-- Insert objecs -->
-	eq
-	exm
-	exr
-	fig
-	youtube
-	
-	<!-- Insert captions -->
-	cap
-	capeq
-	capf
-	capt
-	capv
-	
-	<!-- Insert references -->
-	ref
-	refeq
-	refexr
-	refexm
-	reff
-	reft
-	refv
-	
-	<!-- Prefix snippets: insted of ... use a worw/text -->
-	ref-
-	     ref-eq
-	     ref-fig	
-	 
-	 cap-
-	     cap-eq
-	     cap-fig	
-	     
-	<!-- END: Snippets for Bookdown project -->
-
 snippet help-data-types
 	<!--
 	The abbreviations (used in the Tidyverse) of the most common R data types:
-	
+
 	- `<fct>`  -- nominal (factor, categorical);
 	- `<ord>`  -- ordinal;
-	- `<int>`  -- numeric (integers); 
-	- `<dbl>`  -- numeric (doubles, real numbers); 
-	- `<lgl>`  -- logical; 
-	- `<chr>`  -- text (character, strings); 
+	- `<int>`  -- numeric (integers);
+	- `<dbl>`  -- numeric (doubles, real numbers);
+	- `<lgl>`  -- logical;
+	- `<chr>`  -- text (character, strings);
 	- `<date>` -- dates;
 	- `<dttm>` -- dates and times;
 	- `<list>` -- list column (more complex data structures than usual vectors).
-	
+
 	-->

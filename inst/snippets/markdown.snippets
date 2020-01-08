@@ -1,14 +1,16 @@
+# Main help -------------------------------------------------------------------
 snippet help
 	${0}<!-- Help/Documentation snippets -->
 	help
-	
+
 	<!-- R Markdown related snippets -->
 	help-rmd
 	help-bookdown
+	help-yaml
 
 	<!-- Descriptive statistics -->
 	help-desc
-	
+
 	<!-- Documentation about functions, operators or some other topic -->
 	?
 	compare-r-syntax
@@ -35,87 +37,49 @@ snippet help-desc
 	help-desc${0}
 	```
 
-snippet help-rmd
-	${0}<!-- START: Markdown and R Markdown snippets -->
-	<!-- You have just inserted a snippet that contains keywords for other snippets -->
+snippet help-data-types
+	<!--
+	The abbreviations (used in the Tidyverse) of the most common R data types:
 
-	<!-- Help/Documentation snippets: -->
-	help
-	help-bookdown
-	compare-r-syntax
-	?
+	- `<fct>`  -- nominal (factor, categorical);
+	- `<ord>`  -- ordinal;
+	- `<int>`  -- numeric (integers);
+	- `<dbl>`  -- numeric (doubles, real numbers);
+	- `<lgl>`  -- logical;
+	- `<chr>`  -- text (character, strings);
+	- `<date>` -- dates;
+	- `<dttm>` -- dates and times;
+	- `<list>` -- list column (more complex data structures than usual vectors).
 
-	<!-- YAML header snippets:  -->
-	<!-- When you insert these snippets, please, note if syntax highlighting   -->
-	<!-- is correct (YAML keywords should be highlighted in a different color).-->
-	<!-- If YAML syntax highlighting is incorrect, it means that the code is   -->
-	<!-- in a wrong position: YAML header must start at line 1 column 1 (no    -->
-	<!-- leading spaces or blank lines should be present before/above the      -->
-	<!-- header).                                                              -->
-	<!-- It's also recommended to install the package "whoami" (Who am I?)     -->
-	---1
-	---2
-
-	<!-- R code chunk snippets: -->
-	<!-- The same name for a chunk (e.g., "setup") can be used only once in the file. -->
-	setupo
-	setup
-	r
-	rr
-	fig
-
-	<!-- Other code chunk snippets: -->
-	py
-	rcpp
-
-	<!-- Markdown snippets: -->
-	<!-- For lnk1 and lnk2, install package remotes::install_github("ropenscilabs/icon") -->
-	[
-	![
-	lnk
-	lnk1
-	lnk2
-
-	<!-- Prefix snippets: -->
-	           <!-- Insted of ... use a use URL without spaces. -->
-	           <!-- For external URLs use http:// https:// ftps:// ftp:// etc. -->
-	url-
-	     url-google.com/
-	     url-https://www.google.com/
-	     url-https://mokymai.github.io
-
-	<!-- HTML snippets: -->
-	kbd
-
-	<!-- Other snippets: -->
-	date
-	time
-	ts
-	msg
-	fix
-	FIX
-	todo
-	TODO
-
-	<!-- END: Markdown and R Markdown snippets -->
-
+	-->
+# R Markdown syntax: Bookdown extensions -------------------------------------
 snippet help-bookdown
 	${0}<!-- START: Snippets for Bookdown project -->
-	
+	<!--
+	ref -- reference
+	cap -- caption
+
+	eq         -- equation
+	exm        -- example
+	exr        -- excercise
+	fig, f     -- figure
+	youtube, v -- video
+	-->
+
 	<!-- Insert objecs -->
 	eq
 	exm
 	exr
 	fig
 	youtube
-	
+
 	<!-- Insert captions -->
 	cap
 	capeq
 	capf
 	capt
 	capv
-	
+
 	<!-- Insert references -->
 	ref
 	refeq
@@ -124,33 +88,18 @@ snippet help-bookdown
 	reff
 	reft
 	refv
-	
+
 	<!-- Prefix snippets: insted of ... use a worw/text -->
 	ref-
 	     ref-eq
-	     ref-fig	
-	 
+	     ref-fig
+
 	 cap-
 	     cap-eq
-	     cap-fig	
-	     
+	     cap-fig
+
 	<!-- END: Snippets for Bookdown project -->
 
-snippet help-data-types
-	<!--
-	The abbreviations (used in the Tidyverse) of the most common R data types:
-	
-	- `<fct>`  -- nominal (factor, categorical);
-	- `<ord>`  -- ordinal;
-	- `<int>`  -- numeric (integers); 
-	- `<dbl>`  -- numeric (doubles, real numbers); 
-	- `<lgl>`  -- logical; 
-	- `<chr>`  -- text (character, strings); 
-	- `<date>` -- dates;
-	- `<dttm>` -- dates and times;
-	- `<list>` -- list column (more complex data structures than usual vectors).
-	
-	-->
 snippet eq
 	<!-- Equation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 	\begin{equation}
@@ -228,6 +177,7 @@ snippet reft
 
 snippet refv
 	\@ref(cor:${1:video-ID})
+# R Markdown syntax: chunks  --------------------------------------------------
 snippet r
 	```{r ${1:label}, ${2:options}}
 	${0}
@@ -247,25 +197,25 @@ snippet rcpp
 	```{r, engine='Rcpp'}
 	#include <Rcpp.h>
 	using namespace Rcpp;
-	
+
 	${0}
-	
+
 	```
 
-snippet setup0 
+snippet setup0
 	setupo
 
 snippet setupo
 	```{r setup, include=FALSE}
 	# Packages ------------------------------------------------------------------
 	${1}
-	
+
 	# Settings ------------------------------------------------------------------
 	knitr::opts_chunk\$set(
 	    echo = ${2:TRUE}
 	)
 	${0}
-	
+
 	```
 
 snippet setup
@@ -326,18 +276,19 @@ snippet setup
 	# Fmt(num = Fmt("num", big.mark = "")) # Real numbers
 	# Fmt(num = Fmt("num", digits = 3))    # Real numbers
 	# Fmt(per = Fmt("per", digits = 1))    # Percentages
-	
+
 	conflict_prefer("filter", "dplyr")
 	conflict_prefer("lag",    "dplyr")
-	
+
 	${0}
 
 	set.seed(`r format(Sys.Date(), "%Y%m%d")`) # Initial condition for random processes.
 	```
 
+# Comments  ------------------------------------------------------------------
 snippet msg
 	<!-- =========================================================================
-	${0:Comment / Message / etc.} 
+	${0:Comment / Message / etc.}
 	========================================================================== -->
 
 snippet date
@@ -360,9 +311,78 @@ snippet TODO
 
 snippet todo
 	<!-- TODO: ${0} -->
+# HTML code ------------------------------------------------------------------
 snippet kbd
 	<kbd>${0:Ctrl}</kbd>
 
+snippet style
+	<style>
+	${1}
+	</style>
+	${0}
+
+snippet html_space
+	&${1:nbsp};${0}
+
+snippet font
+	<font color = "${1:red}">${0}</font>
+# R Markdown syntax help  -----------------------------------------------------
+snippet help-rmd
+	${0}<!-- START: Markdown and R Markdown snippets -->
+	<!-- You have just inserted a snippet that contains keywords for other snippets -->
+
+	<!-- Help/Documentation snippets: -->
+	help
+	help-yaml
+	help-bookdown
+	compare-r-syntax
+	?
+
+	<!-- R code chunk snippets: -->
+	<!-- The same name for a chunk (e.g., "setup") can be used only once in the file. -->
+	setupo
+	setup
+	r
+	rr
+	fig
+
+	<!-- Other code chunk snippets: -->
+	py
+	rcpp
+
+	<!-- Markdown snippets: -->
+	<!-- For lnk1 and lnk2, install package remotes::install_github("ropenscilabs/icon") -->
+	[
+	![
+	lnk
+	lnk1
+	lnk2
+
+	<!-- Prefix snippets: -->
+	           <!-- Insted of ... use a use URL without spaces. -->
+	           <!-- For external URLs use http:// https:// ftps:// ftp:// etc. -->
+	url-
+	     url-google.com/
+	     url-https://www.google.com/
+	     url-https://mokymai.github.io
+
+	<!-- HTML snippets: -->
+	kbd
+
+	<!-- Other snippets: -->
+	date
+	time
+	ts
+	msg
+	fix
+	FIX
+	todo
+	TODO
+
+	<!-- END: Markdown and R Markdown snippets -->
+
+
+# R Markdown syntax: default  -------------------------------------------------
 snippet url-
 	[${0}]($$){target="_blank"}
 
@@ -405,7 +425,21 @@ snippet fig2
 	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
 	```
 
-snippet ---1
+# YAML options ---------------------------------------------------------------
+snippet help-yaml
+	<!-- YAML header snippets:  -->
+	<!-- When you insert these snippets, please, note if syntax highlighting   -->
+	<!-- is correct (YAML keywords should be highlighted in a different color).-->
+	<!-- If YAML syntax highlighting is incorrect, it means that the code is   -->
+	<!-- in a wrong position: YAML header must start at line 1 column 1 (no    -->
+	<!-- leading spaces or blank lines should be present before/above the      -->
+	<!-- header).                                                              -->
+	<!-- It's also recommended to install the package "whoami" (Who am I?)     -->
+	---1
+	---2
+	---html-1
+
+snippet ---html-1
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -421,7 +455,7 @@ snippet ---1
 	    df_print:  ${10:default} # paged  kable  tibble  default
 	---
 
-snippet ---2
+snippet ---1
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -429,6 +463,22 @@ snippet ---2
 	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
 	output:
 	  html_document:
+	    fig_caption: ${5:yes}
+	    number_sections: ${6:yes}
+	    toc:       ${7:yes}
+	    toc_float: ${8:yes}
+	    toc_depth: ${9:3}
+	    df_print:  ${10:default} # paged  kable  tibble  default
+	---
+
+snippet ---2
+	---
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
+	output:
+	  bookdown::html_document2:
 	    fig_caption: ${5:yes}
 	    number_sections: ${6:yes}
 	    toc:       ${7:yes}

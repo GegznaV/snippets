@@ -1,3 +1,4 @@
+# R Markdown syntax: chunks  --------------------------------------------------
 snippet r
 	```{r ${1:label}, ${2:options}}
 	${0}
@@ -17,25 +18,25 @@ snippet rcpp
 	```{r, engine='Rcpp'}
 	#include <Rcpp.h>
 	using namespace Rcpp;
-	
+
 	${0}
-	
+
 	```
 
-snippet setup0 
+snippet setup0
 	setupo
 
 snippet setupo
 	```{r setup, include=FALSE}
 	# Packages ------------------------------------------------------------------
 	${1}
-	
+
 	# Settings ------------------------------------------------------------------
 	knitr::opts_chunk\$set(
 	    echo = ${2:TRUE}
 	)
 	${0}
-	
+
 	```
 
 snippet setup
@@ -96,10 +97,10 @@ snippet setup
 	# Fmt(num = Fmt("num", big.mark = "")) # Real numbers
 	# Fmt(num = Fmt("num", digits = 3))    # Real numbers
 	# Fmt(per = Fmt("per", digits = 1))    # Percentages
-	
+
 	conflict_prefer("filter", "dplyr")
 	conflict_prefer("lag",    "dplyr")
-	
+
 	${0}
 
 	set.seed(`r format(Sys.Date(), "%Y%m%d")`) # Initial condition for random processes.

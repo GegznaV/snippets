@@ -1,4 +1,18 @@
-snippet ---1
+# YAML options ---------------------------------------------------------------
+snippet help-yaml
+	<!-- YAML header snippets:  -->
+	<!-- When you insert these snippets, please, note if syntax highlighting   -->
+	<!-- is correct (YAML keywords should be highlighted in a different color).-->
+	<!-- If YAML syntax highlighting is incorrect, it means that the code is   -->
+	<!-- in a wrong position: YAML header must start at line 1 column 1 (no    -->
+	<!-- leading spaces or blank lines should be present before/above the      -->
+	<!-- header).                                                              -->
+	<!-- It's also recommended to install the package "whoami" (Who am I?)     -->
+	---1
+	---2
+	---html-1
+
+snippet ---html-1
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -14,7 +28,7 @@ snippet ---1
 	    df_print:  ${10:default} # paged  kable  tibble  default
 	---
 
-snippet ---2
+snippet ---1
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -22,6 +36,22 @@ snippet ---2
 	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
 	output:
 	  html_document:
+	    fig_caption: ${5:yes}
+	    number_sections: ${6:yes}
+	    toc:       ${7:yes}
+	    toc_float: ${8:yes}
+	    toc_depth: ${9:3}
+	    df_print:  ${10:default} # paged  kable  tibble  default
+	---
+
+snippet ---2
+	---
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
+	output:
+	  bookdown::html_document2:
 	    fig_caption: ${5:yes}
 	    number_sections: ${6:yes}
 	    toc:       ${7:yes}
