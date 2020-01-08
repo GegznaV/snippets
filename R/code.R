@@ -647,8 +647,8 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 # merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
 # merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
 #
-# install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
-# install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
+# # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
+# # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
 
 merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
   rm = NULL) {
@@ -669,7 +669,7 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
         purrr::map(readr::read_lines) %>%
         purrr::reduce(c) %>%
         # Remove comments:
-        stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
+        # stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
         readr::write_lines(path = make_snippet_filename(type = type))
     }
   )
