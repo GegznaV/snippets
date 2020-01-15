@@ -4,3 +4,5 @@
 .Ruserdata
 pre-commit
 docs/
+data-raw/_tmp.Rmd
+texput.log
