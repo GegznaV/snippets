@@ -164,7 +164,7 @@ snippets_file_exists <- function(type) {
 #' - `backup_rs_snippets()` creates a back-up of snippets file
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
 #'    and its back-ups.
-#' - `restore_snippets_backup()` restores a back-up file.
+#' - `restore_snippets_from_backup()` restores a back-up file.
 #' - `remove_snippet_backup_duplicates()` removes duplicated backup files.
 #'
 #' @inheritParams match_snippet_type
@@ -182,7 +182,7 @@ snippets_file_exists <- function(type) {
 #'
 #'
 #' # USe name of an existing back-up file
-#' restore_snippets_backup("r.snippets--backup-2019-10-31-01430")
+#' restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 #'
 #' }
 backup_rs_snippets <- function(type) {
@@ -222,7 +222,7 @@ list_snippet_file_backups <- function(type) {
 #'
 #' @export
 # filename <- "r.snippets--backup-2019-10-31-01430"
-restore_snippets_backup <- function(filename, backup = TRUE) {
+restore_snippets_from_backup <- function(filename, backup = TRUE) {
 
   withr::with_dir(
     get_rs_snippets_dir(),

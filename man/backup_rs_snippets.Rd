@@ -3,7 +3,7 @@
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
 \alias{list_snippet_file_backups}
-\alias{restore_snippets_backup}
+\alias{restore_snippets_from_backup}
 \alias{remove_snippet_backup_duplicates}
 \title{RStudio snippet file back-up}
 \usage{
@@ -11,7 +11,7 @@ backup_rs_snippets(type)
 
 list_snippet_file_backups(type)
 
-restore_snippets_backup(filename, backup = TRUE)
+restore_snippets_from_backup(filename, backup = TRUE)
 
 remove_snippet_backup_duplicates()
 }
@@ -36,7 +36,7 @@ Invisibly returns the name of back-up copy. See \code{\link[fs:file_copy]{fs::fi
 \item \code{backup_rs_snippets()} creates a back-up of snippets file
 \item \code{list_snippet_file_backups()} lists the names of current file with snippets
 and its back-ups.
-\item \code{restore_snippets_backup()} restores a back-up file.
+\item \code{restore_snippets_from_backup()} restores a back-up file.
 \item \code{remove_snippet_backup_duplicates()} removes duplicated backup files.
 }
 }
@@ -51,7 +51,7 @@ list_snippet_file_backups("r")
 
 
 # USe name of an existing back-up file
-restore_snippets_backup("r.snippets--backup-2019-10-31-01430")
+restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 
 }
 }
