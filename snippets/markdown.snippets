@@ -414,10 +414,10 @@ snippet help-rmd
 
 # R Markdown syntax: default  -------------------------------------------------
 snippet r-
-	`r "\u0060"`${1:r-code}`r "\u0060"`{.r}${0}
+	`r "\u0060"`${1:r-code-to-display-as-is}`r "\u0060"`{.r}${0}
 
 snippet rr-
-	`r "\u0060"`r ${1:r-code}`r "\u0060"`${0}
+	`r "\u0060"`r ${1:r-code-to-evaluate}`r "\u0060"`${0}
 
 snippet url-
 	[${0}]($$){target="_blank"}
