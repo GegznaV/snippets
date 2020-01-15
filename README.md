@@ -5,19 +5,18 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets)
 [![Travis build
 status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
-[![Codecov test
-coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![GitHub
 version](https://img.shields.io/badge/GitHub-v0.0.0.9000-brightgreen.svg)](https://github.com/GegznaV/snippets)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--01--15-yellowgreen.svg)]()
+<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 <!-- badges: end -->
 
 ## Installation
@@ -123,13 +122,14 @@ remove_snippet_backup_duplicates()
 2.  Restore the back-up of interest, e.g.:
     
     ``` r
-    restore_snippets_backup("r.snippets--backup-2019-10-31-015042")
+    restore_snippets_from_backup("r.snippets--backup-2019-10-31-015042")
     ```
     
     ``` r
     #> v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
     #> i Snippets' type: r
-    #> v Current file was backed up: 
+    #> v Current 'r.snippets' file was backed up: 
     #>   'r.snippets' -> 'r.snippets--backup-2020-01-05-012602'
-    #> v Previous back-up was restored 'r.snippets--backup-2019-10-31-015042' -> 'r.snippets'.
+    #> v Snippets were restored from the back-up file:
+    #>   'r.snippets--backup-2019-10-31-015042' -> 'r.snippets'.
     ```
