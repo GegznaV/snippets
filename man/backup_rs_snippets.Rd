@@ -4,7 +4,7 @@
 \alias{backup_rs_snippets}
 \alias{list_snippet_file_backups}
 \alias{restore_snippets_backup}
-\alias{remove_sippet_backup_duplicates}
+\alias{remove_snippet_backup_duplicates}
 \title{RStudio snippet file back-up}
 \usage{
 backup_rs_snippets(type)
@@ -13,7 +13,7 @@ list_snippet_file_backups(type)
 
 restore_snippets_backup(filename, backup = TRUE)
 
-remove_sippet_backup_duplicates()
+remove_snippet_backup_duplicates()
 }
 \arguments{
 \item{type}{A character vector of candidate values.
@@ -37,7 +37,7 @@ Invisibly returns the name of back-up copy. See \code{\link[fs:file_copy]{fs::fi
 \item \code{list_snippet_file_backups()} lists the names of current file with snippets
 and its back-ups.
 \item \code{restore_snippets_backup()} restores a back-up file.
-\item \code{remove_sippet_backup_duplicates()} removes duplicated backup files.
+\item \code{remove_snippet_backup_duplicates()} removes duplicated backup files.
 }
 }
 \examples{

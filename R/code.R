@@ -165,7 +165,7 @@ snippets_file_exists <- function(type) {
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
 #'    and its back-ups.
 #' - `restore_snippets_backup()` restores a back-up file.
-#' - `remove_sippet_backup_duplicates()` removes duplicated backup files.
+#' - `remove_snippet_backup_duplicates()` removes duplicated backup files.
 #'
 #' @inheritParams match_snippet_type
 #' @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
@@ -266,7 +266,7 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
 
 #' @rdname backup_rs_snippets
 #' @export
-remove_sippet_backup_duplicates <- function() {
+remove_snippet_backup_duplicates <- function() {
   # files <- list_snippet_file_backups(type = type)
   files <- fs::dir_ls(get_rs_snippets_dir(), type = "file")
   dups  <- duplicated(tools::md5sum(files))
