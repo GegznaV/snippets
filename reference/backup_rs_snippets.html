@@ -41,8 +41,8 @@
 backup_rs_snippets() creates a back-up of snippets file
 list_snippet_file_backups() lists the names of current file with snippets
 and its back-ups.
-restore_snippets_backup() restores a back-up file.
-remove_sippet_backup_duplicates() removes duplicated backup files.
+restore_snippets_from_backup() restores a back-up file.
+remove_snippet_backup_duplicates() removes duplicated backup files.
 
 " />
 <meta name="twitter:card" content="summary" />
@@ -119,8 +119,8 @@ remove_sippet_backup_duplicates() removes duplicated backup files.
 <li><p><code>backup_rs_snippets()</code> creates a back-up of snippets file</p></li>
 <li><p><code>list_snippet_file_backups()</code> lists the names of current file with snippets
 and its back-ups.</p></li>
-<li><p><code>restore_snippets_backup()</code> restores a back-up file.</p></li>
-<li><p><code>remove_sippet_backup_duplicates()</code> removes duplicated backup files.</p></li>
+<li><p><code>restore_snippets_from_backup()</code> restores a back-up file.</p></li>
+<li><p><code>remove_snippet_backup_duplicates()</code> removes duplicated backup files.</p></li>
 </ul>
 
     </div>
@@ -129,9 +129,9 @@ and its back-ups.</p></li>
 
 <span class='fu'>list_snippet_file_backups</span>(<span class='no'>type</span>)
 
-<span class='fu'>restore_snippets_backup</span>(<span class='no'>filename</span>, <span class='kw'>backup</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>restore_snippets_from_backup</span>(<span class='no'>filename</span>, <span class='kw'>backup</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>remove_sippet_backup_duplicates</span>()</pre>
+<span class='fu'>remove_snippet_backup_duplicates</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,7 +171,7 @@ backed up.</p></td>
 
 
 <span class='co'># USe name of an existing back-up file</span>
-<span class='fu'>restore_snippets_backup</span>(<span class='st'>"r.snippets--backup-2019-10-31-01430"</span>)
+<span class='fu'>restore_snippets_from_backup</span>(<span class='st'>"r.snippets--backup-2019-10-31-01430"</span>)
 
 }</div></pre>
   </div>
