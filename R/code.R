@@ -255,10 +255,13 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       if (file.copy(filename, tobe_replaced, overwrite = TRUE)) {
-        usethis::ui_done("Previous back-up was restored {filename_str} -> {tobe_replaced_str}.")
+        usethis::ui_done(stringr::str_c(
+          "Snippets were restored from the back-up file:\n",
+          "   {filename_str} -> {tobe_replaced_str}.")
+        )
 
       } else {
-        usethis::ui_oops("Failure to restore back-up {filename_str}.")
+        usethis::ui_oops("Failure to restore snippets from the back-up file {filename_str}.")
       }
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     })
