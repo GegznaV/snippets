@@ -647,6 +647,9 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 # merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
 # merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
 #
+# update_snippets_in_snippets("r")
+# update_snippets_in_snippets("markdown")
+#
 # # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
 # # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
 
@@ -672,5 +675,16 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
         # stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
         readr::write_lines(path = make_snippet_filename(type = type))
     }
+  )
+}
+
+# Internal function to update snippets of package "snippets"
+update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
+  type <- match_snippet_type(type)
+  base <- stringr::str_glue("{type}.snippets")
+  fs::file_copy(
+    path      = fs::path(snippets_dir, base),
+    new_path  = fs::path("inst", "snippets", base),
+    overwrite = TRUE
   )
 }
