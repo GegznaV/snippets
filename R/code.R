@@ -349,10 +349,10 @@ install_snippets_from_dir <- function(from_dir = ".",
       paste0(original, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
 
     if (file.copy(from = original, to = backup_name)) {
-      usethis::ui_done("Back-up created:  {usethis::ui_path(backup_name)}")
+      usethis::ui_done("Back-up was created:  {usethis::ui_path(backup_name)}")
 
     } else {
-      usethis::ui_oops("Back-up not created: {usethis::ui_path(original)}")
+      usethis::ui_oops("Back-up was not created: {usethis::ui_path(original)}")
     }
   }
 
@@ -360,10 +360,11 @@ install_snippets_from_dir <- function(from_dir = ".",
   create_rs_snippets_dir()
   is_copied <- file.copy(from = replacement, to = original, overwrite = TRUE)
   if (is_copied) {
-    usethis::ui_done("Snippets updated: {usethis::ui_path(original)}")
+    usethis::ui_done("Snippets were updated: {usethis::ui_path(original)}")
+    usethis::ui_info('To use the new snippets, you should close and restart {usethis::ui_field("RStudio")}.')
 
   } else {
-    usethis::ui_oops("Snippets not changed: {usethis::ui_path(original)}")
+    usethis::ui_info("No snippets were changed in {usethis::ui_path(original)}")
   }
 }
 
