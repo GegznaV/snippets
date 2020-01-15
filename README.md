@@ -15,6 +15,9 @@ status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travi
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![GitHub
+version](https://img.shields.io/badge/GitHub-v0.0.0.9000-brightgreen.svg)](https://github.com/GegznaV/snippets)
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--01--15-yellowgreen.svg)]()
 <!-- badges: end -->
 
 ## Installation
@@ -37,7 +40,7 @@ remotes::install_github("GegznaV/snippets")
 
 ## Quickstart
 
-### Use snippets from “snippets”
+### Install Snippets from “snippets”
 
 ``` r
 # Replace current R and Markdown snippets with those in package "snippets"
@@ -45,7 +48,7 @@ snippets::install_snippets_from_package("snippets", type = "r",        backup = 
 snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 ```
 
-### Example
+### More Examples
 
 ``` r
 library(snippets)
@@ -83,7 +86,7 @@ list_snippet_file_backups(type = "markdown")
 edit_rstudio_snippets(type = "markdown")
 ```
 
-### Create and clean-up back-ups
+### Create and Clean-up Back-ups
 
 ``` r
 # Create several back up files
@@ -100,12 +103,12 @@ list_snippet_file_backups(type = "r")
 
 ``` r
 # Remove duplicated back-up files
-remove_sippet_backup_duplicates()
+remove_snippet_backup_duplicates()
 ```
 
-### Revert to a certain version of back-up
+### Revert to a Certain Version of Back-up
 
-1.  List all back-up files and select the one of inerest.
+1.  List all back-up files and select the one of interest.
     
     ``` r
     list_snippet_file_backups(type = "r")

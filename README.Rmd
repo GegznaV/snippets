@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
 [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![GitHub version](https://img.shields.io/badge/GitHub-v`r packageVersion("snippets")`-brightgreen.svg)](https://github.com/GegznaV/snippets)
+[![Updated-on](https://img.shields.io/badge/Updated%20on-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)]()
 <!-- badges: end -->
 
 
@@ -39,9 +41,11 @@ You can install the development version from [GitHub](https://github.com/) with:
 remotes::install_github("GegznaV/snippets")
 ```
 
+
 ## Quickstart
 
-### Install snippets from "snippets"
+
+### Install Snippets from "snippets"
 
 ```{r eval=FALSE}
 # Replace current R and Markdown snippets with those in package "snippets"
@@ -49,8 +53,8 @@ snippets::install_snippets_from_package("snippets", type = "r",        backup = 
 snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 ```
 
-### Example
 
+### More Examples
 
 ```{r eval=FALSE}
 library(snippets)
@@ -89,7 +93,7 @@ edit_rstudio_snippets(type = "markdown")
 ```
 
 
-### Create and clean-up back-ups
+### Create and Clean-up Back-ups
 
 ```{r eval=FALSE}
 # Create several back up files
@@ -106,15 +110,15 @@ list_snippet_file_backups(type = "r")
 
 ```{r eval=FALSE}
 # Remove duplicated back-up files
-remove_sippet_backup_duplicates()
+remove_snippet_backup_duplicates()
 ```
 
 
 
 
-### Revert to a certain version of back-up 
+### Revert to a Certain Version of Back-up 
 
-1. List all back-up files and select the one of inerest.
+1. List all back-up files and select the one of interest.
     ```{r eval=FALSE}
     list_snippet_file_backups(type = "r")
     ```
