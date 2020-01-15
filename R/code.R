@@ -258,7 +258,7 @@ restore_snippets_backup <- function(filename, backup = TRUE) {
         usethis::ui_done("Previous back-up was restored {filename_str} -> {tobe_replaced_str}.")
 
       } else {
-        usethis::ui_oops("Failed to restore back-up {filename_str}.")
+        usethis::ui_oops("Failure to restore back-up {filename_str}.")
       }
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     })
@@ -274,9 +274,9 @@ remove_snippet_backup_duplicates <- function() {
     rem   <- files[dups]
     usethis::ui_done("Removed as duplicate(s) {usethis::ui_path(rem)}.")
     fs::file_delete(rem)
-  } else {
-    usethis::ui_done("No back-up duplicates found.")
 
+  } else {
+    usethis::ui_done("No back-up duplicates were found.")
   }
 
 }
@@ -707,9 +707,10 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 #' @examples
 #' if (FALSE) {
 #'
-#' build_and_update_snippets("r")
-#' build_and_update_snippets("markdown")
+#' merge_and_update_snippets("r")
+#' merge_and_update_snippets("markdown")
 #'
+#' remove_snippet_backup_duplicates()
 #' }
 merge_and_update_snippets <- function(type, snippets_dir = "snippets/") {
 
