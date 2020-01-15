@@ -25,6 +25,7 @@ Imports:
   tibble,
   tools,
   usethis,
+  utils,
   withr
 RoxygenNote: 7.0.2
 Suggests: 
