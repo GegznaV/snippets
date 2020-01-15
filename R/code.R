@@ -104,6 +104,7 @@ create_rs_snippets_dir <- function() {
 
 #' Open directory of RStudio snippets
 #' @export
+#' @importFrom utils browseURL
 open_rs_snippets_dir <- function() {
   create_rs_snippets_dir()
   browseURL(get_rs_snippets_dir())
@@ -553,7 +554,7 @@ find_conflicting_snippets <- function(df_old, df_new) {
     original = dplyr::setdiff(from_df_old, from_df_new),
     new      = dplyr::setdiff(from_df_new, from_df_old)
   ) %>%
-    dplyr::arrange(name, desc(file))
+    dplyr::arrange(name, dplyr::desc(file))
 }
 
 # Construct a string for snippets from data frame of snippets
