@@ -679,7 +679,9 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
   )
 }
 
-# Internal function to update snippets of package "snippets"
+# ==========================================================================~~
+# Internal function to update (coppy) snippets of package "snippets"
+# into directorry accessible by users of the package.
 update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
   type <- match_snippet_type(type)
   base <- stringr::str_glue("{type}.snippets")
@@ -688,4 +690,32 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
     new_path  = fs::path("inst", "snippets", base),
     overwrite = TRUE
   )
+}
+
+# ==========================================================================~~
+#' Merge and update snippets
+#'
+#' Functions creates one file for one type of snippets and coppies it to the
+#' direcctory accessible by the users of the package.
+#'
+#' @param type ...
+#' @param snippets_dir ...
+#'
+#' @keywords internal
+#' @noRd
+#'
+#' @examples
+#' if (FALSE) {
+#'
+#' build_and_update_snippets("r")
+#' build_and_update_snippets("markdown")
+#'
+#' }
+merge_and_update_snippets <- function(type, snippets_dir = "snippets/") {
+
+  merge_snippets(type = type,            in_dir   = snippets_dir)
+  install_snippets_from_dir(type = type, from_dir = snippets_dir)
+
+  merge_snippets(type = type,            in_dir = snippets_dir, rm = "-VG-snippets")
+  update_snippets_in_snippets(type)
 }
