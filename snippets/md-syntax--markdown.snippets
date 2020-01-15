@@ -6,6 +6,7 @@ snippet help-rmd
 	<!-- Help/Documentation snippets: -->
 	help
 	help-yaml
+	help-yaml-html
 	help-bookdown
 	compare-r-syntax
 	?
@@ -16,30 +17,42 @@ snippet help-rmd
 	setup
 	r
 	rr
+	plot
+	plott
 	fig
+	figg
+	fig2
 
 	<!-- Other code chunk snippets: -->
 	py
 	rcpp
+	sql
 
 	<!-- Markdown snippets: -->
-	<!-- For lnk1 and lnk2, install package remotes::install_github("ropenscilabs/icon") -->
+	<!-- For lnk1, lnk2, etc., install package remotes::install_github("ropenscilabs/icon") -->
 	[
 	![
 	lnk
 	lnk1
 	lnk2
+	lnk3
 
 	<!-- Prefix snippets: -->
-	           <!-- Insted of ... use a use URL without spaces. -->
+	           <!-- After "url-" use URL without spaces.                       -->
 	           <!-- For external URLs use http:// https:// ftps:// ftp:// etc. -->
 	url-
 	     url-google.com/
 	     url-https://www.google.com/
 	     url-https://mokymai.github.io
+	r-
+			 r-plot(1:5)
 
 	<!-- HTML snippets: -->
+	style
+	font
 	kbd
+	space
+	nbsp
 
 	<!-- Other snippets: -->
 	date
@@ -55,6 +68,9 @@ snippet help-rmd
 
 
 # R Markdown syntax: default  -------------------------------------------------
+snippet r-
+	`r "\u0060"`] $$`r "\u0060"`{.r}${0}
+
 snippet url-
 	[${0}]($$){target="_blank"}
 
@@ -76,10 +92,35 @@ snippet [
 snippet ![
 	![${1:label}](${2:location})
 
+snippet plot
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Caption/Description.
+	CAPTION = "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	${0:The code for your plot}
+	```
+
+snippet plott
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Caption/Description.
+	CAPTION = "${2:Description}  "
+
+	${0:The code for your plot}
+	```
+
 snippet fig
 	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
 	# Caption/Description.
 	CAPTION = "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+	```
+
+snippet figg
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Caption/Description.
+	CAPTION = "${2:Description}  "
 
 	# Path or URL to the figure.
 	knitr::include_graphics("${0}")

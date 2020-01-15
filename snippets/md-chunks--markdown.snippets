@@ -1,11 +1,11 @@
 # R Markdown syntax: chunks  --------------------------------------------------
 snippet r
-	```{r ${1:label}, ${2:options}}
+	```{r${1}}
 	${0}
 	```
 
 snippet rr
-	```{r${1}}
+	```{r ${1:label}, ${2:options}}
 	${0}
 	```
 
@@ -15,12 +15,17 @@ snippet py
 	```
 
 snippet rcpp
-	```{r, engine='Rcpp'}
+	```{Rcpp}
 	#include <Rcpp.h>
 	using namespace Rcpp;
 
 	${0}
 
+	```
+
+snippet sql
+	```{sql connection=${1}}
+	${0}
 	```
 
 snippet setup0

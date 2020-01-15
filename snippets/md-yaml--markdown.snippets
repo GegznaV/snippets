@@ -1,16 +1,49 @@
 # YAML options ---------------------------------------------------------------
 snippet help-yaml
 	<!-- YAML header snippets:  -->
-	<!-- When you insert these snippets, please, note if syntax highlighting   -->
-	<!-- is correct (YAML keywords should be highlighted in a different color).-->
-	<!-- If YAML syntax highlighting is incorrect, it means that the code is   -->
-	<!-- in a wrong position: YAML header must start at line 1 column 1 (no    -->
-	<!-- leading spaces or blank lines should be present before/above the      -->
-	<!-- header).                                                              -->
-	<!-- It's also recommended to install the package "whoami" (Who am I?)     -->
+	<!--
+	When you insert these snippets, please, note if syntax highlighting is correct
+	(YAML keywords should be highlighted in a different color). If YAML syntax
+	highlighting is incorrect, it means that the code is in a wrong position:
+	YAML header must start at line 1 column 1 (no leading spaces or blank lines
+	should be present before/above the header). It's also recommended to install
+	the package "whoami" (Who am I?)
+
+	These snippets work only in R Markdown environment!
+
+	Available snippets for YAML headers:
+	-->
+	help-yaml-html
+
 	---1
+	---2a
 	---2
 	---html-1
+	---bib
+
+	<!-- END: YAML header snippets -->
+
+snippet help-yaml-html
+	<!--
+	In "html_document" and "bookdown::html_document2" you may use the options:
+
+	- Options for the main theme of a document ("theme"):
+	  default, cerulean, journal, flatly, readable, spacelab, united, cosmo,
+	  lumen, paper, sandstone, simplex, yeti.
+
+	- Options for code syntax highlighting theme ("highlight"):
+	  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock,
+	  textmate.
+
+	- Code folding ("code_folding"): none, show, hide.
+
+	- Download code ("code_download"): yes, no
+
+	- Data frame print options ("df_print"): default, paged, kable, tibble.
+
+	- More explanations at:
+	  https://rmarkdown.rstudio.com/docs/reference/html_document.html
+	-->
 
 snippet ---html-1
 	---
@@ -20,12 +53,10 @@ snippet ---html-1
 	date:     "${4:`r Sys.Date()`}"
 	output:
 	  html_document:
-	    fig_caption:     ${5:yes}
-	    number_sections: ${6:yes}
-	    toc:       ${7:yes}
-	    toc_float: ${8:yes}
-	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged  kable  tibble  default
+	    number_sections: ${5:yes}
+	    toc:       ${6:yes}
+	    toc_float: ${7:yes}
+	    toc_depth: ${8:2}
 	---
 
 snippet ---1
@@ -41,10 +72,10 @@ snippet ---1
 	    toc:       ${7:yes}
 	    toc_float: ${8:yes}
 	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged  kable  tibble  default
+	    df_print:  ${10:default} # paged kable tibble default
 	---
 
-snippet ---2
+snippet ---2a
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -57,5 +88,41 @@ snippet ---2
 	    toc:       ${7:yes}
 	    toc_float: ${8:yes}
 	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged  kable  tibble  default
+	    df_print:  ${10:default} # paged kable tibble default
 	---
+
+snippet ---2
+	---
+	# General Information --------------------------------------------------------
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
+	# Document Format and Appearance ---------------------------------------------
+	output:
+	  bookdown::html_document2: # Enables automatic numbering of figures & tables
+	    highlight:       ${5:pygments} # default tango kate monochrome espresso ...
+	    code_folding:    ${6:none}     # none show hide
+			code_download:   ${7:yes}      # yes no
+	    number_sections: ${8:yes}      # Automatic numbering of sections: yes no
+	    toc:         ${9:yes}          # Table of contents (toc): yes no
+	    toc_float:   ${10:yes}          # yes no
+	    toc_depth:   ${11:3}            # 1 2 3 4 5
+	    fig_caption: ${12:yes}          # yes no
+	    theme:       ${13:default}      # cerulean journal flatly readable paper sandstone ...
+	    df_print:    ${14:default}      # paged kable tibble default
+	---
+
+snippet ---bib
+	---
+	# Bibliographies and Citations -----------------------------------------------
+	suppress-bibliography: ${1:no}
+	biblio-title: "${2:References}"
+	bibliography: "${3:path/to/bib-file.bib}" # Path to the file with bibliography entries.
+	csl: "${4:path/to/csl-file.csl}" # Path to the file with citation style (csl).
+	link-citations: ${5:yes}
+	# nocite: | # To include items in the bibliography without actually citing them.
+	#    @item1, @item2
+	---
+
+

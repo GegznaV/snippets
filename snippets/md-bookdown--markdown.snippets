@@ -1,18 +1,22 @@
 # R Markdown syntax: Bookdown extensions -------------------------------------
 snippet help-bookdown
-	${0}<!-- START: Snippets for Bookdown project -->
+	${0}<!-- START: Snippets for Bookdown projects/files -->
 	<!--
-	ref -- reference
-	cap -- caption
+	Abbreviations:
+	1. cap -- caption
+	2. ref -- reference
 
-	eq         -- equation
-	exm        -- example
-	exr        -- excercise
-	fig, f     -- figure
-	youtube, v -- video
+	3. eq         -- equation
+	4. exm        -- example
+	5. exr        -- exercise
+	6. fig, f     -- figure
+	7. youtube, v -- video
+
+	E.g., "reff" means reference (ref) for figure (f);
+	      "reft" means reference (ref) for table (t).
 	-->
 
-	<!-- Insert objecs -->
+	<!-- Insert objects -->
 	eq
 	exm
 	exr
@@ -35,7 +39,7 @@ snippet help-bookdown
 	reft
 	refv
 
-	<!-- Prefix snippets: insted of ... use a worw/text -->
+	<!-- Prefix snippets: after hyphen use a word/text without spaces -->
 	ref-
 	     ref-eq
 	     ref-fig
@@ -44,7 +48,7 @@ snippet help-bookdown
 	     cap-eq
 	     cap-fig
 
-	<!-- END: Snippets for Bookdown project -->
+	<!-- END: Snippets for Bookdown projects/files -->
 
 snippet eq
 	<!-- Equation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
@@ -82,11 +86,11 @@ snippet youtube
 	<br>
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 
-snippet cap
-	(\#${1:label-ID}) ${2:caption/label}
-
 snippet cap-
 	(\#$$) ${1:caption/label}
+
+snippet cap
+	(\#${1:label-ID}) ${2:caption/label}
 
 snippet capeq
 	(\#eq:${1:equation-ID})
@@ -100,11 +104,11 @@ snippet capt
 snippet capv
 	(\#cor:${1:video-ID}) ${2:video-caption}
 
-snippet ref
-	\@ref(${1:label-ID})
-
 snippet ref-
 	\@ref($$:${1:ID})
+
+snippet ref
+	\@ref(${1:label-ID})
 
 snippet refeq
 	\@ref(eq:${1:equation-ID})
