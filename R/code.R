@@ -716,6 +716,7 @@ merge_and_update_snippets <- function(type, snippets_dir = "snippets/") {
   merge_snippets(type = type,            in_dir   = snippets_dir)
   install_snippets_from_dir(type = type, from_dir = snippets_dir)
 
+  # Remove personal VG snippets
   merge_snippets(type = type,            in_dir = snippets_dir, rm = "-VG-snippets")
   update_snippets_in_snippets(type)
 }
