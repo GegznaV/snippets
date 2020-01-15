@@ -7,6 +7,7 @@ snippet help
 	help-rmd
 	help-bookdown
 	help-yaml
+	help-yaml-html
 
 	<!-- Descriptive statistics -->
 	help-desc
@@ -54,19 +55,23 @@ snippet help-data-types
 	-->
 # R Markdown syntax: Bookdown extensions -------------------------------------
 snippet help-bookdown
-	${0}<!-- START: Snippets for Bookdown project -->
+	${0}<!-- START: Snippets for Bookdown projects/files -->
 	<!--
-	ref -- reference
-	cap -- caption
+	Abbreviations:
+	1. cap -- caption
+	2. ref -- reference
 
-	eq         -- equation
-	exm        -- example
-	exr        -- excercise
-	fig, f     -- figure
-	youtube, v -- video
+	3. eq         -- equation
+	4. exm        -- example
+	5. exr        -- exercise
+	6. fig, f     -- figure
+	7. youtube, v -- video
+
+	E.g., "reff" means reference (ref) for figure (f);
+	      "reft" means reference (ref) for table (t).
 	-->
 
-	<!-- Insert objecs -->
+	<!-- Insert objects -->
 	eq
 	exm
 	exr
@@ -89,7 +94,7 @@ snippet help-bookdown
 	reft
 	refv
 
-	<!-- Prefix snippets: insted of ... use a worw/text -->
+	<!-- Prefix snippets: after the hyphen use a word (text) without spaces -->
 	ref-
 	     ref-eq
 	     ref-fig
@@ -98,7 +103,7 @@ snippet help-bookdown
 	     cap-eq
 	     cap-fig
 
-	<!-- END: Snippets for Bookdown project -->
+	<!-- END: Snippets for Bookdown projects/files -->
 
 snippet eq
 	<!-- Equation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
@@ -136,11 +141,11 @@ snippet youtube
 	<br>
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 
-snippet cap
-	(\#${1:label-ID}) ${2:caption/label}
-
 snippet cap-
 	(\#$$) ${1:caption/label}
+
+snippet cap
+	(\#${1:label-ID}) ${2:caption/label}
 
 snippet capeq
 	(\#eq:${1:equation-ID})
@@ -154,11 +159,11 @@ snippet capt
 snippet capv
 	(\#cor:${1:video-ID}) ${2:video-caption}
 
-snippet ref
-	\@ref(${1:label-ID})
-
 snippet ref-
 	\@ref($$:${1:ID})
+
+snippet ref
+	\@ref(${1:label-ID})
 
 snippet refeq
 	\@ref(eq:${1:equation-ID})
@@ -179,12 +184,12 @@ snippet refv
 	\@ref(cor:${1:video-ID})
 # R Markdown syntax: chunks  --------------------------------------------------
 snippet r
-	```{r ${1:label}, ${2:options}}
+	```{r${1}}
 	${0}
 	```
 
 snippet rr
-	```{r${1}}
+	```{r ${1:label}, ${2:options}}
 	${0}
 	```
 
@@ -194,12 +199,17 @@ snippet py
 	```
 
 snippet rcpp
-	```{r, engine='Rcpp'}
+	```{Rcpp}
 	#include <Rcpp.h>
 	using namespace Rcpp;
 
 	${0}
 
+	```
+
+snippet sql
+	```{sql connection=${1}}
+	${0}
 	```
 
 snippet setup0
@@ -321,7 +331,10 @@ snippet style
 	</style>
 	${0}
 
-snippet html_space
+snippet space
+	&${1:nbsp};${0}
+
+snippet nbsp
 	&${1:nbsp};${0}
 
 snippet font
@@ -334,6 +347,7 @@ snippet help-rmd
 	<!-- Help/Documentation snippets: -->
 	help
 	help-yaml
+	help-yaml-html
 	help-bookdown
 	compare-r-syntax
 	?
@@ -344,30 +358,46 @@ snippet help-rmd
 	setup
 	r
 	rr
+	plot
+	plott
 	fig
+	figg
+	fig2
 
 	<!-- Other code chunk snippets: -->
 	py
 	rcpp
+	sql
 
 	<!-- Markdown snippets: -->
-	<!-- For lnk1 and lnk2, install package remotes::install_github("ropenscilabs/icon") -->
+	<!-- For lnk1, lnk2, etc., install package remotes::install_github("ropenscilabs/icon") -->
+	r-
+	rr-
 	[
 	![
 	lnk
 	lnk1
 	lnk2
+	lnk3
 
 	<!-- Prefix snippets: -->
-	           <!-- Insted of ... use a use URL without spaces. -->
-	           <!-- For external URLs use http:// https:// ftps:// ftp:// etc. -->
+	<!--
+	     After "url-" use URL without spaces.
+	     For external URLs use http:// https:// ftps:// ftp:// etc.
+	-->
+
 	url-
 	     url-google.com/
 	     url-https://www.google.com/
 	     url-https://mokymai.github.io
 
+
 	<!-- HTML snippets: -->
+	style
+	font
 	kbd
+	space
+	nbsp
 
 	<!-- Other snippets: -->
 	date
@@ -383,6 +413,12 @@ snippet help-rmd
 
 
 # R Markdown syntax: default  -------------------------------------------------
+snippet r-
+	`r "\u0060"`${1:r-code-to-display-as-is}`r "\u0060"`{.r}${0}
+
+snippet rr-
+	`r "\u0060"`r ${1:r-code-to-evaluate}`r "\u0060"`${0}
+
 snippet url-
 	[${0}]($$){target="_blank"}
 
@@ -404,10 +440,35 @@ snippet [
 snippet ![
 	![${1:label}](${2:location})
 
+snippet plot
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Caption/Description.
+	CAPTION = "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	${0:The code for your plot}
+	```
+
+snippet plott
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Caption/Description.
+	CAPTION = "${2:Description}  "
+
+	${0:The code for your plot}
+	```
+
 snippet fig
 	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
 	# Caption/Description.
 	CAPTION = "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+	```
+
+snippet figg
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	# Caption/Description.
+	CAPTION = "${2:Description}  "
 
 	# Path or URL to the figure.
 	knitr::include_graphics("${0}")
@@ -428,16 +489,49 @@ snippet fig2
 # YAML options ---------------------------------------------------------------
 snippet help-yaml
 	<!-- YAML header snippets:  -->
-	<!-- When you insert these snippets, please, note if syntax highlighting   -->
-	<!-- is correct (YAML keywords should be highlighted in a different color).-->
-	<!-- If YAML syntax highlighting is incorrect, it means that the code is   -->
-	<!-- in a wrong position: YAML header must start at line 1 column 1 (no    -->
-	<!-- leading spaces or blank lines should be present before/above the      -->
-	<!-- header).                                                              -->
-	<!-- It's also recommended to install the package "whoami" (Who am I?)     -->
+	<!--
+	When you insert these snippets, please, note if syntax highlighting is correct
+	(YAML keywords should be highlighted in a different color). If YAML syntax
+	highlighting is incorrect, it means that the code is in a wrong position:
+	YAML header must start at line 1 column 1 (no leading spaces or blank lines
+	should be present before/above the header). It's also recommended to install
+	the package "whoami" (Who am I?)
+
+	These snippets work only in R Markdown environment!
+
+	Available snippets for YAML headers:
+	-->
+	help-yaml-html
+
 	---1
+	---2a
 	---2
 	---html-1
+	---bib
+
+	<!-- END: YAML header snippets -->
+
+snippet help-yaml-html
+	<!--
+	In "html_document" and "bookdown::html_document2" you may use the options:
+
+	- Options for the main theme of a document ("theme"):
+	  default, cerulean, journal, flatly, readable, spacelab, united, cosmo,
+	  lumen, paper, sandstone, simplex, yeti.
+
+	- Options for code syntax highlighting theme ("highlight"):
+	  default, tango, pygments, kate, monochrome, espresso, zenburn, haddock,
+	  textmate.
+
+	- Code folding ("code_folding"): none, show, hide.
+
+	- Download code ("code_download"): yes, no
+
+	- Data frame print options ("df_print"): default, paged, kable, tibble.
+
+	- More explanations at:
+	  https://rmarkdown.rstudio.com/docs/reference/html_document.html
+	-->
 
 snippet ---html-1
 	---
@@ -447,12 +541,10 @@ snippet ---html-1
 	date:     "${4:`r Sys.Date()`}"
 	output:
 	  html_document:
-	    fig_caption:     ${5:yes}
-	    number_sections: ${6:yes}
-	    toc:       ${7:yes}
-	    toc_float: ${8:yes}
-	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged  kable  tibble  default
+	    number_sections: ${5:yes}
+	    toc:       ${6:yes}
+	    toc_float: ${7:yes}
+	    toc_depth: ${8:2}
 	---
 
 snippet ---1
@@ -468,10 +560,10 @@ snippet ---1
 	    toc:       ${7:yes}
 	    toc_float: ${8:yes}
 	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged  kable  tibble  default
+	    df_print:  ${10:default} # paged kable tibble default
 	---
 
-snippet ---2
+snippet ---2a
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -484,5 +576,41 @@ snippet ---2
 	    toc:       ${7:yes}
 	    toc_float: ${8:yes}
 	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged  kable  tibble  default
+	    df_print:  ${10:default} # paged kable tibble default
 	---
+
+snippet ---2
+	---
+	# General Information --------------------------------------------------------
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
+	# Document Format and Appearance ---------------------------------------------
+	output:
+	  bookdown::html_document2: # Enables automatic numbering of figures & tables
+	    highlight:       ${5:pygments} # default tango kate monochrome espresso ...
+	    code_folding:    ${6:none}     # none show hide
+			code_download:   ${7:yes}      # yes no
+	    number_sections: ${8:yes}      # Automatic numbering of sections: yes no
+	    toc:         ${9:yes}          # Table of contents (toc): yes no
+	    toc_float:   ${10:yes}          # yes no
+	    toc_depth:   ${11:3}            # 1 2 3 4 5
+	    fig_caption: ${12:yes}          # yes no
+	    theme:       ${13:default}      # cerulean journal flatly readable paper sandstone ...
+	    df_print:    ${14:default}      # paged kable tibble default
+	---
+
+snippet ---bib
+	---
+	# Bibliographies and Citations -----------------------------------------------
+	suppress-bibliography: ${1:no}
+	biblio-title: "${2:References}"
+	bibliography: "${3:path/to/bib-file.bib}" # Path to the file with bibliography entries.
+	csl: "${4:path/to/csl-file.csl}" # Path to the file with citation style (csl).
+	link-citations: ${5:yes}
+	# nocite: | # To include items in the bibliography without actually citing them.
+	#    @item1, @item2
+	---
+
+
