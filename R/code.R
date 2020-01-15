@@ -195,7 +195,7 @@ backup_rs_snippets <- function(type) {
   new_backup <- fs::file_copy(base_name, backup_name)
 
   usethis::ui_done(stringr::str_c(
-    "Current file was backed up: ",
+    "Current {usethis::ui_path(basename(base_name))} file was backed up: ",
     "\n{usethis::ui_path(tobe_replaced)} -> {usethis::ui_path(new_backup)}"
   ))
 
