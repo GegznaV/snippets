@@ -30,6 +30,8 @@ snippet help-rmd
 
 	<!-- Markdown snippets: -->
 	<!-- For lnk1, lnk2, etc., install package remotes::install_github("ropenscilabs/icon") -->
+	r-
+	rr-
 	[
 	![
 	lnk
@@ -38,14 +40,16 @@ snippet help-rmd
 	lnk3
 
 	<!-- Prefix snippets: -->
-	           <!-- After "url-" use URL without spaces.                       -->
-	           <!-- For external URLs use http:// https:// ftps:// ftp:// etc. -->
+	<!--
+	     After "url-" use URL without spaces.
+	     For external URLs use http:// https:// ftps:// ftp:// etc.
+	-->
+
 	url-
 	     url-google.com/
 	     url-https://www.google.com/
 	     url-https://mokymai.github.io
-	r-
-			 r-plot(1:5)
+
 
 	<!-- HTML snippets: -->
 	style
@@ -69,7 +73,10 @@ snippet help-rmd
 
 # R Markdown syntax: default  -------------------------------------------------
 snippet r-
-	`r "\u0060"`] $$`r "\u0060"`{.r}${0}
+	`r "\u0060"`${1:r-code}`r "\u0060"`{.r}${0}
+
+snippet rr-
+	`r "\u0060"`r ${1:r-code}`r "\u0060"`${0}
 
 snippet url-
 	[${0}]($$){target="_blank"}
