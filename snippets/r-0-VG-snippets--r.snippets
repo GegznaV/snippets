@@ -1,33 +1,47 @@
+# ============================================================================
+# TODO:
+# 	# Functions for descriptive statistics:
+# 	help-summary
+# 	# Data transformation, calculation, recoding
+# 	help-calculate
+# 	# Confidence intervals
+# 	help-ci
+# 	# Hypothesis testing
+# 	help-ht
+# 	help-tests
+# ============================================================================
+
+
 
 # VG snippets ================================================================
 
 snippet test--
 	context("Tests: $$()")
-	
+
 	test_that("$$() works", {
 	  # Prepare data
-	
+
 	  # Unit tests
 	  expect_error($$())
 	  expect_error($$}())
 	  expect_error($$())
-	  
+
 	  expect_is($$(), class = "htest")
 	  expect_length($$(), n = 10)
-	  
+
 	  expect_identical(
 	    $$(),
 	    ...
 	  )
-	  
+
 	  expect_identical(
 	    $$(),
 	    ...
 	  )
-	  
+
 	  expect_identical(
 	    $$(),
 	    ...
 	  )
-	    
+
 	})
