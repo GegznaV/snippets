@@ -1,3 +1,52 @@
+# R code snippets: code elements
+snippet help-r
+	# R code snippets -----------------------------------------------------------
+	# library(), require(), source()
+	lib
+	req
+	src
+
+	# matrix()
+	mat
+
+	# S4 objects
+	sg
+	sm
+	sc
+
+	# if, else, else if, switch
+	if
+	el
+	ei
+	switch
+
+	# Function, annonymous function, return
+	fun
+	funn
+	ret
+
+	# Loops
+	for
+	while
+
+	# The apply family functions
+	apply
+	lapply
+	sapply
+	mapply
+	tappy
+	vappy
+	rapply
+
+	# purrr::map()
+	map
+	map_
+
+	# Operator %>%
+	pipe
+	aa
+	aa-
+
 snippet lib
 	library(${1:package})
 
@@ -6,9 +55,6 @@ snippet req
 
 snippet src
 	source("${0:file.R}", encoding = "UTF-8")
-
-snippet ret
-	return(${0:code})
 
 snippet mat
 	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
@@ -50,6 +96,9 @@ snippet funn
 	function(${2:variables}) {
 		${0}
 	}
+
+snippet ret
+	return(${0:code})
 
 snippet for
 	for (${1:variable} in ${2:vector}) {
@@ -94,13 +143,23 @@ snippet map
 snippet map_
 	${1:purrr::}map_${2:chr}(${3:data}, ${4:function})
 
-snippet aa
-	${1:dataset} <- 
-		${1:dataset} %>% 
-		${0}
+
+snippet pipe-
+	$$ <-
+	  $$ %>%
+	  ${0:code}
+
+snippet pipe
+	${1:dataset} <-
+	  ${1} %>%
+	  ${0:code}
 
 snippet aa-
-	$$ <- 
-		$$ %>% 
-		${0}
+	$$ <-
+	  $$ %>%
+	  ${0:code}
 
+snippet aa
+	${1:dataset} <-
+	  ${1} %>%
+	  ${0:code}

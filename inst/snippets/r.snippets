@@ -3,6 +3,8 @@ snippet help
 	# START: keywords for help/documentation snippets ==========================~
 	# Help about functions, operators or other topics:
 	?
+	# Snippets for basic R code :
+	help-r
 	# Abbreviations of the most common R data types:
 	help-data-types
 	# Functions for quick summary/descriptive statistics:
@@ -12,11 +14,56 @@ snippet help
 	# END: keywords for help/documentation snippets   ==========================~
 
 snippet ?
-	${6:#DELETE THIS: If used at all, package name must be in quotes (e.g., "dplyr")}
-	help(${1:"${2:function name, operator, other topic}"${3:, package = ${4:NULL}}${5:, try.all.packages = ${6:FALSE}}})
+	help(${1:"${2:function name, operator, other topic}"${3:, package = "${4:package-name}"}${5:, try.all.packages = ${6:TRUE}}})
+# R code snippets: code elements
+snippet help-r
+	# R code snippets -----------------------------------------------------------
+	# library(), require(), source()
+	lib
+	req
+	src
 
-snippet ???
-	help(${1:"${2:function name, operator, other topic}"${3:, package = ${4:NULL}}${5:, try.all.packages = ${6:FALSE}}})
+	# matrix()
+	mat
+
+	# S4 objects
+	sg
+	sm
+	sc
+
+	# if, else, else if, switch
+	if
+	el
+	ei
+	switch
+
+	# Function, annonymous function, return
+	fun
+	funn
+	ret
+
+	# Loops
+	for
+	while
+
+	# The apply family functions
+	apply
+	lapply
+	sapply
+	mapply
+	tappy
+	vappy
+	rapply
+
+	# purrr::map()
+	map
+	map_
+
+	# Operator %>%
+	pipe
+	aa
+	aa-
+
 snippet lib
 	library(${1:package})
 
@@ -25,9 +72,6 @@ snippet req
 
 snippet src
 	source("${0:file.R}", encoding = "UTF-8")
-
-snippet ret
-	return(${0:code})
 
 snippet mat
 	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
@@ -69,6 +113,9 @@ snippet funn
 	function(${2:variables}) {
 		${0}
 	}
+
+snippet ret
+	return(${0:code})
 
 snippet for
 	for (${1:variable} in ${2:vector}) {
@@ -113,16 +160,26 @@ snippet map
 snippet map_
 	${1:purrr::}map_${2:chr}(${3:data}, ${4:function})
 
-snippet aa
-	${1:dataset} <- 
-		${1:dataset} %>% 
-		${0}
+
+snippet pipe-
+	$$ <-
+	  $$ %>%
+	  ${0:code}
+
+snippet pipe
+	${1:dataset} <-
+	  ${1} %>%
+	  ${0:code}
 
 snippet aa-
-	$$ <- 
-		$$ %>% 
-		${0}
+	$$ <-
+	  $$ %>%
+	  ${0:code}
 
+snippet aa
+	${1:dataset} <-
+	  ${1} %>%
+	  ${0:code}
 snippet FIX
 	# FIXME: ${0}
 
@@ -153,17 +210,20 @@ snippet help-data-types
 	# The abbreviations (used in the Tidyverse) of the most common R data types:
 	#     <fct>  -- nominal (factor, categorical);
 	#     <ord>  -- ordinal;
-	#     <int>  -- numeric (integers); 
-	#     <dbl>  -- numeric (doubles, real numbers); 
-	#     <lgl>  -- logical; 
-	#     <chr>  -- text (character, strings); 
+	#     <int>  -- numeric (integers);
+	#     <dbl>  -- numeric (doubles, real numbers);
+	#     <lgl>  -- logical;
+	#     <chr>  -- text (character, strings);
 	#     <date> -- dates;
 	#     <dttm> -- dates and times;
 	#     <list> -- list column (more complex data structures than usual vectors).
+	#
+	#     Other data types are also possible.
 
 snippet help-desc
 	${0}# Snippets for quick descriptive statistics
-	
+	# NOTE: Packages tidyverse, summarytools, and DescTools must be loaded!!!
+
 	# Load packages and set options for descriptive statistics
 	desc-opts
 
@@ -219,7 +279,7 @@ snippet desc-str
 	${1:data} %>% class()
 	${1:data} %>% object.size() %>% print(unit = "auto")
 	${1:data} %>% dim()
-	
+
 	${1:data} %>% View() # interactive function. Use chunk option: eval=FALSE
 
 	${1:data} %>% glimpse()
@@ -236,9 +296,9 @@ snippet desc-all
 	${1:data} %>% class()
 	${1:data} %>% object.size() %>% print(unit = "auto")
 	${1:data} %>% dim()
-	
+
 	${1:data} %>% View() # use chunk option: eval=FALSE
-	${1:data} %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10) 
+	${1:data} %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10)
 	${1:data} %>% glimpse()
 
 	${1:data} %>% PlotMiss(main = "Missing values plot")
@@ -255,7 +315,7 @@ snippet ++desc-
 	$$ %>% class()
 	$$ %>% object.size() %>% print(unit = "auto")
 	$$ %>% dim()
-	
+
 	$$ %>% View() # interactive function. Use chunk option: eval=FALSE
 	$$ %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10)
 	$$ %>% glimpse()
@@ -288,7 +348,7 @@ snippet desc-num-num
 
 snippet desc-num-fct
 	${1:data} %>% with(Desc(${2:numeric_variable} ~ ${3:factor_variable}, ord = "level"))
-	${1:data} %>% 
+	${1:data} %>%
 		group_by(${3:factor_variable}) %>%
 		descr(${2:numeric_variable}, round.digits = ${4:2})
 

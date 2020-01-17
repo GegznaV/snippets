@@ -1,6 +1,7 @@
 snippet help-desc
 	${0}# Snippets for quick descriptive statistics
-	
+	# NOTE: Packages tidyverse, summarytools, and DescTools must be loaded!!!
+
 	# Load packages and set options for descriptive statistics
 	desc-opts
 
@@ -56,7 +57,7 @@ snippet desc-str
 	${1:data} %>% class()
 	${1:data} %>% object.size() %>% print(unit = "auto")
 	${1:data} %>% dim()
-	
+
 	${1:data} %>% View() # interactive function. Use chunk option: eval=FALSE
 
 	${1:data} %>% glimpse()
@@ -73,9 +74,9 @@ snippet desc-all
 	${1:data} %>% class()
 	${1:data} %>% object.size() %>% print(unit = "auto")
 	${1:data} %>% dim()
-	
+
 	${1:data} %>% View() # use chunk option: eval=FALSE
-	${1:data} %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10) 
+	${1:data} %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10)
 	${1:data} %>% glimpse()
 
 	${1:data} %>% PlotMiss(main = "Missing values plot")
@@ -92,7 +93,7 @@ snippet ++desc-
 	$$ %>% class()
 	$$ %>% object.size() %>% print(unit = "auto")
 	$$ %>% dim()
-	
+
 	$$ %>% View() # interactive function. Use chunk option: eval=FALSE
 	$$ %>% data.table::as.data.table() %>% print(ntop = 5, nrows = 10)
 	$$ %>% glimpse()
@@ -125,7 +126,7 @@ snippet desc-num-num
 
 snippet desc-num-fct
 	${1:data} %>% with(Desc(${2:numeric_variable} ~ ${3:factor_variable}, ord = "level"))
-	${1:data} %>% 
+	${1:data} %>%
 		group_by(${3:factor_variable}) %>%
 		descr(${2:numeric_variable}, round.digits = ${4:2})
 
