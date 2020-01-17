@@ -365,7 +365,7 @@ install_snippets_from_dir <- function(from_dir = ".",
   is_copied <- file.copy(from = replacement, to = original, overwrite = TRUE)
   if (is_copied) {
     usethis::ui_done("Snippets were updated: {usethis::ui_path(original)}")
-    usethis::ui_info('To use the new snippets, you should close and restart {usethis::ui_field("RStudio")}.')
+    usethis::ui_info('To use the new snippets, you must close and restart {usethis::ui_field("RStudio")}.')
 
   } else {
     usethis::ui_info("No snippets were changed in {usethis::ui_path(original)}")
