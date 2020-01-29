@@ -1,0 +1,42 @@
+# FIXME: this part (options) must be carefully reviewed
+# Options --------------------------------------------------------------------
+snippet help-opts
+	opts-kable
+	opts-pander
+	opts-desctools
+
+snippet opts-kable
+	options(
+	  knitr.kable.NA = '',
+	  scipen = 8,
+	  digits = getOption("digits", default = 4),
+	  OutDec = "."
+	)
+
+snippet opts-pander
+	options(pander = modifyList(pander::panderOptions(),
+	  list(
+	    digits = getOption("digits", default = 4),
+	    round  = Inf,
+	    decimal.mark = getOption("OutDec", default = "."),
+	    big.mark = " ",
+	    keep.trailing.zeros = TRUE,
+	    missing = getOption("knitr.kable.NA", default = NA),
+	    table.style = 'multiline', # 'multiline', 'grid', 'simple',  'rmarkdown'
+	    table.split.table = 80,
+	    table.split.cells = 30,
+	    table.continues   = 'Table continues below',
+	    table.continues.affix = '(continued below)',
+	    p.wrap   = '_',
+	    p.sep    = ', ',
+	    p.copula = ' and ',
+	    knitr.auto.asis = TRUE
+	  ))
+
+snippet opts-desctools
+	# DescTools formatting options
+	options(scipen = 8)
+	Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
+	Fmt(num = Fmt("num", big.mark = "")) # Real numbers
+	Fmt(num = Fmt("num", digits = 3))    # Real numbers
+	Fmt(per = Fmt("per", digits = 1))    # Percentages
