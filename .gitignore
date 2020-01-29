@@ -6,3 +6,5 @@ pre-commit
 docs/
 data-raw/_tmp.Rmd
 texput.log
+_TODO
+data-raw/_TODO.Rmd
