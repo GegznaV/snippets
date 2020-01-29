@@ -279,13 +279,13 @@ snippet setup
 
 	# Sys.setlocale(locale = "${3:Lithuanian}")
 	theme_set(theme_bw()) # Default ggplot2 theme
-	options(scipen = 8)   # Show at least 8 digits in numbers before converting to exponential notation.
 
-	# # DescTools formatting options
-	# Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
-	# Fmt(num = Fmt("num", big.mark = "")) # Real numbers
-	# Fmt(num = Fmt("num", digits = 3))    # Real numbers
-	# Fmt(per = Fmt("per", digits = 1))    # Percentages
+	options(
+	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
+		digits = 7,
+		OutDec = ".",
+		knitr.kable.NA = NA,
+	)
 
 	conflict_prefer("filter", "dplyr")
 	conflict_prefer("lag",    "dplyr")
@@ -358,11 +358,20 @@ snippet help-rmd
 	setup
 	r
 	rr
+
+	<!-- Plots/Figures: -->
 	plot
 	plott
 	fig
 	figg
 	fig2
+
+	<!-- Tables: -->
+	kbl
+	pan
+
+	kable
+	pander
 
 	<!-- Other code chunk snippets: -->
 	py
@@ -484,6 +493,50 @@ snippet fig2
 	# Caption/Description.
 	CAPTION = "${2:**Fig. ${3:1}.** }${4:Description}  "
 	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
+	```
+
+# TODO: These are snippets to do.
+
+# Tables
+snippet kbl
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	knitr::kable(${4:data}, caption = "${5:Table caption/description.}  ")
+	```
+
+snippet kable
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	knitr::kable(
+	  ${4:data},
+	  format = "${4:pandoc}", # latex, html, markdown, pandoc, rst
+	  digits = ${5:`r getOption("digits")`},
+	  format.args = list(big.mark = "${6:,}", decimal.mark = "${7:.}", nsmall = ${8:0}),
+	  caption = "${9:Table caption/description.}  "
+	)
+	```
+
+snippet kable-eur
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	knitr::kable(
+	  ${4:data},
+	  format = "${4:pandoc}", # latex, html, markdown, pandoc, rst
+	  digits = ${5:`r getOption("digits")`},
+	  format.args = list(big.mark = "${6: }", decimal.mark = "${7:,}", nsmall = ${8:0}),
+	  caption = "${9:Lenteles pavadinimas/aprasymas.}  "
+	)
+	```
+
+snippet pan
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	pander::pander(${4:data}, caption = "${9:Table caption/description.}  ")
+	```
+
+snippet pander
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	pander::pander(
+	  ${4:data},
+	  digits = ${5:`r getOption("digits")`},
+	  caption = "${6:Table caption/description.}  "
+	)
 	```
 
 # YAML options ---------------------------------------------------------------
