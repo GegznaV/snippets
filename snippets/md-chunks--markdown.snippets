@@ -95,13 +95,13 @@ snippet setup
 
 	# Sys.setlocale(locale = "${3:Lithuanian}")
 	theme_set(theme_bw()) # Default ggplot2 theme
-	options(scipen = 8)   # Show at least 8 digits in numbers before converting to exponential notation.
 
-	# # DescTools formatting options
-	# Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
-	# Fmt(num = Fmt("num", big.mark = "")) # Real numbers
-	# Fmt(num = Fmt("num", digits = 3))    # Real numbers
-	# Fmt(per = Fmt("per", digits = 1))    # Percentages
+	options(
+	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
+		digits = 7,
+		OutDec = ".",
+		knitr.kable.NA = NA,
+	)
 
 	conflict_prefer("filter", "dplyr")
 	conflict_prefer("lag",    "dplyr")
