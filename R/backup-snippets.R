@@ -107,15 +107,16 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
 #' @rdname backup_rs_snippets
 #' @export
 remove_snippet_backup_duplicates <- function() {
-  # FIXME: use new version of backing up and restoring
-
   # files <- list_snippet_file_backups(type = type)
   files <- fs::dir_ls(get_path_backup_dir("snippets"), type = "file")
   dups  <- duplicated(tools::md5sum(files))
+
   if (any(dups)) {
-    rem   <- files[dups]
-    usethis::ui_done("Removed as duplicate(s) {usethis::ui_path(rem)}.")
+    rem <- files[dups]
     fs::file_delete(rem)
+
+    str <- paste(crayon::blue(rem), collapse = "\n")
+    usethis::ui_done("Removed as duplicate(s):\n{str}")
 
   } else {
     usethis::ui_done("No back-up duplicates were found.")
