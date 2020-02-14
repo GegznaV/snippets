@@ -57,14 +57,14 @@ get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
 }
 
 
-#' @rdname backup_rs_snippets
-#'
-#' @param filename (character) The name of snippets back-up file.
-#'         E.g., `"r.snippets--backup-2019-10-31-01430"`.
-#' @param backup (logical) If `TRUE`, current file with snippets will be
-#'        backed up.
-#'
-#' @export
+# @rdname backup_rs_snippets
+#
+# @param filename (character) The name of snippets back-up file.
+#         E.g., `"r.snippets--backup-2019-10-31-01430"`.
+# @param backup (logical) If `TRUE`, current file with snippets will be
+#        backed up.
+#
+# @export
 # filename <- "r--backup-2019-10-31-01430.snippets"
 restore_snippets_from_backup <- function(filename, backup = TRUE) {
   # FIXME: use new version of backing up and restoring
