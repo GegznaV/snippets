@@ -195,17 +195,6 @@ backup_rs_snippets <- function(type) {
 
   file_name <- get_path_to_rs_snippet_file(type = type)
   create_backup_copy(file_name, "snippets", stringr::str_glue("{type}.snippets"))
-  # backup_name <-
-  #   paste0(base_name, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
-  #
-  # new_backup <- fs::file_copy(base_name, backup_name)
-  #
-  # usethis::ui_done(stringr::str_c(
-  #   "Current {usethis::ui_path(basename(base_name))} file was backed up: ",
-  #   "\n{usethis::ui_path(tobe_replaced)} -> {usethis::ui_path(new_backup)}"
-  # ))
-
-  # invisible(new_backup)
 }
 
 #' @rdname backup_rs_snippets
@@ -339,8 +328,6 @@ install_snippets_from_dir <- function(from_dir = ".",
   type = get_default_snippet_types(), backup = TRUE) {
   if (!fs::dir_exists(from_dir)) {
     usethis::ui_stop("Directory was not found: {usethis::ui_path(from_dir)}  ")
-  # } else {
-  #   usethis::ui_done("Directory exists: {usethis::ui_path(from_dir)}  ")
   }
 
   # FIXME: search for files of certain type only and not all ".snippet" files
@@ -354,30 +341,20 @@ install_snippets_from_dir <- function(from_dir = ".",
     usethis::ui_stop("No files with extension {ext_snippet} were found in the directory.")
   }
 
-
   replacement <- get_path_to_snippet_file(dir = from_dir, type = type)
 
   if (!file.exists(replacement)) {
     stop("The replacement file was not found: \n", fs::path_abs(replacement))
   }
 
-  original <- get_path_to_rs_snippet_file(type = type)
 
   # Create a back-up copy
-  backup_rs_snippets(type = original)
-  # if (backup && file.exists(original)) {
-  #   backup_name <-
-  #     paste0(original, "--backup-", format(Sys.time(), "%Y-%m-%d-%H%M%S"))
-  #
-  #   if (file.copy(from = original, to = backup_name)) {
-  #     usethis::ui_done("Back-up was created:  {usethis::ui_path(backup_name)}")
-  #
-  #   } else {
-  #     usethis::ui_oops("Back-up was not created: {usethis::ui_path(original)}")
-  #   }
-  # }
+  if (backup) {
+    backup_rs_snippets(type = type)
+  }
 
   # Copy/Overwrite the file
+  original <- get_path_to_rs_snippet_file(type = type)
   create_rs_snippets_dir()
   is_copied <- file.copy(from = replacement, to = original, overwrite = TRUE)
   if (is_copied) {
