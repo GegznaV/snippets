@@ -43,11 +43,12 @@ create_snippets_backup_dir <- function(type) {
 
 #' @rdname backup_rs_snippets
 #' @export
-list_snippet_file_backups <- function(type) {
+list_snippet_file_backups <- function(type = get_default_snippet_types()) {
   # TODO: check this function
   backup_dir <- create_snippets_backup_dir()
-  type <- match_snippet_type(type)
-  fs::dir_ls(backup_dir, regexp = stringr::str_glue("/{type}.*?[.]snippets$"))
+  type <- match_snippet_type(type, several.ok = TRUE)
+  types <- paste(type, collapse = "|")
+  fs::dir_ls(backup_dir, regexp = stringr::str_glue("/({types}).*?[.]snippets$"))
 }
 
 #' @rdname backup_rs_snippets
