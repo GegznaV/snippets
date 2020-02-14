@@ -44,12 +44,18 @@ create_snippets_backup_dir <- function(type) {
 #' @rdname backup_rs_snippets
 #' @export
 list_snippet_file_backups <- function(type = get_default_snippet_types()) {
-  # TODO: check this function
   backup_dir <- create_snippets_backup_dir()
-  type <- match_snippet_type(type, several.ok = TRUE)
-  types <- paste(type, collapse = "|")
-  fs::dir_ls(backup_dir, regexp = stringr::str_glue("/({types}).*?[.]snippets$"))
+  fs::dir_ls(backup_dir, regexp = get_snippets_backup_file_pattern(type))
 }
+
+#' @rdname backup_rs_snippets
+#' @export
+get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
+  type <- match_snippet_type(type, several.ok = several.ok)
+  types <- paste(type, collapse = "|")
+  stringr::str_glue("/({types}).+?[.]snippets$")
+}
+
 
 #' @rdname backup_rs_snippets
 #'
@@ -59,7 +65,7 @@ list_snippet_file_backups <- function(type = get_default_snippet_types()) {
 #'        backed up.
 #'
 #' @export
-# filename <- "r.snippets--backup-2019-10-31-01430"
+# filename <- "r--backup-2019-10-31-01430.snippets"
 restore_snippets_from_backup <- function(filename, backup = TRUE) {
   # FIXME: use new version of backing up and restoring
   withr::with_dir(
