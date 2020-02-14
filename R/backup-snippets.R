@@ -1,0 +1,124 @@
+#' RStudio snippet file back-up
+#'
+#' - `backup_rs_snippets()` creates a back-up of snippets file
+#' - `list_snippet_file_backups()` lists the names of current file with snippets
+#'    and its back-ups.
+#' - `restore_snippets_from_backup()` restores a back-up file.
+#' - `remove_snippet_backup_duplicates()` removes duplicated backup files.
+#'
+#' @inheritParams match_snippet_type
+#' @export
+#'
+#' @examples
+#' if (FALSE) {
+#'
+#' backup_rs_snippets("r")
+#' backup_rs_snippets("markdown")
+#'
+#'
+#' list_snippet_file_backups("r")
+#'
+#'
+#' # USe name of an existing back-up file
+#' restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
+#'
+#' }
+
+# @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
+backup_rs_snippets <- function(type) {
+  create_rs_snippets_dir()
+
+  file_name <- get_path_to_rs_snippet_file(type = type)
+  create_backup_copy(file_name, "snippets", stringr::str_glue("{type}.snippets"))
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+create_snippets_backup_dir <- function(type) {
+  # TODO: check this function
+  backup_dir <- get_path_backup_dir("snippets")
+  fs::dir_create(backup_dir)
+  invisible(backup_dir)
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+list_snippet_file_backups <- function(type) {
+  # TODO: check this function
+  backup_dir <- create_snippets_backup_dir()
+  type <- match_snippet_type(type)
+  fs::dir_ls(backup_dir, regexp = stringr::str_glue("/{type}.*?[.]snippets$"))
+}
+
+#' @rdname backup_rs_snippets
+#'
+#' @param filename (character) The name of snippets back-up file.
+#'         E.g., `"r.snippets--backup-2019-10-31-01430"`.
+#' @param backup (logical) If `TRUE`, current file with snippets will be
+#'        backed up.
+#'
+#' @export
+# filename <- "r.snippets--backup-2019-10-31-01430"
+restore_snippets_from_backup <- function(filename, backup = TRUE) {
+  # FIXME: use new version of backing up and restoring
+  withr::with_dir(
+    get_rs_snippets_dir(),
+    {
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      filename     <- fs::path_file(filename)
+      filename_str <- usethis::ui_path(filename)
+
+      if (file.exists(filename)) {
+        usethis::ui_done("Back-up file was found: {filename_str}")
+
+      } else {
+        usethis::ui_stop("Back-up file {filename_str} does not exist.")
+      }
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      type <- stringr::str_extract(filename, ".*?(?=.snippets)")
+      type <- match_snippet_type(type)
+
+      usethis::ui_info("Snippets' type: {usethis::ui_field(type)}")
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      tobe_replaced     <- make_snippet_filename(type = type)
+      tobe_replaced_str <- usethis::ui_path(tobe_replaced)
+
+      if (isTRUE(backup)) {
+        backup_rs_snippets(type = type)
+
+      } else {
+        usethis::ui_oops("Current file was not backed up: {tobe_replaced_str}")
+      }
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      if (file.copy(filename, tobe_replaced, overwrite = TRUE)) {
+        usethis::ui_done(stringr::str_c(
+          "Snippets were restored from the back-up file:\n",
+          "   {filename_str} -> {tobe_replaced_str}.")
+        )
+
+      } else {
+        usethis::ui_oops("Failure to restore snippets from the back-up file {filename_str}.")
+      }
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    })
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+remove_snippet_backup_duplicates <- function() {
+  # FIXME: use new version of backing up and restoring
+
+  # files <- list_snippet_file_backups(type = type)
+  files <- fs::dir_ls(get_path_backup_dir("snippets"), type = "file")
+  dups  <- duplicated(tools::md5sum(files))
+  if (any(dups)) {
+    rem   <- files[dups]
+    usethis::ui_done("Removed as duplicate(s) {usethis::ui_path(rem)}.")
+    fs::file_delete(rem)
+
+  } else {
+    usethis::ui_done("No back-up duplicates were found.")
+  }
+
+}
