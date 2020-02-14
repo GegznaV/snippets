@@ -125,7 +125,8 @@ open_rs_snippets_dir <- function() {
 #'
 #' @return (character) Path to file.
 #' @export
-get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(), create = FALSE) {
+get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(),
+  create = FALSE) {
 
   path <- fs::path(dir, make_snippet_filename(type = type))
 
@@ -138,7 +139,9 @@ get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(), cr
 
 #' @rdname get_path_to_snippet_file
 #' @export
-get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(), create = FALSE) {
+get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
+  create = FALSE) {
+
   get_path_to_snippet_file(dir = get_rs_snippets_dir(), type = type, create = create)
 }
 
