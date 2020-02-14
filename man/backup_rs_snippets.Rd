@@ -2,12 +2,15 @@
 % Please edit documentation in R/code.R
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
+\alias{create_snippets_backup_dir}
 \alias{list_snippet_file_backups}
 \alias{restore_snippets_from_backup}
 \alias{remove_snippet_backup_duplicates}
 \title{RStudio snippet file back-up}
 \usage{
 backup_rs_snippets(type)
+
+create_snippets_backup_dir(type)
 
 list_snippet_file_backups(type)
 
@@ -27,9 +30,6 @@ E.g., \code{"r.snippets--backup-2019-10-31-01430"}.}
 
 \item{backup}{(logical) If \code{TRUE}, current file with snippets will be
 backed up.}
-}
-\value{
-Invisibly returns the name of back-up copy. See \code{\link[fs:file_copy]{fs::file_copy()}}.
 }
 \description{
 \itemize{
