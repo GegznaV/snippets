@@ -201,7 +201,8 @@ install_snippets_from_package <- function(package = "snippets",
 install_snippets_from_dir <- function(from_dir = ".",
   type = get_default_snippet_types(), backup = TRUE) {
   if (!fs::dir_exists(from_dir)) {
-    usethis::ui_stop("Directory was not found: {usethis::ui_path(from_dir)}  ")
+    usethis::ui_oops("Directory was not found: {usethis::ui_path(from_dir)}  ")
+    usethis::ui_stop("Please, select directory that exists.")
   }
 
   # FIXME: search for files of certain type only and not all ".snippet" files
