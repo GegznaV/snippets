@@ -2,6 +2,7 @@
 
 export(backup_rs_snippets)
 export(create_rs_snippets_dir)
+export(create_snippets_backup_dir)
 export(edit_rstudio_snippets)
 export(get_default_snippet_types)
 export(get_path_to_rs_snippet_file)
