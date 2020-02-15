@@ -543,9 +543,9 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 #
 # update_snippets_in_snippets("r")
 # update_snippets_in_snippets("markdown")
-
-# install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
-# install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
+#
+# # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
+# # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
 
 merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
   rm = NULL) {
@@ -573,7 +573,7 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
 }
 
 # ==========================================================================~~
-# Internal function to update (coppy) snippets of package "snippets"
+# Internal function to update (copy) snippets of package "snippets"
 # into directorry accessible by users of the package.
 update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
   type <- match_snippet_type(type)
