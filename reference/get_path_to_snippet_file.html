@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -112,10 +112,15 @@
     <pre class="usage"><span class='fu'>get_path_to_snippet_file</span>(
   <span class='no'>dir</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(),
-  <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
 
-<span class='fu'>get_path_to_rs_snippet_file</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(), <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>get_path_to_rs_snippet_file</span>(
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(),
+  <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,6 +141,11 @@ The default is <code>"r"</code>.</p></td>
       <th>create</th>
       <td><p>(logical) If <code>TRUE</code>, as a side effect, the file is created
 (if it does not exist).</p></td>
+    </tr>
+    <tr>
+      <th>several.ok</th>
+      <td><p>(logical) Specify if <code>type</code> should be allowed to have more
+than one element. Default is <code>FALSE</code>.</p></td>
     </tr>
     </table>
 

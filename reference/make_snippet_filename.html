@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
     <p>Make a filename for certain type of snippets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_snippet_filename</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>())</pre>
+    <pre class="usage"><span class='fu'>make_snippet_filename</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(), <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -122,6 +122,11 @@ One of <code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"c
 May be unambiguously truncated.
 The default is <code>"r"</code>.</p></td>
     </tr>
+    <tr>
+      <th>several.ok</th>
+      <td><p>(logical) Specify if <code>type</code> should be allowed to have more
+than one element. Default is <code>FALSE</code>.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -131,6 +136,8 @@ The default is <code>"r"</code>.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>make_snippet_filename</span>()</div><div class='output co'>#&gt; r.snippets</div><div class='input'>
 <span class='fu'>make_snippet_filename</span>(<span class='st'>"markdown"</span>)</div><div class='output co'>#&gt; markdown.snippets</div><div class='input'>
+<span class='fu'>make_snippet_filename</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"r"</span>, <span class='st'>"markdown"</span>), <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; r.snippets
+#&gt; markdown.snippets</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
