@@ -71,8 +71,11 @@ match_snippet_type <- function(type = get_default_snippet_types(),
 #'
 #' make_snippet_filename("markdown")
 #'
-make_snippet_filename <- function(type = get_default_snippet_types()) {
-  type <- match_snippet_type(type)
+#' make_snippet_filename(c("r", "markdown"), several.ok = TRUE)
+#'
+make_snippet_filename <- function(type = get_default_snippet_types(),
+  several.ok = FALSE) {
+  type <- match_snippet_type(type, several.ok = several.ok)
   stringr::str_glue("{type}.snippets")
 }
 
@@ -126,23 +129,30 @@ open_rs_snippets_dir <- function() {
 #' @return (character) Path to file.
 #' @export
 get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(),
-  create = FALSE) {
+  create = FALSE, several.ok = FALSE) {
 
-  path <- fs::path(dir, make_snippet_filename(type = type))
+  paths <-
+    fs::path(dir, make_snippet_filename(type = type, several.ok = several.ok))
 
-  if (isTRUE(create) && !file.exists(path)) {
-    fs::dir_create(fs::path_dir(path))
-    fs::file_create(path)
+  if (isTRUE(create)) {
+    for (path_i in paths) {
+      if (!file.exists(path_i)) {
+        fs::dir_create(fs::path_dir(path_i))
+        fs::file_create(path_i)
+      }
+    }
   }
-  path
+
+  paths
 }
 
 #' @rdname get_path_to_snippet_file
 #' @export
 get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
-  create = FALSE) {
+  create = FALSE, several.ok = FALSE) {
 
-  get_path_to_snippet_file(dir = get_rs_snippets_dir(), type = type, create = create)
+  get_path_to_snippet_file(dir = get_rs_snippets_dir(), type = type,
+    create = create, several.ok = several.ok)
 }
 
 
@@ -197,31 +207,30 @@ install_snippets_from_package <- function(package = "snippets",
 
 #' @rdname install-snippets
 #' @export
-# TODO: Adapt the function to accept several values of "type".
 install_snippets_from_dir <- function(from_dir = ".",
   type = get_default_snippet_types(), backup = TRUE) {
+
+  from_dir <- fs::path(from_dir)
   if (!fs::dir_exists(from_dir)) {
     usethis::ui_oops("Directory was not found: {usethis::ui_path(from_dir)}  ")
     usethis::ui_stop("Please, select directory that exists.")
   }
 
-  # FIXME: search for files of certain type only and not all ".snippet" files
-  ext_snippet <- usethis::ui_path(".snippet")
-  n_snippet_files <- length(dir(from_dir, pattern = ".snippets$"))
+  type <- match_snippet_type(type, several.ok = TRUE)
 
-  if (n_snippet_files > 0) {
-    usethis::ui_done("Directory contains {n_snippet_files} file(s) with extension {ext_snippet}. ")
+  replacement <-
+    get_path_to_snippet_file(dir = from_dir, type = type, several.ok = TRUE)
 
-  } else {
-    usethis::ui_stop("No files with extension {ext_snippet} were found in the directory.")
+  f_exists <- fs::file_exists(replacement)
+
+  if (any(!f_exists)) {
+    f_missing <- crayon::red(fs::path_file(replacement[f_exists]))
+
+    usethis::ui_stop(paste0(
+      "In directory {usethis::ui_path(from_dir)},\n",
+      "these files with new snippets are not present: {paste(f_missing, collapse = ', ')}.  "
+    ))
   }
-
-  replacement <- get_path_to_snippet_file(dir = from_dir, type = type)
-
-  if (!file.exists(replacement)) {
-    stop("The replacement file was not found: \n", fs::path_abs(replacement))
-  }
-
 
   # Create a back-up copy
   if (backup) {
@@ -229,15 +238,27 @@ install_snippets_from_dir <- function(from_dir = ".",
   }
 
   # Copy/Overwrite the file
-  original <- get_path_to_rs_snippet_file(type = type)
+  original <- get_path_to_rs_snippet_file(type = type, several.ok = TRUE)
   create_rs_snippets_dir()
-  is_copied <- file.copy(from = replacement, to = original, overwrite = TRUE)
-  if (is_copied) {
-    usethis::ui_done("Snippets were updated: {usethis::ui_path(original)}")
-    usethis::ui_info('To use the updated snippets, {usethis::ui_field("RStudio")} must be restarted (closed and reopened).')
 
-  } else {
-    usethis::ui_info("No snippets were changed in {usethis::ui_path(original)}")
+  status_updated <- FALSE
+  for (i in seq_along(original)) {
+    is_copied <- file.copy(from = replacement[i], to = original[i], overwrite = TRUE)
+    orig_path <- usethis::ui_path(original[i])
+
+    if (is_copied) {
+      usethis::ui_done("File with {crayon::green(type[i])} snippets was updated: {orig_path}")
+      status_updated <- TRUE
+    } else {
+      usethis::ui_info("File with {crayon::red(type[i])} snippets was not changed: {orig_path}")
+    }
+  }
+
+  if (status_updated) {
+    cat("\n")
+    usethis::ui_info(
+      'To use the updated snippets, {usethis::ui_field("RStudio")} must be restarted (closed and reopened).'
+    )
   }
 }
 
@@ -511,21 +532,20 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 # @examples
 #
 # snippets_dir <- "snippets/"
-#
+# #
 # merge_snippets(type = "r",        in_dir = snippets_dir)
 # merge_snippets(type = "markdown", in_dir = snippets_dir)
 #
-# install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
-# install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
+# install_snippets_from_dir(type = c("r", "markdown"), from_dir = snippets_dir)
 # #
 # merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
 # merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
 #
 # update_snippets_in_snippets("r")
 # update_snippets_in_snippets("markdown")
-#
-# # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
-# # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
+
+# install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
+# install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
 
 merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
   rm = NULL) {
