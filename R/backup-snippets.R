@@ -27,9 +27,16 @@
 # @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
 backup_rs_snippets <- function(type) {
   create_rs_snippets_dir()
+  type <- match_snippet_type(type, several.ok = TRUE)
+  file_name <- get_path_to_rs_snippet_file(type = type, several.ok = TRUE)
 
-  file_name <- get_path_to_rs_snippet_file(type = type)
-  create_backup_copy(file_name, "snippets", stringr::str_glue("{type}.snippets"))
+  for (i in seq_along(file_name)) {
+    create_backup_copy(
+      file_name[i],
+      "snippets",
+      stringr::str_glue("{type[i]}.snippets")
+    )
+  }
 }
 
 #' @rdname backup_rs_snippets
@@ -53,7 +60,7 @@ list_snippet_file_backups <- function(type = get_default_snippet_types()) {
 get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
   type <- match_snippet_type(type, several.ok = several.ok)
   types <- paste(type, collapse = "|")
-  stringr::str_glue("/({types}).+?[.]snippets$")
+  stringr::str_glue("/({types})[^/]+?[.]snippets$")
 }
 
 
