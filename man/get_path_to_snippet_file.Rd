@@ -8,10 +8,15 @@
 get_path_to_snippet_file(
   dir,
   type = get_default_snippet_types(),
-  create = FALSE
+  create = FALSE,
+  several.ok = FALSE
 )
 
-get_path_to_rs_snippet_file(type = get_default_snippet_types(), create = FALSE)
+get_path_to_rs_snippet_file(
+  type = get_default_snippet_types(),
+  create = FALSE,
+  several.ok = FALSE
+)
 }
 \arguments{
 \item{dir}{(string) Directory name.}
@@ -24,6 +29,9 @@ The default is \code{"r"}.}
 
 \item{create}{(logical) If \code{TRUE}, as a side effect, the file is created
 (if it does not exist).}
+
+\item{several.ok}{(logical) Specify if \code{type} should be allowed to have more
+than one element. Default is \code{FALSE}.}
 }
 \value{
 (character) Path to file.

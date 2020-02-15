@@ -4,7 +4,7 @@
 \alias{make_snippet_filename}
 \title{Make a filename for snippets}
 \usage{
-make_snippet_filename(type = get_default_snippet_types())
+make_snippet_filename(type = get_default_snippet_types(), several.ok = FALSE)
 }
 \arguments{
 \item{type}{A character vector of candidate values.
@@ -12,6 +12,9 @@ One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"
 \code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
 The default is \code{"r"}.}
+
+\item{several.ok}{(logical) Specify if \code{type} should be allowed to have more
+than one element. Default is \code{FALSE}.}
 }
 \value{
 String with a filename.
@@ -23,5 +26,7 @@ Make a filename for certain type of snippets.
 make_snippet_filename()
 
 make_snippet_filename("markdown")
+
+make_snippet_filename(c("r", "markdown"), several.ok = TRUE)
 
 }

@@ -8,14 +8,14 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.1-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.1.9000-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![Travis build
 status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--01--29-yellowgreen.svg)]()
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--02--15-yellowgreen.svg)]()
 <!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 <!-- badges: end -->
 
@@ -43,8 +43,7 @@ remotes::install_github("GegznaV/snippets")
 
 ``` r
 # Replace current R and Markdown snippets with those in package "snippets"
-snippets::install_snippets_from_package("snippets", type = "r",        backup = TRUE)
-snippets::install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
+snippets::install_snippets_from_package("snippets", type = c("r", "markdown"), backup = TRUE)
 ```
 
 ### More Examples
@@ -64,20 +63,14 @@ open_rs_snippets_dir()
 ```
 
 ``` r
-# Replace your R snippets with those in package "snippets"
-install_snippets_from_package("snippets", type = "r", backup = TRUE)
-list_snippet_file_backups(type = "r")
+# Replace your R and Markdown snippets with those in package "snippets"
+install_snippets_from_package("snippets", type = c("r", "markdown"), backup = TRUE)
+list_snippet_file_backups()
 ```
 
 ``` r
 # View and edit file with snippets of certain type: r
 edit_rstudio_snippets(type = "r")
-```
-
-``` r
-# Replace your Markdown snippets with those in package "snippets"
-install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
-list_snippet_file_backups(type = "markdown")
 ```
 
 ``` r
@@ -105,31 +98,31 @@ list_snippet_file_backups(type = "r")
 remove_snippet_backup_duplicates()
 ```
 
-### Revert to a Certain Version of Back-up
+<!-- 
 
-1.  List all back-up files and select the one of interest.
+### Revert to a Certain Version of Back-up 
+
+1. List all back-up files and select the one of interest.
     
-    ``` r
+    ```r
     list_snippet_file_backups(type = "r")
     ```
-    
-    ``` r
+    ```r
     #> c:/.R/snippets/r.snippets
     #> c:/.R/snippets/r.snippets--backup-2019-11-12-033948
     #> c:/.R/snippets/r.snippets--backup-2019-10-31-015042
     ```
-
-2.  Restore the back-up of interest, e.g.:
+2. Restore the back-up of interest, e.g.:
     
-    ``` r
+    ```r
     restore_snippets_from_backup("r.snippets--backup-2019-10-31-015042")
     ```
-    
-    ``` r
+    ```r
     #> v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'
     #> i Snippets' type: r
-    #> v Current 'r.snippets' file was backed up: 
+    #> v Current 'r.snippets' file was backed up:
     #>   'r.snippets' -> 'r.snippets--backup-2020-01-05-012602'
     #> v Snippets were restored from the back-up file:
     #>   'r.snippets--backup-2019-10-31-015042' -> 'r.snippets'.
     ```
+-->
