@@ -8,7 +8,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.1.9000-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.2-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![Travis build
 status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
 [![AppVeyor build
