@@ -17,6 +17,7 @@ Roxygen: list(markdown = TRUE)
 URL: https://gegznav.github.io/snippets/
 BugReports: https://github.com/GegznaV/snippets/issues
 Imports:
+  crayon,
   dplyr,
   fs,
   magrittr,
