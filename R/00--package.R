@@ -8,5 +8,6 @@
 #' Package \pkg{snippets} also contains RStudio snippets.
 #'
 #' @importFrom magrittr "%>%"
+#' @import backup.tools
 
 NULL
