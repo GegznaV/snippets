@@ -256,9 +256,11 @@ install_snippets_from_dir <- function(from_dir = ".",
 
   if (status_updated) {
     cat("\n")
-    usethis::ui_info(
-      'To use the updated snippets, {usethis::ui_field("RStudio")} must be restarted (closed and reopened).'
-    )
+    usethis::ui_info(paste0(
+      'You will be able to use the snippets after ',
+      '{usethis::ui_field("RStudio")} is ',
+      '{crayon::underline("closed and reopened")}.'
+    ))
   }
 }
 
