@@ -70,18 +70,42 @@ snippet exm
 	${0}
 	```
 
+snippet youtube-css
+	/* YouTube video ----------------------------------------------------------- */
+
+	.iframe-container{
+	  position: relative;
+	  width: 100%;
+	  padding-bottom: 56.25%;
+	  height: 0;
+	}
+	.iframe-container iframe{
+	  position: absolute;
+	  top:0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	/* ------------------------------------------------------------------------- */
+
+
 snippet youtube
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 	<br>
 	<center>
 	<!-- video -->
+	<div class="iframe-container">
 	<iframe width="640" height="360"
-	src="https://www.youtube.com/embed/${1:youtube-code-of-vieo}?rel=0"
-	frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+	src="https://www.youtube${1:-nocookie}.com/embed/${2:youtube-code-of-vieo}?rel=0"
+	frameborder="0"
+	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+	allowfullscreen>
 	</iframe>
+	</div>
 	</center>
-	```{corollary, ${2:video-ID}}
-	${3:video-caption}
+	```{corollary, ${3:video-ID}}
+	${4:video-caption}
 	```
 	<br>
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
