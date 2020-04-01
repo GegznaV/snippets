@@ -77,6 +77,7 @@ snippet help-bookdown
 	exr
 	fig
 	youtube
+	youtube-css
 
 	<!-- Insert captions -->
 	cap
@@ -126,7 +127,8 @@ snippet exm
 	```
 
 snippet youtube-css
-	/* YouTube video ----------------------------------------------------------- */
+	<style>
+	/* Make resizeable YouTube video ------------------------------------------- */
 
 	.iframe-container{
 	  position: relative;
@@ -143,21 +145,17 @@ snippet youtube-css
 	}
 
 	/* ------------------------------------------------------------------------- */
-
+	</style>
 
 snippet youtube
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 	<br>
 	<center>
 	<!-- video -->
-	<div class="iframe-container">
-	<iframe width="640" height="360"
+	<div class="iframe-container">	<iframe width="640" height="360"
 	src="https://www.youtube${1:-nocookie}.com/embed/${2:youtube-code-of-vieo}?rel=0"
-	frameborder="0"
 	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-	allowfullscreen>
-	</iframe>
-	</div>
+	frameborder="0" allowfullscreen> </iframe> 	</div>
 	</center>
 	```{corollary, ${3:video-ID}}
 	${4:video-caption}
