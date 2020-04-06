@@ -2,12 +2,19 @@
 
 language: r
 cache: packages
+os: linux
+dist: xenial
+
 after_success:
   - Rscript -e 'covr::codecov()'
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-deploy:
-  provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github()'
-  cleanup: true
-  edge: true
+jobs:
+  include:
+  - r: release
+#    before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+    before_cache: Rscript -e 'remotes::install_github("r-lib/pkddown")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github()'
+      skip_cleanup: true
+  - r: devel
