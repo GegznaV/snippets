@@ -13,19 +13,23 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Package `snippets`
+
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
-[![GitHub version](https://img.shields.io/badge/GitHub-v`r packageVersion("snippets")`-brightgreen.svg)](https://github.com/GegznaV/snippets)
-[![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)]()
-<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 <!-- badges: end -->
 
+<!-- [![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets) -->
+<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets) -->
+<!-- [![GitHub version](https://img.shields.io/badge/GitHub-v`r packageVersion("snippets")`-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
+<!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)]() -->
+<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
+<center>`r Sys.Date()`</center>
 
+# Package `snippets`
+
+<!-- (`r packageVersion("snippets")`) -->
 ## Installation
 
 <!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: -->

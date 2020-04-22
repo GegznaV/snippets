@@ -1,23 +1,33 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Package `snippets`
-
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
-[![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.3-brightgreen.svg)](https://github.com/GegznaV/snippets)
-[![Travis build
-status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--02--21-yellowgreen.svg)]()
-<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 <!-- badges: end -->
+
+<!-- [![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets) -->
+
+<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets) -->
+
+<!-- [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.3.9000-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
+
+<!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--04--22-yellowgreen.svg)]() -->
+
+<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
+
+<center>
+
+2020-04-22
+
+</center>
+
+# Package `snippets`
+
+<!-- (0.0.3.9000) -->
 
 ## Installation
 
