@@ -7,6 +7,8 @@
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build
+status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
 <!-- badges: end -->
 
 <!-- [![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets) -->
