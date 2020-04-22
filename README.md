@@ -5,27 +5,17 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
-
-<!-- [![Travis build status](https://travis-ci.com/GegznaV/snippets.svg?branch=master)](https://travis-ci.com/GegznaV/snippets) -->
-
-<!-- [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/GegznaV/snippets?branch=master&svg=true)](https://ci.appveyor.com/project/GegznaV/snippets) -->
 
 <!-- [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.3.9000-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
 
 <!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--04--22-yellowgreen.svg)]() -->
 
 <!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
-
-<center>
-
-2020-04-22
-
-</center>
 
 # Package `snippets`
 
@@ -138,3 +128,9 @@ remove_snippet_backup_duplicates()
     #>   'r.snippets--backup-2019-10-31-015042' -> 'r.snippets'.
     ```
 -->
+
+<div style="text-align:right;">
+
+2020-04-22
+
+</div>
