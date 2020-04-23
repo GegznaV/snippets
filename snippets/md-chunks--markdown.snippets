@@ -77,6 +77,7 @@ snippet setup
 	# library(vcd)           # Analysis of categorical data.
 	# library(fitdistrplus)  # Fit parametric distributions.
 	# library(mlr)           # Machine learning in R.
+	# library(mlr3)          # Machine learning in R (new generation)
 	# library(factoextra)    # Extract and visualize the results of multivariate data analyses.
 	# library(userfriendlyscience) # Statistical analysis.
 
@@ -96,11 +97,11 @@ snippet setup
 	# Sys.setlocale(locale = "${3:Lithuanian}")
 	theme_set(theme_bw()) # Default ggplot2 theme
 
-	options(
+	options(        # For more detais see ?options
 	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
-		digits = 7,
-		OutDec = ".",
-		knitr.kable.NA = NA,
+		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
+		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
+		knitr.kable.NA = NA, # Replacement for NA values in knitr::kable()
 	)
 
 	conflict_prefer("filter", "dplyr")
