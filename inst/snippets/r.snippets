@@ -262,6 +262,17 @@ snippet opts-desctools
 	Fmt(num = Fmt("num", big.mark = "")) # Real numbers
 	Fmt(num = Fmt("num", digits = 3))    # Real numbers
 	Fmt(per = Fmt("per", digits = 1))    # Percentages
+# FIXME: this part (options) must be carefully reviewed
+# Options --------------------------------------------------------------------
+snippet help-lib
+	lib
+	lib-tidyverse
+
+snippet lib-tidyverse
+	library(conflicted)
+	library(magrittr)
+	library(tidyverse)
+	${0}
 snippet help-desc
 	${0}# Snippets for quick descriptive statistics
 	# NOTE: Packages tidyverse, summarytools, and DescTools must be loaded!!!
