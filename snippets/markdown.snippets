@@ -307,7 +307,7 @@ snippet setup
 	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
 		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
 		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
-		knitr.kable.NA = NA, # Replacement for NA values in knitr::kable()
+		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
 	)
 
 	conflict_prefer("filter", "dplyr")
@@ -362,6 +362,385 @@ snippet nbsp
 
 snippet font
 	<font color = "${1:red}">${0}</font>
+# Symbols --------------------------------------------------------------------
+
+#  U\+(.*?)$      → "\u\1"
+#  ^. "(.*?)"     → \t`r "\1"`
+#  snippet sub(.) → snippet \1-sub
+
+#  U\+(....)\t(.)\t.*\tGreek Capital Letter (.*?)\t.*$
+#  # \3 (\2)\nsnippet \3\n\t`r "\u\1"`\n
+
+#  U\+(....)\t(.)\t.*\tGreek Small Letter (.*?)\t.*$
+#  # \3 (\2)\nsnippet \3\n\t`r "\u\1"`\n
+
+
+# Mathematical symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+snippet pm
+	`r "\u00B1"`
+
+snippet times
+	`r "\u00D7"`
+
+snippet cdot
+	`r "\u00B7"`
+
+snippet permile
+	`r "\u2030"`
+
+snippet deg
+	`r "\u00B0"`
+
+snippet degree
+	`r "\u00B0"`
+
+# Superscript symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+snippet 0-sup
+	`r "\u2070"`
+
+snippet 1-sup
+	`r "\u00B9"`
+
+snippet 2-sup
+	`r "\u00B2"`
+
+snippet sq
+	${1}`r "\u00B2"`${0}
+
+snippet 3-sup
+	`r "\u00B3"`
+
+snippet 4-sup
+	`r "\u2074"`
+
+snippet 5-sup
+	`r "\u2075"`
+
+snippet 6-sup
+	`r "\u2076"`
+
+snippet 7-sup
+	`r "\u2077"`
+
+snippet 8-sup
+	`r "\u2078"`
+
+snippet 9-sup
+	`r "\u2079"`
+
+snippet +-sup
+	`r "\u207A"`
+
+snippet --sup
+	`r "\u207B"`
+
+snippet =-sup
+	`r "\u207C"`
+
+snippet (-sup
+	`r "\u207D"`
+
+snippet )-sup
+	`r "\u207E"`
+
+snippet a-sup
+	`r "\u00AA"`
+
+snippet n-sup
+	`r "\u207F"`
+
+snippet o-sup
+	`r "\u00BA"`
+
+snippet i-sup
+	`r "\u2071"`
+
+
+# Subscript symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+snippet 0-sub
+	`r "\u2080"`
+
+snippet 1-sub
+	`r "\u2081"`
+
+snippet 2-sub
+	`r "\u2082"`
+
+snippet 3-sub
+	`r "\u2083"`
+
+snippet 4-sub
+	`r "\u2084"`
+
+snippet 5-sub
+	`r "\u2085"`
+
+snippet 6-sub
+	`r "\u2086"`
+
+snippet 7-sub
+	`r "\u2087"`
+
+snippet 8-sub
+	`r "\u2088"`
+
+snippet 9-sub
+	`r "\u2089"`
+
+snippet +-sub
+	`r "\u208A"`
+
+snippet --sub
+	`r "\u208B"`
+
+snippet =-sub
+	`r "\u208C"`
+
+snippet (-sub
+	`r "\u208D"`
+
+snippet )-sub
+	`r "\u208E"`
+
+snippet a-sub
+	`r "\u2090"`
+
+snippet e-sub
+	`r "\u2091"`
+
+snippet o-sub
+	`r "\u2092"`
+
+snippet x-sub
+	`r "\u2093"`
+
+snippet i-sub
+	`r "\u1D62"`
+
+snippet j-sub
+	`r "\u2C7C"`
+
+snippet h-sub
+	`r "\u2095"`
+
+snippet sub
+	`r "\u2096"`
+
+snippet l-sub
+	`r "\u2097"`
+
+snippet m-sub
+	`r "\u2098"`
+
+snippet n-sub
+	`r "\u2099"`
+
+snippet p-sub
+	`r "\u209A"`
+
+snippet s-sub
+	`r "\u209B"`
+
+snippet t-sub
+	`r "\u209C"`
+
+# Greek letters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Alpha (Α)
+snippet Alpha
+	`r "\u0391"`
+
+# Beta (Β)
+snippet Beta
+	`r "\u0392"`
+
+# Gamma (Γ)
+snippet Gamma
+	`r "\u0393"`
+
+# Delta (Δ)
+snippet Delta
+	`r "\u0394"`
+
+# Epsilon (Ε)
+snippet Epsilon
+	`r "\u0395"`
+
+# Zeta (Ζ)
+snippet Zeta
+	`r "\u0396"`
+
+# Eta (Η)
+snippet Eta
+	`r "\u0397"`
+
+# Theta (Θ)
+snippet Theta
+	`r "\u0398"`
+
+# Iota (Ι)
+snippet Iota
+	`r "\u0399"`
+
+# Kappa (Κ)
+snippet Kappa
+	`r "\u039A"`
+
+# Lambda (Λ)
+snippet Lambda
+	`r "\u039B"`
+
+# Mu (Μ)
+snippet Mu
+	`r "\u039C"`
+
+# Nu (Ν)
+snippet Nu
+	`r "\u039D"`
+
+# Xi (Ξ)
+snippet Xi
+	`r "\u039E"`
+
+# Omicron (Ο)
+snippet Omicron
+	`r "\u039F"`
+
+# Pi (Π)
+snippet Pi
+	`r "\u03A0"`
+
+# Rho (Ρ)
+snippet Rho
+	`r "\u03A1"`
+
+# Sigma (Σ)
+snippet Sigma
+	`r "\u03A3"`
+
+# Tau (Τ)
+snippet Tau
+	`r "\u03A4"`
+
+# Upsilon (Υ)
+snippet Upsilon
+	`r "\u03A5"`
+
+# Phi (Φ)
+snippet Phi
+	`r "\u03A6"`
+
+# Chi (Χ)
+snippet Chi
+	`r "\u03A7"`
+
+# Psi (Ψ)
+snippet Psi
+	`r "\u03A8"`
+
+# Omega (Ω)
+snippet Omega
+	`r "\u03A9"`
+
+
+# Alpha (α)
+snippet alpha
+	`r "\u03B1"`
+
+# Beta (β)
+snippet beta
+	`r "\u03B2"`
+
+# Gamma (γ)
+snippet gamma
+	`r "\u03B3"`
+
+# Delta (δ)
+snippet delta
+	`r "\u03B4"`
+
+# Epsilon (ε)
+snippet epsilon
+	`r "\u03B5"`
+
+# Zeta (ζ)
+snippet zeta
+	`r "\u03B6"`
+
+# Eta (η)
+snippet eta
+	`r "\u03B7"`
+
+# Theta (θ)
+snippet theta
+	`r "\u03B8"`
+
+# Iota (ι)
+snippet iota
+	`r "\u03B9"`
+
+# Kappa (κ)
+snippet kappa
+	`r "\u03BA"`
+
+# Lambda (λ)
+snippet lambda
+	`r "\u03BB"`
+
+# Mu (μ)
+snippet mu
+	`r "\u03BC"`
+
+# Nu (ν)
+snippet nu
+	`r "\u03BD"`
+
+# Xi (ξ)
+snippet xi
+	`r "\u03BE"`
+
+# Omicron (ο)
+snippet omicron
+	`r "\u03BF"`
+
+# Pi (π)
+snippet pi
+	`r "\u03C0"`
+
+# Rho (ρ)
+snippet rho
+	`r "\u03C1"`
+
+# Final Sigma (ς)
+snippet final-sigma
+	`r "\u03C2"`
+
+# Sigma (σ)
+snippet sigma
+	`r "\u03C3"`
+
+# Tau (τ)
+snippet tau
+	`r "\u03C4"`
+
+# Upsilon (υ)
+snippet upsilon
+	`r "\u03C5"`
+
+# Phi (φ)
+snippet phi
+	`r "\u03C6"`
+
+# Chi (χ)
+snippet chi
+	`r "\u03C7"`
+
+# Psi (ψ)
+snippet psi
+	`r "\u03C8"`
+
+# Omega (ω)
+snippet omega
+	`r "\u03C9"`
 # R Markdown syntax help  -----------------------------------------------------
 snippet help-rmd
 	${0}<!-- START: Markdown and R Markdown snippets -->
