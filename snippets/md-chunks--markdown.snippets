@@ -101,7 +101,7 @@ snippet setup
 	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
 		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
 		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
-		knitr.kable.NA = NA, # Replacement for NA values in knitr::kable()
+		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
 	)
 
 	conflict_prefer("filter", "dplyr")
