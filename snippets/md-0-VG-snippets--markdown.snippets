@@ -76,11 +76,13 @@ snippet setupp
 
 	knitr::opts_chunk\$set(
 	  echo       = FALSE,
+	  eval       = TRUE,
 	  # comment    = "##",
 	  # fig.keep   = "high",
 	  fig.height = 3,
 	  fig.width  = 5,
-	  fig.align  = "center")
+	  fig.align  = "center"
+	)
 
 	Sys.setlocale(locale = "${1:Lithuanian}")
 	options(scipen = 8)
