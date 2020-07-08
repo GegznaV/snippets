@@ -54,7 +54,7 @@ list_snippet_file_backups <- function(type = get_default_snippet_types()) {
 #' @rdname backup_rs_snippets
 #' @export
 path_snippets_backup_dir <- function() {
-  backup.tools::path_backup_dir("snippets")
+  backup.tools::get_path_backup_dir("snippets")
 }
 
 #' @rdname backup_rs_snippets
