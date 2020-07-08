@@ -3,7 +3,7 @@
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
 \alias{list_snippet_file_backups}
-\alias{get_path_snippets_backup_dir}
+\alias{path_snippets_backup_dir}
 \alias{create_snippets_backup_dir}
 \alias{get_snippets_backup_file_pattern}
 \alias{remove_snippet_backup_duplicates}
@@ -13,7 +13,7 @@ backup_rs_snippets(type)
 
 list_snippet_file_backups(type = get_default_snippet_types())
 
-get_path_snippets_backup_dir()
+path_snippets_backup_dir()
 
 create_snippets_backup_dir()
 

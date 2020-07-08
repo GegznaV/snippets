@@ -38,9 +38,9 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #'
 #' @concept snippet files and dirs
 #' @examples
-#' get_path_to_rs_snippets_dir()
+#' path_to_rs_snippets_dir()
 
-get_path_to_rs_snippets_dir <- function() {
+path_to_rs_snippets_dir <- function() {
   # TODO:
   # in RStudio 1.3, the following paths are also available:
   # - on Windiws: fs::path(Sys.getenv("APPDATA"), "RStudio", "snippets")
@@ -65,7 +65,7 @@ get_path_to_rs_snippets_dir <- function() {
 #' }
 
 create_rs_snippets_dir <- function() {
-  fs::dir_create(get_path_to_rs_snippets_dir())
+  fs::dir_create(path_to_rs_snippets_dir())
 }
 
 
@@ -76,15 +76,15 @@ create_rs_snippets_dir <- function() {
 
 open_rs_snippets_dir <- function() {
   create_rs_snippets_dir()
-  browseURL(get_path_to_rs_snippets_dir())
+  browseURL(path_to_rs_snippets_dir())
 }
 
 #' Construct path to file of certain type of snippets.
 #'
 #' Create a string with a path to file of certain type of snippets:
 #'
-#' - `get_path_to_snippets_file()`    in any folder.
-#' - `get_path_to_rs_snippets_file()` in a folder from which RStudio reads
+#' - `path_to_snippets_file()`    in any folder.
+#' - `path_to_rs_snippets_file()` in a folder from which RStudio reads
 #'   snippets.
 #'
 #' @inheritParams match_snippet_type
@@ -98,7 +98,7 @@ open_rs_snippets_dir <- function() {
 #' @concept snippet files and dirs
 #'
 
-get_path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
+path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
   paths <-
@@ -116,12 +116,12 @@ get_path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   paths
 }
 
-#' @rdname get_path_to_snippets_file
+#' @rdname path_to_snippets_file
 #' @export
-get_path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
+path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
-  get_path_to_snippets_file(dir = get_path_to_rs_snippets_dir(), type = type,
+  path_to_snippets_file(dir = path_to_rs_snippets_dir(), type = type,
     create = create, several.ok = several.ok)
 }
 
@@ -140,21 +140,21 @@ get_path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' snippets_file_exists("r")
 #' snippets_file_exists("markdown")
 snippets_file_exists <- function(type) {
-  fs::file_exists(get_path_to_rs_snippets_file(type, create = FALSE))
+  fs::file_exists(path_to_rs_snippets_file(type, create = FALSE))
 }
 
 # ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
 
 #' @noRd
 #' @examples
-#' get_path_to_snippets_files()
+#' path_to_snippets_files()
 get_pkg_snippets_dir <- function(..., package = "snippets") {
   system.file("snippets", ... , package = package)
 }
 
 #' @noRd
 #' @examples
-#' get_path_to_snippets_files()
-get_path_to_snippets_files <- function(package = "snippets") {
+#' path_to_snippets_files()
+path_to_snippets_files <- function(package = "snippets") {
   fs::dir_ls(get_pkg_snippets_dir(package = package), regexp = "[.]snippets$")
 }
