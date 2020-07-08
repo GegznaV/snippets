@@ -199,6 +199,7 @@ snippets_file_exists <- function(type) {
 #' # Check if back-up copies exist:
 #' list_snippet_file_backups(type = "r")
 #' list_snippet_file_backups(type = "markdown")
+#'
 #' }
 install_snippets_from_package <- function(package = "snippets",
   type = get_default_snippet_types(), subdir = "", backup = TRUE) {
