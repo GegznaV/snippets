@@ -47,6 +47,7 @@ reference:
 - title: Other functions
 - contents:
   - lacks_concepts(c("package", "install snippets", "backup snippets"))
+  - reexports
 
 # -------------------------------------------------------------------------
 
