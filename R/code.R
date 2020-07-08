@@ -166,7 +166,7 @@ construct_snippet <- function(.data) {
 #' @noRd
 #
 write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
-  instert_default_if_missing = TRUE, file = get_path_to_rs_snippet_file(type, create = TRUE)) {
+  instert_default_if_missing = TRUE, file = get_path_to_rs_snippets_file(type, create = TRUE)) {
   stop("check if this function works as expected.")
 
   # FIXME: instert_default_if_missing ???

@@ -33,7 +33,7 @@
 backup_rs_snippets <- function(type) {
   create_rs_snippets_dir()
   type <- match_snippet_type(type, several.ok = TRUE)
-  file_name <- get_path_to_rs_snippet_file(type = type, several.ok = TRUE)
+  file_name <- get_path_to_rs_snippets_file(type = type, several.ok = TRUE)
 
   for (i in seq_along(file_name)) {
     backup.tools::create_backup_copy(

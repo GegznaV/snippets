@@ -70,7 +70,7 @@ install_snippets_from_dir <- function(from_dir = ".",
   }
 
   # Copy/Overwrite the file
-  original <- get_path_to_rs_snippet_file(type = type, several.ok = TRUE)
+  original <- get_path_to_rs_snippets_file(type = type, several.ok = TRUE)
   create_rs_snippets_dir()
 
   status_updated <- FALSE

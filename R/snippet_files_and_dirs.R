@@ -84,7 +84,7 @@ open_rs_snippets_dir <- function() {
 #'  Construct path to file of certain type snippets:
 #'
 #' - `get_path_to_snippets_file()`    in any folder
-#' - `get_path_to_rs_snippet_file()` in RS snippets folder
+#' - `get_path_to_rs_snippets_file()` in RS snippets folder
 #'
 #' @inheritParams match_snippet_type
 #'
@@ -116,7 +116,7 @@ get_path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
 
 #' @rdname get_path_to_snippets_file
 #' @export
-get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
+get_path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
   get_path_to_snippets_file(dir = get_path_to_rs_snippets_dir(), type = type,
@@ -138,7 +138,7 @@ get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
 #' snippets_file_exists("r")
 #' snippets_file_exists("markdown")
 snippets_file_exists <- function(type) {
-  fs::file_exists(get_path_to_rs_snippet_file(type, create = FALSE))
+  fs::file_exists(get_path_to_rs_snippets_file(type, create = FALSE))
 }
 
 # ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------

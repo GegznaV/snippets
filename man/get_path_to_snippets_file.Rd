@@ -2,7 +2,7 @@
 % Please edit documentation in R/snippet_files_and_dirs.R
 \name{get_path_to_snippets_file}
 \alias{get_path_to_snippets_file}
-\alias{get_path_to_rs_snippet_file}
+\alias{get_path_to_rs_snippets_file}
 \title{Construct path to file of certain type snippets.}
 \usage{
 get_path_to_snippets_file(
@@ -12,7 +12,7 @@ get_path_to_snippets_file(
   several.ok = FALSE
 )
 
-get_path_to_rs_snippet_file(
+get_path_to_rs_snippets_file(
   type = get_default_snippet_types(),
   create = FALSE,
   several.ok = FALSE
@@ -45,7 +45,7 @@ Construct path to file of certain type snippets:
 \details{
 \itemize{
 \item \code{get_path_to_snippets_file()}    in any folder
-\item \code{get_path_to_rs_snippet_file()} in RS snippets folder
+\item \code{get_path_to_rs_snippets_file()} in RS snippets folder
 }
 }
 \concept{snippet files and dirs}
