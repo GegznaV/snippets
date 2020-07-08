@@ -8,3 +8,5 @@ data-raw/_tmp.Rmd
 texput.log
 _TODO
 data-raw/_TODO.Rmd
+.github/depends.Rds
+.github/R-version
