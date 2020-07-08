@@ -41,12 +41,20 @@ reference:
 - title: Install snippets
 - contents:
   - has_concept("install snippets")
-- title: Back-up snippets
+- title: Back-up and restore snippets
 - contents:
   - has_concept("backup snippets")
+- title: Snippet files and directories
+- contents:
+  - has_concept("snippet files and dirs")
 - title: Other functions
 - contents:
-  - lacks_concepts(c("package", "install snippets", "backup snippets"))
+  - lacks_concepts(c(
+        "package",
+        "install snippets",
+        "backup snippets",
+        "snippet files and dirs"
+    ))
   - reexports
 
 # -------------------------------------------------------------------------

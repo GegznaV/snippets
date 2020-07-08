@@ -8,8 +8,8 @@ match_snippet_type(type = get_default_snippet_types(), several.ok = FALSE)
 }
 \arguments{
 \item{type}{(character)
-A character vector of candidate values.
-One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"}, \code{"java"},
+A character vector of snippet types. Currently allowed values are
+\code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"}, \code{"java"},
 \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
 Defaults to \code{"r"}.}

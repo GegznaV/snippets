@@ -37,8 +37,8 @@ get_default_snippet_types <- function() {
 #' Return correct snippet type.
 #'
 #' @param type (character)
-#'        A character vector of candidate values.
-#'        One of `"r"`, `"markdown"`, `"c_cpp"`, `"css"`, `"html"`, `"java"`,
+#'        A character vector of snippet types. Currently allowed values are
+#'        `"r"`, `"markdown"`, `"c_cpp"`, `"css"`, `"html"`, `"java"`,
 #'         `"javascript"`, `"python"`, `"sql"`, `"stan`", `"tex"`.
 #'        May be unambiguously truncated.
 #'        Defaults to `"r"`.
