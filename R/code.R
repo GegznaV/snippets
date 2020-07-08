@@ -40,8 +40,8 @@
 get_snippet_name <- function(str) {
   # Vector with snippet names
   str %>%
-    stringr::str_subset("snippet ") %>%
-    stringr::str_extract("(?<=snippet )(.*)")
+    stringr::str_subset("^snippet ") %>%
+    stringr::str_extract("(?<=^snippet )(.*)")
 }
 
 
