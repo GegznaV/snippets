@@ -11,15 +11,15 @@ status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](ht
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-<!-- [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.3.9000-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
+<!-- [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.4.9000-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
 
-<!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--04--22-yellowgreen.svg)]() -->
+<!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--07--08-yellowgreen.svg)]() -->
 
 <!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 
 # Package `snippets`
 
-<!-- (0.0.3.9000) -->
+<!-- (0.0.4.9000) -->
 
 ## Installation
 
@@ -131,6 +131,6 @@ remove_snippet_backup_duplicates()
 
 <div style="text-align:right;">
 
-2020-04-22
+2020-07-08
 
 </div>
