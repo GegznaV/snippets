@@ -89,7 +89,7 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
   # FIXME: use new version of backing up and restoring
 
   withr::with_dir(
-    get_rs_snippets_dir(),
+    get_path_to_rs_snippets_dir(),
     {
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       filename     <- fs::path_file(filename)

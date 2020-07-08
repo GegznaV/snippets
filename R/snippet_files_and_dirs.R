@@ -38,9 +38,9 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #'
 #' @concept snippet files and dirs
 #' @examples
-#' get_rs_snippets_dir()
+#' get_path_to_rs_snippets_dir()
 
-get_rs_snippets_dir <- function() {
+get_path_to_rs_snippets_dir <- function() {
   # TODO:
   # in RStudio 1.3, the following paths are also available:
   # - on Windiws: fs::path(Sys.getenv("APPDATA"), "RStudio", "snippets")
@@ -65,7 +65,7 @@ get_rs_snippets_dir <- function() {
 #' }
 
 create_rs_snippets_dir <- function() {
-  fs::dir_create(get_rs_snippets_dir())
+  fs::dir_create(get_path_to_rs_snippets_dir())
 }
 
 
@@ -76,7 +76,7 @@ create_rs_snippets_dir <- function() {
 
 open_rs_snippets_dir <- function() {
   create_rs_snippets_dir()
-  browseURL(get_rs_snippets_dir())
+  browseURL(get_path_to_rs_snippets_dir())
 }
 
 #' Construct path to file of certain type snippets.
@@ -119,7 +119,7 @@ get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(),
 get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
-  get_path_to_snippet_file(dir = get_rs_snippets_dir(), type = type,
+  get_path_to_snippet_file(dir = get_path_to_rs_snippets_dir(), type = type,
     create = create, several.ok = several.ok)
 }
 
