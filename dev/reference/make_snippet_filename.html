@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Make a filename for snippets. — make_snippet_filename" />
-<meta property="og:description" content="Make a filename for certain type of snippets." />
+<meta property="og:description" content="Make a filename that is appropriate for certain type of RStudio snippets." />
 
 
 <meta name="robots" content="noindex">
@@ -126,12 +126,12 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make a filename for snippets.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/code.R'><code>R/code.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippet_files_and_dirs.R'><code>R/snippet_files_and_dirs.R</code></a></small>
     <div class="hidden name"><code>make_snippet_filename.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Make a filename for certain type of snippets.</p>
+    <p>Make a filename that is appropriate for certain type of RStudio snippets.</p>
     </div>
 
     <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/snippets/man/make_snippet_filename.html'>make_snippet_filename</a></span>(type = <span class='fu'><a href='https://rdrr.io/pkg/snippets/man/get_default_snippet_types.html'>get_default_snippet_types</a></span>(), several.ok = <span class='fl'>FALSE</span>)</pre>
@@ -141,16 +141,19 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>type</th>
-      <td><p>A character vector of candidate values.
-One of <code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"css"</code>, <code>"html"</code>,
-<code>"java"</code>, <code>"javascript"</code>, <code>"python"</code>, <code>"sql"</code>, <code>"stan</code>", <code>"tex"</code>.
+      <td><p>(character)
+A character vector of snippet types. Currently allowed values are
+<code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"css"</code>, <code>"html"</code>, <code>"java"</code>,
+<code>"javascript"</code>, <code>"python"</code>, <code>"sql"</code>, <code>"stan</code>", <code>"tex"</code>.
 May be unambiguously truncated.
-The default is <code>"r"</code>.</p></td>
+Defaults to <code>"r"</code>.</p></td>
     </tr>
     <tr>
       <th>several.ok</th>
-      <td><p>(logical) Specify if <code>type</code> should be allowed to have more
-than one element. Default is <code>FALSE</code>.</p></td>
+      <td><p>(logical)
+Specify if <code>type</code> should be allowed to have more than one element.
+Defaults to <code>FALSE</code>.
+See also <code><a href='https://rdrr.io/r/base/match.arg.html'>base::match.arg()</a></code></p></td>
     </tr>
     </table>
 
@@ -159,10 +162,11 @@ than one element. Default is <code>FALSE</code>.</p></td>
     <p>String with a filename.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/snippets/man/make_snippet_filename.html'>make_snippet_filename</a></span>()</div><div class='output co'>#&gt; r.snippets</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># By default, filename for R snippets is created.</span>
+<span class='fu'><a href='https://rdrr.io/pkg/snippets/man/make_snippet_filename.html'>make_snippet_filename</a></span>()</div><div class='output co'>#&gt; r.snippets</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/pkg/snippets/man/make_snippet_filename.html'>make_snippet_filename</a></span>(<span class='st'>"markdown"</span>)</div><div class='output co'>#&gt; markdown.snippets</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/pkg/snippets/man/make_snippet_filename.html'>make_snippet_filename</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"r"</span>, <span class='st'>"markdown"</span>), several.ok = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; r.snippets
-#&gt; markdown.snippets</div><div class='input'></div></pre>
+#&gt; markdown.snippets</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
