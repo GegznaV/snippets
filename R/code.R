@@ -59,44 +59,83 @@ read_snippet_names <- function(file) {
 }
 
 
-#' Read snippets to tibble.
+#' Read snippets into data frame.
 #'
-#' @param file
+#' @param input (character)
+#'        Either a file name or a character vector with with a snippet.
 #'
 #' @return
+#' @export
 #'
-#' @noRd
-# @export
+#' @examples
+#'
+#' library(tidyverse)
+#' library(snippets)
+#'
+#' file <- system.file("test/html.snippets", package = "snippets")
+#' read_snippets(file)
+#'
+#' file2 <- path_to_snippets_files_of_pkg("snippets")[1]
+#' read_snippets(file2)
+#'
+#'
+#' text <- (
+#' '
+#' snippet space
+#' 	&${1:nbsp};${0}
+#'
+#' snippet nbsp
+#' 	&${1:nbsp};${0}
+#' ')
+#'
+#' read_snippets(text)
+read_snippets <- function(input) {
 
-read_snippets <- function(file) {
-  as_text <- readr::read_lines(file)
+  as_text <- readr::read_lines(input)
 
-  # Vector with snippet names
-  snippet_name <- get_snippet_name(as_text)
+  tibble::tibble(
+    snippet = as_text # %>% stringr::str_trunc(20)
+    ,
+    keyword = as_text %>% stringr::str_detect("^\\w+? ") %>% ifelse("keyword", ""),
+    comment = as_text %>% stringr::str_detect("^#")      %>% ifelse("comment", ""),
+    body    = as_text %>% stringr::str_detect("^\t")     %>% ifelse("body",    ""),
+    empty   = as_text %>% stringr::str_detect("^$")      %>% ifelse("empty",   "")
+  ) %>%
+    tidyr::unite("contents", keyword:empty, sep = "") %>%
+    dplyr::mutate(line_type =
+        dplyr::case_when(
+          contents %in% c("comment", "keyword") ~ "meta",
+          contents == "empty"                   ~ NA_character_,
+          TRUE                                  ~ contents)
+    ) %>%
+    tidyr::fill(line_type, .direction = "downup") %>%
+    dplyr::mutate(
+      snippet_beggins =
+        line_type == "meta" & dplyr::lag(line_type, default = "body") == "body",
+      no = cumsum(snippet_beggins)
+    ) %>%
+    dplyr::group_by(no) %>%
+    tidyr::nest() %>%
+    dplyr::mutate(
+      name  = purrr::map_chr(data, ~ get_snippet_name(.$snippet))
+      , snippet = purrr::map(data, ~ structure(.$snippet, class = "glue"))
+      # , full  = purrr::map_chr(data, ~ stringr::str_c(.$snippet, collapse = "\n"))
+      , body  = purrr::map_chr(data,
+        ~ stringr::str_c(.$snippet[.$line_type == "body"], collapse = "\n")
+      )
+      # , body  = purrr::map_chr(data, ~ stringr::str_c(
+      #   stringr::str_remove(.$snippet[.$line_type == "body"], "^\t"), collapse = "\n")
+      # )
+      # , meta  = purrr::map_chr(data, ~ stringr::str_c(
+      #   stringr::str_remove(.$snippet[.$line_type == "meta"], "^\t"), collapse = "\n")
+      # )
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(name, no, snippet, dplyr::everything())
 
-  # Vector with snippet bodies
-  snippet_body <-
-    as_text %>%
-    stringr::str_c(collapse = "\n") %>%
-    stringr::str_split("snippet .*?(\r)?\n") %>% # Split at each snippet
-    .[[1]] %>%
-    .[-1]
-
-  # %>%
-  #   stringr::str_replace("(?<!\n)$", "\n")       # ensure ending with a new line
-
-  # snippet_body <-
-  # file %>%
-  # readr::read_file() %>%
-  # stringr::str_split("snippet .*?(\r)?\n") %>%    # Split at each snippet
-  #   .[[1]] %>%
-  #   .[-1] %>%
-  #   stringr::str_replace("(?<!\n)$", "\n") %>%       # ensure ending with a new line
-  #   stringr::str_replace_all("[\t\r\n]+$", "\n") %>% # FIXME: paskirties nepamenu
-  #   stringr::str_replace_all("\r\n", "\n")           # different line endings
-
-  tibble::tibble(name = snippet_name, body = snippet_body)
 }
+
+
 
 #' Find conflicting snippets.
 #'
