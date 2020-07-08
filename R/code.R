@@ -1,5 +1,7 @@
-
-
+# ======================================================================== ~~~~
+# Snippet types ---------------------------------------------------------- ====
+# ======================================================================== ~~~~
+#
 #' Get default snippet types.
 #'
 #' @return Character vector with possible snippet type values.
@@ -7,26 +9,28 @@
 #'
 #' @examples
 #' get_default_snippet_types()
+
+# default_snippets_rs_1.2.5001 <-
+# c(
+#   "r.snippets",
+#   "markdown.snippets",
+#   "c_cpp.snippets",
+#   "css.snippets",
+#   "html.snippets",
+#   "java.snippets",
+#   "javascript.snippets",
+#   "python.snippets",
+#   "sql.snippets",
+#   "stan.snippets",
+#   "tex.snippets"
+# ) %>%
+#   stringr::str_extract(".*(?=\\.snippets)")
+
 get_default_snippet_types <- function() {
-
-  # default_snippets_rs_1.2.5001 <-
-  # c(
-  #   "r.snippets",
-  #   "markdown.snippets",
-  #   "c_cpp.snippets",
-  #   "css.snippets",
-  #   "html.snippets",
-  #   "java.snippets",
-  #   "javascript.snippets",
-  #   "python.snippets",
-  #   "sql.snippets",
-  #   "stan.snippets",
-  #   "tex.snippets"
-  # ) %>%
-  #   stringr::str_extract(".*(?=\\.snippets)")
-  c("r", "markdown", "c_cpp", "css", "html", "java", "javascript",
-    "python", "sql", "stan", "tex")
-
+  c(
+    "r", "markdown", "c_cpp", "css", "html", "java", "javascript", "python",
+    "sql", "stan", "tex"
+  )
 }
 
 #' Return correct snippet type.
@@ -57,6 +61,10 @@ match_snippet_type <- function(type = get_default_snippet_types(),
   match.arg(type, several.ok = several.ok)
 }
 
+# ======================================================================== ~~~~
+# Snippet directories and files ------------------------------------------ ====
+# ======================================================================== ~~~~
+
 #' Make a filename for snippets.
 #'
 #' Make a filename for certain type of snippets.
@@ -78,8 +86,6 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
   type <- match_snippet_type(type, several.ok = several.ok)
   stringr::str_glue("{type}.snippets")
 }
-
-# Snippet directories and files ========================================= ====
 
 #' Get path to directory for RStudio snippets.
 #'
@@ -341,9 +347,11 @@ get_path_to_snippets_files <- function(package = "snippets") {
 }
 
 
+# ======================================================================== ~~~~
+# Manage snippets -------------------------------------------------------- ====
+# ======================================================================== ~~~~
 
-# Manage snippets ====================================================== =====
-# Add snippets ============================================================= ~
+# Add snippets    ======================================================== ~~~~
 # Considerations:
 #    1) Create file, if it does not exist
 #    2) Rename old snippets
