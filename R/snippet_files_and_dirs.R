@@ -83,7 +83,7 @@ open_rs_snippets_dir <- function() {
 #'
 #'  Construct path to file of certain type snippets:
 #'
-#' - `get_path_to_snippet_file()`    in any folder
+#' - `get_path_to_snippets_file()`    in any folder
 #' - `get_path_to_rs_snippet_file()` in RS snippets folder
 #'
 #' @inheritParams match_snippet_type
@@ -96,7 +96,7 @@ open_rs_snippets_dir <- function() {
 #' @export
 #' @concept snippet files and dirs
 
-get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(),
+get_path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
   paths <-
@@ -114,12 +114,12 @@ get_path_to_snippet_file <- function(dir, type = get_default_snippet_types(),
   paths
 }
 
-#' @rdname get_path_to_snippet_file
+#' @rdname get_path_to_snippets_file
 #' @export
 get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
-  get_path_to_snippet_file(dir = get_path_to_rs_snippets_dir(), type = type,
+  get_path_to_snippets_file(dir = get_path_to_rs_snippets_dir(), type = type,
     create = create, several.ok = several.ok)
 }
 

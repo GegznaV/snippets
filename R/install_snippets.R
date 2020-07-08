@@ -51,7 +51,7 @@ install_snippets_from_dir <- function(from_dir = ".",
   type <- match_snippet_type(type, several.ok = TRUE)
 
   replacement <-
-    get_path_to_snippet_file(dir = from_dir, type = type, several.ok = TRUE)
+    get_path_to_snippets_file(dir = from_dir, type = type, several.ok = TRUE)
 
   f_exists <- fs::file_exists(replacement)
 
