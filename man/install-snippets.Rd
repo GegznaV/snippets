@@ -47,6 +47,7 @@ install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 # Check if back-up copies exist:
 list_snippet_file_backups(type = "r")
 list_snippet_file_backups(type = "markdown")
+
 }
 }
 \concept{install snippets}
