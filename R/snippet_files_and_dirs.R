@@ -145,6 +145,16 @@ snippets_file_exists <- function(type) {
 
 # ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
 
+#' Get path to directory with snippets in a package.
+#'
+#' Get path to directory with snippets in a package. Defaults to
+#' `{path to package}/inst/snippets`.
+#'
+#' @param package (character) Package name.
+#'
+#' @param ... (character) Path to subdirectory with snippets of interest:
+#'        `{path to package}/inst/snippets/{path of subdirectory provided via ...}`
+#'
 #' @noRd
 #' @examples
 #' path_to_snippets_files()
