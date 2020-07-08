@@ -4,7 +4,7 @@
 
 #' Manage back-up copies of snippets.
 #'
-#' - `backup_rs_snippets()` creates a back-up of snippets file
+#' - `backup_rs_snippets()` creates a back-up of snippets file.
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
 #'    and its back-ups.
 #' - `restore_snippets_from_backup()` restores a back-up file.
@@ -26,7 +26,7 @@
 #' list_snippet_file_backups("r")
 #'
 #'
-#' # USe name of an existing back-up file
+#' # Use name of an existing back-up file
 #' restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 #'
 #' }
