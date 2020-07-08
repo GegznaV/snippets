@@ -351,21 +351,41 @@ get_path_to_snippets_files <- function(package = "snippets") {
 
 
 
-# Read snippet names
+# Extract snippent name from string.
 #
-# @param file
+# Extract snippent name from strings that start with "snippet".
 #
-# @return
+# @param str Vector of strings. Usually the result of `readr::read_lines()`.
+#
+# @return Character vector with snippet names.
 # @export
 #
 # @examples
-read_snippet_names <- function(file) {
-  as_text <- file %>% readr::read_lines()
-
+# text <-
+# readr::read_lines('
+# snippet space
+# 	&${1:nbsp};${0}
+#
+# snippet nbsp
+# 	&${1:nbsp};${0}
+# ')
+#
+# get_snippet_name(text)
+get_snippet_name <- function(str) {
   # Vector with snippet names
-  as_text %>%
+  str %>%
     stringr::str_subset("snippet ") %>%
     stringr::str_extract("(?<=snippet )(.*)")
+}
+
+# Read snippet names
+#
+# @param file Paths to text files with snippets.
+#
+# @return Character vector with snippet names.
+# @export
+read_snippet_names <- function(file) {
+  file %>% readr::read_lines() %>% get_snippet_name()
 }
 
 
@@ -378,13 +398,10 @@ read_snippet_names <- function(file) {
 #
 # @examples
 read_snippets <- function(file) {
-  as_text <- file %>% readr::read_lines()
+  as_text <- readr::read_lines(file)
 
   # Vector with snippet names
-  snippet_name <-
-    as_text %>%
-    stringr::str_subset("snippet ") %>%
-    stringr::str_extract("(?<=snippet )(.*)")
+  snippet_name <- get_snippet_name(as_text)
 
   # Vector with snippet bodies
   snippet_body <-
