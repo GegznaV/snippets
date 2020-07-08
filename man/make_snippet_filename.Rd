@@ -23,7 +23,8 @@ See also \code{\link[base:match.arg]{base::match.arg()}}}
 String with a filename.
 }
 \description{
-Make a filename that is appropriate for certain type of RStudio snippets.
+Create a string with a filename that is appropriate for certain type of
+RStudio snippets.
 }
 \examples{
 # By default, filename for R snippets is created.

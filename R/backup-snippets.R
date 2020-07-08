@@ -22,9 +22,7 @@
 #' backup_rs_snippets("r")
 #' backup_rs_snippets("markdown")
 #'
-#'
 #' list_snippet_file_backups("r")
-#'
 #'
 #' # Use name of an existing back-up file
 #' restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")

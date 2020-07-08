@@ -4,7 +4,8 @@
 
 #' Make a filename for snippets.
 #'
-#' Make a filename that is appropriate for certain type of RStudio snippets.
+#' Create a string with a filename that is appropriate for certain type of
+#' RStudio snippets.
 #'
 #' @inheritParams match_snippet_type
 #'
