@@ -79,22 +79,24 @@ open_rs_snippets_dir <- function() {
   browseURL(get_path_to_rs_snippets_dir())
 }
 
-#' Construct path to file of certain type snippets.
+#' Construct path to file of certain type of snippets.
 #'
-#'  Construct path to file of certain type snippets:
+#' Create a string with a path to file of certain type of snippets:
 #'
-#' - `get_path_to_snippets_file()`    in any folder
-#' - `get_path_to_rs_snippets_file()` in RS snippets folder
+#' - `get_path_to_snippets_file()`    in any folder.
+#' - `get_path_to_rs_snippets_file()` in a folder from which RStudio reads
+#'   snippets.
 #'
 #' @inheritParams match_snippet_type
 #'
 #' @param dir (string) Directory name.
 #' @param create (logical) If `TRUE`, as a side effect, the file is created
-#'        (if it does not exist).
+#'        (if it does not exist). Defaults to `FALSE`.
 #'
 #' @return (character) Path to file.
 #' @export
 #' @concept snippet files and dirs
+#'
 
 get_path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
