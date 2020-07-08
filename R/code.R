@@ -1,5 +1,3 @@
-
-
 # ======================================================================== ~~~~
 # Manage snippets -------------------------------------------------------- ====
 # ======================================================================== ~~~~
@@ -15,26 +13,30 @@
 
 
 
-# Extract snippent name from string.
-#
-# Extract snippent name from strings that start with "snippet".
-#
-# @param str Vector of strings. Usually the result of `readr::read_lines()`.
-#
-# @return Character vector with snippet names.
+#' Extract snippent name from string.
+#'
+#' Extract snippent name from strings that start with "snippet".
+#'
+#' @param str (character)
+#'       Vector of strings. Usually the result of `readr::read_lines()`.
+#'
+#' @return Character vector with snippet names.
+#'
+#' @examples
+#' text <- readr::read_lines(
+#' '
+#' snippet space
+#' 	&${1:nbsp};${0}
+#'
+#' snippet nbsp
+#' 	&${1:nbsp};${0}
+#' ')
+#'
+#' get_snippet_name(text)
+#'
+#' @noRd
 # @export
-#
-# @examples
-# text <-
-# readr::read_lines('
-# snippet space
-# 	&${1:nbsp};${0}
-#
-# snippet nbsp
-# 	&${1:nbsp};${0}
-# ')
-#
-# get_snippet_name(text)
+
 get_snippet_name <- function(str) {
   # Vector with snippet names
   str %>%
@@ -42,25 +44,30 @@ get_snippet_name <- function(str) {
     stringr::str_extract("(?<=snippet )(.*)")
 }
 
-# Read snippet names.
-#
-# @param file Paths to text files with snippets.
-#
-# @return Character vector with snippet names.
+
+#' Read snippet names.
+#'
+#' @param file Paths to text files with snippets.
+#'
+#' @return Character vector with snippet names.
+#'
+#' @noRd
 # @export
+
 read_snippet_names <- function(file) {
   file %>% readr::read_lines() %>% get_snippet_name()
 }
 
 
-# Read snippets to tibble.
-#
-# @param file
-#
-# @return
+#' Read snippets to tibble.
+#'
+#' @param file
+#'
+#' @return
+#'
+#' @noRd
 # @export
-#
-# @examples
+
 read_snippets <- function(file) {
   as_text <- readr::read_lines(file)
 
@@ -91,34 +98,34 @@ read_snippets <- function(file) {
   tibble::tibble(name = snippet_name, body = snippet_body)
 }
 
-# Find conflicting snippets.
-#
-# Show snippets in df_new, that have the same name but different definition (body)
-#
-# @param df_old
-# @param df_new
-#
-# @return
-# @export
-#
-# @examples
-#
-# if (FALSE) {
-#
-# # usethis::edit_rstudio_snippets("markdown")
-# # usethis::edit_rstudio_snippets("r")
-#
-# # library(tidyverse)
-# #
-# # sn_old <- read_snippets(file = fs::path_home_r(".R/snippets/markdown.snippets"))
-# # sn_new <- read_snippets(file = "install/.R/snippets/markdown.snippets")
-# #
-# # find_conflicting_snippets(sn_old, sn_new)
-# # find_conflicting_snippets(sn_old, sn_new) %>% construct_snippet()
-#
-# }
-#
-#
+#' Find conflicting snippets.
+#'
+#' Show snippets in df_new, that have the same name but different definition (body)
+#'
+#' @param df_old ...
+#' @param df_new ...
+#'
+#' @return
+#'
+#' @noRd
+#'
+#' @examples
+#'
+#' if (FALSE) {
+#'
+#' # usethis::edit_rstudio_snippets("markdown")
+#' # usethis::edit_rstudio_snippets("r")
+#'
+#'  library(tidyverse)
+#'
+#'  sn_old <- read_snippets(file = fs::path_home_r(".R/snippets/markdown.snippets"))
+#'  sn_new <- read_snippets(file = "snippets/markdown.snippets")
+#'
+#'  find_conflicting_snippets(sn_old, sn_new)
+#'  find_conflicting_snippets(sn_old, sn_new) %>% construct_snippet()
+#'
+#' }
+#'
 find_conflicting_snippets <- function(df_old, df_new) {
   from_df_new <- dplyr::semi_join(df_new, df_old, by = "name")
   from_df_old <- dplyr::semi_join(df_old, df_new, by = "name")
@@ -130,30 +137,33 @@ find_conflicting_snippets <- function(df_old, df_new) {
     dplyr::arrange(name, dplyr::desc(file))
 }
 
-# Construct a string for snippets from data frame of snippets.
-#
-# @param .data
-#
-# @return
-# @export
-#
-# @examples
+#' Construct a string for snippets from data frame of snippets.
+#'
+#' @param .data
+#'
+#' @return
+#'
+#' @noRd
 construct_snippet <- function(.data) {
   stringr::str_glue_data(.data, "snippet {name}\n{body}")
 }
 # =========================================================================== ~
-# Write snippet to file.
-#
-# @param snippets Data frame with columns `name` (for snippet names) and `body`
-#        for definitions of snippets.
-# @param type (character) Type of snippets file (r, markdown, etc.)
-# @param in_conflict_keep (character) "original", "new", "both".
-# @param instert_default_if_missing (logical) Insert file with the default
-#        snippets, if file with snippets is missing.
-# @param file (character) File name to write snippets to. If present, `type`
-#        is ignored.
-#
-# @export
+#' Write snippet to file.
+#'
+#' @param snippets
+#'        Data frame with columns `name` (for snippet names) and `body` for
+#'        definitions of snippets.
+#' @param type (character)
+#'        Type of snippets file (r, markdown, etc.)
+#' @param in_conflict_keep (character)
+#'        One of "original", "new", "both".
+#' @param instert_default_if_missing (logical)
+#'        Insert file with the default snippets, if file with snippets is
+#'        missing.
+#' @param file (character)
+#'        File name to write snippets to. If present, `type` is ignored.
+#'
+#' @noRd
 #
 write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
   instert_default_if_missing = TRUE, file = get_path_to_rs_snippet_file(type, create = TRUE)) {
@@ -201,34 +211,35 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 }
 
 
-# Merge files with RStudio snippets.
-#
-# Merge files that end in "--{type}.snippets" into file named "{type}.snippets"
-#
-# @param type
-# @param in_dir
-# @param rm regexp for files to remove
-#
-# @return
-# @export
-#
-# @examples
-#
-# snippets_dir <- "snippets/"
-# #
-# merge_snippets(type = "r",        in_dir = snippets_dir)
-# merge_snippets(type = "markdown", in_dir = snippets_dir)
-#
-# install_snippets_from_dir(type = c("r", "markdown"), from_dir = snippets_dir)
-# #
-# merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
-# merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
-#
-# update_snippets_in_snippets("r")
-# update_snippets_in_snippets("markdown")
-#
-# # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
-# # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
+#' Merge files with RStudio snippets.
+#'
+#' Merge files that end in "--{type}.snippets" into file named "{type}.snippets"
+#'
+#' @inheritParams match_snippet_type
+#' @param in_dir Path of directory.
+#' @param rm regexp for files to remove.
+#'
+#' @noRd
+#'
+#' @return
+#'
+#' @examples
+#'
+#' snippets_dir <- "snippets/"
+#' #
+#' merge_snippets(type = "r",        in_dir = snippets_dir)
+#' merge_snippets(type = "markdown", in_dir = snippets_dir)
+#'
+#' install_snippets_from_dir(type = c("r", "markdown"), from_dir = snippets_dir)
+#' #
+#' merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
+#' merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
+#'
+#' update_snippets_in_snippets("r")
+#' update_snippets_in_snippets("markdown")
+#'
+#' # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
+#' # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
 
 merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
   rm = NULL) {
@@ -256,8 +267,12 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
 }
 
 # ==========================================================================~~
-# Internal function to update (copy) snippets of package "snippets"
-# into directorry accessible by users of the package.
+#' Update snippets in package \pkg{snippets}.
+#'
+#' Internal function to update (copy) snippets of package \pkg{snippets}
+#' into directorry accessible by users of the package.
+#'
+#' @noRd
 update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
   type <- match_snippet_type(type)
   base <- stringr::str_glue("{type}.snippets")
@@ -274,8 +289,8 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 #' Functions creates one file for one type of snippets and coppies it to the
 #' direcctory accessible by the users of the package.
 #'
-#' @param type ...
-#' @param snippets_dir ...
+#' @inheritParams match_snippet_type
+#' @param snippets_dir Path to directory.
 #'
 #' @keywords internal
 #' @noRd
