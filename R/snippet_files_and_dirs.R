@@ -4,7 +4,7 @@
 
 #' Make a filename for snippets.
 #'
-#' Make a filename for certain type of RStudio snippets.
+#' Make a filename that is appropriate for certain type of RStudio snippets.
 #'
 #' @inheritParams match_snippet_type
 #'
@@ -13,6 +13,7 @@
 #'
 #' @concept snippet files and dirs
 #' @examples
+#' # By default, filename for R snippets is created.
 #' make_snippet_filename()
 #'
 #' make_snippet_filename("markdown")
@@ -24,6 +25,7 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
   type <- match_snippet_type(type, several.ok = several.ok)
   stringr::str_glue("{type}.snippets")
 }
+
 
 #' Get path to directory for RStudio snippets.
 #'
@@ -37,6 +39,7 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 get_rs_snippets_dir <- function() {
   fs::path_expand_r("~/.R/snippets/")
 }
+
 
 #' Create directory for RStudio snippets.
 #'

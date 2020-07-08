@@ -2,35 +2,41 @@
 % Please edit documentation in R/backup-snippets.R
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
-\alias{create_snippets_backup_dir}
 \alias{list_snippet_file_backups}
+\alias{get_path_snippets_backup_dir}
+\alias{create_snippets_backup_dir}
 \alias{get_snippets_backup_file_pattern}
 \alias{remove_snippet_backup_duplicates}
 \title{Manage back-up copies of snippets.}
 \usage{
 backup_rs_snippets(type)
 
-create_snippets_backup_dir(type)
-
 list_snippet_file_backups(type = get_default_snippet_types())
+
+get_path_snippets_backup_dir()
+
+create_snippets_backup_dir()
 
 get_snippets_backup_file_pattern(type, several.ok = TRUE)
 
 remove_snippet_backup_duplicates()
 }
 \arguments{
-\item{type}{A character vector of candidate values.
-One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"},
-\code{"java"}, \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
+\item{type}{(character)
+A character vector of candidate values.
+One of \code{"r"}, \code{"markdown"}, \code{"c_cpp"}, \code{"css"}, \code{"html"}, \code{"java"},
+\code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
-The default is \code{"r"}.}
+Defaults to \code{"r"}.}
 
-\item{several.ok}{(logical) Specify if \code{type} should be allowed to have more
-than one element. Default is \code{FALSE}.}
+\item{several.ok}{(logical)
+Specify if \code{type} should be allowed to have more than one element.
+Defaults to \code{FALSE}.
+See also \code{\link[base:match.arg]{base::match.arg()}}}
 }
 \description{
 \itemize{
-\item \code{backup_rs_snippets()} creates a back-up of snippets file
+\item \code{backup_rs_snippets()} creates a back-up of snippets file.
 \item \code{list_snippet_file_backups()} lists the names of current file with snippets
 and its back-ups.
 \item \code{restore_snippets_from_backup()} restores a back-up file.
@@ -47,7 +53,7 @@ backup_rs_snippets("markdown")
 list_snippet_file_backups("r")
 
 
-# USe name of an existing back-up file
+# Use name of an existing back-up file
 restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 
 }
