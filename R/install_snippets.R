@@ -33,7 +33,7 @@
 install_snippets_from_package <- function(package = "snippets",
   type = get_default_snippet_types(), subdir = "", backup = TRUE) {
 
-  from_dir <- get_pkg_snippets_dir(subdir, package = package)
+  from_dir <- path_to_snippets_dir_of_pkg(package = package, subdir)
   install_snippets_from_dir(type = type, from_dir = from_dir, backup = backup)
 }
 

@@ -148,7 +148,7 @@ snippets_file_exists <- function(type) {
 #' @noRd
 #' @examples
 #' path_to_snippets_files()
-get_pkg_snippets_dir <- function(..., package = "snippets") {
+path_to_snippets_dir_of_pkg <- function(package, ...) {
   system.file("snippets", ... , package = package)
 }
 
@@ -156,5 +156,5 @@ get_pkg_snippets_dir <- function(..., package = "snippets") {
 #' @examples
 #' path_to_snippets_files()
 path_to_snippets_files <- function(package = "snippets") {
-  fs::dir_ls(get_pkg_snippets_dir(package = package), regexp = "[.]snippets$")
+  fs::dir_ls(path_to_snippets_dir_of_pkg(package = package), regexp = "[.]snippets$")
 }
