@@ -64,16 +64,6 @@ fix_snippets_file <- function(file) {
 }
 
 
-get_pkg_snippets_dir <- function(..., package = "snippets") {
-  system.file("snippets", ... , package = package)
-}
-
-# get_path_to_snippets_files()
-get_path_to_snippets_files <- function(package = "snippets") {
-  fs::dir_ls(get_pkg_snippets_dir(package = package), regexp = "[.]snippets$")
-}
-
-
 # ======================================================================== ~~~~
 # Manage snippets -------------------------------------------------------- ====
 # ======================================================================== ~~~~

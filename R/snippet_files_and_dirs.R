@@ -125,3 +125,19 @@ get_path_to_rs_snippet_file <- function(type = get_default_snippet_types(),
 snippets_file_exists <- function(type) {
   fs::file_exists(get_path_to_rs_snippet_file(type, create = FALSE))
 }
+
+# ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
+
+#' @noRd
+#' @examples
+#' get_path_to_snippets_files()
+get_pkg_snippets_dir <- function(..., package = "snippets") {
+  system.file("snippets", ... , package = package)
+}
+
+#' @noRd
+#' @examples
+#' get_path_to_snippets_files()
+get_path_to_snippets_files <- function(package = "snippets") {
+  fs::dir_ls(get_pkg_snippets_dir(package = package), regexp = "[.]snippets$")
+}
