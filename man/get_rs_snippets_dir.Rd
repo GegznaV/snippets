@@ -7,10 +7,11 @@
 get_rs_snippets_dir()
 }
 \value{
-(string) Directory name.
+(string) Path to directory for RStudio snippets.
 }
 \description{
-Get path to directory for RStudio snippets.
+Create a string with a path to directory for RStudio snippets.
+The directory might not exist.
 }
 \examples{
 get_rs_snippets_dir()

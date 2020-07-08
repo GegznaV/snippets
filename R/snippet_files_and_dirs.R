@@ -30,7 +30,10 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 
 #' Get path to directory for RStudio snippets.
 #'
-#' @return (string) Directory name.
+#' Create a string with a path to directory for RStudio snippets.
+#' The directory might not exist.
+#'
+#' @return (string) Path to directory for RStudio snippets.
 #' @export
 #'
 #' @concept snippet files and dirs
@@ -38,6 +41,13 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #' get_rs_snippets_dir()
 
 get_rs_snippets_dir <- function() {
+  # TODO:
+  # in RStudio 1.3, the following paths are also available:
+  # - on Windiws: fs::path(Sys.getenv("APPDATA"), "RStudio", "snippets")
+  #                      AppData/Roaming/RStudio/snippets/
+  # - on the oter OS'es:               ~/.config/snippets/
+  #
+
   fs::path_expand_r("~/.R/snippets/")
 }
 
@@ -57,6 +67,7 @@ get_rs_snippets_dir <- function() {
 create_rs_snippets_dir <- function() {
   fs::dir_create(get_rs_snippets_dir())
 }
+
 
 #' Open directory of RStudio snippets.
 #' @export
