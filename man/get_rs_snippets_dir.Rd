@@ -2,7 +2,7 @@
 % Please edit documentation in R/code.R
 \name{get_rs_snippets_dir}
 \alias{get_rs_snippets_dir}
-\title{Get path to directory for RStudio snippets}
+\title{Get path to directory for RStudio snippets.}
 \usage{
 get_rs_snippets_dir()
 }
@@ -10,7 +10,7 @@ get_rs_snippets_dir()
 (string) Directory name.
 }
 \description{
-Get path to directory for RStudio snippets
+Get path to directory for RStudio snippets.
 }
 \examples{
 get_rs_snippets_dir()

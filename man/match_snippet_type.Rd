@@ -2,7 +2,7 @@
 % Please edit documentation in R/code.R
 \name{match_snippet_type}
 \alias{match_snippet_type}
-\title{Return correct snippet type}
+\title{Return correct snippet type.}
 \usage{
 match_snippet_type(type = get_default_snippet_types(), several.ok = FALSE)
 }
@@ -20,7 +20,7 @@ than one element. Default is \code{FALSE}.}
 (sting) Correct snippet type in lower case. By default returns \code{"r"}.
 }
 \description{
-Return correct snippet type
+Return correct snippet type.
 }
 \examples{
 match_snippet_type()

@@ -3,7 +3,7 @@
 \name{get_path_to_snippet_file}
 \alias{get_path_to_snippet_file}
 \alias{get_path_to_rs_snippet_file}
-\title{Construct path to file of certain type snippets}
+\title{Construct path to file of certain type snippets.}
 \usage{
 get_path_to_snippet_file(
   dir,

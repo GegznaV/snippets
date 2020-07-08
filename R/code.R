@@ -1,6 +1,6 @@
 
 
-#' Get default snippet types
+#' Get default snippet types.
 #'
 #' @return Character vector with possible snippet type values.
 #' @export
@@ -29,7 +29,7 @@ get_default_snippet_types <- function() {
 
 }
 
-#' Return correct snippet type
+#' Return correct snippet type.
 #'
 #' @param type A character vector of candidate values.
 #'             One of `"r"`, `"markdown"`, `"c_cpp"`, `"css"`, `"html"`,
@@ -57,7 +57,7 @@ match_snippet_type <- function(type = get_default_snippet_types(),
   match.arg(type, several.ok = several.ok)
 }
 
-#' Make a filename for snippets
+#' Make a filename for snippets.
 #'
 #' Make a filename for certain type of snippets.
 #'
@@ -81,7 +81,7 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 
 # Snippet directories and files ========================================= ====
 
-#' Get path to directory for RStudio snippets
+#' Get path to directory for RStudio snippets.
 #'
 #' @return (string) Directory name.
 #' @export
@@ -92,7 +92,7 @@ get_rs_snippets_dir <- function() {
   fs::path_expand_r("~/.R/snippets/")
 }
 
-#' Create directory for RStudio snippets
+#' Create directory for RStudio snippets.
 #'
 #' @return Invisibly returns the path to created directory.
 #'         See also [fs::dir_create()].
@@ -105,7 +105,7 @@ create_rs_snippets_dir <- function() {
   fs::dir_create(get_rs_snippets_dir())
 }
 
-#' Open directory of RStudio snippets
+#' Open directory of RStudio snippets.
 #' @export
 #' @importFrom utils browseURL
 open_rs_snippets_dir <- function() {
@@ -113,7 +113,7 @@ open_rs_snippets_dir <- function() {
   browseURL(get_rs_snippets_dir())
 }
 
-#' Construct path to file of certain type snippets
+#' Construct path to file of certain type snippets.
 #'
 #'  Construct path to file of certain type snippets:
 #'
@@ -184,6 +184,8 @@ snippets_file_exists <- function(type) {
 #' @param subdir   (character) The sub-directory with replacement file(s).
 #' @param from_dir (character) The directory with replacement file.
 #' @param backup (logical) Indication if a back-up copy should be created.
+#'
+#' @concept install snippets
 #'
 #' @export
 #'
@@ -265,7 +267,7 @@ install_snippets_from_dir <- function(from_dir = ".",
 }
 
 # @name edit_rstudio_snippets
-# @title Edit file with RStudio snippets
+# @title Edit file with RStudio snippets.
 #
 # @description
 # Open and edit file with RStudio snippets.
@@ -289,7 +291,7 @@ usethis::edit_rstudio_snippets
 
 # ~ ======================================================================= ====
 
-# Fix snippets file
+# Fix snippets file.
 #
 # @param file
 #
@@ -378,7 +380,7 @@ get_snippet_name <- function(str) {
     stringr::str_extract("(?<=snippet )(.*)")
 }
 
-# Read snippet names
+# Read snippet names.
 #
 # @param file Paths to text files with snippets.
 #
@@ -389,7 +391,7 @@ read_snippet_names <- function(file) {
 }
 
 
-# Read snippets to tibble
+# Read snippets to tibble.
 #
 # @param file
 #
@@ -427,7 +429,7 @@ read_snippets <- function(file) {
   tibble::tibble(name = snippet_name, body = snippet_body)
 }
 
-# Find conflicting snippets
+# Find conflicting snippets.
 #
 # Show snippets in df_new, that have the same name but different definition (body)
 #
@@ -466,7 +468,7 @@ find_conflicting_snippets <- function(df_old, df_new) {
     dplyr::arrange(name, dplyr::desc(file))
 }
 
-# Construct a string for snippets from data frame of snippets
+# Construct a string for snippets from data frame of snippets.
 #
 # @param .data
 #
@@ -478,7 +480,7 @@ construct_snippet <- function(.data) {
   stringr::str_glue_data(.data, "snippet {name}\n{body}")
 }
 # =========================================================================== ~
-# Write snippet to a file
+# Write snippet to file.
 #
 # @param snippets Data frame with columns `name` (for snippet names) and `body`
 #        for definitions of snippets.
@@ -537,7 +539,7 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 }
 
 
-# Merge files with RStudio snippets
+# Merge files with RStudio snippets.
 #
 # Merge files that end in "--{type}.snippets" into file named "{type}.snippets"
 #
@@ -605,7 +607,7 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 }
 
 # ==========================================================================~~
-#' Merge and update snippets
+#' Merge and update snippets.
 #'
 #' Functions creates one file for one type of snippets and coppies it to the
 #' direcctory accessible by the users of the package.

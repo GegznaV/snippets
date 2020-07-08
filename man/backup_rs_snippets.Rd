@@ -6,7 +6,7 @@
 \alias{list_snippet_file_backups}
 \alias{get_snippets_backup_file_pattern}
 \alias{remove_snippet_backup_duplicates}
-\title{RStudio snippet file back-up}
+\title{Manage back-up copies of snippets.}
 \usage{
 backup_rs_snippets(type)
 
@@ -52,3 +52,4 @@ restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 
 }
 }
+\concept{backup snippets}

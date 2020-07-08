@@ -2,10 +2,10 @@
 % Please edit documentation in R/code.R
 \name{open_rs_snippets_dir}
 \alias{open_rs_snippets_dir}
-\title{Open directory of RStudio snippets}
+\title{Open directory of RStudio snippets.}
 \usage{
 open_rs_snippets_dir()
 }
 \description{
-Open directory of RStudio snippets
+Open directory of RStudio snippets.
 }

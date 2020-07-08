@@ -49,3 +49,4 @@ list_snippet_file_backups(type = "r")
 list_snippet_file_backups(type = "markdown")
 }
 }
+\concept{install snippets}

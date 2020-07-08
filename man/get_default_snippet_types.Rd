@@ -2,7 +2,7 @@
 % Please edit documentation in R/code.R
 \name{get_default_snippet_types}
 \alias{get_default_snippet_types}
-\title{Get default snippet types}
+\title{Get default snippet types.}
 \usage{
 get_default_snippet_types()
 }
@@ -10,7 +10,7 @@ get_default_snippet_types()
 Character vector with possible snippet type values.
 }
 \description{
-Get default snippet types
+Get default snippet types.
 }
 \examples{
 get_default_snippet_types()

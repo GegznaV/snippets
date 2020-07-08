@@ -1,4 +1,4 @@
-#' RStudio snippet file back-up
+#' Manage back-up copies of snippets.
 #'
 #' - `backup_rs_snippets()` creates a back-up of snippets file
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
@@ -7,6 +7,9 @@
 #' - `remove_snippet_backup_duplicates()` removes duplicated backup files.
 #'
 #' @inheritParams match_snippet_type
+#'
+#' @concept backup snippets
+#'
 #' @export
 #'
 #' @examples

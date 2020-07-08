@@ -2,7 +2,7 @@
 % Please edit documentation in R/code.R
 \name{create_rs_snippets_dir}
 \alias{create_rs_snippets_dir}
-\title{Create directory for RStudio snippets}
+\title{Create directory for RStudio snippets.}
 \usage{
 create_rs_snippets_dir()
 }
@@ -11,7 +11,7 @@ Invisibly returns the path to created directory.
 See also \code{\link[fs:create]{fs::dir_create()}}.
 }
 \description{
-Create directory for RStudio snippets
+Create directory for RStudio snippets.
 }
 \examples{
 if (FALSE) {
