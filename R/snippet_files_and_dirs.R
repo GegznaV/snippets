@@ -143,7 +143,6 @@ snippets_file_exists <- function(type) {
   fs::file_exists(path_to_rs_snippets_file(type, create = FALSE))
 }
 
-# ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
 
 #' Get path to snippets in a package.
 #'
@@ -182,3 +181,6 @@ path_to_snippets_files_of_pkg <- function(package, ...) {
     fs::dir_ls(folder, regexp = "[.]snippets$")
   }
 }
+
+# ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
+
