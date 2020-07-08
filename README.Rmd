@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![R build status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
+[![Updated-on](https://img.shields.io/badge/Updated%20on-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
@@ -138,4 +139,33 @@ remove_snippet_backup_duplicates()
     ```
 -->
 
-<div style="text-align:right;">`r Sys.Date()`</div>
+
+# Additional resources
+
+## More on using and writing RStudio snippets
+
+1. [Code Snippets](https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets)
+   (on RStudio website).
+   All information is relevant to RStudio users.
+2. [R tip: Save time with RStudio code snippets](https://www.youtube.com/watch?v=h_i__VTSurU) 
+   (Case study on YouTube).
+3. [Snippets](https://cloud9-sdk.readme.io/docs/snippets) (on Cloud9 SDK website).
+   Advanced topics on writing snippets.
+   Most sections (but not all) are relevant to RStudio users.
+
+
+## Similar projects
+
+1. Package [**snippr**](https://github.com/dgrtwo/snippr).
+
+
+## More snippets
+
+1. [Snippets](https://github.com/dgrtwo/snippets) by @dgrtwo.
+1. [Snippets](https://github.com/gadenbuie/snippets) by @gadenbuie.
+<!-- 2. [R snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/r.snippets) by @Hellerz -->
+<!-- 3. [markdown snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/markdown.snippets) by @Hellerz -->
+<!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
+<!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
+
+<!-- <div style="text-align:right;">`r Sys.Date()`</div> -->
