@@ -8,7 +8,7 @@
 #' Tools to manage RStudio snippets.
 #' Package \pkg{snippets} also contains RStudio snippets.
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #' @import backup.tools
 
 NULL
