@@ -145,26 +145,40 @@ snippets_file_exists <- function(type) {
 
 # ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
 
-#' Get path to directory with snippets in a package.
+#' Get path to snippets in a package.
 #'
-#' Get path to directory with snippets in a package. Defaults to
-#' `{path to package}/inst/snippets`.
+#' Get path to snippets in a package:
+#'
+#' - `path_to_snippets_dir_of_pkg()` gets path to directory with snippet files
+#'  in a package. Defaults to `{path to package}/inst/snippets`. Returns empty
+#'  string, if the directory does not exist.
+#' - `path_to_snippets_files_of_pkg()` gets paths to all files with snippets
+#'  in a package. If the directory of interest does not exist, `NULL` is
+#'  returned.
 #'
 #' @param package (character) Package name.
 #'
 #' @param ... (character) Path to subdirectory with snippets of interest:
 #'        `{path to package}/inst/snippets/{path of subdirectory provided via ...}`
 #'
-#' @noRd
+#' @export
 #' @examples
-#' path_to_snippets_files()
+#' path_to_snippets_dir_of_pkg("snippets")
 path_to_snippets_dir_of_pkg <- function(package, ...) {
   system.file("snippets", ... , package = package)
 }
 
-#' @noRd
+#' @rdname path_to_snippets_dir_of_pkg
+#' @export
 #' @examples
-#' path_to_snippets_files()
-path_to_snippets_files <- function(package = "snippets") {
-  fs::dir_ls(path_to_snippets_dir_of_pkg(package = package), regexp = "[.]snippets$")
+#'
+#' path_to_snippets_files_of_pkg("snippets")
+path_to_snippets_files_of_pkg <- function(package, ...) {
+  folder <- path_to_snippets_dir_of_pkg(package = package, ...)
+
+  if (folder == "") {
+    return(NULL)
+  } else {
+    fs::dir_ls(folder, regexp = "[.]snippets$")
+  }
 }
