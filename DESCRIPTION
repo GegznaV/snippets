@@ -21,6 +21,7 @@ Remotes:
 Imports:
   backup.tools,
   crayon,
+  diffobj,
   dplyr,
   fs,
   purrr,
