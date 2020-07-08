@@ -38,7 +38,7 @@ backup_rs_snippets <- function(type) {
   file_name <- get_path_to_rs_snippet_file(type = type, several.ok = TRUE)
 
   for (i in seq_along(file_name)) {
-    create_backup_copy(
+    backup.tools::create_backup_copy(
       file_name[i],
       "snippets",
       stringr::str_glue("{type[i]}.snippets")
@@ -48,19 +48,25 @@ backup_rs_snippets <- function(type) {
 
 #' @rdname backup_rs_snippets
 #' @export
-create_snippets_backup_dir <- function(type) {
-  # TODO: check this function
-  backup_dir <- get_path_backup_dir("snippets")
-  fs::dir_create(backup_dir)
-  invisible(backup_dir)
-}
-
-#' @rdname backup_rs_snippets
-#' @export
 list_snippet_file_backups <- function(type = get_default_snippet_types()) {
   backup_dir <- create_snippets_backup_dir()
   fs::dir_ls(backup_dir, regexp = get_snippets_backup_file_pattern(type))
 }
+
+#' @rdname backup_rs_snippets
+#' @export
+get_path_snippets_backup_dir <- function() {
+  backup.tools::get_path_backup_dir("snippets")
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+create_snippets_backup_dir <- function() {
+  backup_dir <- get_path_snippets_backup_dir()
+  fs::dir_create(backup_dir)
+  invisible(backup_dir)
+}
+
 
 #' @rdname backup_rs_snippets
 #' @export
@@ -81,7 +87,9 @@ get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
 # @export
 # filename <- "r--backup-2019-10-31-01430.snippets"
 restore_snippets_from_backup <- function(filename, backup = TRUE) {
+
   # FIXME: use new version of backing up and restoring
+
   withr::with_dir(
     get_rs_snippets_dir(),
     {
@@ -129,7 +137,10 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
 #' @export
 remove_snippet_backup_duplicates <- function() {
   # files <- list_snippet_file_backups(type = type)
-  files <- fs::dir_ls(get_path_backup_dir("snippets"), type = "file")
+  files <-
+    get_path_snippets_backup_dir() %>%
+    fs::dir_ls(type = "file")
+
   dups  <- duplicated(tools::md5sum(files))
 
   if (any(dups)) {
