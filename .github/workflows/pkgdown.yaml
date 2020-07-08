@@ -52,7 +52,7 @@ jobs:
 
       - name: Commit results
         run: |
-          git add -all
+          git add --all
           git commit -m 'Re-build documentation' || echo "No changes to commit"
           git push origin || echo "No changes to commit (documentation)"
 
