@@ -21,11 +21,14 @@ Read snippets into data frame.
 library(tidyverse)
 library(snippets)
 
-file <- system.file("test/html.snippets", package = "snippets")
-read_snippets(file)
+file1 <- system.file("test1/html.snippets", package = "snippets")
+read_snippets(file1)
 
-file2 <- path_to_snippets_files_of_pkg("snippets")[1]
+file2 <- system.file("test2/html.snippets", package = "snippets")
 read_snippets(file2)
+
+file3 <- path_to_snippets_files_of_pkg("snippets")[1]
+read_snippets(file3)
 
 
 text <- (
@@ -38,4 +41,5 @@ snippet nbsp
 ')
 
 read_snippets(text)
+
 }

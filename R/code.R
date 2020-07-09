@@ -72,11 +72,14 @@ read_snippet_names <- function(file) {
 #' library(tidyverse)
 #' library(snippets)
 #'
-#' file <- system.file("test/html.snippets", package = "snippets")
-#' read_snippets(file)
+#' file1 <- system.file("test1/html.snippets", package = "snippets")
+#' read_snippets(file1)
 #'
-#' file2 <- path_to_snippets_files_of_pkg("snippets")[1]
+#' file2 <- system.file("test2/html.snippets", package = "snippets")
 #' read_snippets(file2)
+#'
+#' file3 <- path_to_snippets_files_of_pkg("snippets")[1]
+#' read_snippets(file3)
 #'
 #'
 #' text <- (
@@ -89,6 +92,7 @@ read_snippet_names <- function(file) {
 #' ')
 #'
 #' read_snippets(text)
+#'
 read_snippets <- function(input) {
 
   as_text <- readr::read_lines(input)
