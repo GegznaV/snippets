@@ -64,12 +64,11 @@ read_snippet_names <- function(file) {
 #' @param input (character)
 #'        Either a file name or a character vector with with a snippet.
 #'
-#' @return
+#' @return File/Text with snippets parsed into data frame (`tibble`).
 #' @export
 #'
 #' @examples
 #'
-#' library(tidyverse)
 #' library(snippets)
 #'
 #' file1 <- system.file("test1/html.snippets", package = "snippets")

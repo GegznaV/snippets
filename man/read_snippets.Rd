@@ -11,14 +11,13 @@ read_snippets(input)
 Either a file name or a character vector with with a snippet.}
 }
 \value{
-
+File/Text with snippets parsed into data frame (\code{tibble}).
 }
 \description{
 Read snippets into data frame.
 }
 \examples{
 
-library(tidyverse)
 library(snippets)
 
 file1 <- system.file("test1/html.snippets", package = "snippets")
