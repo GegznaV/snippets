@@ -11,6 +11,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{usethis}{\code{\link[usethis]{edit_rstudio_snippets}}}
+  \item{usethis}{\code{\link[usethis:edit]{edit_rstudio_snippets}}}
 }}
 

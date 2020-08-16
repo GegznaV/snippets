@@ -8,7 +8,7 @@ create_rs_snippets_dir()
 }
 \value{
 Invisibly returns the path to created directory.
-See also \code{\link[fs:dir_create]{fs::dir_create()}}.
+See also \code{\link[fs:create]{fs::dir_create()}}.
 }
 \description{
 Create directory for RStudio snippets
