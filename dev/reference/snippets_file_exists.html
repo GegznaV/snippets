@@ -134,7 +134,7 @@
     <p>Does a file with certain types of snippets exist in RStudio snippets directory?</p>
     </div>
 
-    <pre class="usage"><span class='fu'>snippets_file_exists</span>(<span class='no'>type</span>)</pre>
+    <pre class="usage"><span class='fu'>snippets_file_exists</span>(<span class='no'>type</span>, <span class='kw'>rstudio_version</span> <span class='kw'>=</span> <span class='st'>"auto"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,6 +148,12 @@ A character vector of snippet types. Currently allowed values are
 May be unambiguously truncated.
 Defaults to <code>"r"</code>.</p></td>
     </tr>
+    <tr>
+      <th>rstudio_version</th>
+      <td><p>Numeric version of RStudio (the output is different
+for RStudio &lt; 1.3 and 1.3 ir newer series). If <code>"auto"</code>, the version
+of RStudio will be determined automatically.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -155,7 +161,7 @@ Defaults to <code>"r"</code>.</p></td>
     <p>Returns <code>TRUE</code> if file exists and <code>FALSE</code> otherwise.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>snippets_file_exists</span>(<span class='st'>"r"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: RStudio not running</span></div><div class='input'><span class='fu'>snippets_file_exists</span>(<span class='st'>"markdown"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: RStudio not running</span></div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
