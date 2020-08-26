@@ -3,8 +3,9 @@
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
 \alias{list_snippet_file_backups}
-\alias{path_snippets_backup_dir}
+\alias{path_to_snippets_backup_dir}
 \alias{create_snippets_backup_dir}
+\alias{open_snippets_backup_dir}
 \alias{get_snippets_backup_file_pattern}
 \alias{remove_snippet_backup_duplicates}
 \title{Manage back-up copies of snippets}
@@ -13,9 +14,11 @@ backup_rs_snippets(type)
 
 list_snippet_file_backups(type = get_default_snippet_types())
 
-path_snippets_backup_dir()
+path_to_snippets_backup_dir()
 
 create_snippets_backup_dir()
+
+open_snippets_backup_dir()
 
 get_snippets_backup_file_pattern(type, several.ok = TRUE)
 
@@ -39,7 +42,6 @@ See also \code{\link[base:match.arg]{base::match.arg()}}}
 \item \code{backup_rs_snippets()} creates a back-up of snippets file.
 \item \code{list_snippet_file_backups()} lists the names of current file with snippets
 and its back-ups.
-\item \code{restore_snippets_from_backup()} restores a back-up file.
 \item \code{remove_snippet_backup_duplicates()} removes duplicated backup files.
 }
 }

@@ -14,7 +14,8 @@ Either a file name or a character vector with with a snippet.}
 File/Text with snippets parsed into data frame (\code{tibble}).
 }
 \description{
-Read snippets into data frame
+\lifecycle{experimental}
+Read snippets from file or character vector into data frame
 }
 \examples{
 
