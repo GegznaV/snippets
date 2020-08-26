@@ -1,2 +1,4 @@
 *.html
 *-tmp.yaml
+depends.Rds
+R-version

@@ -300,7 +300,7 @@ snippet setup
 	  fig.align  = "center" # Default alignment for plots in knitted documents.
 	)
 
-	# Sys.setlocale(locale = "${3:Lithuanian}")
+	# Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows") "Lithuanian" else "lt_LT.UTF-8"`}")
 	theme_set(theme_bw()) # Default ggplot2 theme
 
 	options(        # For more detais see ?options

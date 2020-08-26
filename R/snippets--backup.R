@@ -1,12 +1,19 @@
-#' RStudio snippet file back-up
+# ======================================================================== ~~~~
+# Manage snippet back-ups ------------------------------------------------ ====
+# ======================================================================== ~~~~
+
+#' Manage back-up copies of snippets
 #'
-#' - `backup_rs_snippets()` creates a back-up of snippets file
+#' - `backup_rs_snippets()` creates a back-up of snippets file.
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
 #'    and its back-ups.
-#' - `restore_snippets_from_backup()` restores a back-up file.
 #' - `remove_snippet_backup_duplicates()` removes duplicated backup files.
+# - `restore_snippets_from_backup()` restores a back-up file.
 #'
 #' @inheritParams match_snippet_type
+#'
+#' @concept backup snippets
+#'
 #' @export
 #'
 #' @examples
@@ -15,37 +22,26 @@
 #' backup_rs_snippets("r")
 #' backup_rs_snippets("markdown")
 #'
-#'
 #' list_snippet_file_backups("r")
 #'
-#'
-#' # USe name of an existing back-up file
+#' # Use name of an existing back-up file
 #' restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 #'
 #' }
-
 # @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
+
 backup_rs_snippets <- function(type) {
   create_rs_snippets_dir()
   type <- match_snippet_type(type, several.ok = TRUE)
-  file_name <- get_path_to_rs_snippet_file(type = type, several.ok = TRUE)
+  file_name <- path_to_rs_snippets_file(type = type, several.ok = TRUE)
 
   for (i in seq_along(file_name)) {
-    create_backup_copy(
-      file_name[i],
-      "snippets",
-      stringr::str_glue("{type[i]}.snippets")
+    backup.tools::create_backup_copy(
+      file           = file_name[i],
+      backup_subdir  = "snippets",
+      of_what        = stringr::str_glue("{type[i]}.snippets")
     )
   }
-}
-
-#' @rdname backup_rs_snippets
-#' @export
-create_snippets_backup_dir <- function(type) {
-  # TODO: check this function
-  backup_dir <- get_path_backup_dir("snippets")
-  fs::dir_create(backup_dir)
-  invisible(backup_dir)
 }
 
 #' @rdname backup_rs_snippets
@@ -57,12 +53,57 @@ list_snippet_file_backups <- function(type = get_default_snippet_types()) {
 
 #' @rdname backup_rs_snippets
 #' @export
+path_to_snippets_backup_dir <- function() {
+  backup.tools::get_path_backup_dir("snippets")
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+create_snippets_backup_dir <- function() {
+  backup_dir <- path_to_snippets_backup_dir()
+  fs::dir_create(backup_dir)
+  invisible(backup_dir)
+}
+
+#' @rdname backup_rs_snippets
+#' @export
+open_snippets_backup_dir <- function() {
+  browseURL(path_to_snippets_backup_dir())
+}
+
+#' @rdname backup_rs_snippets
+#' @export
 get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
   type <- match_snippet_type(type, several.ok = several.ok)
   types <- paste(type, collapse = "|")
   stringr::str_glue("/({types})[^/]+?[.]snippets$")
 }
 
+#' @rdname backup_rs_snippets
+#' @export
+remove_snippet_backup_duplicates <- function() {
+  # files <- list_snippet_file_backups(type = type)
+  files <-
+    path_to_snippets_backup_dir() %>%
+    fs::dir_ls(type = "file")
+
+  dups <- duplicated(tools::md5sum(files))
+
+  if (any(dups)) {
+    rem <- files[dups]
+    fs::file_delete(rem)
+
+    str <- paste(crayon::blue(rem), collapse = "\n")
+    usethis::ui_done("Removed duplicate(s):\n{str}")
+
+  } else {
+    usethis::ui_done("No back-up duplicates were found.")
+  }
+}
+
+# ======================================================================== ~~~~
+# TODO: implement method to restore snippets ----------------------------- ====
+# ======================================================================== ~~~~
 
 # @rdname backup_rs_snippets
 #
@@ -74,9 +115,11 @@ get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
 # @export
 # filename <- "r--backup-2019-10-31-01430.snippets"
 restore_snippets_from_backup <- function(filename, backup = TRUE) {
+
   # FIXME: use new version of backing up and restoring
+
   withr::with_dir(
-    get_rs_snippets_dir(),
+    path_to_rs_snippets_dir(),
     {
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       filename     <- fs::path_file(filename)
@@ -116,24 +159,4 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
       }
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     })
-}
-
-#' @rdname backup_rs_snippets
-#' @export
-remove_snippet_backup_duplicates <- function() {
-  # files <- list_snippet_file_backups(type = type)
-  files <- fs::dir_ls(get_path_backup_dir("snippets"), type = "file")
-  dups  <- duplicated(tools::md5sum(files))
-
-  if (any(dups)) {
-    rem <- files[dups]
-    fs::file_delete(rem)
-
-    str <- paste(crayon::blue(rem), collapse = "\n")
-    usethis::ui_done("Removed as duplicate(s):\n{str}")
-
-  } else {
-    usethis::ui_done("No back-up duplicates were found.")
-  }
-
 }

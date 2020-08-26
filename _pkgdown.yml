@@ -1,1 +1,72 @@
 destination: docs
+
+# template:
+#   params:
+#     bootswatch: cerulean
+
+# -------------------------------------------------------------------------
+
+authors:
+  Vilmantas Gegzna:
+    href: https://orcid.org/0000-0002-9500-5167
+
+# -------------------------------------------------------------------------
+
+development:
+  mode: auto
+
+# -------------------------------------------------------------------------
+
+navbar:
+  structure:
+    left:  [version, home, intro, articles, tutorials, reference, news]
+    right: [github]
+  components:
+    version:
+      icon: fa-book
+      menu:
+      - text: "Documentation for version of package:"
+      - text: Released
+        href: https://gegznav.github.io/snippets/
+      - text: In-development
+        href: https://gegznav.github.io/snippets/dev/
+
+# -------------------------------------------------------------------------
+
+reference:
+- title: 'Package'
+  # desc: "..."
+- contents:
+  - has_concept("package")
+- title: Install snippets
+- contents:
+  - has_concept("install snippets")
+- title: Back-up and restore snippets
+- contents:
+  - has_concept("backup snippets")
+- title: Snippet files and directories
+- contents:
+  - has_concept("snippet files and dirs")
+- title: Other functions
+- contents:
+  - lacks_concepts(c(
+        "package",
+        "install snippets",
+        "backup snippets",
+        "snippet files and dirs"
+    ))
+  - reexports
+
+# -------------------------------------------------------------------------
+
+figures:
+  dev: grDevices::png
+  dpi: 96
+  dev.args: []
+  fig.ext: png
+  fig.width: 4.854
+  fig.height: 3
+  fig.retina: 2
+  fig.asp: 1.618
+
+# -------------------------------------------------------------------------

@@ -1,0 +1,124 @@
+on:
+  push:
+    branches:
+      - master
+
+name: "Publish package (drat)"
+
+jobs:
+  Publish-package:
+    runs-on: ${{ matrix.config.os }}
+
+    name: "drat: ${{ matrix.config.os }} (R-${{ matrix.config.r }})"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: windows-latest, r: 'release'}
+          - {os: windows-latest, r: 'oldrel'}
+          - {os: macOS-latest,   r: 'release'}
+          - {os: macOS-latest,   r: 'oldrel'}
+          # - {os: windows-latest, r: 'devel'}
+          # - {os: macOS-latest,   r: 'devel'}
+
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      SOURCE_REPO: ${{ github.repository }}
+      DEST_REPO:   mokymai/download
+      TMP_DIR:     tmp_dir
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        if: runner.os != 'Windows'
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key:  ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install dependencies
+        shell: Rscript {0}
+        run: |
+          remotes::install_cran(c("roxygen2", "devtools", "drat"))
+          remotes::install_deps(dependencies = TRUE)
+
+      - name: Roxygenize
+        shell: Rscript {0}
+        run:   roxygen2::roxygenize()
+
+      - name: Build source package
+        if: runner.os == 'Windows' && matrix.config.r == 'release'
+        shell: Rscript {0}
+        run: |
+          dir.create("check", showWarnings = FALSE)
+          devtools::build(path = "check")
+
+      - name: Build binary package
+        if: runner.os != 'Linux'
+        shell: Rscript {0}
+        run: |
+            dir.create("check", showWarnings = FALSE)
+            devtools::build(path = "check", binary = TRUE)
+
+# The steps to include the built package in ${DEST_REPO}
+      - name: Configure Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name  "GitHub Actions"
+          # git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+        env:
+          TOKEN: ${{ secrets.DEPLOY_DRAT_TOKEN }}
+
+      - name: Git clone DEST_REPO
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.DEST_REPO }} # 'mokymai/download'
+          ref:   'master'
+          path:  "${{ env.TMP_DIR }}"
+          token: "${{ secrets.DEPLOY_DRAT_TOKEN }}"
+
+      - name: Drat -- insert
+        if: success()
+        shell: Rscript {0}
+        run: |
+          built_packages <-
+            list.files(
+              path       = "check",
+              pattern    = "[.]tar[.]gz$|[.]tgz$|[.]zip$",
+              full.names = TRUE
+            )
+
+          built_packages
+
+          for (i in seq_along(built_packages)) {
+            drat::insertPackages(
+              file    = built_packages[i],
+              repodir = Sys.getenv("TMP_DIR"),
+              action  = "archive"
+            )
+          }
+
+      - name: Drat -- commit and push
+        if: success()
+        shell: bash
+        run: |
+          cd "${TMP_DIR}" # move into the subdir, which is Git controlled
+          git add *
+          git add -f *.tar.gz
+          git commit -m "Update from ${SOURCE_REPO}" || echo "Nothing to commit"
+          git push origin master                     || echo "Nothing to commit"
+

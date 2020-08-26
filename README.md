@@ -5,21 +5,20 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
+[![GitHub
+version](https://img.shields.io/badge/GitHub-v0.0.5-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--08--26-yellowgreen.svg)]()
 <!-- badges: end -->
-
-<!-- [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.3.9000-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
-
-<!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--04--22-yellowgreen.svg)]() -->
-
-<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 
 # Package `snippets`
 
-<!-- (0.0.3.9000) -->
+<!-- (0.0.5) -->
 
 ## Installation
 
@@ -31,8 +30,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- ``` -->
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+To install package from CRAN-like repository:
+
+``` r
+repos <- c("https://mokymai.github.io/download/", getOption("repos"))
+install.packages("snippets", repos = repos)
+```
+
+To install from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("remotes")
@@ -56,7 +61,7 @@ library(snippets)
 
 ``` r
 # Get the name of directory with RStudio snippets
-get_rs_snippets_dir()
+path_to_rs_snippets_dir()
 ```
 
 ``` r
@@ -72,12 +77,12 @@ list_snippet_file_backups()
 
 ``` r
 # View and edit file with snippets of certain type: r
-edit_rstudio_snippets(type = "r")
+open_rs_snippets_file(type = "r")
 ```
 
 ``` r
 # View and edit file with snippets of certain type: markdown
-edit_rstudio_snippets(type = "markdown")
+open_rs_snippets_file(type = "markdown")
 ```
 
 ### Create and Clean-up Back-ups
@@ -129,8 +134,31 @@ remove_snippet_backup_duplicates()
     ```
 -->
 
-<div style="text-align:right;">
+# Additional resources
 
-2020-04-22
+## More on using and writing RStudio snippets
 
-</div>
+1.  [Code
+    Snippets](https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets)
+    (on RStudio website). All information is relevant to RStudio users.
+2.  [R tip: Save time with RStudio code
+    snippets](https://www.youtube.com/watch?v=h_i__VTSurU) (Case study
+    on YouTube).
+3.  [Snippets](https://cloud9-sdk.readme.io/docs/snippets) (on Cloud9
+    SDK website). Advanced topics on writing snippets. Most sections
+    (but not all) are relevant to RStudio users.
+
+## Similar projects
+
+1.  Package [**snippr**](https://github.com/dgrtwo/snippr).
+
+## More snippets
+
+1.  [Snippets](https://github.com/dgrtwo/snippets) by @dgrtwo.
+2.  [Snippets](https://github.com/gadenbuie/snippets) by @gadenbuie.
+    <!-- 2. [R snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/r.snippets) by @Hellerz -->
+    <!-- 3. [markdown snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/markdown.snippets) by @Hellerz -->
+    <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
+    <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
+
+<!-- <div style="text-align:right;">2020-08-26</div> -->

@@ -1,7 +1,7 @@
 Package: snippets
 Title: Manage RStudio Snippets
-Version: 0.0.4
-Date: 2020-05-10
+Version: 0.0.5
+Date: 2020-08-26
 Authors@R: 
     person(given   = "Vilmantas",
            family  = "Gegzna",
@@ -16,18 +16,21 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 URL: https://gegznav.github.io/snippets/
 BugReports: https://github.com/GegznaV/snippets/issues
-Remotes:
-  GegznaV/backup.tools
+Additional_repositories:
+  https://mokymai.github.io/download/
 Imports:
   backup.tools,
   crayon,
+  diffobj,
   dplyr,
   fs,
-  magrittr,
+  lifecycle,
   purrr,
   readr,
+  rstudioapi,
   stringr,
   tibble,
+  tidyr,
   tools,
   usethis,
   utils,
@@ -38,3 +41,4 @@ Suggests:
   bookdown,
   whoami,
   testthat (>= 2.1.0)
+RdMacros: lifecycle
