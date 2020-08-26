@@ -34,7 +34,7 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #' The directory might not exist.
 #'
 #' @param rstudio_version Numeric version of RStudio (the output is different
-#'        for RStudio < 1.3 and 1.3 ir newer series). If `"auto"`, the version
+#'        for RStudio < 1.3 and 1.3 or newer series). If `"auto"`, the version
 #'        of RStudio will be determined automatically.
 #'
 #' @return (string) Path to directory for RStudio snippets.
@@ -68,7 +68,7 @@ path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
 
     } else {
       # on Unix (MacOS, Linux)
-      fs::path_expand_r("~/.config/snippets/")
+      fs::path(fs::path_expand_r("~/.config"), "rstudio", "snippets/")
     }
 
   } else {
