@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make a filename for snippets — make_snippet_filename • snippets</title>
+<title>Construct path to file of certain type of snippets — path_to_snippets_file • snippets</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Make a filename for snippets — make_snippet_filename" />
-<meta property="og:description" content="Create a string with a filename that is appropriate for certain type of
-RStudio snippets." />
+<meta property="og:title" content="Construct path to file of certain type of snippets — path_to_snippets_file" />
+<meta property="og:description" content="Create a string with a path to file of certain type of snippets:" />
 
 
 
@@ -126,21 +125,36 @@ RStudio snippets." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make a filename for snippets</h1>
+    <h1>Construct path to file of certain type of snippets</h1>
     <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippets--files-and-dirs.R'><code>R/snippets--files-and-dirs.R</code></a></small>
-    <div class="hidden name"><code>make_snippet_filename.Rd</code></div>
+    <div class="hidden name"><code>path_to_snippets_file.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a string with a filename that is appropriate for certain type of
-RStudio snippets.</p>
+    <p>Create a string with a path to file of certain type of snippets:</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_snippet_filename</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(), <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>path_to_snippets_file</span>(
+  <span class='no'>dir</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(),
+  <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>path_to_rs_snippets_file</span>(
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>(),
+  <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>rstudio_version</span> <span class='kw'>=</span> <span class='st'>"auto"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dir</th>
+      <td><p>(string) Directory name.</p></td>
+    </tr>
     <tr>
       <th>type</th>
       <td><p>(character)
@@ -151,24 +165,38 @@ May be unambiguously truncated.
 Defaults to <code>"r"</code>.</p></td>
     </tr>
     <tr>
+      <th>create</th>
+      <td><p>(logical) If <code>TRUE</code>, as a side effect, the file is created
+(if it does not exist). Defaults to <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
       <th>several.ok</th>
       <td><p>(logical)
 Specify if <code>type</code> should be allowed to have more than one element.
 Defaults to <code>FALSE</code>.
 See also <code><a href='https://rdrr.io/r/base/match.arg.html'>base::match.arg()</a></code></p></td>
     </tr>
+    <tr>
+      <th>rstudio_version</th>
+      <td><p>Numeric version of RStudio (the output is different
+for RStudio &lt; 1.3 and 1.3 ir newer series). If <code>"auto"</code>, the version
+of RStudio will be determined automatically.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>String with a filename.</p>
+    <p>(character) Path to file.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># By default, filename for R snippets is created.</span>
-<span class='fu'>make_snippet_filename</span>()</div><div class='output co'>#&gt; r.snippets</div><div class='input'>
-<span class='fu'>make_snippet_filename</span>(<span class='st'>"markdown"</span>)</div><div class='output co'>#&gt; markdown.snippets</div><div class='input'>
-<span class='fu'>make_snippet_filename</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"r"</span>, <span class='st'>"markdown"</span>), <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; r.snippets
-#&gt; markdown.snippets</div></pre>
+    
+<ul>
+<li><p><code>path_to_snippets_file()</code>    in any folder.</p></li>
+<li><p><code>path_to_rs_snippets_file()</code> in a folder from which RStudio reads
+snippets.</p></li>
+</ul>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

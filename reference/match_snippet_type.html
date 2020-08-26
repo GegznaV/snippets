@@ -72,13 +72,30 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Documentation for version of package:</li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/">Released</a>
+    </li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/dev/">In-development</a>
+    </li>
+  </ul>
+</li>
+<li>
   <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
@@ -109,7 +126,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Return correct snippet type</h1>
-    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/code.R'><code>R/code.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippets--snippet-types.R'><code>R/snippets--snippet-types.R</code></a></small>
     <div class="hidden name"><code>match_snippet_type.Rd</code></div>
     </div>
 
@@ -124,28 +141,29 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>type</th>
-      <td><p>A character vector of candidate values.
-One of <code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"css"</code>, <code>"html"</code>,
-<code>"java"</code>, <code>"javascript"</code>, <code>"python"</code>, <code>"sql"</code>, <code>"stan</code>", <code>"tex"</code>.
+      <td><p>(character)
+A character vector of snippet types. Currently allowed values are
+<code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"css"</code>, <code>"html"</code>, <code>"java"</code>,
+<code>"javascript"</code>, <code>"python"</code>, <code>"sql"</code>, <code>"stan</code>", <code>"tex"</code>.
 May be unambiguously truncated.
-The default is <code>"r"</code>.</p></td>
+Defaults to <code>"r"</code>.</p></td>
     </tr>
     <tr>
       <th>several.ok</th>
-      <td><p>(logical) Specify if <code>type</code> should be allowed to have more
-than one element. Default is <code>FALSE</code>.</p></td>
+      <td><p>(logical)
+Specify if <code>type</code> should be allowed to have more than one element.
+Defaults to <code>FALSE</code>.
+See also <code><a href='https://rdrr.io/r/base/match.arg.html'>base::match.arg()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>(sting) Correct snippet type in lower case. By default returns <code>"r"</code>.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/match.arg.html'>base::match.arg()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>match_snippet_type</span>()</div><div class='output co'>#&gt; [1] "r"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># Defaults to "r":</span>
+<span class='fu'>match_snippet_type</span>()</div><div class='output co'>#&gt; [1] "r"</div><div class='input'>
 <span class='fu'>match_snippet_type</span>(<span class='st'>"r"</span>)</div><div class='output co'>#&gt; [1] "r"</div><div class='input'>
 <span class='fu'>match_snippet_type</span>(<span class='st'>"m"</span>)</div><div class='output co'>#&gt; [1] "markdown"</div></pre>
   </div>
@@ -159,7 +177,7 @@ than one element. Default is <code>FALSE</code>.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Vilmantas Gegzna.</p>
+  <p>Developed by <a href='https://orcid.org/0000-0002-9500-5167'>Vilmantas Gegzna</a>.</p>
 </div>
 
 <div class="pkgdown">

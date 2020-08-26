@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RStudio snippet file back-up — backup_rs_snippets • snippets</title>
+<title>Manage back-up copies of snippets — backup_rs_snippets • snippets</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,12 @@
 
 
 
-<meta property="og:title" content="RStudio snippet file back-up — backup_rs_snippets" />
+<meta property="og:title" content="Manage back-up copies of snippets — backup_rs_snippets" />
 <meta property="og:description" content="
 
-backup_rs_snippets() creates a back-up of snippets file
+backup_rs_snippets() creates a back-up of snippets file.
 list_snippet_file_backups() lists the names of current file with snippets
 and its back-ups.
-restore_snippets_from_backup() restores a back-up file.
 remove_snippet_backup_duplicates() removes duplicated backup files.
 
 " />
@@ -80,13 +79,30 @@ remove_snippet_backup_duplicates() removes duplicated backup files.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Documentation for version of package:</li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/">Released</a>
+    </li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/dev/">In-development</a>
+    </li>
+  </ul>
+</li>
+<li>
   <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
@@ -116,18 +132,17 @@ remove_snippet_backup_duplicates() removes duplicated backup files.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>RStudio snippet file back-up</h1>
-    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/backup-snippets.R'><code>R/backup-snippets.R</code></a></small>
+    <h1>Manage back-up copies of snippets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippets--backup.R'><code>R/snippets--backup.R</code></a></small>
     <div class="hidden name"><code>backup_rs_snippets.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
 <ul>
-<li><p><code>backup_rs_snippets()</code> creates a back-up of snippets file</p></li>
+<li><p><code>backup_rs_snippets()</code> creates a back-up of snippets file.</p></li>
 <li><p><code>list_snippet_file_backups()</code> lists the names of current file with snippets
 and its back-ups.</p></li>
-<li><p><code>restore_snippets_from_backup()</code> restores a back-up file.</p></li>
 <li><p><code>remove_snippet_backup_duplicates()</code> removes duplicated backup files.</p></li>
 </ul>
 
@@ -135,9 +150,13 @@ and its back-ups.</p></li>
 
     <pre class="usage"><span class='fu'>backup_rs_snippets</span>(<span class='no'>type</span>)
 
-<span class='fu'>create_snippets_backup_dir</span>(<span class='no'>type</span>)
-
 <span class='fu'>list_snippet_file_backups</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span>())
+
+<span class='fu'>path_to_snippets_backup_dir</span>()
+
+<span class='fu'>create_snippets_backup_dir</span>()
+
+<span class='fu'>open_snippets_backup_dir</span>()
 
 <span class='fu'>get_snippets_backup_file_pattern</span>(<span class='no'>type</span>, <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -148,16 +167,19 @@ and its back-ups.</p></li>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>type</th>
-      <td><p>A character vector of candidate values.
-One of <code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"css"</code>, <code>"html"</code>,
-<code>"java"</code>, <code>"javascript"</code>, <code>"python"</code>, <code>"sql"</code>, <code>"stan</code>", <code>"tex"</code>.
+      <td><p>(character)
+A character vector of snippet types. Currently allowed values are
+<code>"r"</code>, <code>"markdown"</code>, <code>"c_cpp"</code>, <code>"css"</code>, <code>"html"</code>, <code>"java"</code>,
+<code>"javascript"</code>, <code>"python"</code>, <code>"sql"</code>, <code>"stan</code>", <code>"tex"</code>.
 May be unambiguously truncated.
-The default is <code>"r"</code>.</p></td>
+Defaults to <code>"r"</code>.</p></td>
     </tr>
     <tr>
       <th>several.ok</th>
-      <td><p>(logical) Specify if <code>type</code> should be allowed to have more
-than one element. Default is <code>FALSE</code>.</p></td>
+      <td><p>(logical)
+Specify if <code>type</code> should be allowed to have more than one element.
+Defaults to <code>FALSE</code>.
+See also <code><a href='https://rdrr.io/r/base/match.arg.html'>base::match.arg()</a></code></p></td>
     </tr>
     </table>
 
@@ -168,11 +190,9 @@ than one element. Default is <code>FALSE</code>.</p></td>
 <span class='fu'>backup_rs_snippets</span>(<span class='st'>"r"</span>)
 <span class='fu'>backup_rs_snippets</span>(<span class='st'>"markdown"</span>)
 
-
 <span class='fu'>list_snippet_file_backups</span>(<span class='st'>"r"</span>)
 
-
-<span class='co'># USe name of an existing back-up file</span>
+<span class='co'># Use name of an existing back-up file</span>
 <span class='fu'>restore_snippets_from_backup</span>(<span class='st'>"r.snippets--backup-2019-10-31-01430"</span>)
 
 }</div></pre>
@@ -187,7 +207,7 @@ than one element. Default is <code>FALSE</code>.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Vilmantas Gegzna.</p>
+  <p>Developed by <a href='https://orcid.org/0000-0002-9500-5167'>Vilmantas Gegzna</a>.</p>
 </div>
 
 <div class="pkgdown">

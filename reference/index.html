@@ -71,13 +71,30 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Documentation for version of package:</li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/">Released</a>
+    </li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/dev/">In-development</a>
+    </li>
+  </ul>
+</li>
+<li>
   <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
@@ -121,7 +138,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-package" class="hasAnchor"><a href="#section-package" class="anchor"></a>Package</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -133,39 +150,66 @@
       <tr>
         
         <td>
-          <p><code><a href="backup_rs_snippets.html">backup_rs_snippets()</a></code> <code><a href="backup_rs_snippets.html">create_snippets_backup_dir()</a></code> <code><a href="backup_rs_snippets.html">list_snippet_file_backups()</a></code> <code><a href="backup_rs_snippets.html">get_snippets_backup_file_pattern()</a></code> <code><a href="backup_rs_snippets.html">remove_snippet_backup_duplicates()</a></code> </p>
+          <p><code><a href="snippets.html">snippets</a></code> </p>
         </td>
-        <td><p>RStudio snippet file back-up</p></td>
-      </tr><tr>
+        <td><p>Manage RStudio Snippets</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-install-snippets" class="hasAnchor"><a href="#section-install-snippets" class="anchor"></a>Install snippets</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="install-snippets.html">install_snippets_from_package()</a></code> <code><a href="install-snippets.html">install_snippets_from_dir()</a></code> </p>
+        </td>
+        <td><p>Install snippets</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-back-up-and-restore-snippets" class="hasAnchor"><a href="#section-back-up-and-restore-snippets" class="anchor"></a>Back-up and restore snippets</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="backup_rs_snippets.html">backup_rs_snippets()</a></code> <code><a href="backup_rs_snippets.html">list_snippet_file_backups()</a></code> <code><a href="backup_rs_snippets.html">path_to_snippets_backup_dir()</a></code> <code><a href="backup_rs_snippets.html">create_snippets_backup_dir()</a></code> <code><a href="backup_rs_snippets.html">open_snippets_backup_dir()</a></code> <code><a href="backup_rs_snippets.html">get_snippets_backup_file_pattern()</a></code> <code><a href="backup_rs_snippets.html">remove_snippet_backup_duplicates()</a></code> </p>
+        </td>
+        <td><p>Manage back-up copies of snippets</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-snippet-files-and-directories" class="hasAnchor"><a href="#section-snippet-files-and-directories" class="anchor"></a>Snippet files and directories</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="create_rs_snippets_dir.html">create_rs_snippets_dir()</a></code> </p>
         </td>
         <td><p>Create directory for RStudio snippets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_default_snippet_types.html">get_default_snippet_types()</a></code> </p>
-        </td>
-        <td><p>Get default snippet types</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_path_to_snippet_file.html">get_path_to_snippet_file()</a></code> <code><a href="get_path_to_snippet_file.html">get_path_to_rs_snippet_file()</a></code> </p>
-        </td>
-        <td><p>Construct path to file of certain type snippets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_rs_snippets_dir.html">get_rs_snippets_dir()</a></code> </p>
-        </td>
-        <td><p>Get path to directory for RStudio snippets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="install-snippets.html">install_snippets_from_package()</a></code> <code><a href="install-snippets.html">install_snippets_from_dir()</a></code> </p>
-        </td>
-        <td><p>Install snippets.</p></td>
       </tr><tr>
         
         <td>
@@ -175,27 +219,64 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="match_snippet_type.html">match_snippet_type()</a></code> </p>
-        </td>
-        <td><p>Return correct snippet type</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="open_rs_snippets_dir.html">open_rs_snippets_dir()</a></code> </p>
         </td>
         <td><p>Open directory of RStudio snippets</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="snippets.html">snippets</a></code> </p>
+          <p><code><a href="path_to_rs_snippets_dir.html">path_to_rs_snippets_dir()</a></code> </p>
         </td>
-        <td><p>Manage RStudio snippets</p></td>
+        <td><p>Get path to directory for RStudio snippets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="path_to_snippets_file.html">path_to_snippets_file()</a></code> <code><a href="path_to_snippets_file.html">path_to_rs_snippets_file()</a></code> </p>
+        </td>
+        <td><p>Construct path to file of certain type of snippets</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="snippets_file_exists.html">snippets_file_exists()</a></code> </p>
         </td>
-        <td><p>Does file with snippets exist?</p></td>
+        <td><p>Does the file with snippets exist?</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other-functions" class="hasAnchor"><a href="#section-other-functions" class="anchor"></a>Other functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="get_default_snippet_types.html">get_default_snippet_types()</a></code> </p>
+        </td>
+        <td><p>Get default snippet types</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="match_snippet_type.html">match_snippet_type()</a></code> </p>
+        </td>
+        <td><p>Return correct snippet type</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_rs_snippets_file.html">open_rs_snippets_file()</a></code> </p>
+        </td>
+        <td><p>Edit RStudio Snippets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="path_to_snippets_dir_of_pkg.html">path_to_snippets_dir_of_pkg()</a></code> <code><a href="path_to_snippets_dir_of_pkg.html">path_to_snippets_files_of_pkg()</a></code> </p>
+        </td>
+        <td><p>Get path to snippets in a package</p></td>
       </tr>
     </tbody>
     </table>
@@ -211,7 +292,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Vilmantas Gegzna.</p>
+  <p>Developed by <a href='https://orcid.org/0000-0002-9500-5167'>Vilmantas Gegzna</a>.</p>
 </div>
 
 <div class="pkgdown">

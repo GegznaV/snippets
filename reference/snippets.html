@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Manage RStudio snippets — snippets • snippets</title>
+<title>Manage RStudio Snippets — snippets • snippets</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Manage RStudio snippets — snippets" />
-<meta property="og:description" content="Tools to manage RStudio snippets.
+<meta property="og:title" content="Manage RStudio Snippets — snippets" />
+<meta property="og:description" content="
+
+Tools to manage RStudio snippets.
 Package snippets also contains RStudio snippets." />
 
 
@@ -73,13 +75,30 @@ Package snippets also contains RStudio snippets." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Documentation for version of package:</li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/">Released</a>
+    </li>
+    <li>
+      <a href="https://gegznav.github.io/snippets/dev/">In-development</a>
+    </li>
+  </ul>
+</li>
+<li>
   <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
@@ -109,18 +128,28 @@ Package snippets also contains RStudio snippets." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Manage RStudio snippets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/00--package.R'><code>R/00--package.R</code></a></small>
+    <h1>Manage RStudio Snippets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippets-package.R'><code>R/snippets-package.R</code></a></small>
     <div class="hidden name"><code>snippets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Tools to manage RStudio snippets.
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>
+
+Tools to manage RStudio snippets.
 Package <span class="pkg">snippets</span> also contains RStudio snippets.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://gegznav.github.io/snippets/'>https://gegznav.github.io/snippets/</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/GegznaV/snippets/issues'>https://github.com/GegznaV/snippets/issues</a></p></li>
+</ul>
+
+</div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -133,7 +162,7 @@ Package <span class="pkg">snippets</span> also contains RStudio snippets.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Vilmantas Gegzna.</p>
+  <p>Developed by <a href='https://orcid.org/0000-0002-9500-5167'>Vilmantas Gegzna</a>.</p>
 </div>
 
 <div class="pkgdown">
