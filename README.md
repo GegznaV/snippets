@@ -6,7 +6,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.4-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.5-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
 [![Lifecycle:
@@ -18,7 +18,7 @@ coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)]
 
 # Package `snippets`
 
-<!-- (0.0.4) -->
+<!-- (0.0.5) -->
 
 ## Installation
 
