@@ -61,7 +61,7 @@ jobs:
         run:   roxygen2::roxygenize()
 
       - name: Build source package
-        if: runner.os == 'Windows' && matrix.config.r == 'release'
+        if: runner.os == 'macOS' && matrix.config.r == 'release'
         shell: Rscript {0}
         run: |
           dir.create("check", showWarnings = FALSE)
@@ -119,6 +119,6 @@ jobs:
           cd "${TMP_DIR}" # move into the subdir, which is Git controlled
           git add *
           git add -f *.tar.gz
-          git commit -m "Update from ${SOURCE_REPO}" || echo "Nothing to commit"
-          git push origin master                     || echo "Nothing to commit"
+          git commit -m "Update from ${SOURCE_REPO} ${{ runner.os }} R-${{ matrix.config.r }}" || echo "Nothing to commit"
+          git push origin master || echo "Nothing to commit"
 
