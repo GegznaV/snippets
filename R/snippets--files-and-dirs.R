@@ -176,9 +176,9 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' }}
 #'
 open_rs_snippets_file <- function(type, rstudio_version = "auto") {
-  rstudioapi::navigateToFile(
-    path_to_rs_snippets_file(type = type, rstudio_version = rstudio_version)
-  )
+  force(type)
+  file <- path_to_rs_snippets_file(type = type, rstudio_version = rstudio_version)
+  rstudioapi::navigateToFile(file)
 }
 
 #' Does the file with snippets exist?
