@@ -3,9 +3,22 @@
 \docType{package}
 \name{snippets}
 \alias{snippets}
+\alias{snippets-package}
 \title{Manage RStudio snippets}
 \description{
 Tools to manage RStudio snippets.
 Package \pkg{snippets} also contains RStudio snippets.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://gegznav.github.io/snippets/}
+  \item Report bugs at \url{https://github.com/GegznaV/snippets/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Vilmantas Gegzna \email{GegznaV@gmail.com} (\href{https://orcid.org/0000-0002-9500-5167}{ORCID})
+
 }
 \concept{package}
