@@ -1,12 +1,30 @@
-.Rproj.user
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
 .RData
 .Ruserdata
+
+# Example code in package build process
+*-Ex.R
+
+# Mac directory files
+*.DS_Store
+
+# RStudio files
+.Rproj.user
+*.Rproj
+
+# Local pkgdown files
+docs
+
+# Git
 pre-commit
+
+# Local pkgdown files
 docs/
-data-raw/_tmp.Rmd
-texput.log
+
+# Other
+new-features/
 _TODO
-data-raw/_TODO.Rmd
-.github/depends.Rds
-.github/R-version
