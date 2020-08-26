@@ -65,6 +65,11 @@ create_snippets_backup_dir <- function() {
   invisible(backup_dir)
 }
 
+#' @rdname backup_rs_snippets
+#' @export
+open_snippets_backup_dir <- function() {
+  browseURL(path_snippets_backup_dir())
+}
 
 #' @rdname backup_rs_snippets
 #' @export
