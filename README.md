@@ -5,22 +5,20 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
+[![GitHub
+version](https://img.shields.io/badge/GitHub-v0.0.4-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--08--26-yellowgreen.svg)](/commits/master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--08--26-yellowgreen.svg)]()
 <!-- badges: end -->
-
-<!-- [![GitHub version](https://img.shields.io/badge/GitHub-v0.0.4.9000-brightgreen.svg)](https://github.com/GegznaV/snippets) -->
-
-<!-- [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--08--26-yellowgreen.svg)]() -->
-
-<!-- [![Codecov test coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master) -->
 
 # Package `snippets`
 
-<!-- (0.0.4.9000) -->
+<!-- (0.0.4) -->
 
 ## Installation
 
@@ -32,8 +30,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- ``` -->
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+To install package from CRAN-like repository:
+
+``` r
+repos <- c("https://mokymai.github.io/download/", getOption("repos"))
+install.packages("snippets", repos = repos)
+```
+
+To install from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("remotes")
@@ -57,7 +61,7 @@ library(snippets)
 
 ``` r
 # Get the name of directory with RStudio snippets
-get_rs_snippets_dir()
+path_to_rs_snippets_dir()
 ```
 
 ``` r
@@ -73,12 +77,12 @@ list_snippet_file_backups()
 
 ``` r
 # View and edit file with snippets of certain type: r
-edit_rstudio_snippets(type = "r")
+open_rs_snippets_file(type = "r")
 ```
 
 ``` r
 # View and edit file with snippets of certain type: markdown
-edit_rstudio_snippets(type = "markdown")
+open_rs_snippets_file(type = "markdown")
 ```
 
 ### Create and Clean-up Back-ups
