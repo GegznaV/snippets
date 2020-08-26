@@ -36,13 +36,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("remotes")
-          install.packages("devtools")
-          install.packages("rmarkdown")
-          install.packages("ps")
+          remotes::install_cran(c("rmarkdown", "devtools", "pkgdown", "ps"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_dev("pkgdown")
         shell: Rscript {0}
+
+      - name: Configure Git
+        run: |
+           git config --global user.email "actions@github.com"
+           git config --global user.name  "GitHub Actions"
 
       - name: Roxygenize
         # The vignettes will be built in step "Deploy package"
@@ -64,9 +65,10 @@ jobs:
 
       - name: Commit results
         run: |
-          git commit README.md -m 'Re-build README.Rmd before pkgdown' || echo "No changes to commit"
-          git push origin || echo "No changes to commit (README)"
+           git commit README.md -m 'Re-build README.Rmd before pkgdown' || echo "No changes to commit (README)"
+           git push origin || echo "No changes to commit (README)"
 
-      - name: Deploy package
-        run: pkgdown::deploy_to_branch(new_process = FALSE)
+      - name: Deploy website
         shell: Rscript {0}
+        run: pkgdown::deploy_to_branch(new_process = FALSE)
+
