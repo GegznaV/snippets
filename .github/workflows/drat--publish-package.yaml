@@ -78,7 +78,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.email "actions@github.com"
-          git config --global user.name  "GitHub Actions"
+          git config --global user.name  "GitHub Actions | ${{ github.event.repository.name }}"
           # git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
         env:
           TOKEN: ${{ secrets.DEPLOY_DRAT_TOKEN }}
