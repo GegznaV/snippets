@@ -2,7 +2,7 @@
 # Files and directories for snippets ------------------------------------- ====
 # ======================================================================== ~~~~
 
-#' Make a filename for snippets.
+#' Make a filename for snippets
 #'
 #' Create a string with a filename that is appropriate for certain type of
 #' RStudio snippets.
@@ -28,7 +28,7 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 }
 
 
-#' Get path to directory for RStudio snippets.
+#' Get path to directory for RStudio snippets
 #'
 #' Create a string with a path to directory for RStudio snippets.
 #' The directory might not exist.
@@ -59,7 +59,7 @@ path_to_rs_snippets_dir <- function() {
 }
 
 
-#' Create directory for RStudio snippets.
+#' Create directory for RStudio snippets
 #'
 #' @return Invisibly returns the path to created directory.
 #'         See also [fs::dir_create()].
@@ -76,7 +76,7 @@ create_rs_snippets_dir <- function() {
 }
 
 
-#' Open directory of RStudio snippets.
+#' Open directory of RStudio snippets
 #' @export
 #' @importFrom utils browseURL
 #' @concept snippet files and dirs
@@ -86,7 +86,7 @@ open_rs_snippets_dir <- function() {
   browseURL(path_to_rs_snippets_dir())
 }
 
-#' Construct path to file of certain type of snippets.
+#' Construct path to file of certain type of snippets
 #'
 #' Create a string with a path to file of certain type of snippets:
 #'
@@ -151,7 +151,7 @@ snippets_file_exists <- function(type) {
 }
 
 
-#' Get path to snippets in a package.
+#' Get path to snippets in a package
 #'
 #' Get path to snippets in a package:
 #'

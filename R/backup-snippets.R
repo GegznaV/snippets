@@ -2,7 +2,7 @@
 # Manage snippet back-ups ------------------------------------------------ ====
 # ======================================================================== ~~~~
 
-#' Manage back-up copies of snippets.
+#' Manage back-up copies of snippets
 #'
 #' - `backup_rs_snippets()` creates a back-up of snippets file.
 #' - `list_snippet_file_backups()` lists the names of current file with snippets
@@ -37,9 +37,9 @@ backup_rs_snippets <- function(type) {
 
   for (i in seq_along(file_name)) {
     backup.tools::create_backup_copy(
-      file_name[i],
-      "snippets",
-      stringr::str_glue("{type[i]}.snippets")
+      file           = file_name[i],
+      backup_subdir  = "snippets",
+      of_what        = stringr::str_glue("{type[i]}.snippets")
     )
   }
 }

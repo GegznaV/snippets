@@ -2,7 +2,7 @@
 #' @docType package
 #' @concept package
 #'
-#' @title Manage RStudio snippets.
+#' @title Manage RStudio snippets
 #'
 #' @description
 #' Tools to manage RStudio snippets.

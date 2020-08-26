@@ -3,7 +3,7 @@
 # ======================================================================== ~~~~
 
 #' @name install-snippets
-#' @title Install snippets.
+#' @title Install snippets
 #' @description
 #' Replace current file with snippets with the other file.
 #'

@@ -2,7 +2,7 @@
 # Snippet types ---------------------------------------------------------- ====
 # ======================================================================== ~~~~
 
-#' Get default snippet types.
+#' Get default snippet types
 #'
 #' @return Character vector with possible snippet type values.
 #' @export
@@ -34,7 +34,7 @@ get_default_snippet_types <- function() {
   )
 }
 
-#' Return correct snippet type.
+#' Return correct snippet type
 #'
 #' @param type (character)
 #'        A character vector of snippet types. Currently allowed values are

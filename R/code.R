@@ -13,7 +13,7 @@
 
 
 
-#' Extract snippent name from string.
+#' Extract snippent name from string
 #'
 #' Extract snippent name from strings that start with "snippet".
 #'
@@ -45,7 +45,7 @@ get_snippet_name <- function(str) {
 }
 
 
-#' Read snippet names.
+#' Read snippet names
 #'
 #' @param file Paths to text files with snippets.
 #'
@@ -59,7 +59,7 @@ read_snippet_names <- function(file) {
 }
 
 
-#' Read snippets into data frame.
+#' Read snippets into data frame
 #'
 #' @param input (character)
 #'        Either a file name or a character vector with with a snippet.
@@ -140,7 +140,7 @@ read_snippets <- function(input) {
 
 
 
-#' Find conflicting snippets.
+#' Find conflicting snippets
 #'
 #' Show snippets in df_new, that have the same name but different definition (body)
 #'
@@ -179,7 +179,7 @@ find_conflicting_snippets <- function(df_old, df_new) {
     dplyr::arrange(name, dplyr::desc(file))
 }
 
-#' Construct a string for snippets from data frame of snippets.
+#' Construct a string for snippets from data frame of snippets
 #'
 #' @param .data
 #'
@@ -190,7 +190,8 @@ construct_snippet <- function(.data) {
   stringr::str_glue_data(.data, "snippet {name}\n{body}")
 }
 # =========================================================================== ~
-#' Write snippet to file.
+#' Write snippet to file
+#'
 #'
 #' @param snippets
 #'        Data frame with columns `name` (for snippet names) and `body` for
@@ -253,7 +254,7 @@ write_snippet <- function(snippets, type = NULL, in_conflict_keep = "original",
 }
 
 
-#' Merge files with RStudio snippets.
+#' Merge files with RStudio snippets
 #'
 #' Merge files that end in "--{type}.snippets" into file named "{type}.snippets"
 #'
@@ -309,7 +310,7 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
 }
 
 # ==========================================================================~~
-#' Update snippets in package \pkg{snippets}.
+#' Update snippets in package \pkg{snippets}
 #'
 #' Internal function to update (copy) snippets of package \pkg{snippets}
 #' into directorry accessible by users of the package.
@@ -326,7 +327,7 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 }
 
 # ==========================================================================~~
-#' Merge and update snippets.
+#' Merge and update snippets
 #'
 #' Functions creates one file for one type of snippets and coppies it to the
 #' direcctory accessible by the users of the package.

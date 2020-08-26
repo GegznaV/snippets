@@ -1,5 +1,5 @@
 # @name edit_rstudio_snippets
-# @title Edit file with RStudio snippets.
+# @title Edit file with RStudio snippets
 #
 # @description
 # Open and edit file with RStudio snippets.
