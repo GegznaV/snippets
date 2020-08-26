@@ -8,7 +8,7 @@ path_to_rs_snippets_dir(rstudio_version = "auto")
 }
 \arguments{
 \item{rstudio_version}{Numeric version of RStudio (the output is different
-for RStudio < 1.3 and 1.3 ir newer series). If \code{"auto"}, the version
+for RStudio < 1.3 and 1.3 or newer series). If \code{"auto"}, the version
 of RStudio will be determined automatically.}
 }
 \value{

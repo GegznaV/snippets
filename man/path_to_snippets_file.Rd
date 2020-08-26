@@ -38,7 +38,7 @@ Defaults to \code{FALSE}.
 See also \code{\link[base:match.arg]{base::match.arg()}}}
 
 \item{rstudio_version}{Numeric version of RStudio (the output is different
-for RStudio < 1.3 and 1.3 ir newer series). If \code{"auto"}, the version
+for RStudio < 1.3 and 1.3 or newer series). If \code{"auto"}, the version
 of RStudio will be determined automatically.}
 }
 \value{
