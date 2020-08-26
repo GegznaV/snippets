@@ -139,14 +139,14 @@ remove_snippet_backup_duplicates <- function() {
     path_snippets_backup_dir() %>%
     fs::dir_ls(type = "file")
 
-  dups  <- duplicated(tools::md5sum(files))
+  dups <- duplicated(tools::md5sum(files))
 
   if (any(dups)) {
     rem <- files[dups]
     fs::file_delete(rem)
 
     str <- paste(crayon::blue(rem), collapse = "\n")
-    usethis::ui_done("Removed as duplicate(s):\n{str}")
+    usethis::ui_done("Removed duplicate(s):\n{str}")
 
   } else {
     usethis::ui_done("No back-up duplicates were found.")
