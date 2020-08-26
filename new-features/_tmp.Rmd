@@ -1,0 +1,51 @@
+---
+# General Information --------------------------------------------------------
+title:    "___"
+subtitle: ""
+author:   "Vilmantas Gegzna"
+date:     "`r Sys.Date()`" # Automatic date
+# Document Format and Appearance ---------------------------------------------
+output:
+  bookdown::html_document2:   # Enables automatic numbering of figures & tables
+    highlight:       pygments # default tango kate monochrome espresso ...
+    code_folding:    none     # none show hide
+    code_download:   yes      # yes no
+    number_sections: yes      # Automatic numbering of sections: yes no
+    toc:         yes          # Table of contents (toc): yes no
+    toc_float:   yes          # yes no
+    toc_depth:   3            # 1 2 3 4 5
+    fig_caption: yes          # yes no
+    theme:       default      # cerulean journal flatly readable paper ...
+    df_print:    default      # paged kable tibble default
+---
+
+
+
+
+
+### Codebook of final data {#codebook-preprocessed}
+
+The main difference from the raw data that here genotypes are coded into one column. 
+
++---------------+---------------------------------------------------+
+| Polymorphism  |  Genotype                                         |
++==============:+:==================================================+
+| tp53          | - 1 - arg/arg;                                    |
+|               | - 2 - arg/pro;                                    |
+|               | - 3 - pro/pro                                     |
+|               |                                                   |
++---------------+---------------------------------------------------+
+| mdm2          | 1 - t/g; 2 - t/t; 3 - g/g                         |
+|               |                                                   |
++---------------+---------------------------------------------------+
+| mdm4          | 1 - a/a; 2 - a/c; 3 - c/c                         |
+|               |                                                   |
++---------------+---------------------------------------------------+
+| gstm          | 0 - gstm_null; 1 - gstm                           |
+|               |                                                   |
++---------------+---------------------------------------------------+
+| gstt          | 0 - gstt_null; 1 - gstt                           |
+|               |                                                   |
++---------------+---------------------------------------------------+
+
+rr-
