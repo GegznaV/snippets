@@ -166,6 +166,8 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' @return
 #' @export
 #'
+#' @concept snippet files and dirs
+#'
 #' @seealso [path_to_rs_snippets_file()]
 #'
 #' @examples

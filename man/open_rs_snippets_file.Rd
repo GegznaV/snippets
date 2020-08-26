@@ -35,3 +35,4 @@ open_rs_snippets_file("markdown")
 \seealso{
 \code{\link[=path_to_rs_snippets_file]{path_to_rs_snippets_file()}}
 }
+\concept{snippet files and dirs}
