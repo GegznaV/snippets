@@ -81,7 +81,7 @@ jobs:
           git config --global user.name  "GitHub Actions"
           # git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
         env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.DEPLOY_DRAT_TOKEN }}
 
       - name: Git clone DEST_REPO
         uses: actions/checkout@v2
@@ -89,7 +89,7 @@ jobs:
           repository: ${{ env.DEST_REPO }} # 'mokymai/download'
           ref:   'master'
           path:  "${{ env.TMP_DIR }}"
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.DEPLOY_DRAT_TOKEN }}"
 
       - name: Drat -- insert
         if: success()
