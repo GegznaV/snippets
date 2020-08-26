@@ -3,10 +3,10 @@ on:
     branches:
       - master
 
-name: Publish package (drat)
+name: "Publish package (drat)"
 
 jobs:
-  drat:
+  Publish-package:
     runs-on: ${{ matrix.config.os }}
 
     name: "drat: ${{ matrix.config.os }} (R-${{ matrix.config.r }})"
