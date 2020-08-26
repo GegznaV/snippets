@@ -41,14 +41,21 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #' path_to_rs_snippets_dir()
 
 path_to_rs_snippets_dir <- function() {
-  # TODO:
-  # in RStudio 1.3, the following paths are also available:
-  # - on Windiws: fs::path(Sys.getenv("APPDATA"), "RStudio", "snippets")
-  #                      AppData/Roaming/RStudio/snippets/
-  # - on the oter OS'es:               ~/.config/snippets/
-  #
+  if (rstudioapi::versionInfo()$version > "1.3") {
+    # For RStudio 1.3 or newer
+    if (get_os_type() == "windows") {
+      # on Windows
+      fs::path(Sys.getenv("APPDATA"), "RStudio", "snippets")
 
-  fs::path_expand_r("~/.R/snippets/")
+    } else {
+      # on Unix (MacOS, Linux)
+      fs::path_expand_r("~/.config/snippets/")
+    }
+
+  } else {
+    # For RStudio 1.2, 1.1, etc. (i.e., versions before 1.3)
+    fs::path_expand_r("~/.R/snippets/")
+  }
 }
 
 
