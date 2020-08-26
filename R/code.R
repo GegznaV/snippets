@@ -61,6 +61,9 @@ read_snippet_names <- function(file) {
 
 #' Read snippets into data frame
 #'
+#' \lifecycle{experimental}
+#' Read snippets from file or character vector into data frame
+#'
 #' @param input (character)
 #'        Either a file name or a character vector with with a snippet.
 #'
