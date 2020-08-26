@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read snippets into data frame. — read_snippets • snippets</title>
+<title>Read snippets into data frame — read_snippets • snippets</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Read snippets into data frame. — read_snippets" />
-<meta property="og:description" content="Read snippets into data frame." />
+<meta property="og:title" content="Read snippets into data frame — read_snippets" />
+<meta property="og:description" content="Read snippets into data frame" />
 
 
 <meta name="robots" content="noindex">
@@ -125,16 +125,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read snippets into data frame.</h1>
+    <h1>Read snippets into data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/code.R'><code>R/code.R</code></a></small>
     <div class="hidden name"><code>read_snippets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Read snippets into data frame.</p>
+    <p>Read snippets into data frame</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/snippets/man/read_snippets.html'>read_snippets</a></span>(<span class='kw'>input</span>)</pre>
+    <pre class="usage"><span class='fu'>read_snippets</span>(<span class='no'>input</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,10 +152,10 @@ Either a file name or a character vector with with a snippet.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://gegznav.github.io/snippets'>snippets</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>snippets</span>)
 
-<span class='kw'>file1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"test1/html.snippets"</span>, package = <span class='st'>"snippets"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/snippets/man/read_snippets.html'>read_snippets</a></span>(<span class='kw'>file1</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 5</span><span>
+<span class='no'>file1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"test1/html.snippets"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"snippets"</span>)
+<span class='fu'>read_snippets</span>(<span class='no'>file1</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 5</span><span>
 #&gt;   name     no snippet    data            body                                   
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                  
 #&gt; </span><span style='color: #555555;'>1</span><span> kbd       1 </span><span style='color: #555555;'>&lt;glue [4]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [4 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&lt;kbd&gt;${0:Ctrl}&lt;/kbd&gt;\n</span><span style='color: #555555;'>"</span><span>             
@@ -163,8 +163,8 @@ Either a file name or a character vector with with a snippet.</p></td>
 #&gt; </span><span style='color: #555555;'>3</span><span> space     3 </span><span style='color: #555555;'>&lt;glue [3]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [3 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}\n</span><span style='color: #555555;'>"</span><span>                  
 #&gt; </span><span style='color: #555555;'>4</span><span> nbsp      4 </span><span style='color: #555555;'>&lt;glue [3]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [3 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}\n</span><span style='color: #555555;'>"</span><span>                  
 #&gt; </span><span style='color: #555555;'>5</span><span> font      5 </span><span style='color: #555555;'>&lt;glue [2]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [2 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&lt;font color = \"${1:red}\"&gt;${0}&lt;/fo…</div><div class='input'>
-<span class='kw'>file2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"test2/html.snippets"</span>, package = <span class='st'>"snippets"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/snippets/man/read_snippets.html'>read_snippets</a></span>(<span class='kw'>file2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 5</span><span>
+<span class='no'>file2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"test2/html.snippets"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"snippets"</span>)
+<span class='fu'>read_snippets</span>(<span class='no'>file2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 5</span><span>
 #&gt;   name      no snippet    data            body                                  
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                 
 #&gt; </span><span style='color: #555555;'>1</span><span> kbd        1 </span><span style='color: #555555;'>&lt;glue [4]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [4 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&lt;kbd&gt; ${0:Shift} &lt;/kbd&gt;\n</span><span style='color: #555555;'>"</span><span>         
@@ -172,8 +172,8 @@ Either a file name or a character vector with with a snippet.</p></td>
 #&gt; </span><span style='color: #555555;'>3</span><span> space2     3 </span><span style='color: #555555;'>&lt;glue [3]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [3 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}\n</span><span style='color: #555555;'>"</span><span>                 
 #&gt; </span><span style='color: #555555;'>4</span><span> nbsp       4 </span><span style='color: #555555;'>&lt;glue [3]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [3 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}\n</span><span style='color: #555555;'>"</span><span>                 
 #&gt; </span><span style='color: #555555;'>5</span><span> font       5 </span><span style='color: #555555;'>&lt;glue [2]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [2 × 4</span><span>… </span><span style='color: #555555;'>"</span><span>\t&lt;font color = \"${1:red}\"&gt;${0}&lt;/f…</div><div class='input'>
-<span class='kw'>file3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/snippets/man/path_to_snippets_dir_of_pkg.html'>path_to_snippets_files_of_pkg</a></span>(<span class='st'>"snippets"</span>)[<span class='fl'>1</span>]
-<span class='fu'><a href='https://rdrr.io/pkg/snippets/man/read_snippets.html'>read_snippets</a></span>(<span class='kw'>file3</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 183 x 5</span><span>
+<span class='no'>file3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='path_to_snippets_dir_of_pkg.html'>path_to_snippets_files_of_pkg</a></span>(<span class='st'>"snippets"</span>)[<span class='fl'>1</span>]
+<span class='fu'>read_snippets</span>(<span class='no'>file3</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 183 x 5</span><span>
 #&gt;    name           no snippet   data       body                                  
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                 
 #&gt; </span><span style='color: #555555;'> 1</span><span> help            1 </span><span style='color: #555555;'>&lt;glue [2</span><span>… </span><span style='color: #555555;'>&lt;tibble [</span><span>… </span><span style='color: #555555;'>"</span><span>\t${0}&lt;!-- Help/Documentation snippe…
@@ -188,26 +188,21 @@ Either a file name or a character vector with with a snippet.</p></td>
 #&gt; </span><span style='color: #555555;'>10</span><span> exm            10 </span><span style='color: #555555;'>&lt;glue [5</span><span>… </span><span style='color: #555555;'>&lt;tibble [</span><span>… </span><span style='color: #555555;'>"</span><span>\t```{example, ${1:exercise-ID}, ech…
 #&gt; </span><span style='color: #555555;'># … with 173 more rows</span><span></div><div class='input'>
 
-<span class='kw'>text</span> <span class='op'>&lt;-</span> (
+<span class='no'>text</span> <span class='kw'>&lt;-</span> (
 <span class='st'>'
 snippet space
 	&amp;${1:nbsp};${0}
 
 snippet nbsp
 	&amp;${1:nbsp};${0}
-'</span>
-snippet space
-	&${1:nbsp};${0}
+'</span>)
 
-snippet nbsp
-	&${1:nbsp};${0}
-')
-
-<span class='fu'><a href='https://rdrr.io/pkg/snippets/man/read_snippets.html'>read_snippets</a></span>(<span class='kw'>text</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 5</span><span>
+<span class='fu'>read_snippets</span>(<span class='no'>text</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 5</span><span>
 #&gt;   name     no snippet    data             body                 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                
 #&gt; </span><span style='color: #555555;'>1</span><span> space     1 </span><span style='color: #555555;'>&lt;glue [4]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [4 × 4]&gt;</span><span> </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}\n</span><span style='color: #555555;'>"</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> nbsp      2 </span><span style='color: #555555;'>&lt;glue [2]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [2 × 4]&gt;</span><span> </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}</span><span style='color: #555555;'>"</span><span>  </div><div class='input'></div></span></pre>
+#&gt; </span><span style='color: #555555;'>2</span><span> nbsp      2 </span><span style='color: #555555;'>&lt;glue [2]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [2 × 4]&gt;</span><span> </span><span style='color: #555555;'>"</span><span>\t&amp;${1:nbsp};${0}</span><span style='color: #555555;'>"</span><span>  </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -223,7 +218,7 @@ snippet nbsp
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
