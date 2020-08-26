@@ -3,13 +3,11 @@ on:
     branches:
       - release
       - master
-      - develop
+      - devel
 
   pull_request:
     branches:
-      - release
       - master
-      - develop
 
 name: Test coverage
 
