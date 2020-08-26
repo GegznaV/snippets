@@ -36,6 +36,10 @@ Defaults to \code{"r"}.}
 Specify if \code{type} should be allowed to have more than one element.
 Defaults to \code{FALSE}.
 See also \code{\link[base:match.arg]{base::match.arg()}}}
+
+\item{rstudio_version}{Numeric version of RStudio (the output is different
+for RStudio < 1.3 and 1.3 ir newer series). If \code{"auto"}, the version
+of RStudio will be determined automatically.}
 }
 \value{
 (character) Path to file.

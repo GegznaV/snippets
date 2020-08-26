@@ -114,6 +114,7 @@ open_rs_snippets_dir <- function() {
 #'   snippets.
 #'
 #' @inheritParams match_snippet_type
+#' @inheritParams path_to_rs_snippets_dir
 #'
 #' @param dir (string) Directory name.
 #' @param create (logical) If `TRUE`, as a side effect, the file is created
