@@ -170,13 +170,13 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' @examples
 #' \dontrun{\donttest{
 #' # By defaults, edits R snippets
-#' open_rstudio_snippets_file()
-#' open_rstudio_snippets_file("r")
+#' open_rs_snippets_file()
+#' open_rs_snippets_file("r")
 #'
-#' open_rstudio_snippets_file("markdown")
+#' open_rs_snippets_file("markdown")
 #' }}
 #'
-open_rstudio_snippets_file <- function(type = get_default_snippet_types(),
+open_rs_snippets_file <- function(type = get_default_snippet_types(),
                                        rstudio_version = "auto") {
   rstudioapi::navigateToFile(
     path_to_rs_snippets_file(type = type, rstudio_version = rstudio_version)
