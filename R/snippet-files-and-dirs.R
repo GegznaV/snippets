@@ -156,10 +156,36 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
   )
 }
 
-
-#' Does file with snippets exist?
+#' Edit RStudio Snippets
 #'
-#' Does a file with certain types of snippets exist in RStudio snippets directory?
+#' Edit file with RStudio snippets.
+#'
+#' @inheritParams path_to_rs_snippets_file
+#'
+#' @return
+#' @export
+#'
+#' @seealso [path_to_rs_snippets_file()]
+#'
+#' @examples
+#' \dontrun{\donttest{
+#' # By defaults, edits R snippets
+#' edit_rstudio_snippets_file()
+#' edit_rstudio_snippets_file("r")
+#'
+#' edit_rstudio_snippets_file("markdown")
+#' }}
+#'
+edit_rstudio_snippets_file <- function(type = get_default_snippet_types(),
+                                       rstudio_version = "auto") {
+  rstudioapi::navigateToFile(
+    path_to_rs_snippets_file(type = type, rstudio_version = rstudio_version)
+  )
+}
+
+#' Does the file with snippets exist?
+#'
+#' Does the file with certain types of snippets exist in RStudio snippets directory?
 #'
 #' @inheritParams match_snippet_type
 #' @inheritParams path_to_rs_snippets_dir
