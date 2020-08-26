@@ -9,10 +9,10 @@ status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.o
 version](https://img.shields.io/badge/GitHub-v0.0.5-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Codecov test
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Updated-on](https://img.shields.io/badge/Updated%20on-2020--08--26-yellowgreen.svg)]()
 <!-- badges: end -->
 
