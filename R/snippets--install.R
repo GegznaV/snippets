@@ -21,18 +21,16 @@
 #' @examples
 #' if (FALSE) {
 #'
-#' # Replace your R and Markdown snippets with those in package "snippets":
-#' install_snippets_from_package("snippets", type = "r",        backup = TRUE)
-#' install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
+#'   # Replace your R and Markdown snippets with those in package "snippets":
+#'   install_snippets_from_package("snippets", type = "r", backup = TRUE)
+#'   install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
 #'
-#' # Check if back-up copies exist:
-#' list_snippet_file_backups(type = "r")
-#' list_snippet_file_backups(type = "markdown")
-#'
+#'   # Check if back-up copies exist:
+#'   list_snippet_file_backups(type = "r")
+#'   list_snippet_file_backups(type = "markdown")
 #' }
 install_snippets_from_package <- function(package = "snippets",
-  type = get_default_snippet_types(), subdir = "", backup = TRUE) {
-
+                                          type = get_default_snippet_types(), subdir = "", backup = TRUE) {
   from_dir <- path_to_snippets_dir_of_pkg(package = package, subdir)
   install_snippets_from_dir(type = type, from_dir = from_dir, backup = backup)
 }
@@ -40,8 +38,7 @@ install_snippets_from_package <- function(package = "snippets",
 #' @rdname install-snippets
 #' @export
 install_snippets_from_dir <- function(from_dir = ".",
-  type = get_default_snippet_types(), backup = TRUE) {
-
+                                      type = get_default_snippet_types(), backup = TRUE) {
   from_dir <- fs::path(from_dir)
   if (!fs::dir_exists(from_dir)) {
     usethis::ui_oops("Directory was not found: {usethis::ui_path(from_dir)}  ")
@@ -89,7 +86,7 @@ install_snippets_from_dir <- function(from_dir = ".",
   if (status_updated) {
     cat("\n")
     usethis::ui_info(paste0(
-      'You will be able to use the snippets after ',
+      "You will be able to use the snippets after ",
       '{usethis::ui_field("RStudio")} is ',
       '{crayon::underline("closed and reopened")}.'
     ))
