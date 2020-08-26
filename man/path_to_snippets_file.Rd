@@ -15,7 +15,8 @@ path_to_snippets_file(
 path_to_rs_snippets_file(
   type = get_default_snippet_types(),
   create = FALSE,
-  several.ok = FALSE
+  several.ok = FALSE,
+  rstudio_version = "auto"
 )
 }
 \arguments{

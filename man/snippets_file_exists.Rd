@@ -4,7 +4,7 @@
 \alias{snippets_file_exists}
 \title{Does file with snippets exist?}
 \usage{
-snippets_file_exists(type)
+snippets_file_exists(type, rstudio_version = "auto")
 }
 \arguments{
 \item{type}{(character)
@@ -13,6 +13,10 @@ A character vector of snippet types. Currently allowed values are
 \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
 Defaults to \code{"r"}.}
+
+\item{rstudio_version}{Numeric version of RStudio (the output is different
+for RStudio < 1.3 and 1.3 ir newer series). If \code{"auto"}, the version
+of RStudio will be determined automatically.}
 }
 \value{
 Returns \code{TRUE} if file exists and \code{FALSE} otherwise.
@@ -21,7 +25,9 @@ Returns \code{TRUE} if file exists and \code{FALSE} otherwise.
 Does a file with certain types of snippets exist in RStudio snippets directory?
 }
 \examples{
+\dontrun{\donttest{
 snippets_file_exists("r")
 snippets_file_exists("markdown")
+}}
 }
 \concept{snippet files and dirs}
