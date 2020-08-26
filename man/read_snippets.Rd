@@ -2,7 +2,7 @@
 % Please edit documentation in R/code.R
 \name{read_snippets}
 \alias{read_snippets}
-\title{Read snippets into data frame.}
+\title{Read snippets into data frame}
 \usage{
 read_snippets(input)
 }
@@ -14,7 +14,7 @@ Either a file name or a character vector with with a snippet.}
 File/Text with snippets parsed into data frame (\code{tibble}).
 }
 \description{
-Read snippets into data frame.
+Read snippets into data frame
 }
 \examples{
 

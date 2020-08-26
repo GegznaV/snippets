@@ -7,7 +7,7 @@
 \alias{create_snippets_backup_dir}
 \alias{get_snippets_backup_file_pattern}
 \alias{remove_snippet_backup_duplicates}
-\title{Manage back-up copies of snippets.}
+\title{Manage back-up copies of snippets}
 \usage{
 backup_rs_snippets(type)
 

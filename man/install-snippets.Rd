@@ -4,7 +4,7 @@
 \alias{install-snippets}
 \alias{install_snippets_from_package}
 \alias{install_snippets_from_dir}
-\title{Install snippets.}
+\title{Install snippets}
 \usage{
 install_snippets_from_package(
   package = "snippets",

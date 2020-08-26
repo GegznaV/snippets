@@ -3,7 +3,7 @@
 \name{path_to_snippets_dir_of_pkg}
 \alias{path_to_snippets_dir_of_pkg}
 \alias{path_to_snippets_files_of_pkg}
-\title{Get path to snippets in a package.}
+\title{Get path to snippets in a package}
 \usage{
 path_to_snippets_dir_of_pkg(package, ...)
 

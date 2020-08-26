@@ -3,7 +3,7 @@
 \docType{package}
 \name{snippets}
 \alias{snippets}
-\title{Manage RStudio snippets.}
+\title{Manage RStudio snippets}
 \description{
 Tools to manage RStudio snippets.
 Package \pkg{snippets} also contains RStudio snippets.

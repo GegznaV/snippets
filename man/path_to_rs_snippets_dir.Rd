@@ -2,7 +2,7 @@
 % Please edit documentation in R/snippet_files_and_dirs.R
 \name{path_to_rs_snippets_dir}
 \alias{path_to_rs_snippets_dir}
-\title{Get path to directory for RStudio snippets.}
+\title{Get path to directory for RStudio snippets}
 \usage{
 path_to_rs_snippets_dir()
 }

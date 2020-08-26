@@ -2,7 +2,7 @@
 % Please edit documentation in R/snippet_files_and_dirs.R
 \name{make_snippet_filename}
 \alias{make_snippet_filename}
-\title{Make a filename for snippets.}
+\title{Make a filename for snippets}
 \usage{
 make_snippet_filename(type = get_default_snippet_types(), several.ok = FALSE)
 }
