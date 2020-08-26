@@ -135,7 +135,6 @@ read_snippets <- function(input) {
     ) %>%
     dplyr::ungroup() %>%
     dplyr::select(name, no, snippet, dplyr::everything())
-
 }
 
 
