@@ -242,5 +242,3 @@ path_to_snippets_files_of_pkg <- function(package, ...) {
   }
 }
 
-# ~~~~~~~~~ Internal ~~~~~~~~~ -----------------------------------------------
-
