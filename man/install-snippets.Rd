@@ -8,7 +8,7 @@
 \usage{
 install_snippets_from_package(
   package = "snippets",
-  type = get_default_snippet_types(),
+  type = "auto-detect-all",
   subdir = "",
   backup = TRUE
 )

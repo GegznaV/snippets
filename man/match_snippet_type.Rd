@@ -23,7 +23,8 @@ See also \code{\link[base:match.arg]{base::match.arg()}}}
 (sting) Correct snippet type in lower case. By default returns \code{"r"}.
 }
 \description{
-Return correct snippet type
+Convert abbreviated or full snippet name of snippet type into a full name of
+snippet type.
 }
 \examples{
 # Defaults to "r":
