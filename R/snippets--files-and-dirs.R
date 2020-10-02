@@ -216,7 +216,7 @@ snippets_file_exists <- function(type, rstudio_version = "auto") {
 #'
 #' Get path to snippets in a package:
 #'
-#' - `get_path_to_rs_snippets_dir()` gets path to directory with snippet files
+#' - `path_to_snippets_dir_of_pkg()` gets path to directory with snippet files
 #'  in a package. Defaults to `{path to package}/inst/snippets`. Returns empty
 #'  string, if the directory does not exist.
 #' - `get_path_to_snippet_files_of_pkg()` gets paths to all files with snippets
@@ -232,12 +232,12 @@ snippets_file_exists <- function(type, rstudio_version = "auto") {
 #' @noRd
 #'
 #' @examples
-#' get_path_to_rs_snippets_dir("snippets")
-get_path_to_rs_snippets_dir <- function(package, ...) {
+#' path_to_snippets_dir_of_pkg("snippets")
+path_to_snippets_dir_of_pkg <- function(package, ...) {
   system.file("snippets", ... , package = package)
 }
 
-# @rdname get_path_to_rs_snippets_dir
+# @rdname path_to_snippets_dir_of_pkg
 # @export
 # @examples
 #
