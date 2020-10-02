@@ -1,11 +1,11 @@
-test_that("path_to_snippets_files_of_pkg() works", {
+test_that("get_path_to_snippet_files_of_pkg() works", {
 
   # Missing package name
-  expect_error(path_to_snippets_files_of_pkg())
+  expect_error(get_path_to_snippet_files_of_pkg())
 
   # Correct output class
-  expect_is(path_to_snippets_files_of_pkg("snippets"), "character")
+  expect_is(get_path_to_snippet_files_of_pkg("snippets"), "character")
 
   # No dir for snippets
-  expect_equal(path_to_snippets_files_of_pkg("testthat"), NULL)
+  expect_equal(get_path_to_snippet_files_of_pkg("testthat"), NULL)
 })
