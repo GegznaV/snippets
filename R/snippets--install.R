@@ -32,7 +32,7 @@
 install_snippets_from_package <- function(package = "snippets",
                                           type = "auto-detect-all",
                                           subdir = "", backup = TRUE) {
-  from_dir <- path_to_snippets_dir_of_pkg(package = package, subdir)
+  from_dir <- get_path_to_snippets_dir_of_pkg(package = package, subdir)
 
   if (type == "auto-detect-all") {
     all_files <- fs::dir_ls(from_dir, regexp = "[.]snippets$", type = "file")
