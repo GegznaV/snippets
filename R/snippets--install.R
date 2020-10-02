@@ -43,7 +43,7 @@ install_snippets_from_package <- function(package,
 
   from_dir <- get_path_to_snippets_dir_of_pkg(package = package, subdir)
 
-  if (type == "auto-detect-all") {
+  if (any(type == "auto-detect-all")) {
     all_files <- fs::dir_ls(from_dir, regexp = "[.]snippets$", type = "file")
     if (length(all_files) == 0) {
       usethis::ui_oops(
