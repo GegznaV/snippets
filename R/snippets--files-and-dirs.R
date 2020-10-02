@@ -243,7 +243,7 @@ get_path_to_snippets_dir_of_pkg <- function(package, ...) {
 #
 # get_path_to_snippet_files_of_pkg("snippets")
 get_path_to_snippet_files_of_pkg <- function(package, ...) {
-  folder <- get_path_to_rs_snippets_dir(package = package, ...)
+  folder <- get_path_to_snippets_dir_of_pkg(package = package, ...)
 
   if (folder == "") {
     return(NULL)
