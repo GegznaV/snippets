@@ -181,7 +181,17 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #'
 open_rs_snippets_file <- function(type, rstudio_version = "auto") {
   force(type)
+  type <- match_snippet_type(type, several.ok = FALSE)
   file <- path_to_rs_snippets_file(type = type, rstudio_version = rstudio_version)
+  not_found <- !fs::file_exists(type)
+  if (any(not_found)) {
+    type_txt <- usethis::ui_field(type)
+    usethis::ui_stop(paste0(
+      "The file with user-defined {type_txt} snippets is not found: \n",
+      "{usethis::ui_path(file[not_found])} \n",
+      "This means that the default {type_txt} snippets are used in RStudio."
+    ))
+  }
   rstudioapi::navigateToFile(file)
 }
 
