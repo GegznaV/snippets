@@ -4,7 +4,7 @@
 \alias{get_path_to_rs_snippets_dir}
 \title{Get path to directory for RStudio snippets}
 \usage{
-get_path_to_rs_snippets_dir(package, ...)
+get_path_to_rs_snippets_dir(rstudio_version = "auto")
 }
 \arguments{
 \item{rstudio_version}{Numeric version of RStudio (the output is different
