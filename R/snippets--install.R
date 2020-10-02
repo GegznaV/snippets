@@ -9,7 +9,7 @@
 #'
 #' @inheritParams match_snippet_type
 #'
-#' @param package  (character) The name of R package.
+#' @param package  (character) The name of an R package.
 #' @param subdir   (character) The sub-directory with replacement file(s).
 #' @param from_dir (character) The directory with replacement file.
 #' @param backup (logical) Indication if a back-up copy should be created.
@@ -22,16 +22,25 @@
 #' if (FALSE) {
 #'
 #'   # Replace your R and Markdown snippets with those in package "snippets":
-#'   install_snippets_from_package("snippets", type = "r", backup = TRUE)
-#'   install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
+#'   install_snippets_from_package("snippets")
+#'   install_snippets_from_package("snippets", type = "r")
+#'   install_snippets_from_package("snippets", type = "markdown")
 #'
 #'   # Check if back-up copies exist:
 #'   list_snippet_file_backups(type = "r")
 #'   list_snippet_file_backups(type = "markdown")
+#'
+#'   remove_snippet_backup_duplicates()
 #' }
-install_snippets_from_package <- function(package = "snippets",
+install_snippets_from_package <- function(package,
                                           type = "auto-detect-all",
                                           subdir = "", backup = TRUE) {
+  if (missing(package)) {
+    usethis::ui_stop(
+      "{usethis::ui_field('package')} name is missing. Please, specify it."
+    )
+  }
+
   from_dir <- get_path_to_snippets_dir_of_pkg(package = package, subdir)
 
   if (type == "auto-detect-all") {
