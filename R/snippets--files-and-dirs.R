@@ -45,14 +45,14 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #' @examples
 #' \dontrun{\donttest{
 #' # Regularly, you should use this:
-#' path_to_rs_snippets_dir()
+#' get_path_to_rs_snippets_dir()
 #' }}
 #'
 #' # For testing purposes:
-#' path_to_rs_snippets_dir("1.3.1073")
-#' path_to_rs_snippets_dir("1.2.5044")
+#' get_path_to_rs_snippets_dir("1.3.1073")
+#' get_path_to_rs_snippets_dir("1.2.5044")
 
-path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
+get_path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
 
   if (rstudio_version == "auto") {
     rstudio_version <- rstudioapi::versionInfo()$version
@@ -93,7 +93,7 @@ path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
 #' }
 
 create_rs_snippets_dir <- function() {
-  fs::dir_create(path_to_rs_snippets_dir())
+  fs::dir_create(get_path_to_rs_snippets_dir())
 }
 
 
@@ -104,7 +104,7 @@ create_rs_snippets_dir <- function() {
 
 open_rs_snippets_dir <- function() {
   create_rs_snippets_dir()
-  browseURL(path_to_rs_snippets_dir())
+  browseURL(get_path_to_rs_snippets_dir())
 }
 
 #' Construct path to file of certain type of snippets
@@ -116,7 +116,7 @@ open_rs_snippets_dir <- function() {
 #'   snippets.
 #'
 #' @inheritParams match_snippet_type
-#' @inheritParams path_to_rs_snippets_dir
+#' @inheritParams get_path_to_rs_snippets_dir
 #'
 #' @param dir (string) Directory name.
 #' @param create (logical) If `TRUE`, as a side effect, the file is created
@@ -152,7 +152,7 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE, rstudio_version = "auto") {
 
   path_to_snippets_file(
-    dir = path_to_rs_snippets_dir(rstudio_version = rstudio_version),
+    dir = get_path_to_rs_snippets_dir(rstudio_version = rstudio_version),
     type = type,
     create = create,
     several.ok = several.ok
@@ -164,7 +164,7 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' Edit file with RStudio snippets.
 #'
 #' @inheritParams match_snippet_type
-#' @inheritParams path_to_rs_snippets_dir
+#' @inheritParams get_path_to_rs_snippets_dir
 #'
 #' @return
 #' @export
@@ -192,7 +192,7 @@ open_rs_snippets_file <- function(type, rstudio_version = "auto") {
 #' Does the file with certain types of snippets exist in RStudio snippets directory?
 #'
 #' @inheritParams match_snippet_type
-#' @inheritParams path_to_rs_snippets_dir
+#' @inheritParams get_path_to_rs_snippets_dir
 #'
 #' @return Returns `TRUE` if file exists and `FALSE` otherwise.
 #'
