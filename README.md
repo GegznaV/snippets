@@ -49,8 +49,9 @@ remotes::install_github("GegznaV/snippets")
 ### Install Snippets from “snippets”
 
 ``` r
-# Replace current R and Markdown snippets with those in package "snippets"
-snippets::install_snippets_from_package("snippets", type = c("r", "markdown"), backup = TRUE)
+# Replace current files with snippets with those in package "snippets"
+# (backup copies are created by default)
+snippets::install_snippets_from_package("snippets")
 ```
 
 ### More Examples
@@ -60,12 +61,12 @@ library(snippets)
 ```
 
 ``` r
-# Get the name of directory with RStudio snippets
-path_to_rs_snippets_dir()
+# Get the name of the directory where RStudio snippets are stored
+get_path_to_rs_snippets_dir()
 ```
 
 ``` r
-# Open directory with RStudio snippets
+# Open the directory with RStudio snippets
 open_rs_snippets_dir()
 ```
 
