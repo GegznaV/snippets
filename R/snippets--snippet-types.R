@@ -36,6 +36,10 @@ get_default_snippet_types <- function() {
 
 #' Return correct snippet type
 #'
+#' Convert abbreviated or full snippet name of snippet type into a full name of
+#' snippet type.
+#'
+#'
 #' @param type (character)
 #'        A character vector of snippet types. Currently allowed values are
 #'        `"r"`, `"markdown"`, `"c_cpp"`, `"css"`, `"html"`, `"java"`,
@@ -50,8 +54,7 @@ get_default_snippet_types <- function() {
 #'
 #' @return (sting) Correct snippet type in lower case. By default returns `"r"`.
 #
-#  @export
-#' @noRd
+#' @export
 #'
 #' @concept snippet types
 #' @examples

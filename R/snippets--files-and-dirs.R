@@ -39,8 +39,7 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #'        of RStudio will be determined automatically.
 #'
 #' @return (string) Path to directory for RStudio snippets.
-#  @export
-#' @noRd
+#' @export
 #'
 #' @concept snippet files and dirs
 #' @examples
