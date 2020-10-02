@@ -49,7 +49,9 @@ get_default_snippet_types <- function() {
 #'        See also [base::match.arg()]
 #'
 #' @return (sting) Correct snippet type in lower case. By default returns `"r"`.
-#' @export
+#
+#  @export
+#' @noRd
 #'
 #' @concept snippet types
 #' @examples

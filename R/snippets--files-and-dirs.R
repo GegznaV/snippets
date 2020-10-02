@@ -10,7 +10,8 @@
 #' @inheritParams match_snippet_type
 #'
 #' @return String with a filename.
-#' @export
+#  @export
+#' @noRd
 #'
 #' @concept snippet files and dirs
 #' @examples
@@ -38,7 +39,8 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #'        of RStudio will be determined automatically.
 #'
 #' @return (string) Path to directory for RStudio snippets.
-#' @export
+#  @export
+#' @noRd
 #'
 #' @concept snippet files and dirs
 #' @examples
@@ -82,7 +84,8 @@ path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
 #'
 #' @return Invisibly returns the path to created directory.
 #'         See also [fs::dir_create()].
-#' @export
+#  @export
+#' @noRd
 #'
 #' @concept snippet files and dirs
 #' @examples
@@ -121,9 +124,10 @@ open_rs_snippets_dir <- function() {
 #'        (if it does not exist). Defaults to `FALSE`.
 #'
 #' @return (character) Path to file.
-#' @export
 #' @concept snippet files and dirs
 #'
+#  @export
+#' @noRd
 
 path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
@@ -143,8 +147,8 @@ path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   paths
 }
 
-#' @rdname path_to_snippets_file
-#' @export
+# @rdname path_to_snippets_file
+# @export
 path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE, rstudio_version = "auto") {
 
@@ -183,6 +187,7 @@ open_rs_snippets_file <- function(type, rstudio_version = "auto") {
   rstudioapi::navigateToFile(file)
 }
 
+
 #' Does the file with snippets exist?
 #'
 #' Does the file with certain types of snippets exist in RStudio snippets directory?
@@ -191,7 +196,9 @@ open_rs_snippets_file <- function(type, rstudio_version = "auto") {
 #' @inheritParams path_to_rs_snippets_dir
 #'
 #' @return Returns `TRUE` if file exists and `FALSE` otherwise.
-#' @export
+#'
+#  @export
+#' @noRd
 #'
 #' @concept snippet files and dirs
 #' @examples
@@ -222,18 +229,20 @@ snippets_file_exists <- function(type, rstudio_version = "auto") {
 #' @param ... (character) Path to subdirectory with snippets of interest:
 #'        `{path to package}/inst/snippets/{path of subdirectory provided via ...}`
 #'
-#' @export
+#  @export
+#' @noRd
+#'
 #' @examples
 #' path_to_snippets_dir_of_pkg("snippets")
 path_to_snippets_dir_of_pkg <- function(package, ...) {
   system.file("snippets", ... , package = package)
 }
 
-#' @rdname path_to_snippets_dir_of_pkg
-#' @export
-#' @examples
-#'
-#' path_to_snippets_files_of_pkg("snippets")
+# @rdname path_to_snippets_dir_of_pkg
+# @export
+# @examples
+#
+# path_to_snippets_files_of_pkg("snippets")
 path_to_snippets_files_of_pkg <- function(package, ...) {
   folder <- path_to_snippets_dir_of_pkg(package = package, ...)
 

@@ -24,10 +24,12 @@
 #'
 #' list_snippet_file_backups("r")
 #'
-#' # Use name of an existing back-up file
-#' restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
-#'
 #' }
+#
+# if (FALSE) {
+# # Use name of an existing back-up file
+# restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
+# }
 # @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
 
 backup_rs_snippets <- function(type) {
@@ -51,14 +53,14 @@ list_snippet_file_backups <- function(type = get_default_snippet_types()) {
   fs::dir_ls(backup_dir, regexp = get_snippets_backup_file_pattern(type))
 }
 
-#' @rdname backup_rs_snippets
-#' @export
+# @rdname backup_rs_snippets
+# @export
 path_to_snippets_backup_dir <- function() {
   backup.tools::get_path_backup_dir("snippets")
 }
 
-#' @rdname backup_rs_snippets
-#' @export
+# @rdname backup_rs_snippets
+# @export
 create_snippets_backup_dir <- function() {
   backup_dir <- path_to_snippets_backup_dir()
   fs::dir_create(backup_dir)
@@ -71,8 +73,8 @@ open_snippets_backup_dir <- function() {
   browseURL(path_to_snippets_backup_dir())
 }
 
-#' @rdname backup_rs_snippets
-#' @export
+# @rdname backup_rs_snippets
+# @export
 get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
   type <- match_snippet_type(type, several.ok = several.ok)
   types <- paste(type, collapse = "|")
