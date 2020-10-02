@@ -166,12 +166,11 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' @inheritParams match_snippet_type
 #' @inheritParams get_path_to_rs_snippets_dir
 #'
-#' @return
 #' @export
 #'
 #' @concept snippet files and dirs
 #'
-#' @seealso [path_to_rs_snippets_file()]
+# @seealso [path_to_rs_snippets_file()]
 #'
 #' @examples
 #' \dontrun{\donttest{

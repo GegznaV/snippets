@@ -18,9 +18,6 @@ Defaults to \code{"r"}.}
 for RStudio < 1.3 and 1.3 or newer series). If \code{"auto"}, the version
 of RStudio will be determined automatically.}
 }
-\value{
-
-}
 \description{
 Edit file with RStudio snippets.
 }
@@ -31,8 +28,5 @@ open_rs_snippets_file("r")
 open_rs_snippets_file("markdown")
 }}
 
-}
-\seealso{
-\code{\link[=path_to_rs_snippets_file]{path_to_rs_snippets_file()}}
 }
 \concept{snippet files and dirs}
