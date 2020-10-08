@@ -3,10 +3,10 @@ on:
     branches:
       - master
 
-name: "Publish package (drat)"
+name: Publish package
 
 jobs:
-  Publish-package:
+  drat:
     runs-on: ${{ matrix.config.os }}
 
     name: "drat: ${{ matrix.config.os }} (R-${{ matrix.config.r }})"
@@ -37,7 +37,8 @@ jobs:
 
       - name: Query dependencies
         run: |
-          install.packages('remotes')
+          options("repos" = "https://cran.rstudio.com/")
+          install.packages('remotes', repos = "https://cran.rstudio.com/")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -61,7 +62,7 @@ jobs:
         run:   roxygen2::roxygenize()
 
       - name: Build source package
-        if: runner.os == 'macOS' && matrix.config.r == 'release'
+        if: runner.os == 'Windows' && matrix.config.r == 'release'
         shell: Rscript {0}
         run: |
           dir.create("check", showWarnings = FALSE)

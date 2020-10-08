@@ -6,19 +6,19 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.5-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.6-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--08--26-yellowgreen.svg)]()
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--10--02-yellowgreen.svg)]()
 <!-- badges: end -->
 
 # Package `snippets`
 
-<!-- (0.0.5) -->
+<!-- (0.0.6) -->
 
 ## Installation
 
@@ -49,8 +49,9 @@ remotes::install_github("GegznaV/snippets")
 ### Install Snippets from “snippets”
 
 ``` r
-# Replace current R and Markdown snippets with those in package "snippets"
-snippets::install_snippets_from_package("snippets", type = c("r", "markdown"), backup = TRUE)
+# Replace current files with snippets with those in package "snippets"
+# (backup copies are created by default)
+snippets::install_snippets_from_package("snippets")
 ```
 
 ### More Examples
@@ -60,12 +61,12 @@ library(snippets)
 ```
 
 ``` r
-# Get the name of directory with RStudio snippets
-path_to_rs_snippets_dir()
+# Get the name of the directory where RStudio snippets are stored
+get_path_to_rs_snippets_dir()
 ```
 
 ``` r
-# Open directory with RStudio snippets
+# Open the directory with RStudio snippets
 open_rs_snippets_dir()
 ```
 
@@ -161,4 +162,4 @@ remove_snippet_backup_duplicates()
     <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
     <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 
-<!-- <div style="text-align:right;">2020-08-26</div> -->
+<!-- <div style="text-align:right;">2020-10-02</div> -->
