@@ -49,7 +49,7 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
         purrr::reduce(c) %>%
         # Remove comments:
         # stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
-        readr::write_lines(path = make_snippet_filename(type = type))
+        readr::write_lines(make_snippet_filename(type = type))
     }
   )
 }
