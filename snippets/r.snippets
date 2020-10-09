@@ -9,6 +9,8 @@ snippet help
 	help-data-types
 	# Functions for quick summary/descriptive statistics:
 	help-desc
+	# Symbols (mathematical, Greek, etc.)
+	help-symbols
 	# Comparison of different R syntax to achieve the same goals:
 	compare-r-syntax
 	# END: keywords for help/documentation snippets   ==========================~
@@ -430,201 +432,370 @@ snippet desc-fct-fct
 	${5:# prop = "r" - row, "c" - column, "t" -- total, "n"- no percentage}
 # Symbols --------------------------------------------------------------------
 
-#  U\+(.*?)$      → "\u\1"
-#  ^. "(.*?)"     → \t`r "\1"`
-#  snippet sub(.) → snippet \1-sub
+snippet help-symbols
+	# Mathematical symbols
+	approx      (≈)
+	pm          (±)
+	mp          (∓)
+	ne          (≠)
+	le          (≤)
+	ge          (≥)
+	times       (×)
+	cdot        (·)
+	permile     (‰)
+	deg         (°)
+	degree      (°)
 
-#  U\+(....)\t(.)\t.*\tGreek Capital Letter (.*?)\t.*$
-#  # \3 (\2)\nsnippet \3\n\t`r "\u\1"`\n
+	# Superscript symbols
+	0-sup       (⁰)
+	1-sup       (¹)
+	2-sup       (²)
+	sq          (²)
+	3-sup       (³)
+	4-sup       (⁴)
+	5-sup       (⁵)
+	6-sup       (⁶)
+	7-sup       (⁷)
+	8-sup       (⁸)
+	9-sup       (⁹)
+	+-sup       (⁺)
+	--sup       (⁻)
+	=-sup       (⁼)
+	(-sup       (⁽)
+	)-sup       (⁾)
+	a-sup       (ª)
+	n-sup       (ⁿ)
+	o-sup       (º)
+	i-sup       (ⁱ)
 
-#  U\+(....)\t(.)\t.*\tGreek Small Letter (.*?)\t.*$
-#  # \3 (\2)\nsnippet \3\n\t`r "\u\1"`\n
+	# Subscript symbols
+	0-sub       (₀)
+	1-sub       (₁)
+	2-sub       (₂)
+	3-sub       (₃)
+	4-sub       (₄)
+	5-sub       (₅)
+	6-sub       (₆)
+	7-sub       (₇)
+	8-sub       (₈)
+	9-sub       (₉)
+	+-sub       (₊)
+	--sub       (₋)
+	=-sub       (₌)
+	(-sub       (₍)
+	)-sub       (₎)
+	a-sub       (ₐ)
+	e-sub       (ₑ)
+	o-sub       (ₒ)
+	x-sub       (ₓ)
+	i-sub       (ᵢ)
+	j-sub       (ⱼ)
+	h-sub       (ₕ)
+	k-sub       (ₖ)
+	l-sub       (ₗ)
+	m-sub       (ₘ)
+	n-sub       (ₙ)
+	p-sub       (ₚ)
+	s-sub       (ₛ)
+	t-sub       (ₜ)
+
+	# Capital Greek letters
+	Alpha       (Α)
+	Beta        (Β)
+	Gamma       (Γ)
+	Delta       (Δ)
+	Epsilon     (Ε)
+	Zeta        (Ζ)
+	Eta         (Η)
+	Theta       (Θ)
+	Iota        (Ι)
+	Kappa       (Κ)
+	Lambda      (Λ)
+	Mu          (Μ)
+	Nu          (Ν)
+	Xi          (Ξ)
+	Omicron     (Ο)
+	Pi          (Π)
+	Rho         (Ρ)
+	Sigma       (Σ)
+	Tau         (Τ)
+	Upsilon     (Υ)
+	Phi         (Φ)
+	Chi         (Χ)
+	Psi         (Ψ)
+	Omega       (Ω)
+
+	# Non-capital Greek letters
+	alpha       (α)
+	beta        (β)
+	gamma       (γ)
+	delta       (δ)
+	epsilon     (ε)
+	zeta        (ζ)
+	eta         (η)
+	theta       (θ)
+	iota        (ι)
+	kappa       (κ)
+	lambda      (λ)
+	mu          (μ)
+	nu          (ν)
+	xi          (ξ)
+	omicron     (ο)
+	pi          (π)
+	rho         (ρ)
+	final-sigma (ς)
+	sigma       (σ)
+	tau         (τ)
+	upsilon     (υ)
+	phi         (φ)
+	chi         (χ)
+	psi         (ψ)
+	omega       (ω)
 
 
 # Mathematical symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# ≈
+# approximtely (≈)
 snippet approx
 	`r "\u2248"`
 
+# plus-minus (±)
 snippet pm
 	`r "\u00B1"`
 
+# minus-plus (∓)
 snippet mp
 	`r "\u2213"`
 
+# not equal (≠)
 snippet ne
 	`r "\u2260"`
 
+# less or equal (≤)
 snippet le
 	`r "\u2264"`
 
+# greater or equal (≥)
 snippet ge
 	`r "\u2265"`
 
+# times (×)
 snippet times
 	`r "\u00D7"`
 
+# central dot (·)
 snippet cdot
 	`r "\u00B7"`
 
+# permile (‰)
 snippet permile
 	`r "\u2030"`
 
+# degree (°)
 snippet deg
 	`r "\u00B0"`
 
+# degree (°)
 snippet degree
 	`r "\u00B0"`
 
 
 # Superscript symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Superscript 0 (⁰)
 snippet 0-sup
 	`r "\u2070"`
 
+# Superscript 1 (¹)
 snippet 1-sup
 	`r "\u00B9"`
 
+# Superscript 2 (²)
 snippet 2-sup
 	`r "\u00B2"`
 
+# sq (²)
 snippet sq
 	${1}`r "\u00B2"`${0}
 
+# Superscript 3 (³)
 snippet 3-sup
 	`r "\u00B3"`
 
+# Superscript 4 (⁴)
 snippet 4-sup
 	`r "\u2074"`
 
+# Superscript 5 (⁵)
 snippet 5-sup
 	`r "\u2075"`
 
+# Superscript 6 (⁶)
 snippet 6-sup
 	`r "\u2076"`
 
+# Superscript 7 (⁷)
 snippet 7-sup
 	`r "\u2077"`
 
+# Superscript 8 (⁸)
 snippet 8-sup
 	`r "\u2078"`
 
+# Superscript 9 (⁹)
 snippet 9-sup
 	`r "\u2079"`
 
+# Superscript + (⁺)
 snippet +-sup
 	`r "\u207A"`
 
+# Superscript - (⁻)
 snippet --sup
 	`r "\u207B"`
 
+# Superscript = (⁼)
 snippet =-sup
 	`r "\u207C"`
 
+# Superscript ( (⁽)
 snippet (-sup
 	`r "\u207D"`
 
+# Superscript ) (⁾)
 snippet )-sup
 	`r "\u207E"`
 
+# Superscript a (ª)
 snippet a-sup
 	`r "\u00AA"`
 
+# Superscript n (ⁿ)
 snippet n-sup
 	`r "\u207F"`
 
+# Superscript o (º)
 snippet o-sup
 	`r "\u00BA"`
 
+# Superscript i (ⁱ)
 snippet i-sup
 	`r "\u2071"`
 
 
 # Subscript symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Subscript 0 (₀)
 snippet 0-sub
 	`r "\u2080"`
 
+# Subscript 1 (₁)
 snippet 1-sub
 	`r "\u2081"`
 
+# Subscript 2 (₂)
 snippet 2-sub
 	`r "\u2082"`
 
+# Subscript 3 (₃)
 snippet 3-sub
 	`r "\u2083"`
 
+# Subscript 4 (₄)
 snippet 4-sub
 	`r "\u2084"`
 
+# Subscript 5 (₅)
 snippet 5-sub
 	`r "\u2085"`
 
+# Subscript 6 (₆)
 snippet 6-sub
 	`r "\u2086"`
 
+# Subscript 7 (₇)
 snippet 7-sub
 	`r "\u2087"`
 
+# Subscript 8 (₈)
 snippet 8-sub
 	`r "\u2088"`
 
+# Subscript 9 (₉)
 snippet 9-sub
 	`r "\u2089"`
 
+# Subscript + (₊)
 snippet +-sub
 	`r "\u208A"`
 
+# Subscript - (₋)
 snippet --sub
 	`r "\u208B"`
 
+# Subscript = (₌)
 snippet =-sub
 	`r "\u208C"`
 
+# Subscript ( (₍)
 snippet (-sub
 	`r "\u208D"`
 
+# Subscript ) (₎)
 snippet )-sub
 	`r "\u208E"`
 
+# Subscript a (ₐ)
 snippet a-sub
 	`r "\u2090"`
 
+# Subscript e (ₑ)
 snippet e-sub
 	`r "\u2091"`
 
+# Subscript o (ₒ)
 snippet o-sub
 	`r "\u2092"`
 
+# Subscript x (ₓ)
 snippet x-sub
 	`r "\u2093"`
 
+# Subscript i (ᵢ)
 snippet i-sub
 	`r "\u1D62"`
 
+# Subscript j (ⱼ)
 snippet j-sub
 	`r "\u2C7C"`
 
+# Subscript h (ₕ)
 snippet h-sub
 	`r "\u2095"`
 
-snippet sub
+# Subscript k (ₖ)
+snippet k-sub
 	`r "\u2096"`
 
+# Subscript l (ₗ)
 snippet l-sub
 	`r "\u2097"`
 
+# Subscript m (ₘ)
 snippet m-sub
 	`r "\u2098"`
 
+# Subscript n (ₙ)
 snippet n-sub
 	`r "\u2099"`
 
+# Subscript p (ₚ)
 snippet p-sub
 	`r "\u209A"`
 
+# Subscript s (ₛ)
 snippet s-sub
 	`r "\u209B"`
 
+# Subscript t (ₜ)
 snippet t-sub
 	`r "\u209C"`
 
