@@ -130,7 +130,7 @@ snippet fig
 	CAPTION = "${2:**Fig. ${3:1}.** }${4:Description}  "
 
 	# Path or URL to the figure.
-	knitr::include_graphics("${0}")
+	${5:knitr::include_graphics("${0}")}
 	```
 
 snippet figg
@@ -139,7 +139,7 @@ snippet figg
 	CAPTION = "${2:Description}  "
 
 	# Path or URL to the figure.
-	knitr::include_graphics("${0}")
+	${3:knitr::include_graphics("${0}")}
 	```
 
 snippet fig2
