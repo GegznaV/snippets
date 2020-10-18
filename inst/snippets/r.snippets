@@ -501,13 +501,8 @@ snippet desc-opts
 	library(summarytools)
 	library(DescTools)
 
-	options(scipen = 8)
-
-	# DescTools formatting options
-	Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
-	Fmt(num = Fmt("num", big.mark = "")) # Real numbers
-	Fmt(num = Fmt("num", digits = 3))    # Real numbers
-	Fmt(per = Fmt("per", digits = 1))    # Percentages
+	opts-desctools
+	${0}
 
 snippet desc-na
 	${1:data} %>% PlotMiss(main = "Missing values plot")
