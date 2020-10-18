@@ -241,56 +241,223 @@ snippet help-data-types
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-opts
-	opts-kable
+	opts-r-numbers
 	opts-pander
 	opts-desctools
 
+snippet opts-r-numbers
+	# Options to format numbers
+	options(        # For more detais see ?options
+	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
+		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
+		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
+		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
+	)
+	${0}
+
 snippet opts-kable
 	options(
-	  knitr.kable.NA = '',
 	  scipen = 8,
-	  digits = getOption("digits", default = 4),
+	  digits = getOption("digits"),
 	  OutDec = "."
+	  knitr.kable.NA = "",
 	)
+	${0}
 
 snippet opts-pander
+	# Options for package "pander"
 	options(pander = modifyList(pander::panderOptions(),
 	  list(
 	    digits = getOption("digits", default = 4),
 	    round  = Inf,
 	    decimal.mark = getOption("OutDec", default = "."),
-	    big.mark = " ",
+	    big.mark = "",
 	    keep.trailing.zeros = TRUE,
 	    missing = getOption("knitr.kable.NA", default = NA),
-	    table.style = 'multiline', # 'multiline', 'grid', 'simple',  'rmarkdown'
+	    table.style = "multiline", # "multiline", "grid", "simple", "rmarkdown"
 	    table.split.table = 80,
 	    table.split.cells = 30,
-	    table.continues   = 'Table continues below',
-	    table.continues.affix = '(continued below)',
-	    p.wrap   = '_',
-	    p.sep    = ', ',
-	    p.copula = ' and ',
+	    table.continues   = "Table continues below",
+	    table.continues.affix = "(continued below)",
+	    p.wrap   = "_",
+	    p.sep    = ", ",
+	    p.copula = " and ",
 	    knitr.auto.asis = TRUE
 	  ))
+	${0}
 
 snippet opts-desctools
-	# DescTools formatting options
+	# Options for package "DescTools"
 	options(scipen = 8)
-	Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
-	Fmt(num = Fmt("num", big.mark = "")) # Real numbers
-	Fmt(num = Fmt("num", digits = 3))    # Real numbers
-	Fmt(per = Fmt("per", digits = 1))    # Percentages
+	DescToolsOptions(
+	  stamp  = ${1:NULL}, # stamp for figures
+	  digits = ${2:3},    # the number of fixed digits in printing
+		# abs – count (whole) numbers, num – real numbers, per – percentages
+	  fmt = list(
+	    abs = Fmt("abs", big.mark = "${3}"),
+	    num = Fmt("num", big.mark = "${3}", digits = ${4:3}),
+	    per = Fmt("per", big.mark = "${3}", digits = ${5:1})
+	  )
+	)
+	${0}
+
+snippet opts-chunk
+	# Chunk options
+	knitr::opts_chunk\$set(
+	  echo       = TRUE,    # Should blocks with program code be shown in knitted documents?
+	  eval       = TRUE,    # Should program code be evaluated?
+	  fig.height = 3,       # Default height for plots.
+	  fig.width  = 5,       # Default width for plots.
+	  fig.align  = "center" # Default alignment for plots in knitted documents.
+	)
+	${0}
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-lib
 	lib
 	lib-tidyverse
+	lib-fs
+	lib-file-io
+	lib-ggplot2-extra
+	lib-stat-analysis
+	lib-md-tables
 
 snippet lib-tidyverse
-	library(conflicted)
-	library(magrittr)
-	library(tidyverse)
+	library(conflicted)    # Get a warning/error if several functions with the same name exist.
+	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
+	library(tidyverse)     # The main "tidyverse" packages.
 	${0}
+
+snippet lib-fs
+	library(fs)            # Manage files and directories.
+	${0}
+
+snippet lib-file-io
+	library(data.table)    # Function `fread()` to read data from text files.
+	library(readxl)        # Read Excel data.
+	library(writexl)       # Write data to Excel files.
+	library(openxlsx)      # Write data to Excel files.
+	${0}
+
+snippet lib-summary
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
+	library(gtsummary)     # Presentation-Ready Data Summary and Analytic Result Tables.
+	library(summarytools)  # Descriptive statistics.
+	${0}
+
+snippet lib-ggplot2-extra
+	library(ggpubr)        # Statistical plots and utilities for ggplot2.
+	library(ggstatsplot)   # Statistical plots based on ggplot2.
+	library(ggmosaic)      # Mosaic plot (ggplot2).
+	library(qqplotr)       # Quantile comparison diagrams (QQ plots).
+	library(ggtext)        # Improved Text Rendering Support for ggplot2.
+	library(ggrepel)       # Labels for ggplot2 that do not overlap.
+	library(patchwork)     # Join several ggplot2 plots into single figure.
+	library(gghighlight)   # Highlight Lines and Points in ggplot2.
+	library(latex2exp)     # LaTeX-based equations in plots.
+	library(officer)       # Create and manipulate PowerPoint, Word, etc. documents.
+	library(rvg)           # To save editable plots in PowerPoint.
+	${0}
+
+snippet lib-stat-analysis
+	library(broom)         # Convert results of statistical analysis to data frames.
+	library(rstatix)       # Pipe-friendly basic statistical tests.
+	library(rcompanion)    # Statistical analysis.
+	library(RVAideMemoire) # Statistical analysis.
+	library(PMCMRplus)     # Non-parametric statistical tests.
+	library(vcd)           # Analysis of categorical data.
+	library(fitdistrplus)  # Fit parametric distributions.
+	library(mlr)           # Machine learning in R.
+	library(mlr3)          # Machine learning in R (new generation).
+	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
+	library(userfriendlyscience) # Statistical analysis.
+	${0}
+
+snippet lib-md-tables
+	library(pander)        # Function `pander()` to report results of statistical analysis.
+	library(knitr)         # Function `kable()` to convert data frames into tables for reports.
+	library(DT)            # Interactive tables for HTML documents (DataTables).
+	library(gt)            # Easily Create Presentation-Ready Display Tables.
+	library(flextable)     # Functions for Tabular Reporting.
+	${0}
+
+snippet save-plot-to-pptx
+	# ~ Load the packages  -------------------------------------------------------
+	library(tidyverse)
+	library(rvg)
+	library(officer)
+
+	# ~ Select a file name  ------------------------------------------------------
+	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+
+	if (file.exists(file)) {
+	  input_file <- output_file <- file
+	  if (!file.rename(from = file, to = file)) {
+	    stop("Please close the PowerPoint file: \n", file)
+	  }
+	} else {
+	  input_file  <- NULL
+	  output_file <- file
+	}
+
+	# ~ Create the instructions for creating vector graphics  --------------------
+	dml_plot <- dml(
+	  bg = NULL, pointsize = 12, editable = TRUE,
+	  code = {
+	    # The code of your plot, e.g.:
+	    ${2:barplot(1:5, col = 2:6)}
+	  }
+	)
+
+	location_on_slide <- ph_location(left = ${3:1}, top = ${4:1}, width = ${5:8}, height = ${6:5.5})
+
+	# ~ Save to PowerPoint -------------------------------------------------------
+	path_to_pptx_file <-
+	  read_pptx(input_file) %>%
+	  add_slide(layout = "Blank", master = "Office Theme") %>%
+	  ph_with(dml_plot, location = location_on_slide) %>%
+	  print(target = output_file)
+
+	# ~ Open the pptx file ------------------------------------------------------
+	browseURL(path_to_pptx_file)
+
+
+
+
+snippet save-ggplot-to-pptx
+	# ~ Load the packages  -------------------------------------------------------
+	library(tidyverse)
+	library(rvg)
+	library(officer)
+
+	# ~ Select a file name  ------------------------------------------------------
+	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+
+	if (file.exists(file)) {
+	  input_file <- output_file <- file
+	  if (!file.rename(from = file, to = file)) {
+	    stop("Please close the PowerPoint file: \n", file)
+	  }
+	} else {
+	  input_file  <- NULL
+	  output_file <- file
+	}
+
+	# ~ Create the instructions for creating vector graphics  --------------------
+	dml_plot <-
+	  dml(ggobj = ${2:gg_object_name}, bg = NULL, pointsize = 12, editable = TRUE)
+
+	location_on_slide <- ph_location(left = ${3:1}, top = ${4:1}, width = ${5:8}, height = ${6:5.5})
+
+	# ~ Save to PowerPoint -------------------------------------------------------
+	path_to_pptx_file <-
+	  read_pptx(input_file) %>%
+	  add_slide(layout = "Blank", master = "Office Theme") %>%
+	  ph_with(dml_plot, location = location_on_slide) %>%
+	  print(target = output_file)
+
+	# ~ Open the pptx file ------------------------------------------------------
+	browseURL(path_to_pptx_file)
 snippet help-desc
 	${0}# Snippets for quick descriptive statistics
 	# NOTE: Packages tidyverse, summarytools, and DescTools must be loaded!!!

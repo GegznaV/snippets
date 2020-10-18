@@ -255,6 +255,34 @@ snippet setupo
 snippet setup
 	```{r setup, include=FALSE}
 	# Packages ------------------------------------------------------------------
+
+	lib-tidyverse
+	lib-fs
+	lib-file-io
+	lib-ggplot2-extra
+	lib-stat-analysis
+	lib-md-tables
+
+	# Settings ------------------------------------------------------------------
+
+	locale-lt
+
+	opts-chunk
+	opts-r-numbers
+	opts-desctools
+	opts-pander
+
+	ggplot2::theme_set(ggplot2::theme_bw()) # Default ggplot2 theme
+
+	conflicted::conflict_prefer("filter", "dplyr")
+	conflicted::conflict_prefer("lag",    "dplyr")
+	${0}
+	set.seed(`r format(Sys.Date(), "%Y%m%d")`) # Initial condition for random processes.
+	```
+
+snippet setupq
+	```{r setup, include=FALSE}
+	# Packages ------------------------------------------------------------------
 	${1}
 	library(conflicted)      # Get a warning/error if several functions with the same name exist.
 	library(tidyverse)       # The main "tidyverse" packages.
