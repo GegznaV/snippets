@@ -1,42 +1,73 @@
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-opts
-	opts-kable
+	opts-r-numbers
 	opts-pander
 	opts-desctools
 
+snippet opts-r-numbers
+	# Options to format numbers
+	options(        # For more detais see ?options
+	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
+		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
+		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
+		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
+	)
+	${0}
+
 snippet opts-kable
 	options(
-	  knitr.kable.NA = '',
 	  scipen = 8,
-	  digits = getOption("digits", default = 4),
+	  digits = getOption("digits"),
 	  OutDec = "."
+	  knitr.kable.NA = "",
 	)
+	${0}
 
 snippet opts-pander
+	# Options for package "pander"
 	options(pander = modifyList(pander::panderOptions(),
 	  list(
 	    digits = getOption("digits", default = 4),
 	    round  = Inf,
 	    decimal.mark = getOption("OutDec", default = "."),
-	    big.mark = " ",
+	    big.mark = "",
 	    keep.trailing.zeros = TRUE,
 	    missing = getOption("knitr.kable.NA", default = NA),
-	    table.style = 'multiline', # 'multiline', 'grid', 'simple',  'rmarkdown'
+	    table.style = "multiline", # "multiline", "grid", "simple", "rmarkdown"
 	    table.split.table = 80,
 	    table.split.cells = 30,
-	    table.continues   = 'Table continues below',
-	    table.continues.affix = '(continued below)',
-	    p.wrap   = '_',
-	    p.sep    = ', ',
-	    p.copula = ' and ',
+	    table.continues   = "Table continues below",
+	    table.continues.affix = "(continued below)",
+	    p.wrap   = "_",
+	    p.sep    = ", ",
+	    p.copula = " and ",
 	    knitr.auto.asis = TRUE
 	  ))
+	${0}
 
 snippet opts-desctools
-	# DescTools formatting options
+	# Options for package "DescTools"
 	options(scipen = 8)
-	Fmt(abs = Fmt("abs", big.mark = "")) # Whole numbers
-	Fmt(num = Fmt("num", big.mark = "")) # Real numbers
-	Fmt(num = Fmt("num", digits = 3))    # Real numbers
-	Fmt(per = Fmt("per", digits = 1))    # Percentages
+	DescToolsOptions(
+	  stamp  = ${1:NULL}, # stamp for figures
+	  digits = ${2:3},    # the number of fixed digits in printing
+		# abs – count (whole) numbers, num – real numbers, per – percentages
+	  fmt = list(
+	    abs = Fmt("abs", big.mark = "${3}"),
+	    num = Fmt("num", big.mark = "${3}", digits = ${4:3}),
+	    per = Fmt("per", big.mark = "${3}", digits = ${5:1})
+	  )
+	)
+	${0}
+
+snippet opts-chunk
+	# Chunk options
+	knitr::opts_chunk\$set(
+	  echo       = TRUE,    # Should blocks with program code be shown in knitted documents?
+	  eval       = TRUE,    # Should program code be evaluated?
+	  fig.height = 3,       # Default height for plots.
+	  fig.width  = 5,       # Default width for plots.
+	  fig.align  = "center" # Default alignment for plots in knitted documents.
+	)
+	${0}

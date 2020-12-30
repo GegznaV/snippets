@@ -104,10 +104,14 @@ install_snippets_from_dir <- function(from_dir = ".",
     orig_path <- usethis::ui_path(original[i])
 
     if (is_copied) {
-      usethis::ui_done("File with {crayon::green(type[i])} snippets was updated: {orig_path}")
+      usethis::ui_done(
+        "File with {crayon::green(type[i])} snippets was updated:\n {orig_path}"
+      )
       status_updated <- TRUE
     } else {
-      usethis::ui_info("File with {crayon::red(type[i])} snippets was not changed: {orig_path}")
+      usethis::ui_info(
+        "File with {crayon::red(type[i])} snippets was not changed:\n {orig_path}"
+      )
     }
   }
 
