@@ -3,10 +3,7 @@
 \name{backup_rs_snippets}
 \alias{backup_rs_snippets}
 \alias{list_snippet_file_backups}
-\alias{path_to_snippets_backup_dir}
-\alias{create_snippets_backup_dir}
 \alias{open_snippets_backup_dir}
-\alias{get_snippets_backup_file_pattern}
 \alias{remove_snippet_backup_duplicates}
 \title{Manage back-up copies of snippets}
 \usage{
@@ -14,13 +11,7 @@ backup_rs_snippets(type)
 
 list_snippet_file_backups(type = get_default_snippet_types())
 
-path_to_snippets_backup_dir()
-
-create_snippets_backup_dir()
-
 open_snippets_backup_dir()
-
-get_snippets_backup_file_pattern(type, several.ok = TRUE)
 
 remove_snippet_backup_duplicates()
 }
@@ -31,11 +22,6 @@ A character vector of snippet types. Currently allowed values are
 \code{"javascript"}, \code{"python"}, \code{"sql"}, \verb{"stan}", \code{"tex"}.
 May be unambiguously truncated.
 Defaults to \code{"r"}.}
-
-\item{several.ok}{(logical)
-Specify if \code{type} should be allowed to have more than one element.
-Defaults to \code{FALSE}.
-See also \code{\link[base:match.arg]{base::match.arg()}}}
 }
 \description{
 \itemize{
@@ -52,9 +38,6 @@ backup_rs_snippets("r")
 backup_rs_snippets("markdown")
 
 list_snippet_file_backups("r")
-
-# Use name of an existing back-up file
-restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 
 }
 }

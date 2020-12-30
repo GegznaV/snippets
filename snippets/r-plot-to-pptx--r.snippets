@@ -1,0 +1,77 @@
+snippet save-plot-to-pptx
+	# ~ Load the packages  -------------------------------------------------------
+	library(tidyverse)
+	library(rvg)
+	library(officer)
+
+	# ~ Select a file name  ------------------------------------------------------
+	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+
+	if (file.exists(file)) {
+	  input_file <- output_file <- file
+	  if (suppressWarnings()!file.rename(from = file, to = file))) {
+	    stop("Please close this PowerPoint file: \n", file)
+	  }
+	} else {
+	  input_file  <- NULL
+	  output_file <- file
+	}
+
+	# ~ Create the instructions for creating vector graphics  --------------------
+	dml_plot <- dml(
+	  bg = NULL, pointsize = 12, editable = TRUE,
+	  code = {
+	    # The code of your plot, e.g.:
+	    ${2:barplot(1:5, col = 2:6)}
+	  }
+	)
+
+	location_on_slide <- ph_location(left = ${3:1}, top = ${4:1}, width = ${5:8}, height = ${6:5.5})
+
+	# ~ Save to PowerPoint -------------------------------------------------------
+	path_to_pptx_file <-
+	  read_pptx(input_file) %>%
+	  add_slide(layout = "Blank", master = "Office Theme") %>%
+	  ph_with(dml_plot, location = location_on_slide) %>%
+	  print(target = output_file)
+
+	# ~ Open the pptx file ------------------------------------------------------
+	browseURL(path_to_pptx_file)
+
+
+
+
+snippet save-ggplot-to-pptx
+	# ~ Load the packages  -------------------------------------------------------
+	library(tidyverse)
+	library(rvg)
+	library(officer)
+
+	# ~ Select a file name  ------------------------------------------------------
+	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+
+	if (file.exists(file)) {
+	  input_file <- output_file <- file
+	  if (suppressWarnings(!file.rename(from = file, to = file))) {
+	    stop("Please close this PowerPoint file: \n", file)
+	  }
+	} else {
+	  input_file  <- NULL
+	  output_file <- file
+	}
+
+	# ~ Create the instructions for creating vector graphics  --------------------
+	dml_plot <-
+	  dml(ggobj = ${2:gg_object_name}, bg = NULL, pointsize = 12, editable = TRUE)
+
+	location_on_slide <- ph_location(left = ${3:1}, top = ${4:1}, width = ${5:8}, height = ${6:5.5})
+
+	# ~ Save to PowerPoint -------------------------------------------------------
+	path_to_pptx_file <-
+	  read_pptx(input_file) %>%
+	  add_slide(layout = "Blank", master = "Office Theme") %>%
+	  ph_with(dml_plot, location = location_on_slide) %>%
+	  print(target = output_file)
+
+	# ~ Open the pptx file ------------------------------------------------------
+	browseURL(path_to_pptx_file)

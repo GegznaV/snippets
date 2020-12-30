@@ -15,11 +15,8 @@ May be unambiguously truncated.
 Defaults to \code{"r"}.}
 
 \item{rstudio_version}{Numeric version of RStudio (the output is different
-for RStudio < 1.3 and 1.3 ir newer series). If \code{"auto"}, the version
+for RStudio < 1.3 and 1.3 or newer series). If \code{"auto"}, the version
 of RStudio will be determined automatically.}
-}
-\value{
-
 }
 \description{
 Edit file with RStudio snippets.
@@ -32,6 +29,4 @@ open_rs_snippets_file("markdown")
 }}
 
 }
-\seealso{
-\code{\link[=path_to_rs_snippets_file]{path_to_rs_snippets_file()}}
-}
+\concept{snippet files and dirs}

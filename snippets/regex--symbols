@@ -1,0 +1,13 @@
+# Symbols --------------------------------------------------------------------
+# Regular expressions
+
+
+#  U\+(.*?)$      → "\u\1"
+#  ^. "(.*?)"     → \t`r "\1"`
+#  snippet sub(.) → snippet \1-sub
+
+#  U\+(....)\t(.)\t.*\tGreek Capital Letter (.*?)\t.*$
+#  # \3 (\2)\nsnippet \3\n\t`r "\u\1"`\n
+
+#  U\+(....)\t(.)\t.*\tGreek Small Letter (.*?)\t.*$
+#  # \3 (\2)\nsnippet \3\n\t`r "\u\1"`\n

@@ -7,8 +7,8 @@
 \title{Install snippets}
 \usage{
 install_snippets_from_package(
-  package = "snippets",
-  type = get_default_snippet_types(),
+  package,
+  type = "auto-detect-all",
   subdir = "",
   backup = TRUE
 )
@@ -20,7 +20,7 @@ install_snippets_from_dir(
 )
 }
 \arguments{
-\item{package}{(character) The name of R package.}
+\item{package}{(character) The name of an R package.}
 
 \item{type}{(character)
 A character vector of snippet types. Currently allowed values are
@@ -41,14 +41,16 @@ Replace current file with snippets with the other file.
 \examples{
 if (FALSE) {
 
-# Replace your R and Markdown snippets with those in package "snippets":
-install_snippets_from_package("snippets", type = "r",        backup = TRUE)
-install_snippets_from_package("snippets", type = "markdown", backup = TRUE)
+  # Replace your R and Markdown snippets with those in package "snippets":
+  install_snippets_from_package("snippets")
+  install_snippets_from_package("snippets", type = "r")
+  install_snippets_from_package("snippets", type = "markdown")
 
-# Check if back-up copies exist:
-list_snippet_file_backups(type = "r")
-list_snippet_file_backups(type = "markdown")
+  # Check if back-up copies exist:
+  list_snippet_file_backups(type = "r")
+  list_snippet_file_backups(type = "markdown")
 
+  remove_snippet_backup_duplicates()
 }
 }
 \concept{install snippets}

@@ -23,5 +23,7 @@ NULL
 
 
 
-globalVariables(c("data", "empty", "keyword", "line_type", "name", "no",
-  "snippet", "snippet_beggins"))
+globalVariables(c(
+  "data", "empty", "keyword", "line_type", "name", "no",
+  "snippet", "snippet_beggins"
+))

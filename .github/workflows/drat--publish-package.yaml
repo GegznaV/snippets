@@ -3,10 +3,10 @@ on:
     branches:
       - master
 
-name: "Publish package (drat)"
+name: Publish package
 
 jobs:
-  Publish-package:
+  drat:
     runs-on: ${{ matrix.config.os }}
 
     name: "drat: ${{ matrix.config.os }} (R-${{ matrix.config.r }})"
@@ -37,7 +37,8 @@ jobs:
 
       - name: Query dependencies
         run: |
-          install.packages('remotes')
+          options("repos" = "https://cran.rstudio.com/")
+          install.packages('remotes', repos = "https://cran.rstudio.com/")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -78,7 +79,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.email "actions@github.com"
-          git config --global user.name  "GitHub Actions"
+          git config --global user.name  "GitHub Actions | ${{ github.event.repository.name }}"
           # git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
         env:
           TOKEN: ${{ secrets.DEPLOY_DRAT_TOKEN }}
@@ -119,6 +120,6 @@ jobs:
           cd "${TMP_DIR}" # move into the subdir, which is Git controlled
           git add *
           git add -f *.tar.gz
-          git commit -m "Update from ${SOURCE_REPO}" || echo "Nothing to commit"
-          git push origin master                     || echo "Nothing to commit"
+          git commit -m "Update from ${SOURCE_REPO} ${{ runner.os }} R-${{ matrix.config.r }}" || echo "Nothing to commit"
+          git push origin master || echo "Nothing to commit"
 
