@@ -13,7 +13,7 @@ status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](ht
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--10--19-yellowgreen.svg)]()
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--12--30-yellowgreen.svg)]()
 <!-- badges: end -->
 
 # Package `snippets`
@@ -162,4 +162,4 @@ remove_snippet_backup_duplicates()
     <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
     <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 
-<!-- <div style="text-align:right;">2020-10-19</div> -->
+<!-- <div style="text-align:right;">2020-12-30</div> -->
