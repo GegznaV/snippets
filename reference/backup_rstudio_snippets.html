@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return correct snippet type — match_snippet_type • snippets</title>
+<title>Manage back-up copies of snippets — backup_rstudio_snippets • snippets</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,15 @@
 
 
 
-<meta property="og:title" content="Return correct snippet type — match_snippet_type" />
-<meta property="og:description" content="Convert abbreviated or full snippet name of snippet type into a full name of
-snippet type." />
+<meta property="og:title" content="Manage back-up copies of snippets — backup_rstudio_snippets" />
+<meta property="og:description" content="
+
+backup_rstudio_snippets() creates a back-up of snippets file.
+list_snippet_file_backups() lists the names of current file with snippets
+and its back-ups.
+remove_snippet_backup_duplicates() removes duplicated backup files.
+
+" />
 
 
 
@@ -126,17 +132,29 @@ snippet type." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return correct snippet type</h1>
-    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippets--snippet-types.R'><code>R/snippets--snippet-types.R</code></a></small>
-    <div class="hidden name"><code>match_snippet_type.Rd</code></div>
+    <h1>Manage back-up copies of snippets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/GegznaV/snippets/blob/master/R/snippets--backup.R'><code>R/snippets--backup.R</code></a></small>
+    <div class="hidden name"><code>backup_rstudio_snippets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert abbreviated or full snippet name of snippet type into a full name of
-snippet type.</p>
+    
+<ul>
+<li><p><code>backup_rstudio_snippets()</code> creates a back-up of snippets file.</p></li>
+<li><p><code>list_snippet_file_backups()</code> lists the names of current file with snippets
+and its back-ups.</p></li>
+<li><p><code>remove_snippet_backup_duplicates()</code> removes duplicated backup files.</p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span class='fu'>match_snippet_type</span><span class='op'>(</span>type <span class='op'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span><span class='op'>(</span><span class='op'>)</span>, several.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>backup_rstudio_snippets</span><span class='op'>(</span><span class='va'>type</span><span class='op'>)</span>
+
+<span class='fu'>list_snippet_file_backups</span><span class='op'>(</span>type <span class='op'>=</span> <span class='fu'><a href='get_default_snippet_types.html'>get_default_snippet_types</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>open_snippets_backup_dir</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>remove_snippet_backup_duplicates</span><span class='op'>(</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,27 +168,19 @@ A character vector of snippet types. Currently allowed values are
 May be unambiguously truncated.
 Defaults to <code>"r"</code>.</p></td>
     </tr>
-    <tr>
-      <th>several.ok</th>
-      <td><p>(logical)
-Specify if <code>type</code> should be allowed to have more than one element.
-Defaults to <code>FALSE</code>.
-See also <code><a href='https://rdrr.io/r/base/match.arg.html'>base::match.arg()</a></code></p></td>
-    </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>(sting) Correct snippet type in lower case. By default returns <code>"r"</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Defaults to "r":</span>
-<span class='fu'>match_snippet_type</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "r"</div><div class='input'>
-<span class='fu'>match_snippet_type</span><span class='op'>(</span><span class='st'>"r"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "r"</div><div class='input'>
-<span class='fu'>match_snippet_type</span><span class='op'>(</span><span class='st'>"m"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "markdown"</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='fu'>backup_rstudio_snippets</span><span class='op'>(</span><span class='st'>"r"</span><span class='op'>)</span>
+<span class='fu'>backup_rstudio_snippets</span><span class='op'>(</span><span class='st'>"markdown"</span><span class='op'>)</span>
+
+<span class='fu'>list_snippet_file_backups</span><span class='op'>(</span><span class='st'>"r"</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
