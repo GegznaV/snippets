@@ -41,7 +41,7 @@ install_snippets_from_package <- function(package,
     )
   }
 
-  from_dir <- get_path_to_snippets_dir_of_pkg(package = package, subdir)
+  from_dir <- get_path_snippets_dir_of_pkg(package = package, subdir)
 
   if (any(type == "auto-detect-all")) {
     all_files <- fs::dir_ls(from_dir, regexp = "[.]snippets$", type = "file")
@@ -74,7 +74,7 @@ install_snippets_from_dir <- function(from_dir = ".",
   type <- match_snippet_type(type, several.ok = TRUE)
 
   replacement <-
-    path_to_snippets_file(dir = from_dir, type = type, several.ok = TRUE)
+    path_snippets_file(dir = from_dir, type = type, several.ok = TRUE)
 
   f_exists <- fs::file_exists(replacement)
 
@@ -91,12 +91,12 @@ install_snippets_from_dir <- function(from_dir = ".",
 
   # Create a back-up copy
   if (backup) {
-    backup_rs_snippets(type = type)
+    backup_rstudio_snippets(type = type)
   }
 
   # Copy/Overwrite the file
-  original <- path_to_rs_snippets_file(type = type, several.ok = TRUE)
-  create_rs_snippets_dir()
+  original <- path_rstudio_snippets_file(type = type, several.ok = TRUE)
+  create_rstudio_snippets_dir()
 
   status_updated <- FALSE
   for (i in seq_along(original)) {

@@ -1,6 +1,16 @@
 
 # VG snippets ================================================================
 
+snippet bo
+	```{bash_output, eval=FALSE, class.source="bg-info bash-output"}
+	${0}
+	```
+
+snippet b
+	```{bash}
+	${0}
+	```
+
 snippet setup-lt
 	```{r setup, include=FALSE}
 	# Paketai -------------------------------------------------------------------
@@ -164,3 +174,6 @@ snippet fa-pdf
 
 snippet fa3
 	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+snippet ref-sec
+	„\@ref(${1:ID}) [${2:section name}](#${1:ID})“${0}

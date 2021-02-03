@@ -445,7 +445,11 @@ snippet save-ggplot-to-pptx
 
 	# ~ Create the instructions for creating vector graphics  --------------------
 	dml_plot <-
-	  dml(ggobj = ${2:gg_object_name}, bg = NULL, pointsize = 12, editable = TRUE)
+	  dml(ggobj = ${2:gg_object_name},
+	  bg = NULL,
+	  pointsize = 12,
+	  editable = TRUE
+	)
 
 	location_on_slide <- ph_location(left = ${3:1}, top = ${4:1}, width = ${5:8}, height = ${6:5.5})
 
@@ -607,6 +611,7 @@ snippet help-symbols
 	permile     (‰)
 	deg         (°)
 	degree      (°)
+	infty       (∞)
 
 	# Superscript symbols
 	0-sup       (⁰)
@@ -761,6 +766,9 @@ snippet deg
 snippet degree
 	`r "\u00B0"`
 
+# infinity (∞)
+snippet infty
+	`r "\u221e"`
 
 # Superscript symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Superscript 0 (⁰)
