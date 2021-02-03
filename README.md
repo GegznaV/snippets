@@ -62,7 +62,7 @@ library(snippets)
 
 ``` r
 # Get the name of the directory where RStudio snippets are stored
-get_path_to_rs_snippets_dir()
+get_path_rs_snippets_dir()
 ```
 
 ``` r

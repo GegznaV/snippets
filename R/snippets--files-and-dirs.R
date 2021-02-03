@@ -45,14 +45,14 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #' @examples
 #' \dontrun{\donttest{
 #' # Regularly, you should use this:
-#' get_path_to_rs_snippets_dir()
+#' get_path_rstudio_snippets_dir()
 #' }}
 #'
 #' # For testing purposes:
-#' get_path_to_rs_snippets_dir("1.3.1073")
-#' get_path_to_rs_snippets_dir("1.2.5044")
+#' get_path_rstudio_snippets_dir("1.3.1073")
+#' get_path_rstudio_snippets_dir("1.2.5044")
 
-get_path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
+get_path_rstudio_snippets_dir <- function(rstudio_version = "auto") {
 
   if (rstudio_version == "auto") {
     rstudio_version <- rstudioapi::versionInfo()$version
@@ -65,12 +65,16 @@ get_path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
     # For RStudio 1.3 or newer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if (get_os_type() == "windows") {
       # on Windows
-      fs::path(Sys.getenv("APPDATA"), "RStudio", "snippets")
+      base <- fs::path(Sys.getenv("APPDATA"), "RStudio")
 
     } else {
       # on Unix (MacOS, Linux)
-      fs::path(fs::path_expand_r("~/.config"), "rstudio", "snippets/")
+      base <- fs::path_expand_r("~/.config/rstudio")
     }
+
+    base <- Sys.getenv("XDG_CONFIG_DIRS",    unset = base)
+    base <- Sys.getenv("RSTUDIO_CONFIG_DIR", unset = base)
+    fs::path(base, "snippets")
 
   } else {
     # For RStudio 1.2, 1.1, etc. (i.e., versions before 1.3) ~~~~~~~~~~~~~~~~~
@@ -89,11 +93,11 @@ get_path_to_rs_snippets_dir <- function(rstudio_version = "auto") {
 #' @concept snippet files and dirs
 #' @examples
 #' if (FALSE) {
-#' create_rs_snippets_dir()
+#' create_rstudio_snippets_dir()
 #' }
 
-create_rs_snippets_dir <- function() {
-  fs::dir_create(get_path_to_rs_snippets_dir())
+create_rstudio_snippets_dir <- function() {
+  fs::dir_create(get_path_rstudio_snippets_dir())
 }
 
 
@@ -102,21 +106,21 @@ create_rs_snippets_dir <- function() {
 #' @importFrom utils browseURL
 #' @concept snippet files and dirs
 
-open_rs_snippets_dir <- function() {
-  create_rs_snippets_dir()
-  browseURL(get_path_to_rs_snippets_dir())
+open_rstudio_snippets_dir <- function() {
+  create_rstudio_snippets_dir()
+  browseURL(get_path_rstudio_snippets_dir())
 }
 
 #' Construct path to file of certain type of snippets
 #'
 #' Create a string with a path to file of certain type of snippets:
 #'
-#' - `path_to_snippets_file()`    in any folder.
-#' - `path_to_rs_snippets_file()` in a folder from which RStudio reads
+#' - `path_snippets_file()`    in any folder.
+#' - `path_rstudio_snippets_file()` in a folder from which RStudio reads
 #'   snippets.
 #'
 #' @inheritParams match_snippet_type
-#' @inheritParams get_path_to_rs_snippets_dir
+#' @inheritParams get_path_rstudio_snippets_dir
 #'
 #' @param dir (string) Directory name.
 #' @param create (logical) If `TRUE`, as a side effect, the file is created
@@ -128,7 +132,7 @@ open_rs_snippets_dir <- function() {
 #  @export
 #' @noRd
 
-path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
+path_snippets_file <- function(dir, type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE) {
 
   paths <-
@@ -146,13 +150,13 @@ path_to_snippets_file <- function(dir, type = get_default_snippet_types(),
   paths
 }
 
-# @rdname path_to_snippets_file
+# @rdname path_snippets_file
 # @export
-path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
+path_rstudio_snippets_file <- function(type = get_default_snippet_types(),
   create = FALSE, several.ok = FALSE, rstudio_version = "auto") {
 
-  path_to_snippets_file(
-    dir = get_path_to_rs_snippets_dir(rstudio_version = rstudio_version),
+  path_snippets_file(
+    dir = get_path_rstudio_snippets_dir(rstudio_version = rstudio_version),
     type = type,
     create = create,
     several.ok = several.ok
@@ -164,25 +168,25 @@ path_to_rs_snippets_file <- function(type = get_default_snippet_types(),
 #' Edit file with RStudio snippets.
 #'
 #' @inheritParams match_snippet_type
-#' @inheritParams get_path_to_rs_snippets_dir
+#' @inheritParams get_path_rstudio_snippets_dir
 #'
 #' @export
 #'
 #' @concept snippet files and dirs
 #'
-# @seealso [path_to_rs_snippets_file()]
+# @seealso [path_rstudio_snippets_file()]
 #'
 #' @examples
 #' \dontrun{\donttest{
-#' open_rs_snippets_file("r")
+#' open_rstudio_snippets_file("r")
 #'
-#' open_rs_snippets_file("markdown")
+#' open_rstudio_snippets_file("markdown")
 #' }}
 #'
-open_rs_snippets_file <- function(type, rstudio_version = "auto") {
+open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
   force(type)
   type <- match_snippet_type(type, several.ok = FALSE)
-  file <- path_to_rs_snippets_file(type = type, rstudio_version = rstudio_version)
+  file <- path_rstudio_snippets_file(type = type, rstudio_version = rstudio_version)
   not_found <- !fs::file_exists(type)
   if (any(not_found)) {
     type_txt <- usethis::ui_field(type)
@@ -201,7 +205,7 @@ open_rs_snippets_file <- function(type, rstudio_version = "auto") {
 #' Does the file with certain types of snippets exist in RStudio snippets directory?
 #'
 #' @inheritParams match_snippet_type
-#' @inheritParams get_path_to_rs_snippets_dir
+#' @inheritParams get_path_rstudio_snippets_dir
 #'
 #' @return Returns `TRUE` if file exists and `FALSE` otherwise.
 #'
@@ -216,7 +220,7 @@ open_rs_snippets_file <- function(type, rstudio_version = "auto") {
 #' }}
 
 snippets_file_exists <- function(type, rstudio_version = "auto") {
-  fs::file_exists(path_to_rs_snippets_file(type, create = FALSE,
+  fs::file_exists(path_rstudio_snippets_file(type, create = FALSE,
     rstudio_version = rstudio_version))
 }
 
@@ -225,10 +229,10 @@ snippets_file_exists <- function(type, rstudio_version = "auto") {
 #'
 #' Get path to snippets in a package:
 #'
-#' - `get_path_to_snippets_dir_of_pkg()` gets path to directory with snippet files
+#' - `get_path_snippets_dir_of_pkg()` gets path to directory with snippet files
 #'  in a package. Defaults to `{path to package}/inst/snippets`. Returns empty
 #'  string, if the directory does not exist.
-#' - `get_path_to_snippet_files_of_pkg()` gets paths to all files with snippets
+#' - `get_path_snippet_files_of_pkg()` gets paths to all files with snippets
 #'  in a package. If the directory of interest does not exist, `NULL` is
 #'  returned.
 #'
@@ -241,18 +245,18 @@ snippets_file_exists <- function(type, rstudio_version = "auto") {
 #' @noRd
 #'
 #' @examples
-#' get_path_to_snippets_dir_of_pkg("snippets")
-get_path_to_snippets_dir_of_pkg <- function(package, ...) {
+#' get_path_snippets_dir_of_pkg("snippets")
+get_path_snippets_dir_of_pkg <- function(package, ...) {
   system.file("snippets", ... , package = package)
 }
 
-# @rdname get_path_to_snippets_dir_of_pkg
+# @rdname get_path_snippets_dir_of_pkg
 # @export
 # @examples
 #
-# get_path_to_snippet_files_of_pkg("snippets")
-get_path_to_snippet_files_of_pkg <- function(package, ...) {
-  folder <- get_path_to_snippets_dir_of_pkg(package = package, ...)
+# get_path_snippet_files_of_pkg("snippets")
+get_path_snippet_files_of_pkg <- function(package, ...) {
+  folder <- get_path_snippets_dir_of_pkg(package = package, ...)
 
   if (folder == "") {
     return(NULL)

@@ -79,12 +79,12 @@ library(snippets)
 
 ```{r eval=FALSE}
 # Get the name of the directory where RStudio snippets are stored
-get_path_to_rs_snippets_dir()
+get_path_rstudio_snippets_dir()
 ```
 
 ```{r eval=FALSE}
 # Open the directory with RStudio snippets
-open_rs_snippets_dir()
+open_rstudio_snippets_dir()
 ```
 
 ```{r eval=FALSE}
@@ -95,12 +95,12 @@ list_snippet_file_backups()
 
 ```{r eval=FALSE}
 # View and edit file with snippets of certain type: r
-open_rs_snippets_file(type = "r")
+open_rstudio_snippets_file(type = "r")
 ```
 
 ```{r eval=FALSE}
 # View and edit file with snippets of certain type: markdown
-open_rs_snippets_file(type = "markdown")
+open_rstudio_snippets_file(type = "markdown")
 ```   
 
 
@@ -108,11 +108,11 @@ open_rs_snippets_file(type = "markdown")
 
 ```{r eval=FALSE}
 # Create several back up files
-backup_rs_snippets(type = "r")
+backup_rstudio_snippets(type = "r")
 Sys.sleep(1)
-backup_rs_snippets(type = "r")
+backup_rstudio_snippets(type = "r")
 Sys.sleep(1)
-backup_rs_snippets(type = "r")
+backup_rstudio_snippets(type = "r")
 ```
 
 ```{r eval=FALSE}

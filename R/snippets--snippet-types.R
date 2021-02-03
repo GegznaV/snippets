@@ -11,7 +11,7 @@
 #' @examples
 #' get_default_snippet_types()
 
-# default_snippets_rs_1.2.5001 <-
+# default_snippets_rstudio_1.2.5001 <-
 # c(
 #   "r.snippets",
 #   "markdown.snippets",
