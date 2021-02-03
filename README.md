@@ -1,33 +1,29 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.8-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.8.9000-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2020--12--30-yellowgreen.svg)]()
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2021--02--03-yellowgreen.svg)]()
 <!-- badges: end -->
 
 # Package `snippets`
 
-<!-- (0.0.8) -->
+<!-- (0.0.8.9000) -->
 
 ## Installation
 
 <!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: -->
-
 <!-- ``` r -->
-
 <!-- install.packages("snippets") -->
-
 <!-- ``` -->
 
 To install package from CRAN-like repository:
@@ -62,12 +58,12 @@ library(snippets)
 
 ``` r
 # Get the name of the directory where RStudio snippets are stored
-get_path_rs_snippets_dir()
+get_path_rstudio_snippets_dir()
 ```
 
 ``` r
 # Open the directory with RStudio snippets
-open_rs_snippets_dir()
+open_rstudio_snippets_dir()
 ```
 
 ``` r
@@ -78,23 +74,23 @@ list_snippet_file_backups()
 
 ``` r
 # View and edit file with snippets of certain type: r
-open_rs_snippets_file(type = "r")
+open_rstudio_snippets_file(type = "r")
 ```
 
 ``` r
 # View and edit file with snippets of certain type: markdown
-open_rs_snippets_file(type = "markdown")
+open_rstudio_snippets_file(type = "markdown")
 ```
 
 ### Create and Clean-up Back-ups
 
 ``` r
 # Create several back up files
-backup_rs_snippets(type = "r")
+backup_rstudio_snippets(type = "r")
 Sys.sleep(1)
-backup_rs_snippets(type = "r")
+backup_rstudio_snippets(type = "r")
 Sys.sleep(1)
-backup_rs_snippets(type = "r")
+backup_rstudio_snippets(type = "r")
 ```
 
 ``` r
@@ -162,4 +158,4 @@ remove_snippet_backup_duplicates()
     <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
     <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 
-<!-- <div style="text-align:right;">2020-12-30</div> -->
+<!-- <div style="text-align:right;">2021-02-03</div> -->
