@@ -15,8 +15,8 @@ May be unambiguously truncated.
 Defaults to \code{"r"}.}
 
 \item{rstudio_version}{Numeric version of RStudio (the output is different
-for RStudio < 1.3 and 1.3 or newer series). If \code{"auto"}, the version
-of RStudio will be determined automatically.}
+for RStudio < 1.3 and 1.3 or newer series). If \code{"current"}, the
+current version of RStudio will be determined automatically.}
 }
 \description{
 Edit file with RStudio snippets.
