@@ -266,24 +266,27 @@ snippet opts-kable
 
 snippet opts-pander
 	# Options for package "pander"
-	options(pander = modifyList(pander::panderOptions(),
-	  list(
-	    digits = getOption("digits", default = 4),
-	    round  = Inf,
-	    decimal.mark = getOption("OutDec", default = "."),
-	    big.mark = "",
-	    keep.trailing.zeros = TRUE,
-	    missing = getOption("knitr.kable.NA", default = NA),
-	    table.style = "multiline", # "multiline", "grid", "simple", "rmarkdown"
-	    table.split.table = 80,
-	    table.split.cells = 30,
-	    table.continues   = "Table continues below",
-	    table.continues.affix = "(continued below)",
-	    p.wrap   = "_",
-	    p.sep    = ", ",
-	    p.copula = " and ",
-	    knitr.auto.asis = TRUE
-	  ))
+	options(
+	  pander = modifyList(
+	    pander::panderOptions(),
+	    list(
+	      digits = getOption("digits", default = 4),
+	      round  = Inf,
+	      decimal.mark = getOption("OutDec", default = "."),
+	      big.mark = "",
+	      keep.trailing.zeros = TRUE,
+	      missing = getOption("knitr.kable.NA", default = NA),
+	      table.style = "multiline", # "multiline", "grid", "simple", "rmarkdown"
+	      table.split.table = 80,
+	      table.split.cells = 30,
+	      table.continues   = "Table continues below",
+	      table.continues.affix = "(continued below)",
+	      p.wrap   = "_",
+	      p.sep    = ", ",
+	      p.copula = " and ",
+	      knitr.auto.asis = TRUE
+	    ))
+	)
 	${0}
 
 snippet opts-desctools
