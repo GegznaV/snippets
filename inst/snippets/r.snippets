@@ -266,24 +266,27 @@ snippet opts-kable
 
 snippet opts-pander
 	# Options for package "pander"
-	options(pander = modifyList(pander::panderOptions(),
-	  list(
-	    digits = getOption("digits", default = 4),
-	    round  = Inf,
-	    decimal.mark = getOption("OutDec", default = "."),
-	    big.mark = "",
-	    keep.trailing.zeros = TRUE,
-	    missing = getOption("knitr.kable.NA", default = NA),
-	    table.style = "multiline", # "multiline", "grid", "simple", "rmarkdown"
-	    table.split.table = 80,
-	    table.split.cells = 30,
-	    table.continues   = "Table continues below",
-	    table.continues.affix = "(continued below)",
-	    p.wrap   = "_",
-	    p.sep    = ", ",
-	    p.copula = " and ",
-	    knitr.auto.asis = TRUE
-	  ))
+	options(
+	  pander = modifyList(
+	    pander::panderOptions(),
+	    list(
+	      digits = getOption("digits", default = 4),
+	      round  = Inf,
+	      decimal.mark = getOption("OutDec", default = "."),
+	      big.mark = "",
+	      keep.trailing.zeros = TRUE,
+	      missing = getOption("knitr.kable.NA", default = NA),
+	      table.style = "multiline", # "multiline", "grid", "simple", "rmarkdown"
+	      table.split.table = 80,
+	      table.split.cells = 30,
+	      table.continues   = "Table continues below",
+	      table.continues.affix = "(continued below)",
+	      p.wrap   = "_",
+	      p.sep    = ", ",
+	      p.copula = " and ",
+	      knitr.auto.asis = TRUE
+	    ))
+	)
 	${0}
 
 snippet opts-desctools
@@ -445,7 +448,11 @@ snippet save-ggplot-to-pptx
 
 	# ~ Create the instructions for creating vector graphics  --------------------
 	dml_plot <-
-	  dml(ggobj = ${2:gg_object_name}, bg = NULL, pointsize = 12, editable = TRUE)
+	  dml(ggobj = ${2:gg_object_name},
+	  bg = NULL,
+	  pointsize = 12,
+	  editable = TRUE
+	)
 
 	location_on_slide <- ph_location(left = ${3:1}, top = ${4:1}, width = ${5:8}, height = ${6:5.5})
 
@@ -607,6 +614,7 @@ snippet help-symbols
 	permile     (‰)
 	deg         (°)
 	degree      (°)
+	infty       (∞)
 
 	# Superscript symbols
 	0-sup       (⁰)
@@ -761,6 +769,9 @@ snippet deg
 snippet degree
 	`r "\u00B0"`
 
+# infinity (∞)
+snippet infty
+	`r "\u221e"`
 
 # Superscript symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Superscript 0 (⁰)

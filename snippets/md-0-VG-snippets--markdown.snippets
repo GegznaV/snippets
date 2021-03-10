@@ -1,6 +1,16 @@
 
 # VG snippets ================================================================
 
+snippet bo
+	```{bash_output, eval=FALSE, class.source="bg-info bash-output"}
+	${0}
+	```
+
+snippet b
+	```{bash}
+	${0}
+	```
+
 snippet setup-lt
 	```{r setup, include=FALSE}
 	# Paketai -------------------------------------------------------------------
@@ -93,21 +103,21 @@ snippet setupp
 	```
 
 snippet figb
-	```{r ${1:fig-ID}, echo=FALSE, fig.cap=CAPTION}
+	```{r ${1:fig-ID}, echo=FALSE, fig.cap=caption}
 	knitr::include_graphics("fig/pic/${2}${1}.png")
 
-	CAPTION = "${3:caption}  "
+	caption <- "${3:caption}  "
 	```
 
 snippet figi
-	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=CAPTION}
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
 	${6:# DELETE THIS: To quick-search for file/folder, put cursor between quotes ("|") and press TAB.}
 	${7:# DELETE THIS: If you chose a folder, press TAB again to continue the browsing.}
 	# Path or URL to the figure.
 	knitr::include_graphics("${0}")
 
 	# Caption/Description.
-	CAPTION = "${2:**Fig. ${3:1}.** }${4:Caption/Description}  "
+	caption <- "${2:**Fig. ${3:1}.** }${4:Caption/Description}  "
 	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
 	```
 
@@ -164,3 +174,6 @@ snippet fa-pdf
 
 snippet fa3
 	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+snippet ref-sec
+	„\@ref(${1:ID}) [${2:section name}](#${1:ID})“${0}
