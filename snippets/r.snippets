@@ -395,7 +395,7 @@ snippet save-plot-to-pptx
 
 	if (file.exists(file)) {
 	  input_file <- output_file <- file
-	  if (suppressWarnings()!file.rename(from = file, to = file))) {
+	  if (suppressWarnings(!file.rename(from = file, to = file))) {
 	    stop("Please close this PowerPoint file: \n", file)
 	  }
 	} else {
