@@ -1,0 +1,23 @@
+
+Snippets for: 
+
+* snippets for options
+* snippets for tables
+    + markdown tables
+    + pander
+    + kable
+    + paste table from clipboard (dec = "," and ".")
+
+- mutate() function
+- recode_factor() function
+
+- summarise() function
+- summarise() + group_by() + helpers (n(), mean, sd, mad, etc.)
+
+- summary() + map() + group_by()
+
+- rstatix package
+
+- In 'setup' an other snippets, use OS type to choose between
+  "Lithuanian" (for Win) and "lt_LT.UTF-8" for other OS'es
+  

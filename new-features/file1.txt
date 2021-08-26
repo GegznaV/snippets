@@ -1,0 +1,12 @@
+<kbd>${0:Ctrl}</kbd>
+
+<style>
+${1}
+</style>
+${0}
+
+&${1:nbsp};${0}
+
+&${1:nbsp};${0}
+
+<font color = "${1:red}">${0}</font>
