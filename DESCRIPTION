@@ -1,6 +1,6 @@
 Package: snippets
 Title: Manage RStudio Snippets
-Version: 0.0.12
+Version: 0.0.13
 Date: 2021-03-20
 Authors@R: 
     person(given   = "Vilmantas",

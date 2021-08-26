@@ -157,7 +157,9 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
         )
 
       } else {
-        usethis::ui_oops("Failure to restore snippets from the back-up file {filename_str}.")
+        usethis::ui_oops(
+          "Failure to restore snippets from the back-up file {filename_str}."
+        )
       }
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     })
