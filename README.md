@@ -162,4 +162,4 @@ remove_snippet_backup_duplicates()
     <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
     <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 
-<!-- <div style="text-align:right;">2021-03-22</div> -->
+<!-- <div style="text-align:right;">2021-08-26</div> -->
