@@ -74,7 +74,7 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 # ==========================================================================~~
 #' Merge and update snippets
 #'
-#' Functions creates one file for one type of snippets and coppies it to the
+#' Functions creates one file for one type of snippets and copies it to the
 #' direcctory accessible by the users of the package.
 #'
 #' @inheritParams match_snippet_type

@@ -3,6 +3,7 @@
 snippet help-lib
 	lib
 	lib-tidyverse
+	lib-tidyverse-3
 	lib-fs
 	lib-file-io
 	lib-ggplot2-extra
@@ -10,6 +11,10 @@ snippet help-lib
 	lib-md-tables
 
 snippet lib-tidyverse
+	library(tidyverse)     # The main "tidyverse" packages.
+	${0}
+
+snippet lib-tidyverse-3
 	library(conflicted)    # Get a warning/error if several functions with the same name exist.
 	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
 	library(tidyverse)     # The main "tidyverse" packages.
@@ -57,7 +62,7 @@ snippet lib-stat-analysis
 	library(mlr)           # Machine learning in R.
 	library(mlr3)          # Machine learning in R (new generation).
 	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
-	library(userfriendlyscience) # Statistical analysis.
+	library(ufs)           # Statistical analysis.
 	${0}
 
 snippet lib-md-tables

@@ -173,9 +173,9 @@ snippet locale
 	Sys.${1:g}etlocale(${2})${0}
 
 snippet locale-en
-	Sys.setlocale(locale = "${1:`r if (.Platform$OS.type == "windows") "English" else "en_US.UTF-8"`}")${0}
+	Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "English" else "en_US.UTF-8"`}")${0}
 
 snippet locale-lt
-	Sys.setlocale(locale = "${1:`r if (.Platform$OS.type == "windows") "Lithuanian" else "lt_LT.UTF-8"`}")${0}
+	Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "Lithuanian" else "lt_LT.UTF-8"`}")${0}
 
 
