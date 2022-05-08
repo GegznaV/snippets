@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,14 +33,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.14</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
      
@@ -47,18 +49,12 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Documentation for version of package:</li>
     <li>
-      <a href="https://gegznav.github.io/snippets/">Released</a>
+      <a href="https://gegznav.github.io/snippets/" class="external-link">Released</a>
     </li>
     <li>
-      <a href="https://gegznav.github.io/snippets/dev/">In-development</a>
+      <a href="https://gegznav.github.io/snippets/dev/" class="external-link">In-development</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -66,7 +62,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/GegznaV/snippets/">
+  <a href="https://github.com/GegznaV/snippets/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,43 +81,38 @@
   <div class="contents col-md-9">
 
 
-<div id="package-snippets" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#package-snippets" class="anchor"></a>Package <code>snippets</code>
+<div class="section level1">
+<div class="page-header"><h1 id="package-snippets">Package <code>snippets</code>
+<a class="anchor" aria-label="anchor" href="#package-snippets"></a>
 </h1></div>
-<!-- (0.0.13) -->
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: -->
-<!-- ``` r -->
-<!-- install.packages("snippets") -->
-<!-- ``` -->
-<p>To install package from CRAN-like repository:</p>
+<!-- (0.0.14) --><div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: --><!-- ``` r --><!-- install.packages("snippets") --><!-- ``` --><p>To install package from CRAN-like repository:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"https://mokymai.github.io/download/"</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html">getOption</a></span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"snippets"</span>, repos <span class="op">=</span> <span class="va">repos</span><span class="op">)</span></code></pre></div>
-<p>To install from <a href="https://github.com/">GitHub</a>:</p>
+<code class="sourceCode R"><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://mokymai.github.io/download/"</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"snippets"</span>, repos <span class="op">=</span> <span class="va">repos</span><span class="op">)</span></code></pre></div>
+<p>To install from <a href="https://github.com/" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"GegznaV/snippets"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"GegznaV/snippets"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="quickstart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#quickstart" class="anchor"></a>Quickstart</h2>
-<div id="install-snippets-from-snippets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#install-snippets-from-snippets" class="anchor"></a>Install Snippets from “snippets”</h3>
+<div class="section level2">
+<h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
+</h2>
+<div class="section level3">
+<h3 id="install-snippets-from-snippets">Install Snippets from “snippets”<a class="anchor" aria-label="anchor" href="#install-snippets-from-snippets"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Replace current files with snippets with those in package "snippets"</span>
 <span class="co"># (backup copies are created by default)</span>
 <span class="fu">snippets</span><span class="fu">::</span><span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="more-examples" class="section level3">
-<h3 class="hasAnchor">
-<a href="#more-examples" class="anchor"></a>More Examples</h3>
+<div class="section level3">
+<h3 id="more-examples">More Examples<a class="anchor" aria-label="anchor" href="#more-examples"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gegznav.github.io/snippets/">snippets</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gegznav.github.io/snippets/" class="external-link">snippets</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get the name of the directory where RStudio snippets are stored</span>
 <span class="fu"><a href="reference/get_path_rstudio_snippets_dir.html">get_path_rstudio_snippets_dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -130,7 +121,7 @@
 <span class="fu"><a href="reference/open_rstudio_snippets_dir.html">open_rstudio_snippets_dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Replace your R and Markdown snippets with those in package "snippets"</span>
-<span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"r"</span>, <span class="st">"markdown"</span><span class="op">)</span>, backup <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r"</span>, <span class="st">"markdown"</span><span class="op">)</span>, backup <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="reference/backup_rstudio_snippets.html">list_snippet_file_backups</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># View and edit file with snippets of certain type: r</span>
@@ -139,15 +130,15 @@
 <code class="sourceCode R"><span class="co"># View and edit file with snippets of certain type: markdown</span>
 <span class="fu"><a href="reference/open_rstudio_snippets_file.html">open_rstudio_snippets_file</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"markdown"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="create-and-clean-up-back-ups" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-and-clean-up-back-ups" class="anchor"></a>Create and Clean-up Back-ups</h3>
+<div class="section level3">
+<h3 id="create-and-clean-up-back-ups">Create and Clean-up Back-ups<a class="anchor" aria-label="anchor" href="#create-and-clean-up-back-ups"></a>
+</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create several back up files</span>
 <span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/backup_rstudio_snippets.html">list_snippet_file_backups</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></code></pre></div>
@@ -185,39 +176,37 @@
 </div>
 </div>
 </div>
-<div id="additional-resources" class="section level1">
-<h1 class="hasAnchor">
-<a href="#additional-resources" class="anchor"></a>Additional resources</h1>
-<div id="more-on-using-and-writing-rstudio-snippets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#more-on-using-and-writing-rstudio-snippets" class="anchor"></a>More on using and writing RStudio snippets</h2>
-<ol>
+<div class="section level1">
+<h1 id="additional-resources">Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"></a>
+</h1>
+<div class="section level2">
+<h2 id="more-on-using-and-writing-rstudio-snippets">More on using and writing RStudio snippets<a class="anchor" aria-label="anchor" href="#more-on-using-and-writing-rstudio-snippets"></a>
+</h2>
+<ol style="list-style-type: decimal">
 <li>
-<a href="https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets">Code Snippets</a> (on RStudio website). All information is relevant to RStudio users.</li>
+<a href="https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets" class="external-link">Code Snippets</a> (on RStudio website). All information is relevant to RStudio users.</li>
 <li>
-<a href="https://www.youtube.com/watch?v=h_i__VTSurU">R tip: Save time with RStudio code snippets</a> (Case study on YouTube).</li>
+<a href="https://www.youtube.com/watch?v=h_i__VTSurU" class="external-link">R tip: Save time with RStudio code snippets</a> (Case study on YouTube).</li>
 <li>
-<a href="https://cloud9-sdk.readme.io/docs/snippets">Snippets</a> (on Cloud9 SDK website). Advanced topics on writing snippets. Most sections (but not all) are relevant to RStudio users.</li>
+<a href="https://cloud9-sdk.readme.io/docs/snippets" class="external-link">Snippets</a> (on Cloud9 SDK website). Advanced topics on writing snippets. Most sections (but not all) are relevant to RStudio users.</li>
 </ol>
 </div>
-<div id="similar-projects" class="section level2">
-<h2 class="hasAnchor">
-<a href="#similar-projects" class="anchor"></a>Similar projects</h2>
-<ol>
-<li>Package <a href="https://github.com/dgrtwo/snippr"><strong>snippr</strong></a>.</li>
-</ol>
+<div class="section level2">
+<h2 id="similar-projects">Similar projects<a class="anchor" aria-label="anchor" href="#similar-projects"></a>
+</h2>
+<ol style="list-style-type: decimal"><li>Package <a href="https://github.com/dgrtwo/snippr" class="external-link"><strong>snippr</strong></a>.</li></ol>
 </div>
-<div id="more-snippets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#more-snippets" class="anchor"></a>More snippets</h2>
-<ol>
+<div class="section level2">
+<h2 id="more-snippets">More snippets<a class="anchor" aria-label="anchor" href="#more-snippets"></a>
+</h2>
+<ol style="list-style-type: decimal">
 <li>
-<a href="https://github.com/dgrtwo/snippets">Snippets</a> by @dgrtwo.</li>
+<a href="https://github.com/dgrtwo/snippets" class="external-link">Snippets</a> by @dgrtwo.</li>
 <li>
-<a href="https://github.com/gadenbuie/snippets">Snippets</a> by @gadenbuie. <!-- 2. [R snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/r.snippets) by @Hellerz --> <!-- 3. [markdown snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/markdown.snippets) by @Hellerz --> <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 --> <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
+<a href="https://github.com/gadenbuie/snippets" class="external-link">Snippets</a> by @gadenbuie. <!-- 2. [R snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/r.snippets) by @Hellerz --> <!-- 3. [markdown snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/markdown.snippets) by @Hellerz --> <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 --> <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 </li>
 </ol>
-<!-- <div style="text-align:right;">2021-08-26</div> -->
+<!-- <div style="text-align:right;">2022-05-08</div> -->
 </div>
 </div>
 
@@ -225,50 +214,61 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/GegznaV/snippets/">https://​github.com/​GegznaV/​snippets/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/GegznaV/snippets/issues">https://​github.com/​GegznaV/​snippets/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://orcid.org/0000-0002-9500-5167">Vilmantas Gegzna</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-9500-5167" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://github.com/GegznaV/snippets/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/GegznaV/snippets/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=snippets"><img src="https://www.r-pkg.org/badges/version/snippets" alt="CRAN status"></a></li>
-<li><a href="https://github.com/GegznaV/snippets"><img src="https://img.shields.io/badge/GitHub-v0.0.13-brightgreen.svg" alt="GitHub version"></a></li>
-<li><a href="https://github.com/GegznaV/snippets/actions"><img src="https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/GegznaV/snippets?branch=master"><img src="https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href=""><img src="https://img.shields.io/badge/Updated%20on-2021--08--26-yellowgreen.svg" alt="Updated-on"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing snippets</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://orcid.org/0000-0002-9500-5167" class="external-link">Vilmantas Gegzna</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-9500-5167" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=snippets" class="external-link"><img src="https://www.r-pkg.org/badges/version/snippets" alt="CRAN status"></a></li>
+<li><a href="https://github.com/GegznaV/snippets" class="external-link"><img src="https://img.shields.io/badge/GitHub-v0.0.14-brightgreen.svg" alt="GitHub version"></a></li>
+<li><a href="https://github.com/GegznaV/snippets/actions" class="external-link"><img src="https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/GegznaV/snippets?branch=master" class="external-link"><img src="https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href=""><img src="https://img.shields.io/badge/Updated%20on-2022--05--08-yellowgreen.svg" alt="Updated-on"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://orcid.org/0000-0002-9500-5167">Vilmantas Gegzna</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://orcid.org/0000-0002-9500-5167" class="external-link">Vilmantas Gegzna</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -276,6 +276,8 @@
 
   
 
+
+  
 
   </body>
 </html>
