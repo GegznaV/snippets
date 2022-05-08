@@ -17,6 +17,18 @@
 
 # VG snippets ================================================================
 
+snippet hy-test
+	# Unit tests -----------------------------------------------------------------
+
+	hySpc.testthat::test(${1}) <- function() {
+	  context("Deprecated functions")
+
+	  expect_error(expect_warning(${2}, "deprecated"))
+
+	  expect_warning(${3}, "deprecated")
+	}
+
+
 snippet test--
 	context("Tests: $$()")
 
@@ -25,7 +37,7 @@ snippet test--
 
 	  # Unit tests
 	  expect_error($$())
-	  expect_error($$}())
+	  expect_error($$())
 	  expect_error($$())
 
 	  expect_is($$(), class = "htest")

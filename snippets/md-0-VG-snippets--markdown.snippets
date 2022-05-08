@@ -56,7 +56,7 @@ snippet setup-lt
 	  fig.align  = "center"
 	)
 
-	Sys.setlocale(locale = "${1:`r if (.Platform$OS.type == "windows") "Lithuanian" else "lt_LT.UTF-8"`}")
+	Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "Lithuanian" else "lt_LT.UTF-8"`}")
 	options(scipen = 8)   # Rodomi bent 8 skaitmenys prieš verčiant skaičių į inžinerinį formatą (pvz., 1.2E9).
 	theme_set(theme_bw()) # Numatytoji ggplot2 tema
 
@@ -94,7 +94,7 @@ snippet setupp
 	  fig.align  = "center"
 	)
 
-	Sys.setlocale(locale = "${1:`r if (.Platform$OS.type == "windows") "Lithuanian" else "lt_LT.UTF-8"`}")
+	Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "Lithuanian" else "lt_LT.UTF-8"`}")
 	options(scipen = 8)
 	theme_set(theme_bw())
 	${0}

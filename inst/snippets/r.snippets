@@ -9,6 +9,10 @@ snippet help
 	help-data-types
 	# Functions for quick summary/descriptive statistics:
 	help-desc
+	# Functions for plots:
+	help-plots
+	# Functions for statistical analyses:
+	help-analysis
 	# Symbols (mathematical, Greek, etc.)
 	help-symbols
 	# Comparison of different R syntax to achieve the same goals:
@@ -17,6 +21,135 @@ snippet help
 
 snippet ?
 	help(${1:"${2:function name, operator, other topic}"${3:, package = "${4:package-name}"}${5:, try.all.packages = ${6:TRUE}}})
+snippet help-analysis
+	${0}# Snippets for various analyses
+	# NOTE: Required packages must be installed!!!
+
+	# Principal component analysis, PCA
+	a-pca
+
+	# Principal cordinate analysis, PCoA (classical multidimensional scaling, cMDS)
+	a-pcoa
+
+	# Non-metric multidimensional scaling (nMDS)
+	a-nmds
+
+snippet a-pca
+	`r if (!"factoextra" %in% .packages()) "library(factoextra)\n\n"`
+	${1:pca_model} <- prcomp(${2:data}, scale = TRUE)
+
+	get_eigenvalue(${1:pca_model}) %>% round(1)
+	fviz_screeplot(${1:pca_model}, addlabels = TRUE, ncp = 10)
+
+	fviz_pca_ind(${1:pca_model}, labels = FALSE, alpha.ind = 0.5${3:, habillage = ${2:data}${4:\$factor}})
+
+	fviz_pca_biplot(${1:pca_model}, label = "var", alpha.ind = 0.5${3:, habillage = ${2:data}${4:\$factor})
+
+	fviz_pca_var(${1:pca_model}, repel = TRUE)
+
+	ggpubr::ggarrange(
+	  fviz_contrib(${1:pca_model}, "var", axes = 1),
+	  fviz_contrib(${1:pca_model}, "var", axes = 2),
+	  fviz_contrib(${1:pca_model}, "var", axes = 3)
+	)
+
+	get_pca_ind(${1:pca_model})
+	get_pca_var(${1:pca_model})
+	${0}
+
+
+snippet a-pcoa
+	`r if (!"factoextra" %in% .packages()) "library(factoextra)\n\n"`
+
+	# Create distance matrix
+	d <-
+	  ${1:data} |>
+	  dplyr::select(${2}) |>
+	  scale() |>
+	  dist(method = "${3:euclidean}")
+
+	# Plot distance matrix
+	factoextra::fviz_dist(d, show_labels = FALSE)
+
+	# Main PCoA
+	pcoa_obj <- cmdscale(d, k = ${4:2}, eig = TRUE)
+
+
+	# Screeplot: eigenvalues
+	ind <- 1:10
+	qplot(factor(ind), pcoa_obj\$eig[ind], xlab = "Dimension", ylab = "Eigenvalue")
+
+	# Screeplot: percentages
+	rel_eig_1 <- pcoa_obj\$eig[ind]/sum(abs(pcoa_obj$eig))                # Absolute
+	rel_eig_2 <- pcoa_obj\$eig[ind]/sum(pcoa_obj$eig[pcoa_obj$eig > 0])   # Positive
+
+	ggplot2::qplot(
+	  x = factor(ind), y = rel_eig_1[ind] * 100, color = I("red"),
+	  xlab = "Dimension", ylab = "Eigenvalue, % (absolute)"
+	)
+
+	ggplot2::qplot(
+	  x = factor(ind), y = rel_eig_2[ind] * 100, color = I("blue"),
+	  xlab = "Dimension", ylab = "Eigenvalue, % (positive)"
+	)
+
+	# Goodnes of fit (GOF)
+	pcoa_obj\$GOF
+
+	# Coordinates in MDS space
+	pcoa_coord <- as.data.frame(pcoa_obj\$points)
+	pcoa_coord %>% head()
+
+	# Plot MDS map (MDS configuration map) with ggplot2
+	ggplot(pcoa_coord, aes(V1, V2)) +
+	  geom_point(alpha = 0.5)
+
+	# Plot MDS map in colors
+	pcoa_coord %>%
+	  bind_cols(${1:data}) %>%
+	  ggplot(aes(V1, V2, color = ${5:variable})) +
+	  geom_point(alpha = 0.5)
+	${0}
+
+snippet a-nmds
+	# Create distance matrix
+	d <-
+	  ${1:data} |>
+	  dplyr::select(${2}) |>
+	  scale() |>
+	  dist(method = "${3:euclidean}")
+
+	# Plot distance matrix
+	factoextra::fviz_dist(d, show_labels = FALSE)
+
+	# Main NMDS
+	mds_obj <- vegan::metaMDS(d, k = ${4:2})
+
+	# Main info about the results
+	mds_obj
+
+	# STRESS value
+	mds_obj\$stress
+
+	# Shepard diagram
+	vegan::stressplot(mds_obj, d)
+
+	# MDS coordinates
+	mds_coord <- as.data.frame(mds_obj\$points)
+	head(mds_coord)
+
+	# Plot MDS map (MDS configuration map)
+	plot(mds_obj)
+
+	# Plot MDS map with ggplot2
+	ggplot(mds_coord, aes(MDS1, MDS2)) +
+	  geom_point(alpha = 0.5)
+
+	mds_coord %>%
+	  bind_cols(${1:data}) %>%
+	  ggplot(aes(MDS1, MDS2, color = ${5:variable})) +
+	  geom_point(alpha = 0.5)
+	${0}
 # R code snippets: code elements
 snippet help-r
 	# R code snippets -----------------------------------------------------------
@@ -192,10 +325,10 @@ snippet locale
 	Sys.${1:g}etlocale(${2})${0}
 
 snippet locale-en
-	Sys.setlocale(locale = "${1:`r if (.Platform$OS.type == "windows") "English" else "en_US.UTF-8"`}")${0}
+	Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "English" else "en_US.UTF-8"`}")${0}
 
 snippet locale-lt
-	Sys.setlocale(locale = "${1:`r if (.Platform$OS.type == "windows") "Lithuanian" else "lt_LT.UTF-8"`}")${0}
+	Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "Lithuanian" else "lt_LT.UTF-8"`}")${0}
 
 
 snippet FIX
@@ -319,6 +452,7 @@ snippet opts-chunk
 snippet help-lib
 	lib
 	lib-tidyverse
+	lib-tidyverse-3
 	lib-fs
 	lib-file-io
 	lib-ggplot2-extra
@@ -326,6 +460,10 @@ snippet help-lib
 	lib-md-tables
 
 snippet lib-tidyverse
+	library(tidyverse)     # The main "tidyverse" packages.
+	${0}
+
+snippet lib-tidyverse-3
 	library(conflicted)    # Get a warning/error if several functions with the same name exist.
 	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
 	library(tidyverse)     # The main "tidyverse" packages.
@@ -465,6 +603,22 @@ snippet save-ggplot-to-pptx
 
 	# ~ Open the pptx file ------------------------------------------------------
 	browseURL(path_to_pptx_file)
+snippet help-plots
+	${0}# Satatistical plots
+	# NOTE: Required packages must be installed!!!
+
+	# 3D scatterplot
+	plotly-3d-scatter
+
+
+snippet plotly-3d-scatter
+	${1:data} |>
+	  plotly::plot_ly(
+	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
+	    marker = list(opacity = 0.8, size = 3)
+	  ) %>%
+	  plotly::add_markers() %>%
+	  plotly::layout(title = "${7:3D plot}")
 snippet help-desc
 	${0}# Snippets for quick descriptive statistics
 	# NOTE: Packages tidyverse, summarytools, and DescTools must be loaded!!!

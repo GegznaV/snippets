@@ -1,0 +1,16 @@
+snippet help-plots
+	${0}# Satatistical plots
+	# NOTE: Required packages must be installed!!!
+
+	# 3D scatterplot
+	plotly-3d-scatter
+
+
+snippet plotly-3d-scatter
+	${1:data} |>
+	  plotly::plot_ly(
+	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
+	    marker = list(opacity = 0.8, size = 3)
+	  ) %>%
+	  plotly::add_markers() %>%
+	  plotly::layout(title = "${7:3D plot}")

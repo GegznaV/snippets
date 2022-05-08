@@ -27,9 +27,14 @@ jobs:
       SOURCE_REPO: ${{ github.repository }}
       DEST_REPO:   mokymai/download
       TMP_DIR:     tmp_dir
+      CACHE_VERSION: 1
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Info
+        run: |
+          echo "GitHub actor: ${{ github.actor }}"
 
       - uses: r-lib/actions/setup-r@master
         with:
@@ -37,19 +42,18 @@ jobs:
 
       - name: Query dependencies
         run: |
-          options("repos" = "https://cran.rstudio.com/")
-          install.packages('remotes', repos = "https://cran.rstudio.com/")
+          install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Cache R packages
-        if: runner.os != 'Windows'
-        uses: actions/cache@v1
+      - name: Restore R package cache
+        # if: runner.os != 'Windows'
+        uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key:  ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-${CACHE_VERSION}-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-${CACHE_VERSION}-
 
       - name: Install dependencies
         shell: Rscript {0}
@@ -59,7 +63,9 @@ jobs:
 
       - name: Roxygenize
         shell: Rscript {0}
-        run:   roxygen2::roxygenize()
+        run: |
+          roxygen2::roxygenize()
+
 
       - name: Build source package
         if: runner.os == 'Windows' && matrix.config.r == 'release'
