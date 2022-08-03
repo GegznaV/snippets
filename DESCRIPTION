@@ -21,7 +21,6 @@ Additional_repositories:
 Imports:
   backup.tools,
   crayon,
-  diffobj,
   dplyr,
   fs,
   lifecycle,
@@ -29,8 +28,6 @@ Imports:
   readr,
   rstudioapi,
   stringr,
-  tibble,
-  tidyr,
   tools,
   usethis,
   utils,
