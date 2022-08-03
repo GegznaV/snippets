@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.15</span>
       </span>
     </div>
 
@@ -85,17 +85,17 @@
 <div class="page-header"><h1 id="package-snippets">Package <code>snippets</code>
 <a class="anchor" aria-label="anchor" href="#package-snippets"></a>
 </h1></div>
-<!-- (0.0.14) --><div class="section level2">
+<!-- (0.0.15) --><div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: --><!-- ``` r --><!-- install.packages("snippets") --><!-- ``` --><p>To install package from CRAN-like repository:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://mokymai.github.io/download/"</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"snippets"</span>, repos <span class="op">=</span> <span class="va">repos</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://mokymai.github.io/download/"</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"repos"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"snippets"</span>, repos <span class="op">=</span> <span class="va">repos</span><span class="op">)</span></span></code></pre></div>
 <p>To install from <a href="https://github.com/" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"GegznaV/snippets"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"GegznaV/snippets"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
@@ -104,47 +104,47 @@
 <h3 id="install-snippets-from-snippets">Install Snippets from “snippets”<a class="anchor" aria-label="anchor" href="#install-snippets-from-snippets"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Replace current files with snippets with those in package "snippets"</span>
-<span class="co"># (backup copies are created by default)</span>
-<span class="fu">snippets</span><span class="fu">::</span><span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Replace current files with snippets with those in package "snippets"</span></span>
+<span><span class="co"># (backup copies are created by default)</span></span>
+<span><span class="fu">snippets</span><span class="fu">::</span><span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="more-examples">More Examples<a class="anchor" aria-label="anchor" href="#more-examples"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gegznav.github.io/snippets/" class="external-link">snippets</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gegznav.github.io/snippets/" class="external-link">snippets</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Get the name of the directory where RStudio snippets are stored</span>
-<span class="fu"><a href="reference/get_path_rstudio_snippets_dir.html">get_path_rstudio_snippets_dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Get the name of the directory where RStudio snippets are stored</span></span>
+<span><span class="fu"><a href="reference/get_path_rstudio_snippets_dir.html">get_path_rstudio_snippets_dir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Open the directory with RStudio snippets</span>
-<span class="fu"><a href="reference/open_rstudio_snippets_dir.html">open_rstudio_snippets_dir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Open the directory with RStudio snippets</span></span>
+<span><span class="fu"><a href="reference/open_rstudio_snippets_dir.html">open_rstudio_snippets_dir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Replace your R and Markdown snippets with those in package "snippets"</span>
-<span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r"</span>, <span class="st">"markdown"</span><span class="op">)</span>, backup <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="reference/backup_rstudio_snippets.html">list_snippet_file_backups</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Replace your R and Markdown snippets with those in package "snippets"</span></span>
+<span><span class="fu"><a href="reference/install-snippets.html">install_snippets_from_package</a></span><span class="op">(</span><span class="st">"snippets"</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r"</span>, <span class="st">"markdown"</span><span class="op">)</span>, backup <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/backup_rstudio_snippets.html">list_snippet_file_backups</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># View and edit file with snippets of certain type: r</span>
-<span class="fu"><a href="reference/open_rstudio_snippets_file.html">open_rstudio_snippets_file</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># View and edit file with snippets of certain type: r</span></span>
+<span><span class="fu"><a href="reference/open_rstudio_snippets_file.html">open_rstudio_snippets_file</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># View and edit file with snippets of certain type: markdown</span>
-<span class="fu"><a href="reference/open_rstudio_snippets_file.html">open_rstudio_snippets_file</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"markdown"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># View and edit file with snippets of certain type: markdown</span></span>
+<span><span class="fu"><a href="reference/open_rstudio_snippets_file.html">open_rstudio_snippets_file</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"markdown"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-and-clean-up-back-ups">Create and Clean-up Back-ups<a class="anchor" aria-label="anchor" href="#create-and-clean-up-back-ups"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Create several back up files</span>
-<span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Create several back up files</span></span>
+<span><span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/backup_rstudio_snippets.html">backup_rstudio_snippets</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/backup_rstudio_snippets.html">list_snippet_file_backups</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/backup_rstudio_snippets.html">list_snippet_file_backups</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"r"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Remove duplicated back-up files</span>
-<span class="fu"><a href="reference/backup_rstudio_snippets.html">remove_snippet_backup_duplicates</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Remove duplicated back-up files</span></span>
+<span><span class="fu"><a href="reference/backup_rstudio_snippets.html">remove_snippet_backup_duplicates</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <!-- 
 
 ### Revert to a Certain Version of Back-up 
@@ -206,7 +206,7 @@
 <a href="https://github.com/gadenbuie/snippets" class="external-link">Snippets</a> by @gadenbuie. <!-- 2. [R snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/r.snippets) by @Hellerz --> <!-- 3. [markdown snippets](https://github.com/Hellerz/hellerz/blob/6180ad13d73c7ff826c9cf514840bbbd899d5873/scripts/ace/snippets/markdown.snippets) by @Hellerz --> <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 --> <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 </li>
 </ol>
-<!-- <div style="text-align:right;">2022-05-08</div> -->
+<!-- <div style="text-align:right;">2022-08-03</div> -->
 </div>
 </div>
 
@@ -245,17 +245,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=snippets" class="external-link"><img src="https://www.r-pkg.org/badges/version/snippets" alt="CRAN status"></a></li>
-<li><a href="https://github.com/GegznaV/snippets" class="external-link"><img src="https://img.shields.io/badge/GitHub-v0.0.14-brightgreen.svg" alt="GitHub version"></a></li>
-<li><a href="https://github.com/GegznaV/snippets/actions" class="external-link"><img src="https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/GegznaV/snippets?branch=master" class="external-link"><img src="https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href=""><img src="https://img.shields.io/badge/Updated%20on-2022--05--08-yellowgreen.svg" alt="Updated-on"></a></li>
-</ul>
-</div>
+
 
   </div>
 </div>
@@ -268,7 +258,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
