@@ -9,8 +9,6 @@
 #'
 #' @noRd
 #'
-#' @return
-#'
 #' @examples
 #'
 #' snippets_dir <- "snippets/"
@@ -75,7 +73,7 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 #' Merge and update snippets
 #'
 #' Functions creates one file for one type of snippets and copies it to the
-#' direcctory accessible by the users of the package.
+#' directory accessible by the users of the package.
 #'
 #' @inheritParams match_snippet_type
 #' @param snippets_dir Path to directory.
