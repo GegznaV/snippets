@@ -9,6 +9,8 @@
 #'
 #' @noRd
 #'
+#' @return
+#'
 #' @examples
 #'
 #' snippets_dir <- "snippets/"
