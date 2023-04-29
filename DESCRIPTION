@@ -1,7 +1,7 @@
 Package: snippets
 Title: Manage RStudio Snippets
-Version: 0.0.15
-Date: 2022-08-03
+Version: 0.0.16
+Date: 2023-04-29
 Authors@R: 
     person(given   = "Vilmantas",
            family  = "Gegzna",
@@ -32,7 +32,7 @@ Imports:
   usethis,
   utils,
   withr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
   covr,
   bookdown,
