@@ -30,7 +30,7 @@ jobs:
       CACHE_VERSION: 1
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Info
         run: |
@@ -49,7 +49,7 @@ jobs:
 
       - name: Restore R package cache
         # if: runner.os != 'Windows'
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-${CACHE_VERSION}-${{ hashFiles('.github/depends.Rds') }}
@@ -91,7 +91,7 @@ jobs:
           TOKEN: ${{ secrets.DEPLOY_DRAT_TOKEN }}
 
       - name: Git clone DEST_REPO
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ${{ env.DEST_REPO }} # 'mokymai/download'
           ref:   'master'
