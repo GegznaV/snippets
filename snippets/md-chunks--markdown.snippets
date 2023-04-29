@@ -76,8 +76,8 @@ snippet setupq
 	```{r setup, include=FALSE}
 	# Packages ------------------------------------------------------------------
 	${1}
-	library(conflicted)      # Get a warning/error if several functions with the same name exist.
-	library(tidyverse)       # The main "tidyverse" packages.
+	library(conflicted)      # Get error if several same-name functions are loaded.
+	library(tidyverse)       # Load main "tidyverse" packages.
 	library(magrittr)        # Operator %>% and additional pipe-friendly functions.
 	# library(fs)            # Manage files and directories.
 
@@ -112,7 +112,7 @@ snippet setupq
 	# library(mlr)           # Machine learning in R.
 	# library(mlr3)          # Machine learning in R (new generation).
 	# library(factoextra)    # Extract and visualize the results of multivariate data analyses.
-	# library(userfriendlyscience) # Statistical analysis.
+	# library(ufs)           # Statistical analysis.
 
 	# library(pander)        # Function `pander()` to report results of statistical analysis.
 	# library(knitr)         # Function `kable()` to convert data frames into tables for reports.
