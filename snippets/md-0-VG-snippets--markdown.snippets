@@ -15,7 +15,7 @@ snippet setup-lt
 	```{r setup, include=FALSE}
 	# Paketai -------------------------------------------------------------------
 
-	library(conflicted)      # Sprendimas, jei yra kelios funkcijos vienodais pavadinimais.
+	library(conflicted)      # Iššoks klaida, jei kelios funkcijos vienodais pavadinimais.
 
 	library(tidyverse)       # Pagrindiniai „tidyverse“ paketai.
 	library(magrittr)        # Operatorius %>% ir papildomos funkcijos.
@@ -25,6 +25,8 @@ snippet setup-lt
 	# library(DescTools)     # Aprašomoji statistika.
 	# library(summarytools)  # Aprašomoji statistika.
 	# library(skimr)         # Aprašomoji statistika.
+
+	# library(gtsummary)     # Suvestinių lentelės.
 
 	# library(ggpubr)        # Statistiniai ggplot2 grafikai ir papildomos funkcijos.
 	# library(ggstatsplot)   # Įvairūs statistiniai ggplot2 grafikai su papildomomis detalėmis.
@@ -122,34 +124,34 @@ snippet figi
 	```
 
 snippet note
-	```{block, type="${1:note}", echo=TRUE}
+	::: {.${1:note}}
 	${0}
-	```
+	:::
 
 snippet aim
-	```{block, type="${1:aim}", echo=TRUE}
+	::: {.${1:aim}}
 	${0}
-	```
+	:::
 
 snippet ok
-	```{block, type="${1:ok}", echo=TRUE}
+	::: {.${1:ok}}
 	${0}
-	```
+	:::
 
 snippet task
-	```{block, type="${1:task}", echo=TRUE}
+	::: {.${1:task}}
 	${0}
-	```
+	:::
 
 snippet red
-	```{block, type="${1:avoid}", echo=TRUE}
+	::: {.${1:avoid}}
 	${0}
-	```
+	:::
 
 snippet avoid
-	```{block, type="${1:avoid}", echo=TRUE}
+	::: {.${1:avoid}}
 	${0}
-	```
+	:::
 
 snippet kb
 	\`r kbd("${1:Ctrl}", "${2}")\`
