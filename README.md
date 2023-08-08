@@ -103,9 +103,12 @@ remove_snippet_backup_duplicates()
 ```
 
 <!-- 
-&#10;### Revert to a Certain Version of Back-up 
-&#10;1. List all back-up files and select the one of interest.
-    &#10;    ```r
+
+### Revert to a Certain Version of Back-up 
+
+1. List all back-up files and select the one of interest.
+    
+    ```r
     list_snippet_file_backups(type = "r")
     ```
     ```r
@@ -114,7 +117,8 @@ remove_snippet_backup_duplicates()
     #> c:/.R/snippets/r.snippets--backup-2019-10-31-015042
     ```
 2. Restore the back-up of interest, e.g.:
-    &#10;    ```r
+    
+    ```r
     restore_snippets_from_backup("r.snippets--backup-2019-10-31-015042")
     ```
     ```r
