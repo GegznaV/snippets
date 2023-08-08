@@ -18,6 +18,7 @@ snippet help-r
 	if
 	el
 	ei
+	sw
 	switch
 
 	# Function, annonymous function, return
@@ -42,8 +43,7 @@ snippet help-r
 	map
 	map_
 
-	# Operator %>%
-	pipe
+	# Operator |>
 	aa
 	aa-
 
@@ -59,7 +59,7 @@ snippet req
 	require(${0:package})
 
 snippet src
-	source("${0:file.R}", encoding = "UTF-8")
+	source("${0:file.R}")
 
 snippet mat
 	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
@@ -115,6 +115,9 @@ snippet while
 		${0}
 	}
 
+snippet sw
+	switch
+
 snippet switch
 	switch(
 		${1:object},
@@ -148,25 +151,14 @@ snippet map
 snippet map_
 	${1:purrr::}map_${2:chr}(${3:data}, ${4:function})
 
-
-snippet pipe-
-	$$ <-
-	  $$ %>%
-	  ${0:code}
-
-snippet pipe
-	${1:dataset} <-
-	  ${1} %>%
-	  ${0:code}
-
 snippet aa-
 	$$ <-
-	  $$ %>%
+	  $$ |>
 	  ${0:code}
 
 snippet aa
 	${1:dataset} <-
-	  ${1} %>%
+	  ${1} |>
 	  ${0:code}
 
 snippet locale
