@@ -1,10 +1,9 @@
 on:
   push:
-    branches:
-      - master
+    branches: [master, main]
   workflow_dispatch:
 
-name: Publish package
+name: Publish package (drat)
 
 jobs:
   drat:
@@ -25,10 +24,10 @@ jobs:
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      GITHUB_PAT:  ${{ secrets.GITHUB_TOKEN }}
       SOURCE_REPO: ${{ github.repository }}
       DEST_REPO:   mokymai/download
       TMP_DIR:     tmp_dir
-      CACHE_VERSION: 1
 
     steps:
       - uses: actions/checkout@v3
@@ -43,33 +42,17 @@ jobs:
           use-public-rspm: true
           extra-repositories: "https://mokymai.github.io/download/"
 
-
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
-
-      - name: Restore R package cache
-        # if: runner.os != 'Windows'
-        uses: actions/cache@v3
+      - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-${CACHE_VERSION}-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-${CACHE_VERSION}-
-
-      - name: Install dependencies
-        shell: Rscript {0}
-        run: |
-          remotes::install_cran(c("roxygen2", "devtools", "drat"))
-          remotes::install_deps(dependencies = TRUE)
+          cache-version: 1
+          extra-packages: |
+            roxygen2
+            devtools
+            drat
 
       - name: Roxygenize
         shell: Rscript {0}
-        run: |
-          roxygen2::roxygenize()
-
+        run:   roxygen2::roxygenize()
 
       - name: Build source package
         if: runner.os == 'Windows' && matrix.config.r == 'release'
