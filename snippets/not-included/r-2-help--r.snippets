@@ -1,0 +1,21 @@
+
+snippet help
+	# START: keywords for help/documentation snippets ==========================~
+	# Help about functions, operators or other topics:
+	?
+	# Snippets for basic R code :
+	help-r
+	# Abbreviations of the most common R data types:
+	help-data-types
+	# Functions for plots:
+	help-plots
+	# Functions for statistical analyses:
+	help-analysis
+	# Symbols (mathematical, Greek, etc.)
+	help-symbols
+	# Comparison of different R syntax to achieve the same goals:
+	compare-r-syntax
+	# END: keywords for help/documentation snippets   ==========================~
+
+snippet ?
+	help(${1:"${2:function name, operator, other topic}"${3:, package = "${4:package-name}"}${5:, try.all.packages = ${6:TRUE}}})
