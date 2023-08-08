@@ -5,19 +5,19 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.15.9000-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.16-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2023--04--29-yellowgreen.svg)]()
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2023--08--08-yellowgreen.svg)]()
 <!-- badges: end -->
 
 # Package `snippets`
 
-<!-- (0.0.15.9000) -->
+<!-- (0.0.16) -->
 
 ## Installation
 
@@ -103,12 +103,9 @@ remove_snippet_backup_duplicates()
 ```
 
 <!-- 
-
-### Revert to a Certain Version of Back-up 
-
-1. List all back-up files and select the one of interest.
-    
-    ```r
+&#10;### Revert to a Certain Version of Back-up 
+&#10;1. List all back-up files and select the one of interest.
+    &#10;    ```r
     list_snippet_file_backups(type = "r")
     ```
     ```r
@@ -117,8 +114,7 @@ remove_snippet_backup_duplicates()
     #> c:/.R/snippets/r.snippets--backup-2019-10-31-015042
     ```
 2. Restore the back-up of interest, e.g.:
-    
-    ```r
+    &#10;    ```r
     restore_snippets_from_backup("r.snippets--backup-2019-10-31-015042")
     ```
     ```r
@@ -158,4 +154,4 @@ remove_snippet_backup_duplicates()
     <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
     <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 
-<!-- <div style="text-align:right;">2023-04-29</div> -->
+<!-- <div style="text-align:right;">2023-08-08</div> -->
