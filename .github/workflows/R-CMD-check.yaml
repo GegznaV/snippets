@@ -12,11 +12,22 @@ on:
 
 name: R-CMD-check
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
+    concurrency:
+      group: >
+        ${{ github.workflow }}-${{ matrix.config.os }}-${{ matrix.config.r }})-
+        ${{ github.event_name != 'pull_request' || github.run_id }}
+      cancel-in-progress: true
+
     name: ${{ matrix.config.os }} (R-${{ matrix.config.r }})
+
 
     strategy:
       fail-fast: false
