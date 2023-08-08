@@ -1,16 +1,18 @@
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-opts
-	opts-r-numbers
+	opts-number-format
+	opts-kable
 	opts-pander
 	opts-desctools
+	opts-rmd-chunk
 
-snippet opts-r-numbers
+snippet opts-number-format
 	# Options to format numbers
 	options(        # For more detais see ?options
-	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
-		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
-		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
+	  scipen = 8,   # Number of digist to print before converting to exponential notation.
+		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print.
+		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print.
 		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
 	)
 	${0}
@@ -64,7 +66,7 @@ snippet opts-desctools
 	)
 	${0}
 
-snippet opts-chunk
+snippet opts-rmd-chunk
 	# Chunk options
 	knitr::opts_chunk\$set(
 	  echo       = TRUE,    # Should blocks with program code be shown in knitted documents?
