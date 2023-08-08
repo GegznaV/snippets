@@ -1,4 +1,7 @@
 snippet save-plot-to-pptx
+	plot-save-to-pptx-from-code
+
+snippet plot-save-to-pptx-from-code
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
@@ -35,13 +38,14 @@ snippet save-plot-to-pptx
 	  ph_with(dml_plot, location = location_on_slide) %>%
 	  print(target = output_file)
 
-	# ~ Open the pptx file ------------------------------------------------------
+	# ~ Open the pptx file -------------------------------------------------------
 	browseURL(path_to_pptx_file)
 
 
-
-
 snippet save-ggplot-to-pptx
+	plot-save-to-pptx-ggplot
+
+snippet plot-save-to-pptx-ggplot
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
@@ -77,5 +81,5 @@ snippet save-ggplot-to-pptx
 	  ph_with(dml_plot, location = location_on_slide) %>%
 	  print(target = output_file)
 
-	# ~ Open the pptx file ------------------------------------------------------
+	# ~ Open the pptx file -------------------------------------------------------
 	browseURL(path_to_pptx_file)

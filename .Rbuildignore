@@ -10,6 +10,7 @@
 ^appveyor\.yml$
 ^data-raw$
 ^snippets$
+^_tmp$
 ^_TODO
 ^\.github$
 ^new-features$

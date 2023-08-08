@@ -5,14 +5,29 @@ on:
     branches: [main, master, devel]
   pull_request:
     branches: [main, master, devel]
+  schedule:
+    # (see https://crontab.guru)
+    - cron: "5 3 * */2 TUE"
+  workflow_dispatch:
 
 name: R-CMD-check
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
+    concurrency:
+      group: >
+        ${{ github.workflow }}-${{ matrix.config.os }}-${{ matrix.config.r }})-
+        ${{ github.event_name != 'pull_request' || github.run_id }}
+      cancel-in-progress: true
+
     name: ${{ matrix.config.os }} (R-${{ matrix.config.r }})
+
 
     strategy:
       fail-fast: false
@@ -25,8 +40,8 @@ jobs:
           # - {os: ubuntu-latest,   r: 'oldrel-1'}
 
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3

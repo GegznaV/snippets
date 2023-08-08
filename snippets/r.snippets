@@ -1,153 +1,6 @@
 
-snippet help
-	# START: keywords for help/documentation snippets ==========================~
-	# Help about functions, operators or other topics:
-	?
-	# Snippets for basic R code :
-	help-r
-	# Abbreviations of the most common R data types:
-	help-data-types
-	# Functions for plots:
-	help-plots
-	# Functions for statistical analyses:
-	help-analysis
-	# Symbols (mathematical, Greek, etc.)
-	help-symbols
-	# Comparison of different R syntax to achieve the same goals:
-	compare-r-syntax
-	# END: keywords for help/documentation snippets   ==========================~
-
 snippet ?
 	help(${1:"${2:function name, operator, other topic}"${3:, package = "${4:package-name}"}${5:, try.all.packages = ${6:TRUE}}})
-snippet help-analysis
-	${0}# Snippets for various analyses
-	# NOTE: Required packages must be installed!!!
-
-	# Principal component analysis, PCA
-	a-pca
-
-	# Principal cordinate analysis, PCoA (classical multidimensional scaling, cMDS)
-	a-pcoa
-
-	# Non-metric multidimensional scaling (nMDS)
-	a-nmds
-
-snippet a-pca
-	`r if (!"factoextra" %in% .packages()) "library(factoextra)\n\n"`
-	${1:pca_model} <- prcomp(${2:data}, scale = TRUE)
-
-	get_eigenvalue(${1:pca_model}) %>% round(1)
-	fviz_screeplot(${1:pca_model}, addlabels = TRUE, ncp = 10)
-
-	fviz_pca_ind(${1:pca_model}, labels = FALSE, alpha.ind = 0.5${3:, habillage = ${2:data}${4:\$factor}})
-
-	fviz_pca_biplot(${1:pca_model}, label = "var", alpha.ind = 0.5${3:, habillage = ${2:data}${4:\$factor})
-
-	fviz_pca_var(${1:pca_model}, repel = TRUE)
-
-	ggpubr::ggarrange(
-	  fviz_contrib(${1:pca_model}, "var", axes = 1),
-	  fviz_contrib(${1:pca_model}, "var", axes = 2),
-	  fviz_contrib(${1:pca_model}, "var", axes = 3)
-	)
-
-	get_pca_ind(${1:pca_model})
-	get_pca_var(${1:pca_model})
-	${0}
-
-
-snippet a-pcoa
-	`r if (!"factoextra" %in% .packages()) "library(factoextra)\n\n"`
-
-	# Create distance matrix
-	d <-
-	  ${1:data} |>
-	  dplyr::select(${2}) |>
-	  scale() |>
-	  dist(method = "${3:euclidean}")
-
-	# Plot distance matrix
-	factoextra::fviz_dist(d, show_labels = FALSE)
-
-	# Main PCoA
-	pcoa_obj <- cmdscale(d, k = ${4:2}, eig = TRUE)
-
-
-	# Screeplot: eigenvalues
-	ind <- 1:10
-	qplot(factor(ind), pcoa_obj\$eig[ind], xlab = "Dimension", ylab = "Eigenvalue")
-
-	# Screeplot: percentages
-	rel_eig_1 <- pcoa_obj\$eig[ind]/sum(abs(pcoa_obj$eig))                # Absolute
-	rel_eig_2 <- pcoa_obj\$eig[ind]/sum(pcoa_obj$eig[pcoa_obj$eig > 0])   # Positive
-
-	ggplot2::qplot(
-	  x = factor(ind), y = rel_eig_1[ind] * 100, color = I("red"),
-	  xlab = "Dimension", ylab = "Eigenvalue, % (absolute)"
-	)
-
-	ggplot2::qplot(
-	  x = factor(ind), y = rel_eig_2[ind] * 100, color = I("blue"),
-	  xlab = "Dimension", ylab = "Eigenvalue, % (positive)"
-	)
-
-	# Goodnes of fit (GOF)
-	pcoa_obj\$GOF
-
-	# Coordinates in MDS space
-	pcoa_coord <- as.data.frame(pcoa_obj\$points)
-	pcoa_coord %>% head()
-
-	# Plot MDS map (MDS configuration map) with ggplot2
-	ggplot(pcoa_coord, aes(V1, V2)) +
-	  geom_point(alpha = 0.5)
-
-	# Plot MDS map in colors
-	pcoa_coord %>%
-	  bind_cols(${1:data}) %>%
-	  ggplot(aes(V1, V2, color = ${5:variable})) +
-	  geom_point(alpha = 0.5)
-	${0}
-
-snippet a-nmds
-	# Create distance matrix
-	d <-
-	  ${1:data} |>
-	  dplyr::select(${2}) |>
-	  scale() |>
-	  dist(method = "${3:euclidean}")
-
-	# Plot distance matrix
-	factoextra::fviz_dist(d, show_labels = FALSE)
-
-	# Main NMDS
-	mds_obj <- vegan::metaMDS(d, k = ${4:2})
-
-	# Main info about the results
-	mds_obj
-
-	# STRESS value
-	mds_obj\$stress
-
-	# Shepard diagram
-	vegan::stressplot(mds_obj, d)
-
-	# MDS coordinates
-	mds_coord <- as.data.frame(mds_obj\$points)
-	head(mds_coord)
-
-	# Plot MDS map (MDS configuration map)
-	plot(mds_obj)
-
-	# Plot MDS map with ggplot2
-	ggplot(mds_coord, aes(MDS1, MDS2)) +
-	  geom_point(alpha = 0.5)
-
-	mds_coord %>%
-	  bind_cols(${1:data}) %>%
-	  ggplot(aes(MDS1, MDS2, color = ${5:variable})) +
-	  geom_point(alpha = 0.5)
-	${0}
 # R code snippets: code elements
 snippet help-r
 	# R code snippets -----------------------------------------------------------
@@ -168,6 +21,7 @@ snippet help-r
 	if
 	el
 	ei
+	sw
 	switch
 
 	# Function, annonymous function, return
@@ -192,8 +46,7 @@ snippet help-r
 	map
 	map_
 
-	# Operator %>%
-	pipe
+	# Operator |>
 	aa
 	aa-
 
@@ -209,7 +62,7 @@ snippet req
 	require(${0:package})
 
 snippet src
-	source("${0:file.R}", encoding = "UTF-8")
+	source("${0:file.R}")
 
 snippet mat
 	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
@@ -265,6 +118,9 @@ snippet while
 		${0}
 	}
 
+snippet sw
+	switch
+
 snippet switch
 	switch(
 		${1:object},
@@ -298,25 +154,14 @@ snippet map
 snippet map_
 	${1:purrr::}map_${2:chr}(${3:data}, ${4:function})
 
-
-snippet pipe-
-	$$ <-
-	  $$ %>%
-	  ${0:code}
-
-snippet pipe
-	${1:dataset} <-
-	  ${1} %>%
-	  ${0:code}
-
 snippet aa-
 	$$ <-
-	  $$ %>%
+	  $$ |>
 	  ${0:code}
 
 snippet aa
 	${1:dataset} <-
-	  ${1} %>%
+	  ${1} |>
 	  ${0:code}
 
 snippet locale
@@ -357,12 +202,12 @@ snippet msg
 
 snippet help-data-types
 	# The abbreviations (used in the Tidyverse) of the most common R data types:
-	#     <fct>  -- nominal (factor, categorical);
+	#     <fct>  -- nominal (categorical; factor);
 	#     <ord>  -- ordinal;
-	#     <int>  -- numeric (integers);
-	#     <dbl>  -- numeric (doubles, real numbers);
+	#     <int>  -- numeric: (integer);
+	#     <dbl>  -- numeric: real numbers (double);
 	#     <lgl>  -- logical;
-	#     <chr>  -- text (character, strings);
+	#     <chr>  -- text, strings (character);
 	#     <date> -- dates;
 	#     <dttm> -- dates and times;
 	#     <list> -- list column (more complex data structures than usual vectors).
@@ -372,16 +217,18 @@ snippet help-data-types
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-opts
-	opts-r-numbers
+	opts-number-format
+	opts-kable
 	opts-pander
 	opts-desctools
+	opts-rmd-chunk
 
-snippet opts-r-numbers
+snippet opts-number-format
 	# Options to format numbers
 	options(        # For more detais see ?options
-	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
-		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
-		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
+	  scipen = 8,   # Number of digist to print before converting to exponential notation.
+		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print.
+		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print.
 		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
 	)
 	${0}
@@ -435,7 +282,7 @@ snippet opts-desctools
 	)
 	${0}
 
-snippet opts-chunk
+snippet opts-rmd-chunk
 	# Chunk options
 	knitr::opts_chunk\$set(
 	  echo       = TRUE,    # Should blocks with program code be shown in knitted documents?
@@ -445,82 +292,30 @@ snippet opts-chunk
 	  fig.align  = "center" # Default alignment for plots in knitted documents.
 	)
 	${0}
-# FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
-snippet help-lib
-	lib
-	lib-tidyverse
-	lib-tidyverse-3
-	lib-fs
-	lib-file-io
-	lib-ggplot2-extra
-	lib-stat-analysis
-	lib-md-tables
-
 snippet lib-tidyverse
 	library(tidyverse)     # The main "tidyverse" packages.
 	${0}
+snippet help-plots
+	${0}# Satatistical plots
+	# NOTE: Required packages must be installed!!!
 
-snippet lib-tidyverse-3
-	library(conflicted)    # Get a warning/error if several functions with the same name exist.
-	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
-	library(tidyverse)     # The main "tidyverse" packages.
-	${0}
+	# 3D scatterplot
+	plotly-scatter-3d
 
-snippet lib-fs
-	library(fs)            # Manage files and directories.
-	${0}
 
-snippet lib-file-io
-	library(data.table)    # Function `fread()` to read data from text files.
-	library(readxl)        # Read Excel data.
-	library(writexl)       # Write data to Excel files.
-	library(openxlsx)      # Write data to Excel files.
-	${0}
-
-snippet lib-summary
-	library(DescTools)     # Descriptive statistics, statistical tests, etc.
-	library(gtsummary)     # Presentation-Ready Data Summary and Analytic Result Tables.
-	library(summarytools)  # Descriptive statistics.
-	${0}
-
-snippet lib-ggplot2-extra
-	library(ggpubr)        # Statistical plots and utilities for ggplot2.
-	library(ggstatsplot)   # Statistical plots based on ggplot2.
-	library(ggmosaic)      # Mosaic plot (ggplot2).
-	library(qqplotr)       # Quantile comparison diagrams (QQ plots).
-	library(ggtext)        # Improved Text Rendering Support for ggplot2.
-	library(ggrepel)       # Labels for ggplot2 that do not overlap.
-	library(patchwork)     # Join several ggplot2 plots into single figure.
-	library(gghighlight)   # Highlight Lines and Points in ggplot2.
-	library(latex2exp)     # LaTeX-based equations in plots.
-	library(officer)       # Create and manipulate PowerPoint, Word, etc. documents.
-	library(rvg)           # To save editable plots in PowerPoint.
-	${0}
-
-snippet lib-stat-analysis
-	library(broom)         # Convert results of statistical analysis to data frames.
-	library(rstatix)       # Pipe-friendly basic statistical tests.
-	library(rcompanion)    # Statistical analysis.
-	library(RVAideMemoire) # Statistical analysis.
-	library(PMCMRplus)     # Non-parametric statistical tests.
-	library(vcd)           # Analysis of categorical data.
-	library(fitdistrplus)  # Fit parametric distributions.
-	library(mlr)           # Machine learning in R.
-	library(mlr3)          # Machine learning in R (new generation).
-	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
-	library(ufs)           # Statistical analysis.
-	${0}
-
-snippet lib-md-tables
-	library(pander)        # Function `pander()` to report results of statistical analysis.
-	library(knitr)         # Function `kable()` to convert data frames into tables for reports.
-	library(DT)            # Interactive tables for HTML documents (DataTables).
-	library(gt)            # Easily Create Presentation-Ready Display Tables.
-	library(flextable)     # Functions for Tabular Reporting.
-	${0}
-
+snippet plotly-scatter-3d
+	${1:data} |>
+	  plotly::plot_ly(
+	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
+	    marker = list(opacity = 0.8, size = 3)
+	  ) %>%
+	  plotly::add_markers() %>%
+	  plotly::layout(title = "${7:3D plot}")
 snippet save-plot-to-pptx
+	plot-save-to-pptx-from-code
+
+snippet plot-save-to-pptx-from-code
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
@@ -557,13 +352,14 @@ snippet save-plot-to-pptx
 	  ph_with(dml_plot, location = location_on_slide) %>%
 	  print(target = output_file)
 
-	# ~ Open the pptx file ------------------------------------------------------
+	# ~ Open the pptx file -------------------------------------------------------
 	browseURL(path_to_pptx_file)
 
 
-
-
 snippet save-ggplot-to-pptx
+	plot-save-to-pptx-ggplot
+
+snippet plot-save-to-pptx-ggplot
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
@@ -599,24 +395,8 @@ snippet save-ggplot-to-pptx
 	  ph_with(dml_plot, location = location_on_slide) %>%
 	  print(target = output_file)
 
-	# ~ Open the pptx file ------------------------------------------------------
+	# ~ Open the pptx file -------------------------------------------------------
 	browseURL(path_to_pptx_file)
-snippet help-plots
-	${0}# Satatistical plots
-	# NOTE: Required packages must be installed!!!
-
-	# 3D scatterplot
-	plotly-3d-scatter
-
-
-snippet plotly-3d-scatter
-	${1:data} |>
-	  plotly::plot_ly(
-	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
-	    marker = list(opacity = 0.8, size = 3)
-	  ) %>%
-	  plotly::add_markers() %>%
-	  plotly::layout(title = "${7:3D plot}")
 # Symbols --------------------------------------------------------------------
 
 snippet help-symbols
@@ -1187,143 +967,3 @@ snippet psi
 # Omega (ω)
 snippet omega
 	`r "\u03C9"`
-snippet compare-r-syntax
-	compare-r-syntax-1
-	compare-r-syntax-2
-
-snippet compare-r-syntax-1
-	# === Ways to select columns from a data frame ===============================
-	
-	library(tibble) # Tibble is an enhanced data frame.
-	
-	data <- tibble(
-		column   =   1:2,
-		column_a =  20:21,
-		column_b = 300:301,
-		column_c = 400:401
-	)
-	
-	some_function  <- function(...) print(paste(...))
-	
-	something_else <- c("A", "B", "C", "D")
-	
-	
-	# Operators $ and [[ ]]. -----------------------------------------------------
-	
-	data\$column       # For analysis
-	data[["column"]]   # For programming
-	
-	# Function with() ------------------------------------------------------------
-	
-	# Function with() allows using column names without $ and [[ ]] operators.
-	with(data, some_function(column))
-	with(data, some_function(column_a, column_b, column_c))
-	
-	# Instead of:
-	some_function(data\$column_a, data\$column_b, data\$column_c)
-	
-	
-	# Operators %>% and %$% ------------------------------------------------------
-	
-	library(tidyverse) # Loads %>% (pipe) operator.
-	library(magrittr)  # Loads %>% and %$% operators.
-	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	# By default, %>% inserts "data" as the first argument of "some_function".
-	some_function(data) 
-	
-	# is equivalent to
-	data %>% some_function() 
-	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	# If a dot (.) is present, %>% inserts "data" instead of the dot.
-	some_function(something_else, arg_2 = data) 
-	
-	# is equivalent to
-	data %>% some_function(something_else, arg_2 = .) 
-	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	# %$% inserts columns of "data" into "some_function".
-	some_function(data\$column) 
-	
-	# is equivalent to
-	data %$% some_function(column) 
-	# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	# %$% can insert any number of columns.
-	data %$% some_function(column_a, column_b, column_c) 
-	
-	# is equivalent to
-	some_function(data\$column_a, data\$column_b, data\$column_c) 
-	
-	# is equivalent to
-	with(data, some_function(column_a, column_b, column_c)) 
-	
-	# is equivalent to
-	data %>% with(some_function(column_a, column_b, column_c)) 
-	# ===========================================================================~
-
-snippet compare-r-syntax-2
-	# === Examples ===============================================================
-	
-	library(tidyverse) # Loads %>% (pipe) operator.
-	library(magrittr)  # Loads %>% and %$% operators.
-	
-	# Each section will present different syntax that does the same operation.
-	
-	
-	# Functions that accept a vector as an input ---------------------------------
-	# Dataset:     CO2
-	# Column (y):  uptake
-	
-	mean(CO2\$uptake)
-	mean(CO2[["uptake"]])
-	with(CO2, mean(uptake))
-	CO2 %>% with(mean(uptake)) # Required packages: tidyverse or magrittr
-	CO2 %$% mean(uptake)       # Required packages: magrittr
-	
-	
-	# Functions that accept one-sided model formulas -----------------------------
-	# Dataset:     CO2
-	# Column (y):  Treatment 
-	# Column (y2): Type
-	
-	# Read ~ as "by"
-	# function(~ y, data = data)
-	
-	# %>% puts input instead of dot (.)
-	
-	xtabs(~ Type, data = CO2)
-	CO2 %>% xtabs(~ Type, data = .) # Required packages: tidyverse or magrittr
-	CO2 %$% xtabs(~ Type)           # Required packages: magrittr
-	
-	# function(~ y + y2, data = data)
-	
-	xtabs(~ Type + Treatment, data = CO2)
-	CO2 %>% xtabs(~ Type + Treatment, data = .) # Required packages: tidyverse or magrittr
-	CO2 %$% xtabs(~ Type + Treatment)           # Required packages: magrittr
-	
-	
-	# Functions that accept two-sided model formulas -----------------------------
-	# Dataset:     CO2
-	# Column (x):  Treatment 
-	# Column (y):  uptake
-	
-	# Note: first comes y, then x
-	# function(y ~ x, data = data)
-	
-	oneway.test(extra ~ group, data = sleep)
-	sleep %>% oneway.test(extra ~ group, data = .) # Required packages: tidyverse or magrittr
-	sleep %$% oneway.test(extra ~ group)           # Required packages: magrittr
-	
-	# Tidyverse style functions -------------------------------------------------
-	
-	# Tidyverse style functions that are designed for datasets manipulation,
-	# usually accepts dataset as their first argument and unquoted column names
-	# as some other arguments. This allows pipe (%>%) syntax.
-	
-	count(CO2, Type)     # Required packages: tidyverse
-	CO2 %>% count(Type)  # Required packages: tidyverse
-	
-	# ===========================================================================~
-

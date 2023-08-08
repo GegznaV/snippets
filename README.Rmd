@@ -39,14 +39,14 @@ knitr::opts_chunk$set(
 
 To install package from CRAN-like repository:
 
-``` r
+```{r, eval=FALSE}
 repos <- c("https://mokymai.github.io/download/", getOption("repos"))
 install.packages("snippets", repos = repos)
 ```
 
 To install from [GitHub](https://github.com/):
 
-``` r
+```{r, eval=FALSE}
 # install.packages("remotes")
 remotes::install_github("GegznaV/snippets")
 ```
