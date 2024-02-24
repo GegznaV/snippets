@@ -2,8 +2,8 @@
 % Please edit documentation in R/snippets-package.R
 \docType{package}
 \name{snippets}
-\alias{snippets}
 \alias{snippets-package}
+\alias{snippets}
 \title{Manage RStudio Snippets}
 \description{
 \lifecycle{experimental}
