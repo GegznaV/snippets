@@ -1,4 +1,97 @@
-# Options --------------------------------------------------------------------
+# Packages --------------------------------------------------------------------
+snippet help-lib
+	lib-snippets${0}
+
+snippet pkgs
+	# Packages ------------------------------------------------------------------
+
+snippet lib-snippets
+	lib-tidyverse
+	lib-magrittr
+	lib-fs
+	lib-file-io
+	lib-summary
+	lib-ggplot2-extra
+	lib-stats
+	lib-ml
+	lib-md-tables
+	${0}
+
 snippet lib-tidyverse
+	library(conflicted)    # Get error if several same-name functions are loaded.
 	library(tidyverse)     # The main "tidyverse" packages.
 	${0}
+
+snippet lib-magrittr
+	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
+	${0}
+
+snippet lib-fs
+	library(fs)            # Manage files and directories.
+	${0}
+
+snippet lib-file-io
+	library(data.table)    # Function `fread()` to read data from text files.
+	library(readxl)        # Read Excel data.
+	library(writexl)       # Write data to Excel files.
+	library(openxlsx)      # Write data to Excel files.
+	library(foreign)
+	library(haven)
+	${0}
+
+snippet lib-summary
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
+	library(gtsummary)     # Presentation-Ready Data Summary and Analytic Result Tables.
+	library(summarytools)  # Descriptive statistics.
+	${0}
+
+snippet lib-ggplot2-extra
+	library(ggplot2)       # Statistical plots and utilities for ggplot2.
+	library(ggpubr)        # Statistical plots and utilities for ggplot2.
+	library(ggmosaic)      # Mosaic plot (ggplot2).
+	library(ggrepel)       # Labels for ggplot2 that do not overlap.
+	library(patchwork)     # Join several ggplot2 plots into single figure.
+	library(gghighlight)   # Highlight Lines and Points in ggplot2.
+	library(ggnewscale)    # Separate scales in ggplot2.
+	library(cowplot)       # Plot Theme and Plot Annotations for 'ggplot2'
+	library(ggstatsplot)   # Statistical plots based on ggplot2.
+	library(qqplotr)       # Quantile comparison diagrams (QQ plots).
+	library(ggtext)        # Improved Text Rendering Support for ggplot2.
+	library(lindia)        # Diagnostics for linear regression.
+
+	library(paletteer)     # Color palettes
+	library(ggthemes)      # Some extra geoms, scales, and themes for ggplot.
+
+	library(latex2exp)     # LaTeX-based equations in plots.
+
+	library(officer)       # Create and manipulate PowerPoint, Word, etc. documents.
+	library(rvg)           # To save editable plots in PowerPoint.
+
+	${0}
+
+snippet lib-stats
+	library(rstatix)       # Pipe-friendly basic statistical tests.
+	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
+	library(easystats)     # Various statistical analysis related tasks.
+	library(broom)         # Convert results of statistical analysis to data frames.
+	library(rcompanion)    # Statistical analysis.
+	library(RVAideMemoire) # Statistical analysis.
+	library(PMCMRplus)     # Non-parametric statistical tests.
+	library(vcd)           # Analysis of categorical data.
+	library(fitdistrplus)  # Fit parametric distributions.
+	library(ufs)           # Statistical analysis.
+	${0}
+
+snippet lib-ml
+	library(mlr)           # Machine learning in R.
+	library(mlr3)          # Machine learning in R (new generation).
+	${0}
+
+snippet lib-md-tables
+	library(pander)        # Function `pander()` to report results of statistical analysis.
+	library(knitr)         # Function `kable()` to convert data frames into tables for reports.
+	library(DT)            # Interactive tables for HTML documents (DataTables).
+	library(gt)            # Easily Create Presentation-Ready Display Tables.
+	library(flextable)     # Functions for Tabular Reporting.
+	${0}
+

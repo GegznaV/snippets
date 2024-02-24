@@ -4,32 +4,32 @@ snippet help
 	help
 
 	<!-- R Markdown related snippets -->
-	help-rmd
 	help-bookdown
-	help-yaml
-	help-yaml-html
+	help-rmd-yaml
+	help-rmd-yaml-html
+
+
+	<!-- Markdown related snippets -->
+	help-md
 	help-symbols
 
 	<!-- Documentation about functions, operators or some other topic -->
 	?
 	??
-	compare-r-syntax
+	help-data-types
 
 	<!-- END: Help snippets -->
 
 snippet ?
-	```{r, eval=FALSE}
+	```{r}
+	#| eval: false
 	?${0}
 	```
 
 snippet ??
-	```{r, eval=FALSE}
+	```{r}
+	#| eval: false
 	??${0}
-	```
-
-snippet compare-r-syntax
-	```{r, eval=FALSE}
-	compare-r-syntax${0}
 	```
 
 snippet help-data-types
@@ -45,5 +45,5 @@ snippet help-data-types
 	- `<date>` -- dates;
 	- `<dttm>` -- dates and times;
 	- `<list>` -- list column (more complex data structures than usual vectors).
-
 	-->
+	${0}

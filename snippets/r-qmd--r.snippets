@@ -1,0 +1,78 @@
+# FIXME: this part (options) must be carefully reviewed
+# Options --------------------------------------------------------------------
+snippet help-qmd-chunks
+	# Quarto snippets for R code chunks
+	#
+	setup
+	fig
+	fig-cap-multiline
+	fig-include
+	tbl
+	tbl-cap-multiline
+	lab
+
+snippet #
+	#| ${0}
+
+snippet setup
+	#| label: setup
+	${1:#| results: hide}
+	${2:#| message: false}
+	${3:#| echo: ${4:true}}
+
+	# Packages ------------------------------------------------------------------
+	lib-snippets
+
+	# Settings ------------------------------------------------------------------
+	locale-lt
+
+	opts-number-format
+	opts-desctools
+	opts-kable
+	opts-pander
+
+	# Default figure size
+	knitr::opts_chunk$set(
+	  fig.height = ${5:3},
+	  fig.width  = ${6:5}
+	)
+
+	${7:ggplot2::theme_set(ggplot2::theme_bw())}
+	${8:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
+	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
+snippet fig
+	#| label: fig-${1:unique-id}
+	#| fig-cap: "${2:Caption.}"
+	${3:#| fig-width: ${4:5}}
+	${5:#| fig-height: ${6:3}}
+	${7:#| echo: ${8:false}}
+	${0}
+
+snippet fig-cap-multiline
+	#| label: fig-${1:unique-id}
+	#| fig-cap: |
+	#|    ${8:Multi-line caption.}${0}
+	${2:#| fig-width: ${3:5}}
+	${4:#| fig-height: ${5:3}}
+	${6:#| echo: ${7:false}}
+
+snippet fig-include
+	knitr::include_graphics("${0}")
+
+snippet tbl
+	#| label: tbl-${1:unique-id}
+	#| tbl-cap: "${4:Caption.}"
+	${2:#| echo: ${3:false}}
+	${0}
+
+snippet tbl-cap-multiline
+	#| label: tbl-${1:unique-id}
+	#| tbl-cap: |
+	#|    ${4:Multi-line caption.}${0}
+	${2:#| echo: ${3:false}}
+
+snippet lab
+	#| label: ${1:unique-id}
+	${0}
+
+

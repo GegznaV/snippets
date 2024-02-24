@@ -1,14 +1,22 @@
+# Plots (save) ---------------------------------------------------------------
+snippet pptx-snippets
+	save-plot-to-pptx-from-code
+	save-plot-to-pptx-from-ggplot
+
 snippet save-plot-to-pptx
-	plot-save-to-pptx-from-code
+	save-plot-to-pptx-from-code${0}
 
 snippet plot-save-to-pptx-from-code
+	save-plot-to-pptx-from-code${0}
+
+snippet save-plot-to-pptx-from-code
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
 	library(officer)
 
 	# ~ Select a file name  ------------------------------------------------------
-	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+	file <- "${1:PowerPoint-file-name-for-R-plots}.pptx"
 
 	if (file.exists(file)) {
 	  input_file <- output_file <- file
@@ -43,16 +51,19 @@ snippet plot-save-to-pptx-from-code
 
 
 snippet save-ggplot-to-pptx
-	plot-save-to-pptx-ggplot
+	save-plot-to-pptx-from-ggplot
 
 snippet plot-save-to-pptx-ggplot
+	save-plot-to-pptx-from-ggplot
+
+snippet save-plot-to-pptx-from-ggplot
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
 	library(officer)
 
 	# ~ Select a file name  ------------------------------------------------------
-	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+	file <- "${1:PowerPoint-file-name-for-R-plots}.pptx"
 
 	if (file.exists(file)) {
 	  input_file <- output_file <- file
