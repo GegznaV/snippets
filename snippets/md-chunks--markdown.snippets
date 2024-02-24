@@ -1,16 +1,11 @@
 # R Markdown syntax: chunks  --------------------------------------------------
 snippet r
-	```{r${1}}
-	${0}
-	```
-
-snippet rr
-	```{r ${1:label}, ${2:options}}
+	```{r}
 	${0}
 	```
 
 snippet py
-	```{python${1}}
+	```{python}
 	${0}
 	```
 
@@ -20,7 +15,6 @@ snippet rcpp
 	using namespace Rcpp;
 
 	${0}
-
 	```
 
 snippet sql
@@ -28,120 +22,18 @@ snippet sql
 	${0}
 	```
 
-snippet setup0
-	setupo
-
-snippet setupo
-	```{r setup, include=FALSE}
-	# Packages ------------------------------------------------------------------
-	${1}
-
-	# Settings ------------------------------------------------------------------
-	knitr::opts_chunk\$set(
-	    echo = ${2:TRUE}
-	)
-	${0}
-
-	```
-
 snippet setup
-	```{r setup, include=FALSE}
-	# Packages ------------------------------------------------------------------
-
-	lib-tidyverse
-	lib-fs
-	lib-file-io
-	lib-ggplot2-extra
-	lib-stat-analysis
-	lib-md-tables
-
-	# Settings ------------------------------------------------------------------
-
-	locale-lt
-
-	opts-chunk
-	opts-r-numbers
-	opts-desctools
-	opts-pander
-
-	ggplot2::theme_set(ggplot2::theme_bw()) # Default ggplot2 theme
-
-	conflicted::conflict_prefer("filter", "dplyr")
-	conflicted::conflict_prefer("lag",    "dplyr")
-	${0}
-	set.seed(`r format(Sys.Date(), "%Y%m%d")`) # Initial condition for random processes.
+	```{r}
+	setup${0}
 	```
 
-snippet setupq
-	```{r setup, include=FALSE}
-	# Packages ------------------------------------------------------------------
-	${1}
-	library(conflicted)      # Get error if several same-name functions are loaded.
-	library(tidyverse)       # Load main "tidyverse" packages.
-	library(magrittr)        # Operator %>% and additional pipe-friendly functions.
-	# library(fs)            # Manage files and directories.
+snippet fig
+	```{r}
+	fig${0}
+	```
 
-	# library(data.table)    # Function `fread()` to read data from text files.
-	# library(readxl)        # Read Excel data.
-	# library(writexl)       # Write data to Excel files.
-	# library(openxlsx)      # Write data to Excel files.
-
-	# library(DescTools)     # Descriptive statistics, statistical tests, etc.
-	# library(gtsummary)     # Presentation-Ready Data Summary and Analytic Result Tables.
-	# library(summarytools)  # Descriptive statistics.
-
-	# library(ggpubr)        # Statistical plots and utilities for ggplot2.
-	# library(ggstatsplot)   # Statistical plots based on ggplot2.
-	# library(ggmosaic)      # Mosaic plot (ggplot2).
-	# library(qqplotr)       # Quantile comparison diagrams (QQ plots).
-	# library(ggtext)        # Improved Text Rendering Support for ggplot2.
-	# library(ggrepel)       # Labels for ggplot2 that do not overlap.
-	# library(patchwork)     # Join several ggplot2 plots into single figure.
-	# library(gghighlight)   # Highlight Lines and Points in ggplot2.
-	# library(latex2exp)     # LaTeX-based equations in plots.
-	# library(officer)       # Create and manipulate PowerPoint, Word, etc. documents.
-	# library(rvg)           # To save editable plots in PowerPoint.
-
-	# library(broom)         # Convert results of statistical analysis to data frames.
-	# library(rstatix)       # Pipe-friendly basic statistical tests.
-	# library(rcompanion)    # Statistical analysis.
-	# library(RVAideMemoire) # Statistical analysis.
-	# library(PMCMRplus)     # Non-parametric statistical tests.
-	# library(vcd)           # Analysis of categorical data.
-	# library(fitdistrplus)  # Fit parametric distributions.
-	# library(mlr)           # Machine learning in R.
-	# library(mlr3)          # Machine learning in R (new generation).
-	# library(factoextra)    # Extract and visualize the results of multivariate data analyses.
-	# library(ufs)           # Statistical analysis.
-
-	# library(pander)        # Function `pander()` to report results of statistical analysis.
-	# library(knitr)         # Function `kable()` to convert data frames into tables for reports.
-
-	# Settings ------------------------------------------------------------------
-
-	knitr::opts_chunk\$set(
-	  echo       = TRUE,    # Should blocks with program code be shown in knitted documents?
-	  eval       = TRUE,    # Should program code be evaluated?
-	  fig.height = 3,       # Default height for plots.
-	  fig.width  = 5,       # Default width for plots.
-	  fig.align  = "center" # Default alignment for plots in knitted documents.
-	)
-
-	# Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "Lithuanian" else "lt_LT.UTF-8"`}")
-	theme_set(theme_bw()) # Default ggplot2 theme
-
-	options(        # For more detais see ?options
-	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
-		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
-		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
-		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
-	)
-
-	conflict_prefer("filter", "dplyr")
-	conflict_prefer("lag",    "dplyr")
-
-	${0}
-
-	set.seed(`r format(Sys.Date(), "%Y%m%d")`) # Initial condition for random processes.
+snippet tbl
+	```{r}
+	tbl${0}
 	```
 

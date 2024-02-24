@@ -1,0 +1,61 @@
+# YAML options ---------------------------------------------------------------
+snippet help-qmd
+	---qmd
+	---lt1
+
+snippet ---qmd
+	---
+	title: "${1:___}"
+	subtitle: "${2:}"
+	pagetitle: "${3:Analysis}"
+	author: "${4:`r whoami::fullname()`}"
+	date: today # "${5:`r Sys.Date()`}"
+	date-format: iso
+	embed-resources: ${6:true}
+	format:
+	  html:
+	    number-sections: ${6:true}
+	    toc:       ${7:true}
+	    toc-depth: ${8:3}
+	    df-print: ${10:default} # paged kable tibble default
+	---
+
+snippet ---lt1
+---
+	title: "${1:pavadinimas}"
+	subtitle: "${2:Paantraštė (jei reikia)}"
+	pagetitle: "${3:Analizė}"
+	author: "${4:`r whoami::fullname()`}"
+	date: last-modified # "${5:`r Sys.Date()`}"
+	date-format: iso
+	fig-align: "center"
+	embed-resources: ${6:true}
+	format:
+	  html:
+	    toc: true
+	    toc-depth: 3
+	    number-sections: true
+	    code-tools: true
+	    df-print: kable # default, paged, tibble, kable
+	crossref:
+	  chapters: true
+	  fig-title: "Pav."
+	  tbl-title: "Lentelė"
+	  title-delim: "."
+	lang: "lt"
+	language:
+	  lt:
+	    title-block-published: "Sukurta"
+	    title-block-modified:  "Atnaujinta"
+	    title-block-author-single: "Atliko"
+	execute:
+	  eval: true
+	  echo: true
+	# RStudio:
+	editor: source # source, visual
+	editor_options:
+	  chunk_output_type: inline
+	  markdown:
+	    extensions: -smart
+	---
+	${0}

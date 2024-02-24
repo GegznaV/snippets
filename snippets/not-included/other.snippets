@@ -1,0 +1,157 @@
+snippet help-sth1
+
+	<!-- Help/Documentation snippets: -->
+	help
+	help-rmd-yaml
+	help-rmd-yaml-html
+	help-bookdown
+	?
+	??
+
+	<!-- R code chunk snippets: -->
+	<!-- The same name for a chunk (e.g., "setup") can be used only once in the file. -->
+	setup-rmd
+	r
+
+	<!-- Figures: -->
+	fig-rmd
+
+
+
+snippet setupq
+	```{r}
+	#| label: setup
+	${1:#| include: false}
+
+	# Settings ------------------------------------------------------------------
+
+	knitr::opts_chunk\$set(
+	  echo       = TRUE,    # Should blocks with program code be shown in knitted documents?
+	  eval       = TRUE,    # Should program code be evaluated?
+	  fig.height = 3,       # Default height for plots.
+	  fig.width  = 5,       # Default width for plots.
+	  fig.align  = "center" # Default alignment for plots in knitted documents.
+	)
+
+	# Sys.setlocale(locale = "${3:`r if (.Platform$OS.type == "windows" && getRversion() < "4.2") "Lithuanian" else "lt_LT.UTF-8"`}")
+	theme_set(theme_bw()) # Default ggplot2 theme
+
+	options(        # For more detais see ?options
+	  scipen = 8,   # Show at least 8 digits in numbers before converting to exponential notation.
+		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print numbers.
+		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print numbers.
+		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
+	)
+
+	conflict_prefer("filter", "dplyr")
+	conflict_prefer("lag",    "dplyr")
+
+	${0}
+
+	set.seed(`r format(Sys.Date(), "%Y%m%d")`) # Initial condition for random processes.
+	```
+
+snippet plot
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	# Caption/Description.
+	caption <- "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	${0:The code for your plot}
+	```
+
+snippet plott
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	# Caption/Description.
+	caption <- "${2:Description}  "
+
+	${0:The code for your plot}
+	```
+
+snippet fig
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	# Caption/Description.
+	caption <- "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	# Path or URL to the figure.
+	${5:knitr::include_graphics("${0}")}
+	```
+
+snippet figg
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	# Caption/Description.
+	caption <- "${2:Description}  "
+
+	# Path or URL to the figure.
+	${3:knitr::include_graphics("${0}")}
+	```
+
+snippet fig2
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	${6:# DELETE THIS: To quick-search for file/folder, put cursor between quotes ("|") and press TAB.}
+	${7:# DELETE THIS: If you chose a folder, press TAB again to continue the browsing.}
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+
+	# Caption/Description.
+	caption <- "${2:**Fig. ${3:1}.** }${4:Description}  "
+	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
+	```
+
+# TODO: These are snippets to do.
+
+# Tables
+snippet kbl
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	knitr::kable(${4:data}, caption = "${5:Table caption/description.}  ")
+	```
+
+snippet kable
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	knitr::kable(
+	  ${4:data},
+	  format = "${4:pandoc}", # latex, html, markdown, pandoc, rst
+	  digits = ${5:`r getOption("digits")`},
+	  format.args = list(big.mark = "${6:,}", decimal.mark = "${7:.}", nsmall = ${8:0}),
+	  caption = "${9:Table caption/description.}  "
+	)
+	```
+
+snippet kable-eur
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	knitr::kable(
+	  ${4:data},
+	  format = "${4:pandoc}", # latex, html, markdown, pandoc, rst
+	  digits = ${5:`r getOption("digits")`},
+	  format.args = list(big.mark = "${6: }", decimal.mark = "${7:,}", nsmall = ${8:0}),
+	  caption = "${9:Lenteles pavadinimas/aprasymas.}  "
+	)
+	```
+
+snippet rr
+	```{r ${1:label}, ${2:options}}
+	${0}
+	```
+
+snippet pan
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	pander::pander(${4:data}, caption = "${9:Table caption/description.}  ")
+	```
+
+snippet pander
+	```{r ${1:table-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}${2:, echo=${3:FALSE}}}
+	pander::pander(
+	  ${4:data},
+	  digits = ${5:`r getOption("digits")`},
+	  caption = "${6:Table caption/description.}  "
+	)
+	```
+
+snippet fig-rmd
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	# Caption/Description.
+	caption <- "${2:**Fig. ${3:1}.** }${4:Description}  "
+
+	# Path or URL to the figure.
+	${5:knitr::include_graphics("${0}")}
+	```
+

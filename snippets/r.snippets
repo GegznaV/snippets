@@ -217,10 +217,13 @@ snippet help-data-types
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-opts
+	opts-snippets
+
+snippet opts-snippets
 	opts-number-format
+	opts-desctools
 	opts-kable
 	opts-pander
-	opts-desctools
 	opts-rmd-chunk
 
 snippet opts-number-format
@@ -230,6 +233,21 @@ snippet opts-number-format
 		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print.
 		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print.
 		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
+	)
+	${0}
+
+snippet opts-desctools
+	# Options for package "DescTools"
+	options(scipen = 8)
+	DescToolsOptions(
+	  stamp  = ${1:NULL}, # stamp for figures
+	  digits = ${2:3},    # the number of fixed digits in printing
+		# abs – count (whole) numbers, num – real numbers, per – percentages
+	  fmt = list(
+	    abs = Fmt("abs", big.mark = "${3}"),
+	    num = Fmt("num", big.mark = "${3}", digits = ${4:3}),
+	    per = Fmt("per", big.mark = "${3}", digits = ${5:1})
+	  )
 	)
 	${0}
 
@@ -267,21 +285,6 @@ snippet opts-pander
 	)
 	${0}
 
-snippet opts-desctools
-	# Options for package "DescTools"
-	options(scipen = 8)
-	DescToolsOptions(
-	  stamp  = ${1:NULL}, # stamp for figures
-	  digits = ${2:3},    # the number of fixed digits in printing
-		# abs – count (whole) numbers, num – real numbers, per – percentages
-	  fmt = list(
-	    abs = Fmt("abs", big.mark = "${3}"),
-	    num = Fmt("num", big.mark = "${3}", digits = ${4:3}),
-	    per = Fmt("per", big.mark = "${3}", digits = ${5:1})
-	  )
-	)
-	${0}
-
 snippet opts-rmd-chunk
 	# Chunk options
 	knitr::opts_chunk\$set(
@@ -292,19 +295,112 @@ snippet opts-rmd-chunk
 	  fig.align  = "center" # Default alignment for plots in knitted documents.
 	)
 	${0}
-# Options --------------------------------------------------------------------
+# Packages --------------------------------------------------------------------
+snippet help-lib
+	lib-snippets${0}
+
+snippet pkgs
+	# Packages ------------------------------------------------------------------
+
+snippet lib-snippets
+	lib-tidyverse
+	lib-magrittr
+	lib-fs
+	lib-file-io
+	lib-summary
+	lib-ggplot2-extra
+	lib-stats
+	lib-ml
+	lib-md-tables
+	${0}
+
 snippet lib-tidyverse
+	library(conflicted)    # Get error if several same-name functions are loaded.
 	library(tidyverse)     # The main "tidyverse" packages.
 	${0}
+
+snippet lib-magrittr
+	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
+	${0}
+
+snippet lib-fs
+	library(fs)            # Manage files and directories.
+	${0}
+
+snippet lib-file-io
+	library(data.table)    # Function `fread()` to read data from text files.
+	library(readxl)        # Read Excel data.
+	library(writexl)       # Write data to Excel files.
+	library(openxlsx)      # Write data to Excel files.
+	library(foreign)
+	library(haven)
+	${0}
+
+snippet lib-summary
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
+	library(gtsummary)     # Presentation-Ready Data Summary and Analytic Result Tables.
+	library(summarytools)  # Descriptive statistics.
+	${0}
+
+snippet lib-ggplot2-extra
+	library(ggplot2)       # Statistical plots and utilities for ggplot2.
+	library(ggpubr)        # Statistical plots and utilities for ggplot2.
+	library(ggmosaic)      # Mosaic plot (ggplot2).
+	library(ggrepel)       # Labels for ggplot2 that do not overlap.
+	library(patchwork)     # Join several ggplot2 plots into single figure.
+	library(gghighlight)   # Highlight Lines and Points in ggplot2.
+	library(ggnewscale)    # Separate scales in ggplot2.
+	library(cowplot)       # Plot Theme and Plot Annotations for 'ggplot2'
+	library(ggstatsplot)   # Statistical plots based on ggplot2.
+	library(qqplotr)       # Quantile comparison diagrams (QQ plots).
+	library(ggtext)        # Improved Text Rendering Support for ggplot2.
+	library(lindia)        # Diagnostics for linear regression.
+
+	library(paletteer)     # Color palettes
+	library(ggthemes)      # Some extra geoms, scales, and themes for ggplot.
+
+	library(latex2exp)     # LaTeX-based equations in plots.
+
+	library(officer)       # Create and manipulate PowerPoint, Word, etc. documents.
+	library(rvg)           # To save editable plots in PowerPoint.
+
+	${0}
+
+snippet lib-stats
+	library(rstatix)       # Pipe-friendly basic statistical tests.
+	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
+	library(easystats)     # Various statistical analysis related tasks.
+	library(broom)         # Convert results of statistical analysis to data frames.
+	library(rcompanion)    # Statistical analysis.
+	library(RVAideMemoire) # Statistical analysis.
+	library(PMCMRplus)     # Non-parametric statistical tests.
+	library(vcd)           # Analysis of categorical data.
+	library(fitdistrplus)  # Fit parametric distributions.
+	library(ufs)           # Statistical analysis.
+	${0}
+
+snippet lib-ml
+	library(mlr)           # Machine learning in R.
+	library(mlr3)          # Machine learning in R (new generation).
+	${0}
+
+snippet lib-md-tables
+	library(pander)        # Function `pander()` to report results of statistical analysis.
+	library(knitr)         # Function `kable()` to convert data frames into tables for reports.
+	library(DT)            # Interactive tables for HTML documents (DataTables).
+	library(gt)            # Easily Create Presentation-Ready Display Tables.
+	library(flextable)     # Functions for Tabular Reporting.
+	${0}
+
 snippet help-plots
 	${0}# Satatistical plots
 	# NOTE: Required packages must be installed!!!
 
 	# 3D scatterplot
-	plotly-scatter-3d
+	a--plotly-scatter-3d
 
 
-snippet plotly-scatter-3d
+snippet a--plotly-scatter-3d
 	${1:data} |>
 	  plotly::plot_ly(
 	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
@@ -312,17 +408,25 @@ snippet plotly-scatter-3d
 	  ) %>%
 	  plotly::add_markers() %>%
 	  plotly::layout(title = "${7:3D plot}")
+# Plots (save) ---------------------------------------------------------------
+snippet pptx-snippets
+	save-plot-to-pptx-from-code
+	save-plot-to-pptx-from-ggplot
+
 snippet save-plot-to-pptx
-	plot-save-to-pptx-from-code
+	save-plot-to-pptx-from-code${0}
 
 snippet plot-save-to-pptx-from-code
+	save-plot-to-pptx-from-code${0}
+
+snippet save-plot-to-pptx-from-code
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
 	library(officer)
 
 	# ~ Select a file name  ------------------------------------------------------
-	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+	file <- "${1:PowerPoint-file-name-for-R-plots}.pptx"
 
 	if (file.exists(file)) {
 	  input_file <- output_file <- file
@@ -357,16 +461,19 @@ snippet plot-save-to-pptx-from-code
 
 
 snippet save-ggplot-to-pptx
-	plot-save-to-pptx-ggplot
+	save-plot-to-pptx-from-ggplot
 
 snippet plot-save-to-pptx-ggplot
+	save-plot-to-pptx-from-ggplot
+
+snippet save-plot-to-pptx-from-ggplot
 	# ~ Load the packages  -------------------------------------------------------
 	library(tidyverse)
 	library(rvg)
 	library(officer)
 
 	# ~ Select a file name  ------------------------------------------------------
-	file <- "${1:PowerPoint-file-name-for-R-plot}.pptx"
+	file <- "${1:PowerPoint-file-name-for-R-plots}.pptx"
 
 	if (file.exists(file)) {
 	  input_file <- output_file <- file
@@ -397,6 +504,86 @@ snippet plot-save-to-pptx-ggplot
 
 	# ~ Open the pptx file -------------------------------------------------------
 	browseURL(path_to_pptx_file)
+# FIXME: this part (options) must be carefully reviewed
+# Options --------------------------------------------------------------------
+snippet help-qmd-chunks
+	# Quarto snippets for R code chunks
+	#
+	setup
+	fig
+	fig-cap-multiline
+	fig-include
+	tbl
+	tbl-cap-multiline
+	lab
+
+snippet #
+	#| ${0}
+
+snippet setup
+	#| label: setup
+	${1:#| results: hide}
+	${2:#| message: false}
+	${3:#| echo: ${4:true}}
+
+	# Packages ------------------------------------------------------------------
+	lib-snippets
+
+	# Settings ------------------------------------------------------------------
+	locale-lt
+
+	opts-number-format
+	opts-desctools
+	opts-kable
+	opts-pander
+
+	# Default figure size
+	knitr::opts_chunk$set(
+	  fig.height = ${5:3},
+	  fig.width  = ${6:5}
+	)
+
+	${7:ggplot2::theme_set(ggplot2::theme_bw())}
+	${8:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
+	${0}
+	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.
+
+snippet fig
+	#| label: fig-${1:unique-id}
+	#| fig-cap: "${2:Caption.}"
+	${3:#| fig-width: ${4:5}}
+	${5:#| fig-height: ${6:3}}
+	${7:#| echo: ${8:false}}
+	${0}
+
+snippet fig-cap-multiline
+	#| label: fig-${1:unique-id}
+	#| fig-cap: |
+	#|    ${8:Multi-line caption.}${0}
+	${2:#| fig-width: ${3:5}}
+	${4:#| fig-height: ${5:3}}
+	${6:#| echo: ${7:false}}
+
+snippet fig-include
+	knitr::include_graphics("${0}")
+
+snippet tbl
+	#| label: tbl-${1:unique-id}
+	#| tbl-cap: "${4:Caption.}"
+	${2:#| echo: ${3:false}}
+	${0}
+
+snippet tbl-cap-multiline
+	#| label: tbl-${1:unique-id}
+	#| tbl-cap: |
+	#|    ${4:Multi-line caption.}${0}
+	${2:#| echo: ${3:false}}
+
+snippet lab
+	#| label: ${1:unique-id}
+	${0}
+
+
 # Symbols --------------------------------------------------------------------
 
 snippet help-symbols
@@ -436,6 +623,8 @@ snippet help-symbols
 	o-sup       (º)
 	i-sup       (ⁱ)
 
+	# Syntax supi instead of i-sup also works.
+
 	# Subscript symbols
 	0-sub       (₀)
 	1-sub       (₁)
@@ -466,6 +655,9 @@ snippet help-symbols
 	p-sub       (ₚ)
 	s-sub       (ₛ)
 	t-sub       (ₜ)
+
+	# Syntax subt instead of t-sub also works.
+
 
 	# Capital Greek letters
 	Alpha       (Α)
@@ -575,81 +767,115 @@ snippet infty
 # Superscript 0 (⁰)
 snippet 0-sup
 	`r "\u2070"`
+snippet sup0
+	`r "\u2070"`
 
 # Superscript 1 (¹)
 snippet 1-sup
+	`r "\u00B9"`
+snippet sup1
 	`r "\u00B9"`
 
 # Superscript 2 (²)
 snippet 2-sup
 	`r "\u00B2"`
-
-# sq (²)
-snippet sq
-	${1}`r "\u00B2"`${0}
+snippet sup2
+	`r "\u00B2"`
 
 # Superscript 3 (³)
 snippet 3-sup
+	`r "\u00B3"`
+snippet sup3
 	`r "\u00B3"`
 
 # Superscript 4 (⁴)
 snippet 4-sup
 	`r "\u2074"`
+snippet sup4
+	`r "\u2074"`
 
 # Superscript 5 (⁵)
 snippet 5-sup
+	`r "\u2075"`
+snippet sup5
 	`r "\u2075"`
 
 # Superscript 6 (⁶)
 snippet 6-sup
 	`r "\u2076"`
+snippet sup6
+	`r "\u2076"`
 
 # Superscript 7 (⁷)
 snippet 7-sup
+	`r "\u2077"`
+snippet sup7
 	`r "\u2077"`
 
 # Superscript 8 (⁸)
 snippet 8-sup
 	`r "\u2078"`
+snippet sup8
+	`r "\u2078"`
 
 # Superscript 9 (⁹)
 snippet 9-sup
+	`r "\u2079"`
+snippet sup9
 	`r "\u2079"`
 
 # Superscript + (⁺)
 snippet +-sup
 	`r "\u207A"`
+snippet sup+
+	`r "\u207A"`
 
 # Superscript - (⁻)
 snippet --sup
+	`r "\u207B"`
+snippet sup-
 	`r "\u207B"`
 
 # Superscript = (⁼)
 snippet =-sup
 	`r "\u207C"`
+snippet sup=
+	`r "\u207C"`
 
 # Superscript ( (⁽)
 snippet (-sup
+	`r "\u207D"`
+snippet sup(
 	`r "\u207D"`
 
 # Superscript ) (⁾)
 snippet )-sup
 	`r "\u207E"`
+snippet sup)
+	`r "\u207E"`
 
 # Superscript a (ª)
 snippet a-sup
+	`r "\u00AA"`
+snippet supa
 	`r "\u00AA"`
 
 # Superscript n (ⁿ)
 snippet n-sup
 	`r "\u207F"`
+snippet supn
+	`r "\u207F"`
 
 # Superscript o (º)
 snippet o-sup
 	`r "\u00BA"`
+snippet supo
+	`r "\u00BA"`
 
 # Superscript i (ⁱ)
 snippet i-sup
+	`r "\u2071"`
+snippet supi
 	`r "\u2071"`
 
 
@@ -657,117 +883,179 @@ snippet i-sup
 # Subscript 0 (₀)
 snippet 0-sub
 	`r "\u2080"`
+snippet sub0
+	`r "\u2080"`
 
 # Subscript 1 (₁)
 snippet 1-sub
+	`r "\u2081"`
+snippet sub1
 	`r "\u2081"`
 
 # Subscript 2 (₂)
 snippet 2-sub
 	`r "\u2082"`
+snippet sub2
+	`r "\u2082"`
+
+# sq (²)
+snippet sq
+	${1}`r "\u00B2"`${0}
 
 # Subscript 3 (₃)
 snippet 3-sub
+	`r "\u2083"`
+snippet sub3
 	`r "\u2083"`
 
 # Subscript 4 (₄)
 snippet 4-sub
 	`r "\u2084"`
+snippet sub4
+	`r "\u2084"`
 
 # Subscript 5 (₅)
 snippet 5-sub
+	`r "\u2085"`
+snippet sub5
 	`r "\u2085"`
 
 # Subscript 6 (₆)
 snippet 6-sub
 	`r "\u2086"`
+snippet sub6
+	`r "\u2086"`
 
 # Subscript 7 (₇)
 snippet 7-sub
+	`r "\u2087"`
+snippet sub7
 	`r "\u2087"`
 
 # Subscript 8 (₈)
 snippet 8-sub
 	`r "\u2088"`
+snippet sub8
+	`r "\u2088"`
 
 # Subscript 9 (₉)
 snippet 9-sub
+	`r "\u2089"`
+snippet sub9
 	`r "\u2089"`
 
 # Subscript + (₊)
 snippet +-sub
 	`r "\u208A"`
+snippet sub+
+	`r "\u208A"`
 
 # Subscript - (₋)
 snippet --sub
+	`r "\u208B"`
+snippet sub-
 	`r "\u208B"`
 
 # Subscript = (₌)
 snippet =-sub
 	`r "\u208C"`
+snippet sub=
+	`r "\u208C"`
 
 # Subscript ( (₍)
 snippet (-sub
+	`r "\u208D"`
+snippet sub(
 	`r "\u208D"`
 
 # Subscript ) (₎)
 snippet )-sub
 	`r "\u208E"`
+snippet sub)
+	`r "\u208E"`
 
 # Subscript a (ₐ)
 snippet a-sub
+	`r "\u2090"`
+snippet suba
 	`r "\u2090"`
 
 # Subscript e (ₑ)
 snippet e-sub
 	`r "\u2091"`
+snippet sube
+	`r "\u2091"`
 
 # Subscript o (ₒ)
 snippet o-sub
+	`r "\u2092"`
+snippet subo
 	`r "\u2092"`
 
 # Subscript x (ₓ)
 snippet x-sub
 	`r "\u2093"`
+snippet subx
+	`r "\u2093"`
 
 # Subscript i (ᵢ)
 snippet i-sub
+	`r "\u1D62"`
+snippet subi
 	`r "\u1D62"`
 
 # Subscript j (ⱼ)
 snippet j-sub
 	`r "\u2C7C"`
+snippet subj
+	`r "\u2C7C"`
 
 # Subscript h (ₕ)
 snippet h-sub
+	`r "\u2095"`
+snippet subh
 	`r "\u2095"`
 
 # Subscript k (ₖ)
 snippet k-sub
 	`r "\u2096"`
+snippet subk
+	`r "\u2096"`
 
 # Subscript l (ₗ)
 snippet l-sub
+	`r "\u2097"`
+snippet subl
 	`r "\u2097"`
 
 # Subscript m (ₘ)
 snippet m-sub
 	`r "\u2098"`
+snippet subm
+	`r "\u2098"`
 
 # Subscript n (ₙ)
 snippet n-sub
+	`r "\u2099"`
+snippet subn
 	`r "\u2099"`
 
 # Subscript p (ₚ)
 snippet p-sub
 	`r "\u209A"`
+snippet subp
+	`r "\u209A"`
 
 # Subscript s (ₛ)
 snippet s-sub
 	`r "\u209B"`
+snippet subs
+	`r "\u209B"`
 
 # Subscript t (ₜ)
 snippet t-sub
+	`r "\u209C"`
+snippet subt
 	`r "\u209C"`
 
 # Greek letters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

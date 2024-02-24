@@ -1,10 +1,13 @@
 # FIXME: this part (options) must be carefully reviewed
 # Options --------------------------------------------------------------------
 snippet help-opts
+	opts-snippets
+
+snippet opts-snippets
 	opts-number-format
+	opts-desctools
 	opts-kable
 	opts-pander
-	opts-desctools
 	opts-rmd-chunk
 
 snippet opts-number-format
@@ -14,6 +17,21 @@ snippet opts-number-format
 		digits = `r getOption("digits", default = 7)`,   # Number of significant digits to print.
 		OutDec = "`r getOption("OutDec", default = ".")`", # Default decimal separator to print.
 		knitr.kable.NA = NA # Replacement for NA values in knitr::kable()
+	)
+	${0}
+
+snippet opts-desctools
+	# Options for package "DescTools"
+	options(scipen = 8)
+	DescToolsOptions(
+	  stamp  = ${1:NULL}, # stamp for figures
+	  digits = ${2:3},    # the number of fixed digits in printing
+		# abs – count (whole) numbers, num – real numbers, per – percentages
+	  fmt = list(
+	    abs = Fmt("abs", big.mark = "${3}"),
+	    num = Fmt("num", big.mark = "${3}", digits = ${4:3}),
+	    per = Fmt("per", big.mark = "${3}", digits = ${5:1})
+	  )
 	)
 	${0}
 
@@ -48,21 +66,6 @@ snippet opts-pander
 	      p.copula = " and ",
 	      knitr.auto.asis = TRUE
 	    ))
-	)
-	${0}
-
-snippet opts-desctools
-	# Options for package "DescTools"
-	options(scipen = 8)
-	DescToolsOptions(
-	  stamp  = ${1:NULL}, # stamp for figures
-	  digits = ${2:3},    # the number of fixed digits in printing
-		# abs – count (whole) numbers, num – real numbers, per – percentages
-	  fmt = list(
-	    abs = Fmt("abs", big.mark = "${3}"),
-	    num = Fmt("num", big.mark = "${3}", digits = ${4:3}),
-	    per = Fmt("per", big.mark = "${3}", digits = ${5:1})
-	  )
 	)
 	${0}
 

@@ -1,6 +1,6 @@
 # YAML options ---------------------------------------------------------------
-snippet help-yaml
-	<!-- YAML header snippets:  -->
+snippet help-rmd-yaml
+	<!-- YAML header snippets for R Markdown:  -->
 	<!--
 	When you insert these snippets, please, note if syntax highlighting is correct
 	(YAML keywords should be highlighted in a different color). If YAML syntax
@@ -13,17 +13,17 @@ snippet help-yaml
 
 	Available snippets for YAML headers:
 	-->
-	help-yaml-html
+	help-rmd-yaml-html
 
-	---1
-	---2a
-	---2
-	---html-1
-	---bib
+	---rmd-1
+	---rmd-2a
+	---rmd-2
+	---rmd-html-1
+	---rmd-bib
 
 	<!-- END: YAML header snippets -->
 
-snippet help-yaml-html
+snippet help-rmd-yaml-html
 	<!--
 	In "html_document" and "bookdown::html_document2" you may use the options:
 
@@ -45,7 +45,7 @@ snippet help-yaml-html
 	  https://rmarkdown.rstudio.com/docs/reference/html_document.html
 	-->
 
-snippet ---html-1
+snippet ---rmd-html-1
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -59,7 +59,7 @@ snippet ---html-1
 	    toc_depth: ${8:2}
 	---
 
-snippet ---1
+snippet ---rmd-1
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -75,7 +75,7 @@ snippet ---1
 	    df_print:  ${10:default} # paged kable tibble default
 	---
 
-snippet ---2a
+snippet ---rmd-2a
 	---
 	title:    "${1:___}"
 	subtitle: "${2:}"
@@ -91,7 +91,7 @@ snippet ---2a
 	    df_print:  ${10:default} # paged kable tibble default
 	---
 
-snippet ---2
+snippet ---rmd-2
 	---
 	# General Information --------------------------------------------------------
 	title:    "${1:___}"
@@ -113,7 +113,7 @@ snippet ---2
 	    df_print:    ${14:default}      # paged kable tibble default
 	---
 
-snippet ---bib
+snippet ---rmd-bib
 	---
 	# Bibliographies and Citations -----------------------------------------------
 	suppress-bibliography: ${1:no}
