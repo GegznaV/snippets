@@ -40,6 +40,7 @@ snippet setup
 	${7:ggplot2::theme_set(ggplot2::theme_bw())}
 	${8:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
 	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
+
 snippet fig
 	#| label: fig-${1:unique-id}
 	#| fig-cap: "${2:Caption.}"

@@ -2,11 +2,71 @@
 snippet kbd
 	<kbd>${0:Ctrl}</kbd>
 
+snippet html
+	```{=html}
+
+	```
+
+snippet detailss
+	<details>
+	<summary>${1:Description}</summary>
+	${0}
+	</details>
+
+snippet details
+	<details${1: class="${2:with-border}}"${3: open}>
+	<summary>${4:Description}</summary>
+	${0}
+	</details>
+
+
 snippet style
 	<style>
 	${1}
 	</style>
 	${0}
+
+snippet style-details
+	<style>
+	/* Border for details section */
+	details[open].with-border {
+	  padding: 1px 5px 1px 5px;
+	  border-style: solid;
+	  border-color: grey;
+	  border-width: 3px;
+	  border-radius: 5px;
+	}
+	</style>
+
+snippet style-title
+	<style>
+	/* Layout how author name and data fields are presented */
+	#title-block-header.quarto-title-block.default .quarto-title-meta {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	}
+	</style>
+
+snippet style-qmd-1
+	```{=html}
+	<style>
+	/* Layout how author name and data fields are presented */
+	#title-block-header.quarto-title-block.default .quarto-title-meta {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* Border for details section */
+	details[open].with-border {
+	  padding: 1px 5px 1px 5px;
+	  border-style: solid;
+	  border-color: grey;
+	  border-width: 3px;
+	  border-radius: 5px;
+	}
+	</style>
+
+	```
 
 # Non-breaking space
 snippet space
@@ -17,9 +77,3 @@ snippet nbsp
 
 snippet font
 	<font color = "${1:red}">${0}</font>
-
-snippet details
-	<details>
-	<summary>${1:Description}</summary>
-	${0}
-	</details>
