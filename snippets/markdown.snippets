@@ -284,11 +284,37 @@ snippet nbsp
 snippet font
 	<font color = "${1:red}">${0}</font>
 
-snippet details
+snippet detailss
 	<details>
 	<summary>${1:Description}</summary>
 	${0}
 	</details>
+
+snippet details
+	<details${1: class="${2:with-border}}"${3: open}>
+	<summary>${4:Description}</summary>
+	${0}
+	</details>
+
+snippet style-1
+	```{=html}
+	<style>
+	/* Layout how author name and data fields are presented */
+	#title-block-header.quarto-title-block.default .quarto-title-meta {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* Details sections */
+	details[open].with-border {
+	  padding: 1px 5px 1px 5px;
+	  border-style: solid;
+	  border-color: grey;
+	  border-width: 3px;
+	  border-radius: 5px;
+	}
+	</style>
+	```
 # YAML options ---------------------------------------------------------------
 snippet help-qmd
 	---qmd
@@ -312,7 +338,7 @@ snippet ---qmd
 	---
 
 snippet ---lt1
----
+	---
 	title: "${1:pavadinimas}"
 	subtitle: "${2:Paantraštė (jei reikia)}"
 	pagetitle: "${3:Analizė}"
@@ -369,7 +395,8 @@ snippet setup-rmd
 	${0}
 
 	```
-# YAML options ---------------------------------------------------------------
+
+# Rmd YAML options -----------------------------------------------------------
 snippet help-rmd-yaml
 	<!-- YAML header snippets for R Markdown:  -->
 	<!--
@@ -416,19 +443,6 @@ snippet help-rmd-yaml-html
 	  https://rmarkdown.rstudio.com/docs/reference/html_document.html
 	-->
 
-snippet ---rmd-html-1
-	---
-	title:    "${1:___}"
-	subtitle: "${2:}"
-	author:   "${3:`r whoami::fullname()`}"
-	date:     "${4:`r Sys.Date()`}"
-	output:
-	  html_document:
-	    number_sections: ${5:yes}
-	    toc:       ${6:yes}
-	    toc_float: ${7:yes}
-	    toc_depth: ${8:2}
-	---
 
 snippet ---rmd-1
 	---
@@ -438,22 +452,6 @@ snippet ---rmd-1
 	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
 	output:
 	  html_document:
-	    fig_caption: ${5:yes}
-	    number_sections: ${6:yes}
-	    toc:       ${7:yes}
-	    toc_float: ${8:yes}
-	    toc_depth: ${9:3}
-	    df_print:  ${10:default} # paged kable tibble default
-	---
-
-snippet ---rmd-2a
-	---
-	title:    "${1:___}"
-	subtitle: "${2:}"
-	author:   "${3:`r whoami::fullname()`}"
-	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
-	output:
-	  bookdown::html_document2:
 	    fig_caption: ${5:yes}
 	    number_sections: ${6:yes}
 	    toc:       ${7:yes}
@@ -484,6 +482,36 @@ snippet ---rmd-2
 	    df_print:    ${14:default}      # paged kable tibble default
 	---
 
+snippet ---rmd-2a
+	---
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r "\u0060"`r Sys.Date()`r "\u0060"`}" # Automatic date
+	output:
+	  bookdown::html_document2:
+	    fig_caption: ${5:yes}
+	    number_sections: ${6:yes}
+	    toc:       ${7:yes}
+	    toc_float: ${8:yes}
+	    toc_depth: ${9:3}
+	    df_print:  ${10:default} # paged kable tibble default
+	---
+
+snippet ---rmd-html-1
+	---
+	title:    "${1:___}"
+	subtitle: "${2:}"
+	author:   "${3:`r whoami::fullname()`}"
+	date:     "${4:`r Sys.Date()`}"
+	output:
+	  html_document:
+	    number_sections: ${5:yes}
+	    toc:       ${6:yes}
+	    toc_float: ${7:yes}
+	    toc_depth: ${8:2}
+	---
+
 snippet ---rmd-bib
 	---
 	# Bibliographies and Citations -----------------------------------------------
@@ -495,7 +523,6 @@ snippet ---rmd-bib
 	# nocite: | # To include items in the bibliography without actually citing them.
 	#    @item1, @item2
 	---
-
 
 # Symbols --------------------------------------------------------------------
 

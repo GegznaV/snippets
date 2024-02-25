@@ -18,8 +18,34 @@ snippet nbsp
 snippet font
 	<font color = "${1:red}">${0}</font>
 
-snippet details
+snippet detailss
 	<details>
 	<summary>${1:Description}</summary>
 	${0}
 	</details>
+
+snippet details
+	<details${1: class="${2:with-border}}"${3: open}>
+	<summary>${4:Description}</summary>
+	${0}
+	</details>
+
+snippet style-1
+	```{=html}
+	<style>
+	/* Layout how author name and data fields are presented */
+	#title-block-header.quarto-title-block.default .quarto-title-meta {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* Details sections */
+	details[open].with-border {
+	  padding: 1px 5px 1px 5px;
+	  border-style: solid;
+	  border-color: grey;
+	  border-width: 3px;
+	  border-radius: 5px;
+	}
+	</style>
+	```

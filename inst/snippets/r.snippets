@@ -225,6 +225,7 @@ snippet opts-snippets
 	opts-kable
 	opts-pander
 	opts-rmd-chunk
+	opts-rmd-chunk-fig
 
 snippet opts-number-format
 	# Options to format numbers
@@ -293,6 +294,15 @@ snippet opts-rmd-chunk
 	  fig.height = 3,       # Default height for plots.
 	  fig.width  = 5,       # Default width for plots.
 	  fig.align  = "center" # Default alignment for plots in knitted documents.
+	)
+	${0}
+
+snippet opts-rmd-chunk-fig
+	# Chunk options
+	knitr::opts_chunk\$set(
+	  fig.height = 3,
+	  fig.width  = 5,
+	  fig.align  = "center"
 	)
 	${0}
 # Packages --------------------------------------------------------------------
@@ -545,8 +555,7 @@ snippet setup
 
 	${7:ggplot2::theme_set(ggplot2::theme_bw())}
 	${8:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
-	${0}
-	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.
+	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
 
 snippet fig
 	#| label: fig-${1:unique-id}
