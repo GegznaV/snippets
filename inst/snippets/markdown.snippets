@@ -268,21 +268,10 @@ snippet todo
 snippet kbd
 	<kbd>${0:Ctrl}</kbd>
 
-snippet style
-	<style>
-	${1}
-	</style>
-	${0}
+snippet html
+	```{=html}
 
-# Non-breaking space
-snippet space
-	&${1:nbsp};${0}
-
-snippet nbsp
-	&${1:nbsp};${0}
-
-snippet font
-	<font color = "${1:red}">${0}</font>
+	```
 
 snippet detailss
 	<details>
@@ -296,16 +285,16 @@ snippet details
 	${0}
 	</details>
 
-snippet style-1
-	```{=html}
-	<style>
-	/* Layout how author name and data fields are presented */
-	#title-block-header.quarto-title-block.default .quarto-title-meta {
-	  display: grid;
-	  grid-template-columns: repeat(3, 1fr);
-	}
 
-	/* Details sections */
+snippet style
+	<style>
+	${1}
+	</style>
+	${0}
+
+snippet style-details
+	<style>
+	/* Border for details section */
 	details[open].with-border {
 	  padding: 1px 5px 1px 5px;
 	  border-style: solid;
@@ -314,7 +303,46 @@ snippet style-1
 	  border-radius: 5px;
 	}
 	</style>
+
+snippet style-title
+	<style>
+	/* Layout how author name and date fields are presented */
+	#title-block-header.quarto-title-block.default .quarto-title-meta {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	}
+	</style>
+
+snippet style-qmd-1
+	```{=html}
+	<style>
+	/* Layout how author name and date fields are presented */
+	#title-block-header.quarto-title-block.default .quarto-title-meta {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* Border for details section */
+	details[open].with-border {
+	  padding: 1px 5px 1px 5px;
+	  border-style: solid;
+	  border-color: grey;
+	  border-width: 3px;
+	  border-radius: 5px;
+	}
+	</style>
+
 	```
+
+# Non-breaking space
+snippet space
+	&${1:nbsp};${0}
+
+snippet nbsp
+	&${1:nbsp};${0}
+
+snippet font
+	<font color = "${1:red}">${0}</font>
 # YAML options ---------------------------------------------------------------
 snippet help-qmd
 	---qmd
