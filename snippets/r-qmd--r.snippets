@@ -3,7 +3,7 @@
 snippet help-qmd-chunks
 	# Quarto snippets for R code chunks
 	#
-	setup
+	setupp
 	fig
 	fig-cap-multiline
 	fig-include
@@ -14,7 +14,7 @@ snippet help-qmd-chunks
 snippet #
 	#| ${0}
 
-snippet setup
+snippet setupp
 	#| label: setup
 	${1:#| results: hide}
 	${2:#| message: false}
@@ -32,7 +32,7 @@ snippet setup
 	opts-pander
 
 	# Default figure size
-	knitr::opts_chunk$set(
+	knitr::opts_chunk\$set(
 	  fig.height = ${5:3},
 	  fig.width  = ${6:5}
 	)
