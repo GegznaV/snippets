@@ -307,7 +307,8 @@ snippet opts-rmd-chunk-fig
 	${0}
 # Packages --------------------------------------------------------------------
 snippet help-lib
-	lib-snippets${0}
+	lib-snippets
+	${0}
 
 snippet pkgs
 	# Packages ------------------------------------------------------------------
@@ -317,10 +318,13 @@ snippet lib-snippets
 	lib-magrittr
 	lib-fs
 	lib-file-io
+	lib-file-io-2
 	lib-summary
+	lib-ggplot2
 	lib-ggplot2-extra
 	lib-stats
-	lib-ml
+	lib-stats2
+	lib-mlr3
 	lib-md-tables
 	${0}
 
@@ -340,6 +344,11 @@ snippet lib-fs
 snippet lib-file-io
 	library(data.table)    # Function `fread()` to read data from text files.
 	library(readxl)        # Read Excel data.
+	${0}
+
+snippet lib-file-io-2
+	library(data.table)    # Function `fread()` to read data from text files.
+	library(readxl)        # Read Excel data.
 	library(writexl)       # Write data to Excel files.
 	library(openxlsx)      # Write data to Excel files.
 	library(foreign)
@@ -352,13 +361,19 @@ snippet lib-summary
 	library(summarytools)  # Descriptive statistics.
 	${0}
 
-snippet lib-ggplot2-extra
-	library(ggplot2)       # Statistical plots and utilities for ggplot2.
+snippet lib-ggplot2
+	library(ggplot2)       # Statistical plots (ggplot2).
 	library(ggpubr)        # Statistical plots and utilities for ggplot2.
 	library(ggmosaic)      # Mosaic plot (ggplot2).
-	library(ggrepel)       # Labels for ggplot2 that do not overlap.
+	library(patchwork)     # Join several ggplot2 plots into single figure.
+
+
+snippet lib-ggplot2-extra
+	library(ggpubr)        # Statistical plots and utilities for ggplot2.
+	library(ggmosaic)      # Mosaic plot (ggplot2).
 	library(patchwork)     # Join several ggplot2 plots into single figure.
 	library(gghighlight)   # Highlight Lines and Points in ggplot2.
+	library(ggrepel)       # Labels for ggplot2 that do not overlap.
 	library(ggnewscale)    # Separate scales in ggplot2.
 	library(cowplot)       # Plot Theme and Plot Annotations for 'ggplot2'
 	library(ggstatsplot)   # Statistical plots based on ggplot2.
@@ -377,6 +392,13 @@ snippet lib-ggplot2-extra
 	${0}
 
 snippet lib-stats
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
+	library(rstatix)       # Pipe-friendly basic statistical tests.
+
+	${0}
+
+snippet lib-stats-2
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
 	library(rstatix)       # Pipe-friendly basic statistical tests.
 	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
 	library(easystats)     # Various statistical analysis related tasks.
@@ -389,8 +411,7 @@ snippet lib-stats
 	library(ufs)           # Statistical analysis.
 	${0}
 
-snippet lib-ml
-	library(mlr)           # Machine learning in R.
+snippet lib-mlr3
 	library(mlr3)          # Machine learning in R (new generation).
 	${0}
 
@@ -508,6 +529,7 @@ snippet help-qmd-chunks
 	# Quarto snippets for R code chunks
 	#
 	lab
+	set
 	setupp
 	fig
 	fig-include
@@ -526,7 +548,10 @@ snippet set
 	#| label: setup
 	${1:#| results: hide}
 	${2:#| message: false}
-	${3:#| echo: ${4:true}}
+	${3:#| warning: false}
+	${4:#| echo: ${5:true}}
+	library(tidyverse)
+	${0}
 
 snippet setupp
 	#| label: setup
@@ -536,6 +561,9 @@ snippet setupp
 
 	# Packages ------------------------------------------------------------------
 	lib-snippets
+
+	# Funkctions ----------------------------------------------------------------
+	source("${5}")
 
 	# Settings ------------------------------------------------------------------
 	locale-lt
@@ -547,13 +575,13 @@ snippet setupp
 
 	# Default figure size
 	knitr::opts_chunk\$set(
-	  fig.height = ${5:3},
-	  fig.width  = ${6:5}
+	  fig.height = ${6:3},
+	  fig.width  = ${7:5}
 	)
 
-	${7:ggplot2::theme_set(ggplot2::theme_bw())}
-	${8:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
-	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
+	${8:ggplot2::theme_set(ggplot2::theme_bw())}
+	${9:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
+	set.seed(${10:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
 
 snippet fig
 	#| label: fig-${1:unique-id}
@@ -567,6 +595,9 @@ snippet fig-include
 	knitr::include_graphics("${0}")
 
 snippet img
+	#| label: fig-${1:unique-id}
+	#| fig-cap: "${2:Caption.}"
+	${3:#| echo: ${4:false}}
 	knitr::include_graphics("${0}")
 
 snippet tbl
