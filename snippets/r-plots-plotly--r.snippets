@@ -3,10 +3,10 @@ snippet help-plots
 	# NOTE: Required packages must be installed!!!
 
 	# 3D scatterplot
-	a--plotly-scatter-3d
+	plotly-scatter-3d
 
 
-snippet a--plotly-scatter-3d
+snippet plotly-scatter-3d
 	${1:data} |>
 	  plotly::plot_ly(
 	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},

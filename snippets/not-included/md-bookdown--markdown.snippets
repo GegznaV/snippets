@@ -18,12 +18,7 @@ snippet help-bookdown
 	-->
 
 	<!-- Insert objects -->
-	eq
-	exm
-	exr
-	fig
-	youtube
-	youtube-css
+	eq-rmd
 
 	<!-- Insert captions -->
 	cap
@@ -33,7 +28,7 @@ snippet help-bookdown
 	capv
 
 	<!-- Insert references -->
-	ref
+	ref2
 	refeq
 	refexr
 	refexm
@@ -52,7 +47,7 @@ snippet help-bookdown
 
 	<!-- END: Snippets for Bookdown projects/files -->
 
-snippet eq
+snippet eq-rmd
 	<!-- Equation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 	\begin{equation}
 
@@ -61,53 +56,6 @@ snippet eq
 
 	\end{equation}
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
-
-snippet exr
-	::: {.exercise #${1:exercise-ID}}
-	${0}
-	:::
-
-snippet exm
-	:::{.example #${1:exercise-ID}}
-	${0}
-	:::
-
-snippet youtube-css
-	<style>
-	/* Make resizeable YouTube video ------------------------------------------- */
-
-	.iframe-container{
-	  position: relative;
-	  width: 100%;
-	  padding-bottom: 56.25%;
-	  height: 0;
-	}
-	.iframe-container iframe{
-	  position: absolute;
-	  top:0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	}
-
-	/* ------------------------------------------------------------------------- */
-	</style>
-
-snippet youtube
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
-	<br>
-	<center>
-	<!-- video -->
-	<div class="iframe-container">	<iframe width="640" height="360"
-	src="https://www.youtube${1:-nocookie}.com/embed/${2:youtube-code-of-vieo}?rel=0"
-	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-	frameborder="0" allowfullscreen> </iframe> 	</div>
-	</center>
-	```{corollary, ${3:video-ID}}
-	${4:video-caption}
-	```
-	<br>
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
 
 snippet cap-
 	(\#$$) ${1:caption/label}
@@ -130,7 +78,7 @@ snippet capv
 snippet ref-
 	\@ref($$:${1:ID})
 
-snippet ref
+snippet ref2
 	\@ref(${1:label-ID})
 
 snippet refeq

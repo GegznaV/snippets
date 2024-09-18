@@ -47,7 +47,7 @@ install.packages("snippets", repos = repos)
 To install from [GitHub](https://github.com/):
 
 ```{r, eval=FALSE}
-# install.packages("remotes")
+if (!require(remotes)) install.packages("remotes")
 remotes::install_github("GegznaV/snippets")
 ```
 

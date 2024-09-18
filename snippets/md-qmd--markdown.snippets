@@ -1,0 +1,69 @@
+# Quarto snippets ------------------------------------------------------------
+
+snippet eq
+	$$
+	${0:LaTeX equation}
+	$$ {#eq-${1:equation-ID}}
+
+snippet exr
+	::: {#exr-${1:excercise-ID} .exercise}
+	${0}
+	:::
+
+snippet exm
+	:::{#exm-${1:example-ID} .example}
+	${0}
+	:::
+
+snippet youtube
+	`r embed_youtube_video("${1:youtube-video-id}")`
+	:::{#cor-${3:video-ID} .corollary}
+	${4:video-caption}
+	:::
+	<br>
+
+snippet youtube_playlist
+	`r embed_youtube_playlist("${1:youtube-playlist-id}")`
+	:::{#cor-${3:video-ID} .corollary}
+	${4:video-caption}
+	:::
+	<br>
+
+snippet youtube-css
+	<style>
+	/* Make resizeable YouTube video ------------------------------------------- */
+
+	.iframe-container{
+	  position: relative;
+	  width: 100%;
+	  padding-bottom: 56.25%;
+	  height: 0;
+	}
+	.iframe-container iframe{
+	  position: absolute;
+	  top:0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	/* ------------------------------------------------------------------------- */
+	</style>
+
+
+snippet youtube-video-embed
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+	<br>
+	<center>
+	<!-- video -->
+	<div class="iframe-container">	<iframe width="640" height="360"
+	src="https://www.youtube${1:-nocookie}.com/embed/${2:youtube-code-of-vieo}?rel=0"
+	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+	frameborder="0" allowfullscreen> </iframe> 	</div>
+	</center>
+	:::{#cor-${3:video-ID} .corollary}
+	${4:video-caption}
+	:::
+	<br>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+

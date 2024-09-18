@@ -3,11 +3,6 @@ snippet help
 	${0}<!-- Help/Documentation snippets -->
 	help
 
-	<!-- R Markdown related snippets -->
-	help-bookdown
-	help-rmd-yaml
-	help-rmd-yaml-html
-
 
 	<!-- Markdown related snippets -->
 	help-md
@@ -47,158 +42,6 @@ snippet help-data-types
 	- `<list>` -- list column (more complex data structures than usual vectors).
 	-->
 	${0}
-# R Markdown syntax: Bookdown extensions -------------------------------------
-snippet help-bookdown
-	${0}<!-- START: Snippets for Bookdown projects/files -->
-	<!--
-	Abbreviations:
-	1. cap -- caption
-	2. ref -- reference
-
-	3. eq         -- equation
-	4. exm        -- example
-	5. exr        -- exercise
-	6. fig, f     -- figure
-	7. t          -- table
-	8. youtube, v -- video
-
-	E.g., "reff" means reference (ref) for figure (f);
-	      "reft" means reference (ref) for table (t).
-	-->
-
-	<!-- Insert objects -->
-	eq
-	exm
-	exr
-	fig
-	youtube
-	youtube-css
-
-	<!-- Insert captions -->
-	cap
-	capeq
-	capf
-	capt
-	capv
-
-	<!-- Insert references -->
-	ref
-	refeq
-	refexr
-	refexm
-	reff
-	reft
-	refv
-
-	<!-- Prefix snippets: after the hyphen use a word (text) without spaces -->
-	ref-
-	     ref-eq
-	     ref-fig
-
-	 cap-
-	     cap-eq
-	     cap-fig
-
-	<!-- END: Snippets for Bookdown projects/files -->
-
-snippet eq
-	<!-- Equation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
-	\begin{equation}
-
-	  ${0:equation}
-	  (\#eq:${1:equation-ID})
-
-	\end{equation}
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
-
-snippet exr
-	::: {.exercise #${1:exercise-ID}}
-	${0}
-	:::
-
-snippet exm
-	:::{.example #${1:exercise-ID}}
-	${0}
-	:::
-
-snippet youtube-css
-	<style>
-	/* Make resizeable YouTube video ------------------------------------------- */
-
-	.iframe-container{
-	  position: relative;
-	  width: 100%;
-	  padding-bottom: 56.25%;
-	  height: 0;
-	}
-	.iframe-container iframe{
-	  position: absolute;
-	  top:0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	}
-
-	/* ------------------------------------------------------------------------- */
-	</style>
-
-snippet youtube
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
-	<br>
-	<center>
-	<!-- video -->
-	<div class="iframe-container">	<iframe width="640" height="360"
-	src="https://www.youtube${1:-nocookie}.com/embed/${2:youtube-code-of-vieo}?rel=0"
-	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-	frameborder="0" allowfullscreen> </iframe> 	</div>
-	</center>
-	```{corollary, ${3:video-ID}}
-	${4:video-caption}
-	```
-	<br>
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
-
-snippet cap-
-	(\#$$) ${1:caption/label}
-
-snippet cap
-	(\#${1:label-ID}) ${2:caption/label}
-
-snippet capeq
-	(\#eq:${1:equation-ID})
-
-snippet capf
-	(\#fig:${1:fig-ID}) ${2:fig-caption}
-
-snippet capt
-	(\#tab:${1:table-ID}) ${2:table-caption}
-
-snippet capv
-	(\#cor:${1:video-ID}) ${2:video-caption}
-
-snippet ref-
-	\@ref($$:${1:ID})
-
-snippet ref
-	\@ref(${1:label-ID})
-
-snippet refeq
-	\@ref(eq:${1:equation-ID})
-
-snippet refexr
-	\@ref(exr:${1:exercise-ID})
-
-snippet refexm
-	\@ref(exr:${1:example-ID})
-
-snippet reff
-	\@ref(fig:${1:fig-ID})
-
-snippet reft
-	\@ref(tab:${1:table-ID})
-
-snippet refv
-	\@ref(cor:${1:video-ID})
 # R Markdown syntax: chunks  --------------------------------------------------
 snippet r
 	```{r}
@@ -223,14 +66,29 @@ snippet sql
 	${0}
 	```
 
+snippet set
+	```{r}
+	set${0}
+	```
+
 snippet setup
 	```{r}
-	setup${0}
+	setupp${0}
+	```
+
+snippet setupp
+	```{r}
+	setupp${0}
 	```
 
 snippet fig
 	```{r}
 	fig${0}
+	```
+
+snippet img
+	```{r}
+	img${0}
 	```
 
 snippet tbl
@@ -284,7 +142,6 @@ snippet details
 	<summary>${4:Description}</summary>
 	${0}
 	</details>
-
 
 snippet style
 	<style>
@@ -343,6 +200,75 @@ snippet nbsp
 
 snippet font
 	<font color = "${1:red}">${0}</font>
+# Quarto snippets ------------------------------------------------------------
+
+snippet eq
+	$$
+	${0:LaTeX equation}
+	$$ {#eq-${1:equation-ID}}
+
+snippet exr
+	::: {#exr-${1:excercise-ID} .exercise}
+	${0}
+	:::
+
+snippet exm
+	:::{#exm-${1:example-ID} .example}
+	${0}
+	:::
+
+snippet youtube
+	`r embed_youtube_video("${1:youtube-video-id}")`
+	:::{#cor-${3:video-ID} .corollary}
+	${4:video-caption}
+	:::
+	<br>
+
+snippet youtube_playlist
+	`r embed_youtube_playlist("${1:youtube-playlist-id}")`
+	:::{#cor-${3:video-ID} .corollary}
+	${4:video-caption}
+	:::
+	<br>
+
+snippet youtube-css
+	<style>
+	/* Make resizeable YouTube video ------------------------------------------- */
+
+	.iframe-container{
+	  position: relative;
+	  width: 100%;
+	  padding-bottom: 56.25%;
+	  height: 0;
+	}
+	.iframe-container iframe{
+	  position: absolute;
+	  top:0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	/* ------------------------------------------------------------------------- */
+	</style>
+
+
+snippet youtube-video-embed
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+	<br>
+	<center>
+	<!-- video -->
+	<div class="iframe-container">	<iframe width="640" height="360"
+	src="https://www.youtube${1:-nocookie}.com/embed/${2:youtube-code-of-vieo}?rel=0"
+	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+	frameborder="0" allowfullscreen> </iframe> 	</div>
+	</center>
+	:::{#cor-${3:video-ID} .corollary}
+	${4:video-caption}
+	:::
+	<br>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+
 # YAML options ---------------------------------------------------------------
 snippet help-qmd
 	---qmd
@@ -367,14 +293,14 @@ snippet ---qmd
 
 snippet ---lt1
 	---
-	title: "${1:pavadinimas}"
+	title: "${1:Dokumento pavadinimas}"
 	subtitle: "${2:Paantraštė (jei reikia)}"
-	pagetitle: "${3:Analizė}"
+	pagetitle: "${3:Analizė}" # Naršyklės kortelės pavadinimas
 	author: "${4:`r whoami::fullname()`}"
 	date: last-modified # "${5:`r Sys.Date()`}"
 	date-format: iso
 	fig-align: "center"
-	embed-resources: ${6:true}
+	embed-resources: ${6:true} # HTML viskas viename dokumente
 	format:
 	  html:
 	    toc: true
@@ -394,8 +320,8 @@ snippet ---lt1
 	    title-block-modified:  "Atnaujinta"
 	    title-block-author-single: "Atliko"
 	execute:
-	  eval: true
-	  echo: true
+	  eval: true # Vykdyti kodą
+	  echo: true # Rodyti kodą
 	# RStudio:
 	editor: source # source, visual
 	editor_options:
@@ -404,6 +330,17 @@ snippet ---lt1
 	    extensions: -smart
 	---
 	${0}
+
+snippet ---bib
+	# Bibliographies and Citations -----------------------------------------------
+	bibliography: "${1:path/to/bib-file.bib}" # Path to the file with bibliography entries.
+	bibliographystyle: ${2:apa} # e.g., apa, my-csl-style.csl
+	# citeproc: true # use Pandoc’s citation processing
+	# csl: "${4:path/to/csl-file.csl}" # if citeproc: true
+	# suppress-bibliography: ${5:no}
+	# link-citations: ${6:yes}
+	# nocite: | # Include items in the bibliography without citing them.
+	#    @item1, @item2, @*
 # Rmd snippets ---------------------------------------------------------------
 snippet fig-rmd
 	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
@@ -413,6 +350,9 @@ snippet fig-rmd
 	# Path or URL to the figure.
 	${5:knitr::include_graphics("${0}")}
 	```
+
+snippet setupr
+	setup-rmd
 
 snippet setup-rmd
 	```{r setup, include=FALSE}
@@ -1241,9 +1181,6 @@ snippet help-md
 	[
 	![
 	lnk
-	lnk1
-	lnk2
-	lnk3
 
 	<!-- Prefix snippets: -->
 	<!--
@@ -1285,24 +1222,15 @@ snippet rrr
 	`r "\u0060"`${1:r-code-to-display-as-is}`r "\u0060"`{.r}${0}
 
 snippet url-
-	[${0}]($$){target="_blank"}
+	[${0}]($$)
 
 snippet lnk
-	[${1:label}](${2:location}){target="_blank"}
-
-snippet lnk1
-	[${1:label} `r "\u0060"`r icon::fa("external-link-alt")`r "\u0060"`](${2:location}){target="_blank"}
-
-snippet lnk2
-	[${1:label} `r "\u0060"`r icon::fa("download")`r "\u0060"`](${2:location}){target="_blank"}
-
-snippet lnk3
-	[${1:label} `r "\u0060"`r icon::fa("file-pdf-o")`r "\u0060"`](${2:location}){target="_blank"}
+	[${1:label}](${2:location})
 
 snippet [
 	[${1:label}](${2:location})
 
 snippet ![
-	![${1:label}](${2:location})
+	![${1:fig-caption}](${2:location})
 
 

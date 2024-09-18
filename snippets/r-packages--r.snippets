@@ -1,6 +1,7 @@
 # Packages --------------------------------------------------------------------
 snippet help-lib
-	lib-snippets${0}
+	lib-snippets
+	${0}
 
 snippet pkgs
 	# Packages ------------------------------------------------------------------
@@ -10,10 +11,13 @@ snippet lib-snippets
 	lib-magrittr
 	lib-fs
 	lib-file-io
+	lib-file-io-2
 	lib-summary
+	lib-ggplot2
 	lib-ggplot2-extra
 	lib-stats
-	lib-ml
+	lib-stats2
+	lib-mlr3
 	lib-md-tables
 	${0}
 
@@ -33,6 +37,11 @@ snippet lib-fs
 snippet lib-file-io
 	library(data.table)    # Function `fread()` to read data from text files.
 	library(readxl)        # Read Excel data.
+	${0}
+
+snippet lib-file-io-2
+	library(data.table)    # Function `fread()` to read data from text files.
+	library(readxl)        # Read Excel data.
 	library(writexl)       # Write data to Excel files.
 	library(openxlsx)      # Write data to Excel files.
 	library(foreign)
@@ -45,13 +54,19 @@ snippet lib-summary
 	library(summarytools)  # Descriptive statistics.
 	${0}
 
-snippet lib-ggplot2-extra
-	library(ggplot2)       # Statistical plots and utilities for ggplot2.
+snippet lib-ggplot2
+	library(ggplot2)       # Statistical plots (ggplot2).
 	library(ggpubr)        # Statistical plots and utilities for ggplot2.
 	library(ggmosaic)      # Mosaic plot (ggplot2).
-	library(ggrepel)       # Labels for ggplot2 that do not overlap.
+	library(patchwork)     # Join several ggplot2 plots into single figure.
+
+
+snippet lib-ggplot2-extra
+	library(ggpubr)        # Statistical plots and utilities for ggplot2.
+	library(ggmosaic)      # Mosaic plot (ggplot2).
 	library(patchwork)     # Join several ggplot2 plots into single figure.
 	library(gghighlight)   # Highlight Lines and Points in ggplot2.
+	library(ggrepel)       # Labels for ggplot2 that do not overlap.
 	library(ggnewscale)    # Separate scales in ggplot2.
 	library(cowplot)       # Plot Theme and Plot Annotations for 'ggplot2'
 	library(ggstatsplot)   # Statistical plots based on ggplot2.
@@ -70,6 +85,13 @@ snippet lib-ggplot2-extra
 	${0}
 
 snippet lib-stats
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
+	library(rstatix)       # Pipe-friendly basic statistical tests.
+
+	${0}
+
+snippet lib-stats-2
+	library(DescTools)     # Descriptive statistics, statistical tests, etc.
 	library(rstatix)       # Pipe-friendly basic statistical tests.
 	library(factoextra)    # Extract and visualize the results of multivariate data analyses.
 	library(easystats)     # Various statistical analysis related tasks.
@@ -82,8 +104,7 @@ snippet lib-stats
 	library(ufs)           # Statistical analysis.
 	${0}
 
-snippet lib-ml
-	library(mlr)           # Machine learning in R.
+snippet lib-mlr3
 	library(mlr3)          # Machine learning in R (new generation).
 	${0}
 
