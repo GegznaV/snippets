@@ -407,10 +407,10 @@ snippet help-plots
 	# NOTE: Required packages must be installed!!!
 
 	# 3D scatterplot
-	a--plotly-scatter-3d
+	plotly-scatter-3d
 
 
-snippet a--plotly-scatter-3d
+snippet plotly-scatter-3d
 	${1:data} |>
 	  plotly::plot_ly(
 	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
@@ -422,12 +422,6 @@ snippet a--plotly-scatter-3d
 snippet pptx-snippets
 	save-plot-to-pptx-from-code
 	save-plot-to-pptx-from-ggplot
-
-snippet save-plot-to-pptx
-	save-plot-to-pptx-from-code${0}
-
-snippet plot-save-to-pptx-from-code
-	save-plot-to-pptx-from-code${0}
 
 snippet save-plot-to-pptx-from-code
 	# ~ Load the packages  -------------------------------------------------------
@@ -469,12 +463,6 @@ snippet save-plot-to-pptx-from-code
 	# ~ Open the pptx file -------------------------------------------------------
 	browseURL(path_to_pptx_file)
 
-
-snippet save-ggplot-to-pptx
-	save-plot-to-pptx-from-ggplot
-
-snippet plot-save-to-pptx-ggplot
-	save-plot-to-pptx-from-ggplot
 
 snippet save-plot-to-pptx-from-ggplot
 	# ~ Load the packages  -------------------------------------------------------
@@ -519,16 +507,26 @@ snippet save-plot-to-pptx-from-ggplot
 snippet help-qmd-chunks
 	# Quarto snippets for R code chunks
 	#
+	lab
 	setupp
 	fig
-	fig-cap-multiline
 	fig-include
+	img
 	tbl
-	tbl-cap-multiline
-	lab
+	paged
 
 snippet #
 	#| ${0}
+
+snippet lab
+	#| label: ${1:unique-id}
+	${0}
+
+snippet set
+	#| label: setup
+	${1:#| results: hide}
+	${2:#| message: false}
+	${3:#| echo: ${4:true}}
 
 snippet setupp
 	#| label: setup
@@ -565,15 +563,10 @@ snippet fig
 	${7:#| echo: ${8:false}}
 	${0}
 
-snippet fig-cap-multiline
-	#| label: fig-${1:unique-id}
-	#| fig-cap: |
-	#|    ${8:Multi-line caption.}${0}
-	${2:#| fig-width: ${3:5}}
-	${4:#| fig-height: ${5:3}}
-	${6:#| echo: ${7:false}}
-
 snippet fig-include
+	knitr::include_graphics("${0}")
+
+snippet img
 	knitr::include_graphics("${0}")
 
 snippet tbl
@@ -582,17 +575,8 @@ snippet tbl
 	${2:#| echo: ${3:false}}
 	${0}
 
-snippet tbl-cap-multiline
-	#| label: tbl-${1:unique-id}
-	#| tbl-cap: |
-	#|    ${4:Multi-line caption.}${0}
-	${2:#| echo: ${3:false}}
-
-snippet lab
-	#| label: ${1:unique-id}
-	${0}
-
-
+snippet paged
+	#| paged-print: false
 # Symbols --------------------------------------------------------------------
 
 snippet help-symbols
