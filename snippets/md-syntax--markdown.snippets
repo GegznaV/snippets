@@ -16,9 +16,6 @@ snippet help-md
 	[
 	![
 	lnk
-	lnk1
-	lnk2
-	lnk3
 
 	<!-- Prefix snippets: -->
 	<!--
@@ -60,24 +57,15 @@ snippet rrr
 	`r "\u0060"`${1:r-code-to-display-as-is}`r "\u0060"`{.r}${0}
 
 snippet url-
-	[${0}]($$){target="_blank"}
+	[${0}]($$)
 
 snippet lnk
-	[${1:label}](${2:location}){target="_blank"}
-
-snippet lnk1
-	[${1:label} `r "\u0060"`r icon::fa("external-link-alt")`r "\u0060"`](${2:location}){target="_blank"}
-
-snippet lnk2
-	[${1:label} `r "\u0060"`r icon::fa("download")`r "\u0060"`](${2:location}){target="_blank"}
-
-snippet lnk3
-	[${1:label} `r "\u0060"`r icon::fa("file-pdf-o")`r "\u0060"`](${2:location}){target="_blank"}
+	[${1:label}](${2:location})
 
 snippet [
 	[${1:label}](${2:location})
 
 snippet ![
-	![${1:label}](${2:location})
+	![${1:fig-caption}](${2:location})
 
 
