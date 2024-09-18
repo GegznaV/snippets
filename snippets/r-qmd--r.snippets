@@ -4,6 +4,7 @@ snippet help-qmd-chunks
 	# Quarto snippets for R code chunks
 	#
 	lab
+	set
 	setupp
 	fig
 	fig-include
@@ -22,7 +23,10 @@ snippet set
 	#| label: setup
 	${1:#| results: hide}
 	${2:#| message: false}
-	${3:#| echo: ${4:true}}
+	${3:#| warning: false}
+	${4:#| echo: ${5:true}}
+	library(tidyverse)
+	${0}
 
 snippet setupp
 	#| label: setup
@@ -32,6 +36,9 @@ snippet setupp
 
 	# Packages ------------------------------------------------------------------
 	lib-snippets
+
+	# Funkctions ----------------------------------------------------------------
+	source("${5}")
 
 	# Settings ------------------------------------------------------------------
 	locale-lt
@@ -43,13 +50,13 @@ snippet setupp
 
 	# Default figure size
 	knitr::opts_chunk\$set(
-	  fig.height = ${5:3},
-	  fig.width  = ${6:5}
+	  fig.height = ${6:3},
+	  fig.width  = ${7:5}
 	)
 
-	${7:ggplot2::theme_set(ggplot2::theme_bw())}
-	${8:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
-	set.seed(${9:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
+	${8:ggplot2::theme_set(ggplot2::theme_bw())}
+	${9:conflicted::conflicts_prefer(dplyr::filter, dplyr::lag)}
+	set.seed(${10:`r format(Sys.Date(), "%Y%m%d")`}) # Initial condition for random processes.${0}
 
 snippet fig
 	#| label: fig-${1:unique-id}
@@ -63,6 +70,9 @@ snippet fig-include
 	knitr::include_graphics("${0}")
 
 snippet img
+	#| label: fig-${1:unique-id}
+	#| fig-cap: "${2:Caption.}"
+	${3:#| echo: ${4:false}}
 	knitr::include_graphics("${0}")
 
 snippet tbl
