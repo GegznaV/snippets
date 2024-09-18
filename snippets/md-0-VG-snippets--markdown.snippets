@@ -104,52 +104,35 @@ snippet setupm
 	set.seed(`r format(Sys.Date(), "%Y%m%d")`)
 	```
 
-snippet figb
-	```{r ${1:fig-ID}, echo=FALSE, fig.cap=caption}
-	knitr::include_graphics("fig/pic/${2}${1}.png")
 
-	caption <- "${3:caption}  "
-	```
-
-snippet figi
-	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
-	${6:# DELETE THIS: To quick-search for file/folder, put cursor between quotes ("|") and press TAB.}
-	${7:# DELETE THIS: If you chose a folder, press TAB again to continue the browsing.}
-	# Path or URL to the figure.
-	knitr::include_graphics("${0}")
-
-	# Caption/Description.
-	caption <- "${2:**Fig. ${3:1}.** }${4:Caption/Description}  "
-	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
-	```
 
 snippet note
-	::: {.${1:note}}
+	::: ${1:note}
 	${0}
 	:::
 
 snippet aim
-	::: {.${1:aim}}
+	::: ${1:aim}
 	${0}
 	:::
 
 snippet ok
-	::: {.${1:ok}}
+	::: ${1:ok}
 	${0}
 	:::
 
 snippet task
-	::: {.${1:task}}
+	::: ${1:task}
 	${0}
 	:::
 
 snippet red
-	::: {.${1:avoid}}
+	::: ${1:avoid}
 	${0}
 	:::
 
 snippet avoid
-	::: {.${1:avoid}}
+	::: ${1:avoid}
 	${0}
 	:::
 
@@ -159,23 +142,9 @@ snippet kb
 snippet kbd-
 	<kbd>$$</kbd>
 
-snippet fa-dl
-	<i class="fa fa-download" aria-hidden="true"></i>
+snippet sec
+	„[-@(${1:sec-}) [${2:section name}](#${1:sec-})“${0}
 
-snippet fa1
-	<i class="fa fa-download" aria-hidden="true"></i>
+snippet ref
+	[-@(${1:ID})]${0}
 
-snippet fa-link
-	<i class="fa fa-external-link-alt" aria-hidden="true"></i>
-
-snippet fa2
-	<i class="fa fa-external-link-alt" aria-hidden="true"></i>
-
-snippet fa-pdf
-	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-
-snippet fa3
-	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-
-snippet ref-sec
-	„\@ref(${1:ID}) [${2:section name}](#${1:ID})“${0}
