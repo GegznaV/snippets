@@ -3,11 +3,6 @@ snippet help
 	${0}<!-- Help/Documentation snippets -->
 	help
 
-	<!-- R Markdown related snippets -->
-	help-bookdown
-	help-rmd-yaml
-	help-rmd-yaml-html
-
 
 	<!-- Markdown related snippets -->
 	help-md
@@ -335,6 +330,17 @@ snippet ---lt1
 	    extensions: -smart
 	---
 	${0}
+
+snippet ---bib
+	# Bibliographies and Citations -----------------------------------------------
+	bibliography: "${1:path/to/bib-file.bib}" # Path to the file with bibliography entries.
+	bibliographystyle: ${2:apa} # e.g., apa, my-csl-style.csl
+	# citeproc: true # use Pandoc’s citation processing
+	# csl: "${4:path/to/csl-file.csl}" # if citeproc: true
+	# suppress-bibliography: ${5:no}
+	# link-citations: ${6:yes}
+	# nocite: | # Include items in the bibliography without citing them.
+	#    @item1, @item2, @*
 # Rmd snippets ---------------------------------------------------------------
 snippet fig-rmd
 	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
