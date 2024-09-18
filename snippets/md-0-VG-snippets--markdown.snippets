@@ -1,6 +1,48 @@
 
 # VG snippets ================================================================
 
+snippet note
+	::: ${1:note}
+	${0}
+	:::
+
+snippet aim
+	::: ${1:aim}
+	${0}
+	:::
+
+snippet ok
+	::: ${1:ok}
+	${0}
+	:::
+
+snippet task
+	::: ${1:task}
+	${0}
+	:::
+
+snippet red
+	::: ${1:avoid}
+	${0}
+	:::
+
+snippet avoid
+	::: ${1:avoid}
+	${0}
+	:::
+
+snippet kb
+	\`r kbd("${1:Ctrl}", "${2}")\`
+
+snippet kbd-
+	<kbd>$$</kbd>
+
+snippet sec
+	„[-@(${1:sec-}) [${2:section name}](#${1:sec-})“${0}
+
+snippet ref
+	[-@(${1:ID})]${0}
+
 snippet bo
 	```{bash_output, eval=FALSE, class.source="bg-info bash-output"}
 	${0}
@@ -103,48 +145,4 @@ snippet setupm
 
 	set.seed(`r format(Sys.Date(), "%Y%m%d")`)
 	```
-
-
-
-snippet note
-	::: ${1:note}
-	${0}
-	:::
-
-snippet aim
-	::: ${1:aim}
-	${0}
-	:::
-
-snippet ok
-	::: ${1:ok}
-	${0}
-	:::
-
-snippet task
-	::: ${1:task}
-	${0}
-	:::
-
-snippet red
-	::: ${1:avoid}
-	${0}
-	:::
-
-snippet avoid
-	::: ${1:avoid}
-	${0}
-	:::
-
-snippet kb
-	\`r kbd("${1:Ctrl}", "${2}")\`
-
-snippet kbd-
-	<kbd>$$</kbd>
-
-snippet sec
-	„[-@(${1:sec-}) [${2:section name}](#${1:sec-})“${0}
-
-snippet ref
-	[-@(${1:ID})]${0}
 
