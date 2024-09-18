@@ -22,14 +22,14 @@ snippet ---qmd
 
 snippet ---lt1
 	---
-	title: "${1:pavadinimas}"
+	title: "${1:Dokumento pavadinimas}"
 	subtitle: "${2:Paantraštė (jei reikia)}"
-	pagetitle: "${3:Analizė}"
+	pagetitle: "${3:Analizė}" # Naršyklės kortelės pavadinimas
 	author: "${4:`r whoami::fullname()`}"
 	date: last-modified # "${5:`r Sys.Date()`}"
 	date-format: iso
 	fig-align: "center"
-	embed-resources: ${6:true}
+	embed-resources: ${6:true} # HTML viskas viename dokumente
 	format:
 	  html:
 	    toc: true
@@ -49,8 +49,8 @@ snippet ---lt1
 	    title-block-modified:  "Atnaujinta"
 	    title-block-author-single: "Atliko"
 	execute:
-	  eval: true
-	  echo: true
+	  eval: true # Vykdyti kodą
+	  echo: true # Rodyti kodą
 	# RStudio:
 	editor: source # source, visual
 	editor_options:
