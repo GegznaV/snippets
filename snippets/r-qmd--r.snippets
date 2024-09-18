@@ -3,16 +3,26 @@
 snippet help-qmd-chunks
 	# Quarto snippets for R code chunks
 	#
+	lab
 	setupp
 	fig
-	fig-cap-multiline
 	fig-include
+	img
 	tbl
-	tbl-cap-multiline
-	lab
+	paged
 
 snippet #
 	#| ${0}
+
+snippet lab
+	#| label: ${1:unique-id}
+	${0}
+
+snippet set
+	#| label: setup
+	${1:#| results: hide}
+	${2:#| message: false}
+	${3:#| echo: ${4:true}}
 
 snippet setupp
 	#| label: setup
@@ -49,15 +59,10 @@ snippet fig
 	${7:#| echo: ${8:false}}
 	${0}
 
-snippet fig-cap-multiline
-	#| label: fig-${1:unique-id}
-	#| fig-cap: |
-	#|    ${8:Multi-line caption.}${0}
-	${2:#| fig-width: ${3:5}}
-	${4:#| fig-height: ${5:3}}
-	${6:#| echo: ${7:false}}
-
 snippet fig-include
+	knitr::include_graphics("${0}")
+
+snippet img
 	knitr::include_graphics("${0}")
 
 snippet tbl
@@ -66,14 +71,5 @@ snippet tbl
 	${2:#| echo: ${3:false}}
 	${0}
 
-snippet tbl-cap-multiline
-	#| label: tbl-${1:unique-id}
-	#| tbl-cap: |
-	#|    ${4:Multi-line caption.}${0}
-	${2:#| echo: ${3:false}}
-
-snippet lab
-	#| label: ${1:unique-id}
-	${0}
-
-
+snippet paged
+	#| paged-print: false
