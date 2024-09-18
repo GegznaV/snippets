@@ -1,0 +1,86 @@
+# Plot to PPTX -------------------------------------------------------
+snippet save-plot-to-pptx
+	save-plot-to-pptx-from-code${0}
+
+snippet plot-save-to-pptx-from-code
+	save-plot-to-pptx-from-code${0}
+
+snippet save-ggplot-to-pptx
+	save-plot-to-pptx-from-ggplot
+
+snippet plot-save-to-pptx-ggplot
+	save-plot-to-pptx-from-ggplot
+
+# Bookdown -----------------------------------------------------------
+
+snippet lnk-rmd
+	[${1:label}](${2:location}){target="_blank"}
+
+snippet lnk-rmd1
+	[${1:label} `r "\u0060"`r icon::fa("external-link-alt")`r "\u0060"`](${2:location}){target="_blank"}
+
+snippet lnk-rmd2
+	[${1:label} `r "\u0060"`r icon::fa("download")`r "\u0060"`](${2:location}){target="_blank"}
+
+snippet lnk-rmd3
+	[${1:label} `r "\u0060"`r icon::fa("file-pdf-o")`r "\u0060"`](${2:location}){target="_blank"}
+
+snippet fa-dl
+	<i class="fa fa-download" aria-hidden="true"></i>
+
+snippet fa1
+	<i class="fa fa-download" aria-hidden="true"></i>
+
+snippet fa-link
+	<i class="fa fa-external-link-alt" aria-hidden="true"></i>
+
+snippet fa2
+	<i class="fa fa-external-link-alt" aria-hidden="true"></i>
+
+snippet fa-pdf
+	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+snippet fa3
+	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+snippet tbl-cap-multiline
+	#| label: tbl-${1:unique-id}
+	#| tbl-cap: |
+	#|    ${4:Multi-line caption.}${0}
+	${2:#| echo: ${3:false}}
+
+snippet fig-cap-multiline
+	#| label: fig-${1:unique-id}
+	#| fig-cap: |
+	#|    ${8:Multi-line caption.}${0}
+	${2:#| fig-width: ${3:5}}
+	${4:#| fig-height: ${5:3}}
+	${6:#| echo: ${7:false}}
+
+snippet lnk-blank
+	[${1:label}](${2:location}){target="_blank"}
+
+snippet url-
+	[${0}]($$){target="_blank"}
+
+snippet figb
+	```{r ${1:fig-ID}, echo=FALSE, fig.cap=caption}
+	knitr::include_graphics("fig/pic/${2}${1}.png")
+
+	caption <- "${3:caption}  "
+	```
+
+snippet figi
+	```{r ${1:fig-ID-`r paste0(round(as.integer(Sys.time())), "-", sample(0:999, 1))`}, echo=FALSE, fig.cap=caption}
+	${6:# DELETE THIS: To quick-search for file/folder, put cursor between quotes ("|") and press TAB.}
+	${7:# DELETE THIS: If you chose a folder, press TAB again to continue the browsing.}
+	# Path or URL to the figure.
+	knitr::include_graphics("${0}")
+
+	# Caption/Description.
+	caption <- "${2:**Fig. ${3:1}.** }${4:Caption/Description}  "
+	${5:# DELETE THIS: It is recommended to leave at least two spaces before the closing quote.}
+	```
+
+snippet ref-sec
+	„\@ref(${1:ID}) [${2:section name}](#${1:ID})“${0}
