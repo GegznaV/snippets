@@ -46,7 +46,8 @@ open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
 #'
 #' @param rstudio_version Numeric version of RStudio (the output is different
 #'        for RStudio < 1.3 and 1.3 or newer series). If `"current"`, the
-#'        current version of RStudio will be determined automatically.
+#'        current version of RStudio will be determined automatically when it
+#'        is running; otherwise, the 1.3-or-newer layout is used.
 #'
 #' @return (string) Path to directory for RStudio snippets.
 #' @export
@@ -65,7 +66,11 @@ open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
 get_path_rstudio_snippets_dir <- function(rstudio_version = "current") {
 
   if (rstudio_version %in% c("current", "auto")) {
-    rstudio_version <- rstudioapi::versionInfo()$version
+    rstudio_version <- if (rstudioapi::isAvailable()) {
+      rstudioapi::versionInfo()$version
+    } else {
+      "1.3.1"
+    }
 
   } else {
     rstudio_version <- as.numeric_version(rstudio_version)
