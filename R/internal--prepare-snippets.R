@@ -45,11 +45,11 @@ merge_snippets <- function(
         files <- files[stringr::str_detect(files, rm, negate = TRUE)]
       }
 
-      files %>%
-        purrr::map(readr::read_lines) %>%
-        purrr::reduce(c) %>%
+      files |>
+        purrr::map(readr::read_lines) |>
+        purrr::reduce(c) |>
         # Remove comments:
-        # stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
+        # stringr::str_subset(pattern = "^# ", negate = TRUE) |>
         readr::write_lines(make_snippet_filename(type = type))
     }
   )
