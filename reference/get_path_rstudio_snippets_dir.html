@@ -18,7 +18,7 @@ The directory might not exist."><!-- mathjax --><script src="https://cdnjs.cloud
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">snippets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.21</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.23</span>
       </span>
     </div>
 
@@ -77,7 +77,8 @@ The directory might not exist.</p>
 <dl><dt id="arg-rstudio-version">rstudio_version<a class="anchor" aria-label="anchor" href="#arg-rstudio-version"></a></dt>
 <dd><p>Numeric version of RStudio (the output is different
 for RStudio &lt; 1.3 and 1.3 or newer series). If <code>"current"</code>, the
-current version of RStudio will be determined automatically.</p></dd>
+current version of RStudio will be determined automatically when it
+is running; otherwise, the 1.3-or-newer layout is used.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -87,7 +88,17 @@ current version of RStudio will be determined automatically.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># Regularly, you should use this:</span></span></span>
+<span class="r-in"><span>  <span class="fu">get_path_rstudio_snippets_dir</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># For testing purposes:</span></span></span>
+<span class="r-in"><span><span class="fu">get_path_rstudio_snippets_dir</span><span class="op">(</span><span class="st">"1.4.1103"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.config/snippets</span>
+<span class="r-in"><span><span class="fu">get_path_rstudio_snippets_dir</span><span class="op">(</span><span class="st">"1.2.5044"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.R/snippets</span>
+</code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -101,7 +112,7 @@ current version of RStudio will be determined automatically.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>
