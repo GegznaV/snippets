@@ -21,7 +21,6 @@ Additional_repositories:
 Imports:
   backup.tools (>= 0.0.3),
   crayon,
-  dplyr,
   fs,
   lifecycle,
   purrr,
