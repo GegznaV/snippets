@@ -10,24 +10,22 @@
 #' @concept snippet types
 #' @examples
 #' get_default_snippet_types()
-
-# default_snippets_rstudio_1.2.5001 <-
-# c(
-#   "r.snippets",
-#   "markdown.snippets",
-#   "c_cpp.snippets",
-#   "css.snippets",
-#   "html.snippets",
-#   "java.snippets",
-#   "javascript.snippets",
-#   "python.snippets",
-#   "sql.snippets",
-#   "stan.snippets",
-#   "tex.snippets"
-# ) %>%
-#   stringr::str_extract(".*(?=\\.snippets)")
-
 get_default_snippet_types <- function() {
+  # default_snippets_rstudio_1.2.5001 <-
+  # c(
+  #  "r.snippets",
+  #  "markdown.snippets",
+  #  "c_cpp.snippets",
+  #  "css.snippets",
+  #  "html.snippets",
+  #  "java.snippets",
+  #  "javascript.snippets",
+  #  "python.snippets",
+  #  "sql.snippets",
+  #  "stan.snippets",
+  #  "tex.snippets"
+  # ) |>
+  #  stringr::str_extract(".*(?=\\.snippets)")
   c(
     "r", "markdown", "c_cpp", "css", "html", "java", "javascript", "python",
     "sql", "stan", "tex"
@@ -64,9 +62,10 @@ get_default_snippet_types <- function() {
 #' match_snippet_type("r")
 #'
 #' match_snippet_type("m")
-
-match_snippet_type <- function(type = get_default_snippet_types(),
-  several.ok = FALSE) {
+match_snippet_type <- function(
+  type = get_default_snippet_types(),
+  several.ok = FALSE
+) {
   type <- tolower(type)
   match.arg(type, several.ok = several.ok)
 }
