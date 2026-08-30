@@ -23,11 +23,11 @@ is running; otherwise, the 1.3-or-newer layout is used.}
 Edit file with RStudio snippets.
 }
 \examples{
-\dontrun{\donttest{
-open_rstudio_snippets_file("r")
+if (interactive()) {
+  open_rstudio_snippets_file("r")
 
-open_rstudio_snippets_file("markdown")
-}}
+  open_rstudio_snippets_file("markdown")
+}
 
 }
 \concept{snippet files and dirs}
