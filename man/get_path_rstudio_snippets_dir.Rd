@@ -9,7 +9,8 @@ get_path_rstudio_snippets_dir(rstudio_version = "current")
 \arguments{
 \item{rstudio_version}{Numeric version of RStudio (the output is different
 for RStudio < 1.3 and 1.3 or newer series). If \code{"current"}, the
-current version of RStudio will be determined automatically.}
+current version of RStudio will be determined automatically when it
+is running; otherwise, the 1.3-or-newer layout is used.}
 }
 \value{
 (string) Path to directory for RStudio snippets.

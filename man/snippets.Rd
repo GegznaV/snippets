@@ -21,5 +21,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Vilmantas Gegzna \email{GegznaV@gmail.com} (\href{https://orcid.org/0000-0002-9500-5167}{ORCID})
 
+Authors:
+\itemize{
+  \item Vilmantas Gegzna \email{GegznaV@gmail.com} (\href{https://orcid.org/0000-0002-9500-5167}{ORCID})
+}
+
 }
 \concept{package}

@@ -16,7 +16,8 @@ Defaults to \code{"r"}.}
 
 \item{rstudio_version}{Numeric version of RStudio (the output is different
 for RStudio < 1.3 and 1.3 or newer series). If \code{"current"}, the
-current version of RStudio will be determined automatically.}
+current version of RStudio will be determined automatically when it
+is running; otherwise, the 1.3-or-newer layout is used.}
 }
 \description{
 Edit file with RStudio snippets.
