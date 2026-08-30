@@ -83,7 +83,7 @@ get_snippets_backup_file_pattern <- function(type, several.ok = TRUE) {
 remove_snippet_backup_duplicates <- function() {
   # files <- list_snippet_file_backups(type = type)
   files <-
-    path_snippets_backup_dir() %>%
+    path_snippets_backup_dir() |>
     fs::dir_ls(type = "file")
 
   dups <- duplicated(tools::md5sum(files))
