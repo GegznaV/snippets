@@ -46,6 +46,7 @@ snippet help-r
 	# Operator |>
 	aa
 	aa-
+	pipe-arg
 
 	# R locales
 	locale
@@ -93,14 +94,15 @@ snippet ei
 	}
 
 snippet fun
-	${1:name} <- function(${2:variables}) {
+	${1:${2:name} <- }function(${3:variables}) {
 		${0}
 	}
 
 snippet funn
-	function(${2:variables}) {
+	${1:${2:name} <- }\(${3:variables}) {
 		${0}
 	}
+
 
 snippet ret
 	return(${0:code})
@@ -160,6 +162,10 @@ snippet aa
 	${1:dataset} <-
 	  ${1} |>
 	  ${0:code}
+
+snippet pipe-arg
+	${1:data} |>
+	  (\(${2:x}) ${3:function}(${4:argument} = ${2}))()
 
 snippet locale
 	Sys.${1:g}etlocale(${2})${0}

@@ -35,9 +35,9 @@ snippet save-plot-to-pptx-from-code
 
 	# ~ Save to PowerPoint -------------------------------------------------------
 	path_to_pptx_file <-
-	  read_pptx(input_file) %>%
-	  add_slide(layout = "Blank", master = "Office Theme") %>%
-	  ph_with(dml_plot, location = location_on_slide) %>%
+	  read_pptx(input_file) |>
+	  add_slide(layout = "Blank", master = "Office Theme") |>
+	  ph_with(dml_plot, location = location_on_slide) |>
 	  print(target = output_file)
 
 	# ~ Open the pptx file -------------------------------------------------------
@@ -75,9 +75,9 @@ snippet save-plot-to-pptx-from-ggplot
 
 	# ~ Save to PowerPoint -------------------------------------------------------
 	path_to_pptx_file <-
-	  read_pptx(input_file) %>%
-	  add_slide(layout = "Blank", master = "Office Theme") %>%
-	  ph_with(dml_plot, location = location_on_slide) %>%
+	  read_pptx(input_file) |>
+	  add_slide(layout = "Blank", master = "Office Theme") |>
+	  ph_with(dml_plot, location = location_on_slide) |>
 	  print(target = output_file)
 
 	# ~ Open the pptx file -------------------------------------------------------

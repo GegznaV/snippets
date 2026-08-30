@@ -133,7 +133,7 @@ remove_snippet_backup_duplicates()
 
 1. List all back-up files and select the one of interest.
     ```{r eval=FALSE}
-    list_snippet_file_backups(type = "r")
+list_snippet_file_backups(type = "r")
     ```
     ```r
     #> c:/.R/snippets/r.snippets
@@ -142,7 +142,7 @@ remove_snippet_backup_duplicates()
     ```
 2. Restore the back-up of interest, e.g.:
     ```{r eval=FALSE}
-    restore_snippets_from_backup("r.snippets--backup-2019-10-31-015042")
+restore_snippets_from_backup("r.snippets--backup-2019-10-31-015042")
     ```
     ```r
     #> v Back-up file was found: 'r.snippets--backup-2019-10-31-015042'

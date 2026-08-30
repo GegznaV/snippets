@@ -28,9 +28,10 @@ jobs:
       SOURCE_REPO: ${{ github.repository }}
       DEST_REPO:   mokymai/download
       TMP_DIR:     tmp_dir
+      R_REPOS:     "c(mokymai = 'https://mokymai.github.io/download/', CRAN = 'https://cran.rstudio.com')"
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Info
         run: |
@@ -39,8 +40,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
-          use-public-rspm: true
-          extra-repositories: "https://mokymai.github.io/download/"
+          use-public-rspm: false
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
@@ -78,7 +78,7 @@ jobs:
           TOKEN: ${{ secrets.DEPLOY_DRAT_TOKEN }}
 
       - name: Git clone DEST_REPO
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ env.DEST_REPO }} # 'mokymai/download'
           ref:   'master'
@@ -113,6 +113,7 @@ jobs:
           cd "${TMP_DIR}" # move into the subdir, which is Git controlled
           git add *
           git add -f *.tar.gz
+          git pull --rebase origin master || true
           git commit -m "Update from ${SOURCE_REPO} ${{ runner.os }} R-${{ matrix.config.r }}" || echo "Nothing to commit"
           git push origin master || echo "Nothing to commit"
 

@@ -38,10 +38,10 @@ snippet kbd-
 	<kbd>$$</kbd>
 
 snippet sec
-	„[-@(${1:sec-}) [${2:section name}](#${1:sec-})“${0}
+	„[-@${1:sec-}] [${2:section name}](#${1:sec-})“${0}
 
 snippet ref
-	[-@(${1:ID})]${0}
+	[-@${1:ID}]${0}
 
 snippet bo
 	```{bash_output, eval=FALSE, class.source="bg-info bash-output"}
@@ -53,14 +53,14 @@ snippet b
 	${0}
 	```
 
-snippet setup-lt
+snippet setup-lt-rmd
 	```{r setup, include=FALSE}
 	# Paketai -------------------------------------------------------------------
 
 	library(conflicted)      # Iššoks klaida, jei kelios funkcijos vienodais pavadinimais.
 
 	library(tidyverse)       # Pagrindiniai „tidyverse“ paketai.
-	library(magrittr)        # Operatorius %>% ir papildomos funkcijos.
+	library(magrittr)        # Papildomos pipe funkcijos; R >= 4.1 naudokite |>.
 
 	# library(fs)            # Darbui su bylomis ir aplankais.
 
@@ -115,7 +115,7 @@ snippet setup-lt
 	set.seed(`r format(Sys.Date(), "%Y%m%d")`)
 	```
 
-snippet setupm
+snippet setupm-rmd
 	```{r setup, include=FALSE}
 	library(conflicted)
 	library(magrittr)

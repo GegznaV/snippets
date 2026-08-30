@@ -11,6 +11,6 @@ snippet plotly-scatter-3d
 	  plotly::plot_ly(
 	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
 	    marker = list(opacity = 0.8, size = 3)
-	  ) %>%
-	  plotly::add_markers() %>%
+	  ) |>
+	  plotly::add_markers() |>
 	  plotly::layout(title = "${7:3D plot}")

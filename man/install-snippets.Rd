@@ -40,7 +40,6 @@ Replace current file with snippets with the other file.
 }
 \examples{
 if (FALSE) {
-
   # Replace your R and Markdown snippets with those in package "snippets":
   install_snippets_from_package("snippets")
   install_snippets_from_package("snippets", type = "r")

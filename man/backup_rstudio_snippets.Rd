@@ -33,12 +33,11 @@ and its back-ups.
 }
 \examples{
 if (FALSE) {
+  backup_rstudio_snippets("r")
+  backup_rstudio_snippets("markdown")
 
-backup_rstudio_snippets("r")
-backup_rstudio_snippets("markdown")
-
-list_snippet_file_backups("r")
-
+  list_snippet_file_backups("r")
 }
+#
 }
 \concept{backup snippets}

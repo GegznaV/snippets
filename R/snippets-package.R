@@ -15,7 +15,6 @@
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start
 #' @import backup.tools
-#' @importFrom dplyr "%>%"
 #' @importFrom lifecycle deprecate_soft
 ## usethis namespace: end
 NULL

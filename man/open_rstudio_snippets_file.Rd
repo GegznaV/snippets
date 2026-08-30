@@ -16,17 +16,18 @@ Defaults to \code{"r"}.}
 
 \item{rstudio_version}{Numeric version of RStudio (the output is different
 for RStudio < 1.3 and 1.3 or newer series). If \code{"current"}, the
-current version of RStudio will be determined automatically.}
+current version of RStudio will be determined automatically when it
+is running; otherwise, the 1.3-or-newer layout is used.}
 }
 \description{
 Edit file with RStudio snippets.
 }
 \examples{
-\dontrun{\donttest{
-open_rstudio_snippets_file("r")
+if (interactive()) {
+  open_rstudio_snippets_file("r")
 
-open_rstudio_snippets_file("markdown")
-}}
+  open_rstudio_snippets_file("markdown")
+}
 
 }
 \concept{snippet files and dirs}

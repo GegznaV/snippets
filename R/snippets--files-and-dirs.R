@@ -16,11 +16,11 @@
 # @seealso [path_rstudio_snippets_file()]
 #'
 #' @examples
-#' \dontrun{\donttest{
-#' open_rstudio_snippets_file("r")
+#' if (interactive()) {
+#'   open_rstudio_snippets_file("r")
 #'
-#' open_rstudio_snippets_file("markdown")
-#' }}
+#'   open_rstudio_snippets_file("markdown")
+#' }
 #'
 open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
   force(type)
@@ -46,27 +46,29 @@ open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
 #'
 #' @param rstudio_version Numeric version of RStudio (the output is different
 #'        for RStudio < 1.3 and 1.3 or newer series). If `"current"`, the
-#'        current version of RStudio will be determined automatically.
+#'        current version of RStudio will be determined automatically when it
+#'        is running; otherwise, the 1.3-or-newer layout is used.
 #'
 #' @return (string) Path to directory for RStudio snippets.
 #' @export
 #'
 #' @concept snippet files and dirs
 #' @examples
-#' \dontrun{\donttest{
-#' # Regularly, you should use this:
-#' get_path_rstudio_snippets_dir()
-#' }}
+#' if (interactive()) {
+#'   # Regularly, you should use this:
+#'   get_path_rstudio_snippets_dir()
+#' }
 #'
 #' # For testing purposes:
 #' get_path_rstudio_snippets_dir("1.4.1103")
 #' get_path_rstudio_snippets_dir("1.2.5044")
-
 get_path_rstudio_snippets_dir <- function(rstudio_version = "current") {
-
   if (rstudio_version %in% c("current", "auto")) {
-    rstudio_version <- rstudioapi::versionInfo()$version
-
+    rstudio_version <- if (rstudioapi::isAvailable()) {
+      rstudioapi::versionInfo()$version
+    } else {
+      "1.3.1"
+    }
   } else {
     rstudio_version <- as.numeric_version(rstudio_version)
   }
@@ -76,16 +78,14 @@ get_path_rstudio_snippets_dir <- function(rstudio_version = "current") {
     if (get_os_type() == "windows") {
       # on Windows
       base <- fs::path(Sys.getenv("APPDATA"), "RStudio")
-
     } else {
       # on Unix (MacOS, Linux)
       base <- fs::path_expand_r("~/.config/rstudio")
     }
 
-    base <- Sys.getenv("XDG_CONFIG_HOME",     unset = base)
+    base <- Sys.getenv("XDG_CONFIG_HOME", unset = base)
     base <- Sys.getenv("RSTUDIO_CONFIG_HOME", unset = base)
     fs::path(base, "snippets")
-
   } else {
     # For RStudio 1.2, 1.1, etc. (i.e., versions before 1.3) ~~~~~~~~~~~~~~~~~
     fs::path_expand_r("~/.R/snippets/")
@@ -102,5 +102,3 @@ open_rstudio_snippets_dir <- function() {
   create_rstudio_snippets_dir()
   browseURL(get_path_rstudio_snippets_dir())
 }
-
-

@@ -15,12 +15,12 @@
 #'
 #' snippets_dir <- "snippets/"
 #' #
-#' merge_snippets(type = "r",        in_dir = snippets_dir)
+#' merge_snippets(type = "r", in_dir = snippets_dir)
 #' merge_snippets(type = "markdown", in_dir = snippets_dir)
 #'
 #' install_snippets_from_dir(type = c("r", "markdown"), from_dir = snippets_dir)
 #' #
-#' merge_snippets(type = "r",        in_dir = snippets_dir, rm = "-VG-snippets")
+#' merge_snippets(type = "r", in_dir = snippets_dir, rm = "-VG-snippets")
 #' merge_snippets(type = "markdown", in_dir = snippets_dir, rm = "-VG-snippets")
 #'
 #' update_snippets_in_snippets("r")
@@ -28,9 +28,10 @@
 #'
 #' # install_snippets_from_dir(type = "r",        from_dir = snippets_dir)
 #' # install_snippets_from_dir(type = "markdown", from_dir = snippets_dir)
-
-merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
-  rm = NULL) {
+merge_snippets <- function(
+  type = get_default_snippet_types(), in_dir = ".",
+  rm = NULL
+) {
   # in_dir <- "snippets/"
   # rm = "-VG-snippets"
 
@@ -44,11 +45,11 @@ merge_snippets <- function(type = get_default_snippet_types(), in_dir = ".",
         files <- files[stringr::str_detect(files, rm, negate = TRUE)]
       }
 
-      files %>%
-        purrr::map(readr::read_lines) %>%
-        purrr::reduce(c) %>%
+      files |>
+        purrr::map(readr::read_lines) |>
+        purrr::reduce(c) |>
         # Remove comments:
-        # stringr::str_subset(pattern = "^# ", negate = TRUE) %>%
+        # stringr::str_subset(pattern = "^# ", negate = TRUE) |>
         readr::write_lines(make_snippet_filename(type = type))
     }
   )
@@ -85,19 +86,16 @@ update_snippets_in_snippets <- function(type, snippets_dir = "snippets") {
 #'
 #' @examples
 #' if (FALSE) {
+#'   merge_and_update_snippets("r")
+#'   merge_and_update_snippets("markdown")
 #'
-#' merge_and_update_snippets("r")
-#' merge_and_update_snippets("markdown")
-#'
-#' remove_snippet_backup_duplicates()
+#'   remove_snippet_backup_duplicates()
 #' }
 merge_and_update_snippets <- function(type, snippets_dir = "snippets/") {
-
-  merge_snippets(type = type,            in_dir   = snippets_dir)
+  merge_snippets(type = type, in_dir = snippets_dir)
   install_snippets_from_dir(type = type, from_dir = snippets_dir)
 
   # Remove personal VG snippets
-  merge_snippets(type = type,            in_dir = snippets_dir, rm = "-VG-snippets")
+  merge_snippets(type = type, in_dir = snippets_dir, rm = "-VG-snippets")
   update_snippets_in_snippets(type)
 }
-
