@@ -49,6 +49,7 @@ snippet help-r
 	# Operator |>
 	aa
 	aa-
+	pipe-arg
 
 	# R locales
 	locale
@@ -96,14 +97,15 @@ snippet ei
 	}
 
 snippet fun
-	${1:name} <- function(${2:variables}) {
+	${1:${2:name} <- }function(${3:variables}) {
 		${0}
 	}
 
 snippet funn
-	function(${2:variables}) {
+	${1:${2:name} <- }\(${3:variables}) {
 		${0}
 	}
+
 
 snippet ret
 	return(${0:code})
@@ -163,6 +165,10 @@ snippet aa
 	${1:dataset} <-
 	  ${1} |>
 	  ${0:code}
+
+snippet pipe-arg
+	${1:data} |>
+	  (\(${2:x}) ${3:function}(${4:argument} = ${2}))()
 
 snippet locale
 	Sys.${1:g}etlocale(${2})${0}
@@ -334,8 +340,24 @@ snippet lib-tidyverse
 	${0}
 
 snippet lib-magrittr
-	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
+	library(magrittr)      # Additional pipe-friendly functions; use |> in R >= 4.1.
 	${0}
+
+snippet dplyr-modern
+	select-where
+	summarize-across
+	${0}
+
+snippet select-where
+	select(where(${2:is.numeric}))
+
+snippet summarize-across
+	summarize(
+	  across(
+	    where(${2:is.numeric}),
+	    \(${3:x}) mean(${3}, na.rm = TRUE)
+	  )
+	)
 
 snippet lib-fs
 	library(fs)            # Manage files and directories.
@@ -436,8 +458,8 @@ snippet plotly-scatter-3d
 	  plotly::plot_ly(
 	    x = ~${2:x}, y = ~${3:y}, z = ~${4:z}, ${5:color = ~${6:group}},
 	    marker = list(opacity = 0.8, size = 3)
-	  ) %>%
-	  plotly::add_markers() %>%
+	  ) |>
+	  plotly::add_markers() |>
 	  plotly::layout(title = "${7:3D plot}")
 # Plots (save) ---------------------------------------------------------------
 snippet pptx-snippets
@@ -476,9 +498,9 @@ snippet save-plot-to-pptx-from-code
 
 	# ~ Save to PowerPoint -------------------------------------------------------
 	path_to_pptx_file <-
-	  read_pptx(input_file) %>%
-	  add_slide(layout = "Blank", master = "Office Theme") %>%
-	  ph_with(dml_plot, location = location_on_slide) %>%
+	  read_pptx(input_file) |>
+	  add_slide(layout = "Blank", master = "Office Theme") |>
+	  ph_with(dml_plot, location = location_on_slide) |>
 	  print(target = output_file)
 
 	# ~ Open the pptx file -------------------------------------------------------
@@ -516,9 +538,9 @@ snippet save-plot-to-pptx-from-ggplot
 
 	# ~ Save to PowerPoint -------------------------------------------------------
 	path_to_pptx_file <-
-	  read_pptx(input_file) %>%
-	  add_slide(layout = "Blank", master = "Office Theme") %>%
-	  ph_with(dml_plot, location = location_on_slide) %>%
+	  read_pptx(input_file) |>
+	  add_slide(layout = "Blank", master = "Office Theme") |>
+	  ph_with(dml_plot, location = location_on_slide) |>
 	  print(target = output_file)
 
 	# ~ Open the pptx file -------------------------------------------------------
