@@ -36,5 +36,7 @@ Suggests:
   bookdown,
   whoami,
   testthat (>= 2.1.0)
+Remotes:
+    GegznaV/backup.tools
 RdMacros: lifecycle
 Config/roxygen2/version: 8.1.0
