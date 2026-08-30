@@ -27,8 +27,24 @@ snippet lib-tidyverse
 	${0}
 
 snippet lib-magrittr
-	library(magrittr)      # Operator %>% and additional pipe-friendly functions.
+	library(magrittr)      # Additional pipe-friendly functions; use |> in R >= 4.1.
 	${0}
+
+snippet dplyr-modern
+	select-where
+	summarize-across
+	${0}
+
+snippet select-where
+	select(where(${2:is.numeric}))
+
+snippet summarize-across
+	summarize(
+	  across(
+	    where(${2:is.numeric}),
+	    \(${3:x}) mean(${3}, na.rm = TRUE)
+	  )
+	)
 
 snippet lib-fs
 	library(fs)            # Manage files and directories.
