@@ -14,3 +14,5 @@
 ^_TODO
 ^\.github$
 ^new-features$
+^AGENTS\.md$
+^AI_CONTEXT\.md$
