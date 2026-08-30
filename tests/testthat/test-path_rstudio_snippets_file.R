@@ -1,4 +1,5 @@
 test_that("path_rstudio_snippets_file() works", {
+  local_rstudio_config_dir()
 
   # Correct output class
   expect_is(
@@ -6,6 +7,6 @@ test_that("path_rstudio_snippets_file() works", {
     "character"
   )
 
-  # When run not via RStudio
-  expect_error(path_rstudio_snippets_file(create = FALSE), "RStudio not running")
+  # Works when RStudio is not running
+  expect_is(path_rstudio_snippets_file(create = FALSE), "character")
 })
