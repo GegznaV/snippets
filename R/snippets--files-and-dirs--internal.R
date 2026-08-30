@@ -21,9 +21,10 @@
 #' make_snippet_filename("markdown")
 #'
 #' make_snippet_filename(c("r", "markdown"), several.ok = TRUE)
-
-make_snippet_filename <- function(type = get_default_snippet_types(),
-  several.ok = FALSE) {
+make_snippet_filename <- function(
+  type = get_default_snippet_types(),
+  several.ok = FALSE
+) {
   type <- match_snippet_type(type, several.ok = several.ok)
   stringr::str_glue("{type}.snippets")
 }
@@ -39,9 +40,8 @@ make_snippet_filename <- function(type = get_default_snippet_types(),
 #' @concept snippet files and dirs
 #' @examples
 #' if (FALSE) {
-#' create_rstudio_snippets_dir()
+#'   create_rstudio_snippets_dir()
 #' }
-
 create_rstudio_snippets_dir <- function() {
   fs::dir_create(get_path_rstudio_snippets_dir())
 }
@@ -68,8 +68,10 @@ create_rstudio_snippets_dir <- function() {
 #  @export
 #' @noRd
 
-path_snippets_file <- function(dir, type = get_default_snippet_types(),
-  create = FALSE, several.ok = FALSE) {
+path_snippets_file <- function(
+  dir, type = get_default_snippet_types(),
+  create = FALSE, several.ok = FALSE
+) {
   force(dir)
   paths <-
     fs::path(dir, make_snippet_filename(type = type, several.ok = several.ok))
@@ -88,9 +90,10 @@ path_snippets_file <- function(dir, type = get_default_snippet_types(),
 
 # @rdname path_snippets_file
 # @export
-path_rstudio_snippets_file <- function(type = get_default_snippet_types(),
-  create = FALSE, several.ok = FALSE, rstudio_version = "auto") {
-
+path_rstudio_snippets_file <- function(
+  type = get_default_snippet_types(),
+  create = FALSE, several.ok = FALSE, rstudio_version = "auto"
+) {
   path_snippets_file(
     dir = get_path_rstudio_snippets_dir(rstudio_version = rstudio_version),
     type = type,
@@ -114,13 +117,14 @@ path_rstudio_snippets_file <- function(type = get_default_snippet_types(),
 #' @concept snippet files and dirs
 #' @examples
 #' if (interactive()) {
-#' snippets_file_exists("r")
-#' snippets_file_exists("markdown")
+#'   snippets_file_exists("r")
+#'   snippets_file_exists("markdown")
 #' }
-
 snippets_file_exists <- function(type, rstudio_version = "auto") {
-  fs::file_exists(path_rstudio_snippets_file(type, create = FALSE,
-    rstudio_version = rstudio_version))
+  fs::file_exists(path_rstudio_snippets_file(type,
+    create = FALSE,
+    rstudio_version = rstudio_version
+  ))
 }
 
 
@@ -146,7 +150,7 @@ snippets_file_exists <- function(type, rstudio_version = "auto") {
 #' @examples
 #' get_path_snippets_dir_of_pkg("snippets")
 get_path_snippets_dir_of_pkg <- function(package, ...) {
-  system.file("snippets", ... , package = package)
+  system.file("snippets", ..., package = package)
 }
 
 # @rdname get_path_snippets_dir_of_pkg
@@ -163,4 +167,3 @@ get_path_snippet_files_of_pkg <- function(package, ...) {
     fs::dir_ls(folder, regexp = "[.]snippets$")
   }
 }
-

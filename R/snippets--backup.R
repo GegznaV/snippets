@@ -18,20 +18,17 @@
 #'
 #' @examples
 #' if (FALSE) {
+#'   backup_rstudio_snippets("r")
+#'   backup_rstudio_snippets("markdown")
 #'
-#' backup_rstudio_snippets("r")
-#' backup_rstudio_snippets("markdown")
-#'
-#' list_snippet_file_backups("r")
-#'
+#'   list_snippet_file_backups("r")
 #' }
-#
+#' #
 # if (FALSE) {
 # # Use name of an existing back-up file
 # restore_snippets_from_backup("r.snippets--backup-2019-10-31-01430")
 # }
 # @return Invisibly returns the name of back-up copy. See [fs::file_copy()].
-
 backup_rstudio_snippets <- function(type) {
   create_rstudio_snippets_dir()
   type <- match_snippet_type(type, several.ok = TRUE)
@@ -97,7 +94,6 @@ remove_snippet_backup_duplicates <- function() {
 
     str <- paste(crayon::blue(rem), collapse = "\n")
     usethis::ui_done("Removed duplicate(s):\n{str}")
-
   } else {
     usethis::ui_done("No back-up duplicates were found.")
   }
@@ -117,19 +113,17 @@ remove_snippet_backup_duplicates <- function() {
 # @export
 # filename <- "r--backup-2019-10-31-01430.snippets"
 restore_snippets_from_backup <- function(filename, backup = TRUE) {
-
   # FIXME: use new version of backing up and restoring
 
   withr::with_dir(
     get_path_rstudio_snippets_dir(),
     {
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      filename     <- fs::path_file(filename)
+      filename <- fs::path_file(filename)
       filename_str <- usethis::ui_path(filename)
 
       if (file.exists(filename)) {
         usethis::ui_done("Back-up file was found: {filename_str}")
-
       } else {
         usethis::ui_stop("Back-up file {filename_str} does not exist.")
       }
@@ -139,12 +133,11 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
 
       usethis::ui_info("Snippets' type: {usethis::ui_field(type)}")
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      tobe_replaced     <- make_snippet_filename(type = type)
+      tobe_replaced <- make_snippet_filename(type = type)
       tobe_replaced_str <- usethis::ui_path(tobe_replaced)
 
       if (isTRUE(backup)) {
         backup_rstudio_snippets(type = type)
-
       } else {
         usethis::ui_oops("Current file was not backed up: {tobe_replaced_str}")
       }
@@ -153,14 +146,14 @@ restore_snippets_from_backup <- function(filename, backup = TRUE) {
       if (file.copy(filename, tobe_replaced, overwrite = TRUE)) {
         usethis::ui_done(stringr::str_c(
           "Snippets were restored from the back-up file:\n",
-          "   {filename_str} -> {tobe_replaced_str}.")
-        )
-
+          "   {filename_str} -> {tobe_replaced_str}."
+        ))
       } else {
         usethis::ui_oops(
           "Failure to restore snippets from the back-up file {filename_str}."
         )
       }
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    })
+    }
+  )
 }

@@ -16,8 +16,7 @@ get_os_type <- function() {
   sysname <- Sys.info()[["sysname"]]
 
   if (!is.null(sysname) && nzchar(sysname)) {
-    os <- switch(
-      sysname,
+    os <- switch(sysname,
       "Darwin"  = "mac",
       "Windows" = "windows",
       "Linux"   = "linux",
