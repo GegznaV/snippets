@@ -203,9 +203,9 @@ snippet font
 # Quarto snippets ------------------------------------------------------------
 
 snippet eq
-	$$
+	\$\$
 	${0:LaTeX equation}
-	$$ {#eq-${1:equation-ID}}
+	\$\$ {#eq-${1:equation-ID}}
 
 snippet exr
 	::: {#exr-${1:excercise-ID} .exercise}
@@ -218,14 +218,14 @@ snippet exm
 	:::
 
 snippet youtube
-	`r embed_youtube_video("${1:youtube-video-id}")`
+	`r "\U0060"`r embed_youtube_video("${1:youtube-video-id}")`r "\U0060"`
 	:::{#cor-${3:video-ID} .corollary}
 	${4:video-caption}
 	:::
 	<br>
 
 snippet youtube_playlist
-	`r embed_youtube_playlist("${1:youtube-playlist-id}")`
+	`r "\U0060"`r embed_youtube_playlist("${1:youtube-playlist-id}")`r "\U0060"`
 	:::{#cor-${3:video-ID} .corollary}
 	${4:video-caption}
 	:::
