@@ -1,29 +1,33 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snippets)](https://CRAN.R-project.org/package=snippets)
 [![GitHub
-version](https://img.shields.io/badge/GitHub-v0.0.21-brightgreen.svg)](https://github.com/GegznaV/snippets)
+version](https://img.shields.io/badge/GitHub-v0.0.23-brightgreen.svg)](https://github.com/GegznaV/snippets)
 [![R build
 status](https://github.com/GegznaV/snippets/workflows/R-CMD-check/badge.svg)](https://github.com/GegznaV/snippets/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/GegznaV/snippets/branch/master/graph/badge.svg)](https://codecov.io/gh/GegznaV/snippets?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Updated-on](https://img.shields.io/badge/Updated%20on-2024--09--18-yellowgreen.svg)]()
+[![Updated-on](https://img.shields.io/badge/Updated%20on-2026--08--30-yellowgreen.svg)]()
 <!-- badges: end -->
 
 # Package `snippets`
 
-<!-- (0.0.21) -->
+<!-- (0.0.23) -->
 
 ## Installation
 
 <!-- You can install the released version of snippets from [CRAN](https://CRAN.R-project.org) with: -->
+
 <!-- ``` r -->
+
 <!-- install.packages("snippets") -->
+
 <!-- ``` -->
 
 To install package from CRAN-like repository:
@@ -154,4 +158,4 @@ remove_snippet_backup_duplicates()
     <!-- 4. [R snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/r.snippets) by @dick7 -->
     <!-- 5. [markdown snippets](https://github.com/dick7/vimrc/blob/81a78437c9d6f45c3372e6998f4a8a832890c243/sources_non_forked/vim-snippets/snippets/markdown.snippets) by @dick7 -->
 
-<!-- <div style="text-align:right;">2024-09-18</div> -->
+<!-- <div style="text-align:right;">2026-08-30</div> -->
