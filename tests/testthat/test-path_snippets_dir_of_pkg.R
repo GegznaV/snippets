@@ -1,5 +1,4 @@
 test_that("get_path_snippets_dir_of_pkg() works", {
-
   # Missing package name
   expect_error(get_path_snippets_dir_of_pkg())
 

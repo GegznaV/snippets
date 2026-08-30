@@ -1,5 +1,5 @@
 test_that("match_snippet_type() works", {
-  expect_equal(match_snippet_type(),    "r")
+  expect_equal(match_snippet_type(), "r")
 
   expect_equal(match_snippet_type("r"), "r")
   expect_equal(match_snippet_type("R"), "r")
