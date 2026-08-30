@@ -16,11 +16,12 @@
 # @seealso [path_rstudio_snippets_file()]
 #'
 #' @examples
-#' \dontrun{\donttest{
-#' open_rstudio_snippets_file("r")
+#' if (interactive()) {
+#'   open_rstudio_snippets_file("r")
 #'
-#' open_rstudio_snippets_file("markdown")
-#' }}
+#'   open_rstudio_snippets_file("markdown")
+#'
+#' }
 #'
 open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
   force(type)
@@ -54,10 +55,11 @@ open_rstudio_snippets_file <- function(type, rstudio_version = "auto") {
 #'
 #' @concept snippet files and dirs
 #' @examples
-#' \dontrun{\donttest{
+#' if (interactive()) {
 #' # Regularly, you should use this:
 #' get_path_rstudio_snippets_dir()
-#' }}
+#'
+#' }
 #'
 #' # For testing purposes:
 #' get_path_rstudio_snippets_dir("1.4.1103")

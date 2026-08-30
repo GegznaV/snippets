@@ -113,10 +113,10 @@ path_rstudio_snippets_file <- function(type = get_default_snippet_types(),
 #'
 #' @concept snippet files and dirs
 #' @examples
-#' \dontrun{\donttest{
+#' if (interactive()) {
 #' snippets_file_exists("r")
 #' snippets_file_exists("markdown")
-#' }}
+#' }
 
 snippets_file_exists <- function(type, rstudio_version = "auto") {
   fs::file_exists(path_rstudio_snippets_file(type, create = FALSE,
